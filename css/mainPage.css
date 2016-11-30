@@ -1,0 +1,89 @@
+/* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
+
+
+body {
+    background-color: #F0B06B;
+}
+
+.button, #sequenceInput, #result, #pValueSlider {
+    border-radius: 5px;
+    border: 0px solid #4CAF50;
+
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+
+    color: #fff;
+    background-color: #4CAF50;
+
+}
+
+.button:hover {background-color: #509f50
+}
+
+.button:active {
+    background-color: #3e8e41;
+    transform: translateY(2px);
+}
+
+.segment {
+    border-radius: 2px;
+
+}
+
+
+#motifList {
+    display: none;
+    height: 100px;
+    overflow-y: scroll;
+}
+#motifListSelected {
+    height: 100px;
+}
+#sequenceInput {
+    font-family: "Courier New", "Times New Roman";
+    font-size: 20px;
+
+    width: 100%;
+
+    /*#FFD995*/
+
+    background-color: #ffffff;
+
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#result {
+    font-family: "Courier New", "Times New Roman";
+    font-size: 20px;
+
+    width: 100%;
+    height: 60px;
+
+    background-color: #ffffff;
+
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#pValueSlider{
+    margin: 20px auto;
+}
+
+
+
+
+
+

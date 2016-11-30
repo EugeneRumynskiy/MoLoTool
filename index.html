@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <title>Motif markup</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+
+    <script src="js/machinery/motifMath.js"></script>
+    <script src="js/machinery/markupUI.js"></script>
+    <script src="js/machinery/errorHandling.js"></script>
+    <script src="js/machinery/tableModule.js"></script>
+    <script src="js/machinery/segmentationModule.js"></script>
+    <script src="js/machinery/motifModule.js"></script>
+    <script src="js/machinery/markup.js"></script>
+    <script src="js/machinery/giveSitesToMotifs.js"></script>
+
+
+    <link rel="stylesheet" href="css/mainPage.css">
+    <link rel="stylesheet" href="css/dataTable.css">
+</head>
+<body>
+    <div class='container'>
+
+        <button type='button' id="showMotifListButton" class="button">Select motifs</button>
+        <button type='button' id="downloadSelected" class="button">Download selected motifs</button>
+
+        <div id='motifList'></div>
+        <div id='motifListSelected'></div>
+
+        <div>
+            <form>
+                <label for="sequenceInput">Sequence:</label>
+                <textarea name="sequenceInput" id="sequenceInput" rows="3" autofocus spellcheck=false>AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+                <button type="button" id="markupButton" class="button">Markup</button>
+                <button type="button" id="clearButton" class="button">Clear</button>
+                <button type="button" id="clearFormattingButton" class="button">Clear formatting</button>
+
+            </form>
+        </div>
+
+        <div id="pValueSlider" class="slider"></div>
+        <p>
+            <label for="pValue">pValue range:</label>
+            <input type="text" id="pValue" class='slider'
+                   style="border:0; color:black; font-weight:bold; width: 60px;">
+        </p>
+
+        <div id="result" class="box"></div>
+
+    </div>
+
+    <table id="example" class="display cell-border compact" width="100%">
+        <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Motif Name</th>
+            <th>Strength</th>
+            <th>Start Position</th>
+            <th>Finish Position</th>
+            <th>Sequence</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Motif Name</th>
+            <th>Strength</th>
+            <th>Start Position</th>
+            <th>Finish Position</th>
+            <th>Sequence</th>
+        </tr>
+        </tfoot>
+    </table>
+
+
+
+
+
+
+</body>
+</html>
