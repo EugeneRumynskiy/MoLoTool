@@ -4,6 +4,7 @@
 
 //Global data to save ajax request
 //http://epifactors.autosome.ru/protein_complexes - как сделать поиск
+// http://paletton.com/#uid=52Q0p1ki6rV87JXdgxQmgnFqvj3ki6rV87JXdgxQmgnFqvj3kdLmDeBKZcjw8bCe2ce5+
 var globalMotifData = [];
 
 
@@ -14,7 +15,7 @@ $(function() {
     // TODO: replace this stub with actual Ajax request (see above)
     //creating of motif list
     motif_list_formatted = $.map(["AHR_HUMAN.H10MO.B","AIRE_HUMAN.H10MO.C","ALX1_HUMAN.H10MO.B"], function(el, ind){
-        return '<div class="motif">'+ el +'</div>';
+        return '<div class="motifToChose">'+ el +'</div>';
     }).join('');
     $('#motifList').html(motif_list_formatted);
     table = myTable.createTable();
@@ -64,7 +65,6 @@ $(function() {
     $('#clearButton').click(function(event){
         var sequence = $('#sequenceInput').val();
         $('#result').html(sequence);
-
     });
 
     //clear formatting button
@@ -119,18 +119,19 @@ $(function() {
     $( "#pValue" ).val( $("#pValueSlider").slider("value")/ 1000 );
 
 
-    $('#motifList').on('click', '.motif', function(event){
+    $('#motifList').on('click', '.motifToChose', function(event){
         $motif = $(event.target);
         $motif.appendTo('#motifListSelected');
     });
 
-    $('#motifListSelected').on('click', '.motif', function(event){
+    $('#motifListSelected').on('click', '.motifToChose', function(event){
         var $motif = $(event.target);
         $motif.appendTo('#motifList');
     });
 
     $('#showMotifListButton').on('click', function(event){
-        $('#motifList').show();
+        $('#motifList').toggle();
+
     });
 
 });
