@@ -20,6 +20,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 
+
+
+    <script src="js/nouislider.min.js"></script>
     <script src="js/machinery/motifMath.js"></script>
     <script src="js/machinery/markupUI.js"></script>
     <script src="js/machinery/errorHandling.js"></script>
@@ -28,10 +31,12 @@
     <script src="js/machinery/motifModule.js"></script>
     <script src="js/machinery/markup.js"></script>
     <script src="js/machinery/giveSitesToMotifs.js"></script>
+    <script src="js/machinery/pValueSlider.js"></script>
 
 
     <link rel="stylesheet" href="css/mainPage.css">
     <link rel="stylesheet" href="css/dataTable.css">
+    <link rel="stylesheet" href="css/nouislider.min.css">
 </head>
 <body>
     <div class='container'>
@@ -49,27 +54,33 @@
                 <button type="button" id="markupButton" class="button">Markup</button>
                 <button type="button" id="clearButton" class="button">Clear</button>
                 <button type="button" id="clearFormattingButton" class="button">Clear formatting</button>
-
             </form>
         </div>
 
+
+
         <div id="pValueSlider" class="slider"></div>
         <p>
-            <label for="pValue">pValue range:</label>
-            <input type="text" id="pValue" class='slider'
-                   style="border:0; color:black; font-weight:bold; width: 60px;">
+            <label for="pValue">P-value:</label>
+            <input type="text" id="pValue" class='slider' style="border:0; color:black; font-weight:bold; width: 60px;">
+        </p>
+
+        <div id="pValueLogSlider" class="slider"></div>
+        <p>
+            <label for="pValue">-log10(P-value):</label>
+            <input type="text" id="pValueLog" class='slider' style="border:0; color:black; font-weight:bold; width: 60px;">
         </p>
 
         <div id="result" class="box"></div>
-
     </div>
+
 
     <table id="example" class="display cell-border compact" width="100%">
         <thead>
         <tr>
             <th></th>
             <th>ID</th>
-            <th>Motif Name</th>
+            <th>Motif ID</th>
             <th>Strength</th>
             <th>Start Position</th>
             <th>Finish Position</th>
@@ -80,7 +91,7 @@
         <tr>
             <th></th>
             <th>ID</th>
-            <th>Motif Name</th>
+            <th>Motif ID</th>
             <th>Strength</th>
             <th>Start Position</th>
             <th>Finish Position</th>
@@ -88,10 +99,6 @@
         </tr>
         </tfoot>
     </table>
-
-
-
-
 
 
 </body>

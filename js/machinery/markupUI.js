@@ -8,7 +8,6 @@
 var globalMotifData = [];
 
 
-
 $(function() {
 
     var motif_list_formatted, i, $motif, table;
@@ -44,8 +43,6 @@ $(function() {
 
     //markup button functionality
     $('#markupButton').click(function(event){
-
-
         var sequence = $('#sequenceInput').val(), pValueMax = $("#pValue").val(),
             sites = [], sequenceToDisplay = "";
 
@@ -56,7 +53,6 @@ $(function() {
         myTable.redrawTableWithSites(sites);
         sequenceToDisplay = markupSegmentation(sequence, sites);
         $('#result').html(sequenceToDisplay);
-
 
         console.log("sites and pValue", sites, "   ", pValueMax);
     });
@@ -87,37 +83,7 @@ $(function() {
 
     });
 
-    $( "#pValueSlider" ).slider({
-        range: false,
-        min: 0,
-        max: 1000,
-        value: 100,
-        animate: "fast",
-        orientation: "horizontal",
-
-        slide: function (event, ui) {
-            $("#pValue").val(ui.value / 1000);
-
-
-            var sequence = $('#sequenceInput').val(), pValueMax = $("#pValue").val(),
-                sites = [], sequenceToDisplay = "";
-
-            for(var i = 0; i < globalMotifData.length; i++) {
-                motif.setMotif(globalMotifData[i]);
-                sites = sites.concat(motif.findSites(sequence, pValueMax));
-            }
-            myTable.redrawTableWithSites(sites);
-            sequenceToDisplay = markupSegmentation(sequence, sites);
-            $('#result').html(sequenceToDisplay);
-
-        },
-        change: function (event, ui) {
-            $("#pValue").val(ui.value / 1000);
-        }
-    });
-
-    $( "#pValue" ).val( $("#pValueSlider").slider("value")/ 1000 );
-
+    pSlider.create();
 
     $('#motifList').on('click', '.motifToChose', function(event){
         $motif = $(event.target);
@@ -137,9 +103,6 @@ $(function() {
 });
 
 
-
-
-
 function handleMotifs() {
     motif.setMotif(motifData);
     var sequence = $('#sequenceInput').val(), pValueMax = $("#pValue").val(),
@@ -147,6 +110,4 @@ function handleMotifs() {
     i = markupSegmentation(sequence, sites);
     myTable.redrawTableWithSites(sites);
     $('#result').html(i);
-
 }
-

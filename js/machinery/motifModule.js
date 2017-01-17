@@ -1,9 +1,6 @@
 /**
  * Created by Sing on 06.11.2016.
  */
-//global variable to save ajax requests
-
-
 var motif = (function () {
     var _name              = "",
         _pwmMatrix         = [],
@@ -18,7 +15,7 @@ var motif = (function () {
     /**
      *Flip motif pvm matrix from [[A, C, G, T], ...] to [T, G, C, A], ...]
      *and the entire motif from [0, 1, 2] to [2, 1, 0] according to inverse direction.
-     * @param motifPwm      :motif pwm matrix
+     * @param pwmMatrix     :motif pwm matrix
      * @returns {Array.<*>} :flipped motifPwm
      */
     var reversePwmMatrix = function(pwmMatrix) {
@@ -65,7 +62,7 @@ var motif = (function () {
 
     /**
      * Find and return pValue in pre-calculated list of scores
-     * @param _thresholdList :pre-calculated list of pairs [[scoreValue, pValue], []...]
+     * _thresholdList :pre-calculated list of pairs [[scoreValue, pValue], []...]
      * @param score                 :weight sum for position i, if motif starts in position i
      * @returns {pvalue}            :pValue
      * ToDo: make binary search not linear, test that returned result isn't 0, test return function
@@ -117,16 +114,11 @@ var motif = (function () {
         }
     };
 
-    /**
-     *
-     * @param direction
-     * @returns {Array}
-     */
-    var findSitesInStrand = function(sequence, direction, pValueMax) {
-        var scoreList = [], sitesList = [],
-            pValue, scorePosition, motifSequence =" ";
 
-        scoreList = getScoreList(sequence, direction);
+    var findSitesInStrand = function(sequence, direction, pValueMax) {
+        var scoreList = getScoreList(sequence, direction),
+            sitesList = [],
+            pValue, scorePosition, motifSequence = " ";
 
         for (scorePosition = 0; scorePosition < scoreList.length; scorePosition++) {
             pValue = binarySearch(scoreList[scorePosition]);
@@ -147,20 +139,23 @@ var motif = (function () {
     };
 
 
+    var choosePwmMatrix = function (direction) {
+        if (direction == "-")
+            return _pwmMatrixReversed;
+        else
+            return _pwmMatrix;
+    };
+
+
     /**
      * Get scores for motif in position of i in sequence, for inverted direction we invert pwm matrix instead
      * @param sequence  :initial sequence
-     * @param motifPwm     :motif pwm matrix
      * @param direction :direction of dna strand
      * @returns {Array} :array of weight sums for position i, if motif starts in position i
      */
     var getScoreList = function(sequence, direction) {
-        if (direction == "-")
-            var pwmMatrix = _pwmMatrixReversed;
-        else
-            var pwmMatrix = _pwmMatrix;
-
-        var seqLen = sequence.length,
+        var pwmMatrix = choosePwmMatrix(direction),
+            seqLen = sequence.length,
             motifLen = pwmMatrix.length,
             scoreList = new Array(seqLen - motifLen + 1),
             positionInMotif, positionInSequence, currentPosition;
@@ -179,7 +174,7 @@ var motif = (function () {
 
     //Array of promises is returned
     var promisesForSelectedMotifs = function(motifNameList) {
-        var data, getArray = [], promises = [], savedMotifs = [];
+        var data, promises = [];
         globalMotifData = [];
 
         promises = $.map(motifNameList, function(motifName){

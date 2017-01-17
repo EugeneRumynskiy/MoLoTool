@@ -1,10 +1,6 @@
-
-
 /**
  * Created by Sing on 16.11.2016.
  */
-
-
 var myTable = (function () {
     var _table = {}, _columns = [], _rows = [],
         _sitesList = [];
@@ -24,7 +20,6 @@ var myTable = (function () {
             { "data": "startPosition" },
             { "data": "finishPosition" },
             { "data": "sequence" }
-            //{ "data": "strand" }
         ];
         return columns;
     };
@@ -57,13 +52,14 @@ var myTable = (function () {
         _columns = getTableColumns();
         _table = {
             columnDefs: [
-                { targets: [4, 5], width: "5%"},
+                { targets: [4, 5], width: "5%"}
             ],
             buttons: [
                 'csv'
             ],
             columns: getTableColumns()
         };
+
         var table = $('#example').DataTable(_table);
 
         $('#example tbody').on('click', 'td.details-control', function () {
