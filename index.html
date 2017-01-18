@@ -23,6 +23,7 @@
 
 
     <script src="js/machinery/motifMath.js"></script>
+    <script src="js/nouislider.min.js"></script>
     <script src="js/machinery/markupUI.js"></script>
     <script src="js/machinery/errorHandling.js"></script>
     <script src="js/machinery/tableModule.js"></script>
@@ -36,6 +37,7 @@
     <link rel="stylesheet" href="css/mainPage.css">
     <link rel="stylesheet" href="css/dataTable.css">
     <link rel="stylesheet" href="css/nouislider.min.css">
+    <link rel="stylesheet" href="css/pSlider.css">
 </head>
 <body>
     <div class='container'>
@@ -57,21 +59,25 @@
         </div>
 
 
-
-        <div id="pValueSlider" class="slider"></div>
-        <p>
-            <label for="pValue">P-value:</label>
-            <input type="text" id="pValue" class='slider' style="border:0; color:black; font-weight:bold; width: 60px;">
-        </p>
-
-        <div id="pValueLogSlider" class="slider"></div>
-        <p>
-            <label for="pValue">-log10(P-value):</label>
-            <input type="text" id="pValueLog" class='slider' style="border:0; color:black; font-weight:bold; width: 60px;">
-        </p>
-
+        <div>
+            <div class="sliderBox">
+                <div class="inputBox">
+                    <p>
+                        <label for='pValue' class='label'>P-value:</label>
+                        <input type='text' class='input' id="linearSlider-input">
+                    </p>
+                    <p>
+                        <label for='pValue' class='label'>-log10(P-value):</label>
+                        <input type='text' class='input' id="logSlider-input">
+                    </p>
+                </div>
+                <p id='logSlider' class='slider'></p>
+            </div>
+        </div>
 
         <div id="result" class="box"></div>
+
+
     </div>
 
 

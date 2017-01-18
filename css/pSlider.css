@@ -1,3 +1,26 @@
-#pValueSlider{
-    margin: 20px auto;
+.inputBox {
+    position: absolute;
+    left: 5px;
+}
+
+.label {
+    left: 5px;
+    width: 110px;
+}
+
+.input {
+    position: absolute;
+    left: 110px;
+    border:0;
+    color:black;
+    font-weight:bold;
+    width: 60px;
+}
+
+#logSlider{
+    margin-left: 190px;
+}
+
+.sliderBox {
+    padding: 10px;
 }
