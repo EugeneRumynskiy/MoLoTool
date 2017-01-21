@@ -94,7 +94,7 @@ var myTable = (function () {
             '<td>'+d.strand+'</td>'+
             '</tr>'+
             '<tr>'+
-            '<td>Extra info:</td>'+
+            '<td>Sequence ID:</td>'+
             '<td>And any further details here (images etc)...</td>'+
             '</tr>'+
             '</table>';

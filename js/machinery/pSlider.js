@@ -38,7 +38,7 @@ var pSlider = (function () {
             logValue.value = round(values[handle], _nDigits);
             linearValue.value = round(Math.pow(10, -values[handle]), _nDigits);
 
-            var sequence = $('#sequenceInput').val(),
+            var sequence = parsing.parseInput()[0]["sequence"],
                 pValueMax = $("#linearSlider-input").val(),
                 sites = [], sequenceToDisplay = "";
 

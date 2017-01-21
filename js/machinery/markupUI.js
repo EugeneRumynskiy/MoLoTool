@@ -36,14 +36,15 @@ $(function() {
     promises = motif.promisesForSelectedMotifs(motifNameList);
     $.when.apply(this, promises)
         .then(function(){
-            console.log('done, all motifs saved\n', globalMotifData);
+            console.log('done, all motifs saved and here they are\n', globalMotifData, '\n');
             allMotifsSaved = true;
         });
 
 
     //markup button functionality
     $('#markupButton').click(function(event){
-        var sequence = $('#sequenceInput').val(), pValueMax = $("#pValue").val(),
+        var sequence = parsing.parseInput()[0]["sequence"],
+            pValueMax = $("#linearSlider-input").val(),
             sites = [], sequenceToDisplay = "";
 
         for(var i = 0; i < globalMotifData.length; i++) {
