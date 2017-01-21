@@ -77,9 +77,9 @@ function makeSegmentation(sites, seqLength) {
             motifsInSegment: getMotifNamesFromSites({})
         });
     }
-
     return segments;
 }
+
 
 function getMotifNamesFromSites(sites) {
     var motifNames = {};
@@ -134,6 +134,7 @@ function checkPointType(point, typeToCheck) {
         logError(error);
     }
 }
+
 
 function isPointType(point, typeToCheck) {
     if ((point.type != "start") && (point.type != "end")) {

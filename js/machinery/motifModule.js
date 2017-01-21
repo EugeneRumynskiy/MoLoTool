@@ -51,7 +51,7 @@ var motif = (function () {
     };
 
 
-    var findSites = function(sequence, pValueMax) {
+    var findSitesInSequence = function(sequence, pValueMax) {
         var direct = "+", inverse = "-",   //direction cases
             sitesList = [].concat(
                 findSitesInStrand(sequence, direct, pValueMax),
@@ -60,6 +60,7 @@ var motif = (function () {
         return sitesList;
     };
 
+
     /**
      * Find and return pValue in pre-calculated list of scores
      * _thresholdList :pre-calculated list of pairs [[scoreValue, pValue], []...]
@@ -67,7 +68,6 @@ var motif = (function () {
      * @returns {pvalue}            :pValue
      * ToDo: make binary search not linear, test that returned result isn't 0, test return function
      */
-
     var binarySearch = function(score) {
         var n = _thresholdList.length;
         if (n == 0) {
@@ -94,6 +94,7 @@ var motif = (function () {
         }
         return Math.sqrt(_thresholdList[left][1] * _thresholdList[left + 1][1]);
     };
+
 
     //Return the sequencePart but before it Flip [A, C, G, T] into [T, G, C, A] if condition is true.
     var flipSequence = function(sequencePart, condition) {
@@ -194,21 +195,8 @@ var motif = (function () {
     return {
         setMotif: setMotif,
         returnMotif: returnMotif,
-        findSites: findSites,
+        findSites: findSitesInSequence,
         promisesForSelectedMotifs: promisesForSelectedMotifs
     };
 
 }());
-
-function updateAllNotes() {
-    var getArray = [],
-        i, len;
-
-    for (i = 0, len = data.length; i < len; i += 1) {
-        getarray.push(getNote(data[i].key));
-    };
-
-    $.when.apply($, getarray).done(function() {
-        // do things that need to wait until ALL gets are done
-    });
-}
