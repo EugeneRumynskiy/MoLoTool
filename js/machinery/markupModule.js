@@ -43,85 +43,71 @@ var markup = (function () {
     };
 
     /**
-     * Take sorted sites, sequence length and transform them into segments
-     * @param sites   sorted array of Object { motifName, level, motifSequence, pValue, scorePosition, siteLength, strand, strength }
-     * @param seqLength    :length of sequence
-     * @returns {Array}    :array of segments which are {start: pos, stop: pos, array[sitesInSegment]}
+     *
+     * @param segments - object {finish, start, array[sites = {
+     *      motifName, level, motifSequence, pValue, scorePosition, siteLength, strand, strength
+     * }]}
+     * @param sequence
+     * @returns {*}
+     * last scheme http://paletton.com/#uid=7000X0kqNHXg5QzlJLOzMEBCtrd
      */
-    //TODO: create object called sites with a bunch of methods
-    var makeSegmentation = function(sites, seqLength) {
-        var points = splitSitesIntoSortedPoints(sites),
-            ifSiteInSegment = initSiteInSegment(sites.length),
-            segments = [];
+    var wrapSegmentsInSpans = function(segments, sequence) {
+        var sequenceToDisplay = "", opacity = 1,
+            spanClass = "segment", secondaryClass = "",
+            backgroundColors = ["#ffff", "#7D9CE4", "#547CD7", "#3362CD", "#1248C4", "#0C3491" ], backgroundColor,
+            fontColors = ["#ffff", "#E6841D"], color,
+            sequenceLength = 0, sitesCount;
 
-        if (points.length == 0){
-            segments.push({
-                start: 0,
-                finish: seqLength - 1,
-                sites: []
-            });
-            return segments;
+        for(var i = 0; i < segments.length; i++) {
+            sitesCount = segments[i].sites.length;
+            secondaryClass = getSecondaryClass(segments[i]);
+            backgroundColor = getColorFrom(["", "#7D9CE4", "#3362CD", "#0C3491" ], sitesCount);
+            color = getColorFrom(["#7D9CE4", "#D99100"], sitesCount);
+
+
+            sequenceToDisplay += '<span ' + 'style="' +
+                'background-color: '+ backgroundColor +'; ' +
+                'color: '+ color +'; ' +
+                'opacity: '+ opacity +';" ' +
+                'class="' + spanClass + secondaryClass +'">' +
+                sequence.slice(segments[i].start, segments[i].finish + 1) + '</span>';
+
+            sequenceLength += segments[i].finish - segments[i].start + 1;
+
         }
 
-        //converting points into segments
-        var leftPoint = {siteIndex: undefined, position:0, type:'start'},
-            rightPoint,
-            i, ifStart;
-
-        for (i = 0; i < points.length; i++) {
-            rightPoint = points[i];                          //handle new point
-            ifStart = checkPointType(points[i], "start");
-
-            //console.log("getting segments", leftPoint.position, rightPoint.position, i, isPointType(points[i], "start"));
-
-
-            //if there are tow END points in one POSITION we should update last segment
-            if ((rightPoint.position == leftPoint.position) && (rightPoint.type == "end") && (leftPoint.type == "end")) {
-                segments[segments.length - 1].sites.push(sites[rightPoint.siteIndex]);
-            } else if((rightPoint.position == leftPoint.position) && (rightPoint.type == "start") && (leftPoint.type == "start")) {
-                ; //do nothing
-            } else if((getSegmentEdgePosition(rightPoint, "rightPoint") - getSegmentEdgePosition(leftPoint, "leftPoint")) >= 0)   {
-                //push new segment if it's actual length is not 0
-                //console.log("getting segments pushed!", leftPoint.position + 1 * isPointType(leftPoint, "end"), rightPoint.position - 1 * isPointType(rightPoint, "start"),
-                //    leftPoint.position, rightPoint.position);
-                segments.push({
-                    start: leftPoint.position + 1 * checkPointType(leftPoint, "end") ,
-                    finish: rightPoint.position - 1 * checkPointType(rightPoint, "start"),
-                    sites: sitesInSegment(ifSiteInSegment, sites)
-                });
-            }
-
-            //updating sites in segment with data from point i
-            //checking if the site with index = .siteIndex in current segment
-            if (checkPointType(points[i], "end")) {
-                if (ifSiteInSegment[points[i].siteIndex] == false) {
-                    console.log("Error, end before beginning in segmentation");
-                }
-                ifSiteInSegment[points[i].siteIndex] = false;
-            } else if (checkPointType(points[i], "start")) {
-                if (ifSiteInSegment[points[i].siteIndex] == true) {
-                    console.log("Error, start before end in segmentation");
-                }
-                ifSiteInSegment[points[i].siteIndex] = true;
-            } else {
-                console.log("Error, nor end or start in segmentation");
-            }
-
-            leftPoint = rightPoint;
+        if (sequence.length != sequenceLength) {
+            console.log("sequenceToDisplay length is ", sequenceLength, "  must be:", sequence.length);
         }
 
-        //include right border
-        if ( (points[points.length - 1].position) != (seqLength - 1) ) {
-            segments.push({
-                start: points[points.length - 1].position + 1,
-                finish: seqLength - 1,
-                sites: []
-            });
-        }
-
-        return segments;
+        return sequenceToDisplay;
     };
 
+
+
+    var getSecondaryClass = function(segment) {
+        var secondaryClass = " empty",
+            motifNames = Object.keys(segment.motifsInSegment);
+
+        if (motifNames.length == 0) {
+            secondaryClass = " empty";
+        }
+        if (motifNames.length == 1) {
+            secondaryClass = " mono" + " " + motifNames[0].split(".").join("_");
+        } else if(motifNames.length > 1) {
+            secondaryClass = " poly";
+        }
+        return secondaryClass;
+    };
+
+
+    var getColorFrom = function (palette, sitesCount) {
+        if (( sitesCount >= 0 )&&( sitesCount < palette.length )) {
+            return palette[sitesCount];
+        } else if (sitesCount >= palette.length){
+            return palette[palette.length - 1];
+        }
+    };
 
     return {};
 }());

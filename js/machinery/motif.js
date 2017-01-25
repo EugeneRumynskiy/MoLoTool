@@ -5,11 +5,9 @@ var motif = (function () {
     var _name              = "",
         _pwmMatrix         = [],
         _pwmMatrixReversed = [],
-        _thresholdList     = [];
-
-    var logError = function(err) {
-        console.log(err.name, err.message);
-    };
+        _thresholdList     = [],
+        _fileName = "motif",
+        _nDigits = 3;
 
 
     /**
@@ -19,35 +17,22 @@ var motif = (function () {
      * @returns {Array.<*>} :flipped motifPwm
      */
     var reversePwmMatrix = function(pwmMatrix) {
-        var reversedMotifPwm = [];     //inverting direction, then inverting complementarity
+        var reversedPwmMatrix = [];     //inverting direction, then inverting complementarity
         for (var i = pwmMatrix.length - 1; i >= 0; i--) {
-            reversedMotifPwm.push(pwmMatrix[i].slice().reverse());
+            reversedPwmMatrix.push(pwmMatrix[i].slice().reverse());
         }
-        return reversedMotifPwm;
+        return reversedPwmMatrix;
     };
 
 
-    var setMotif = function (motifRequest) {
-        _name              = motifRequest["full_name"];
-        _pwmMatrix         = motifRequest["pwm"];
-        _pwmMatrixReversed = reversePwmMatrix(motifRequest["pwm"]);
-        _thresholdList     = motifRequest["threshold_pvalue_list"];
-    };
-
-
-    var returnMotif = function () {
-        return {name: _name, pwmMatrix: _pwmMatrix, pwmMatrixReversed: _pwmMatrixReversed, threshHoldList: _thresholdList};
-    };
-
-
-    var getNucleotideIndex = function(nucleotide) {
+    var getNucleotideIndex = function(nucleotideCharacter) {
         var nucleotideIndex = {
             "A" : 0, 'a': 0,
             "C" : 1, 'c': 1,
             "G" : 2, 'g': 2,
             "T" : 3, 't': 3
         };
-        return nucleotideIndex[nucleotide];
+        return nucleotideIndex[nucleotideCharacter];
     };
 
 
@@ -68,11 +53,10 @@ var motif = (function () {
      * @returns {pvalue}            :pValue
      * ToDo: make binary search not linear, test that returned result isn't 0, test return function
      */
-    var binarySearch = function(score) {
+    var getPvalueFromScoreList = function(score) {
         var n = _thresholdList.length;
         if (n == 0) {
             throw new Error("The array cannot be empty");
-            return 0;
         } else if ((n == 1) || (score <= _thresholdList[0][0])) {
             return _thresholdList[0][1];
         } else if (score >= _thresholdList[n - 1][0]) {
@@ -96,22 +80,23 @@ var motif = (function () {
     };
 
 
-    //Return the sequencePart but before it Flip [A, C, G, T] into [T, G, C, A] if condition is true.
-    var flipSequence = function(sequencePart, condition) {
-        var flippedSequencePart = "",
-            nucleotideFlipsInto = {
-                "A" : "T", 'a': "t",
-                "C" : "G", 'c': "g",
-                "G" : "C", 'g': "c",
-                "T" : "A", 't': "a"
-            };
+    //Flip [A, C, G, T] into [T, G, C, A] if condition is true and Return
+    var flipSequence = function(sequence, condition) {
         if (condition) {
-            for (var i = 0; i < sequencePart.length; i++) {
-                flippedSequencePart += nucleotideFlipsInto[sequencePart[i]];
+            var flippedSequence = "",
+                nucleotideFlipsInto = {
+                    "A" : "T", 'a': "t",
+                    "C" : "G", 'c': "g",
+                    "G" : "C", 'g': "c",
+                    "T" : "A", 't': "a"
+                };
+
+            for (var i = 0; i < sequence.length; i++) {
+                flippedSequence += nucleotideFlipsInto[sequence[i]];
             }
-            return flippedSequencePart;
+            return flippedSequence;
         } else {
-            return sequencePart;
+            return sequence;
         }
     };
 
@@ -122,16 +107,16 @@ var motif = (function () {
             pValue, scorePosition, motifSequence = " ";
 
         for (scorePosition = 0; scorePosition < scoreList.length; scorePosition++) {
-            pValue = binarySearch(scoreList[scorePosition]);
+            pValue = getPvalueFromScoreList(scoreList[scorePosition]);
             if (pValue <= pValueMax) {
                 motifSequence = sequence.slice(scorePosition,  scorePosition + _pwmMatrix.length);
                 sitesList.push({
                     motifName: _name,
                     scorePosition: scorePosition,
                     siteLength: _pwmMatrix.length,
-                    strength: round(-Math.log10(pValue), 6),
+                    strength: round(-Math.log10(pValue), _nDigits),
                     strand: direction,
-                    pValue: round(pValue, 6),
+                    pValue: round(pValue, _nDigits),
                     motifSequence: flipSequence(motifSequence, direction == "-")
                 });
             }
@@ -141,10 +126,13 @@ var motif = (function () {
 
 
     var choosePwmMatrix = function (direction) {
-        if (direction == "-")
+        if (direction == "-") {
             return _pwmMatrixReversed;
-        else
+        } else if (direction == "+") {
             return _pwmMatrix;
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "incorrectDirection"});
+        }
     };
 
 
@@ -174,29 +162,51 @@ var motif = (function () {
 
 
     //Array of promises is returned
-    var promisesForSelectedMotifs = function(motifNameList) {
-        var data, promises = [];
-        globalMotifData = [];
+    var setPromisesForSelectedMotifs = function(motifNameList) {
+        var data, promisesList = [];
+        globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
 
-        promises = $.map(motifNameList, function(motifName){
+        promisesList = $.map(motifNameList, function(motifName){
             return $.ajax({
                 dataType: "json",
                 url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true",
                 data: data
             }).then(function(result){
-                globalMotifData.push(result);
+                globalMotifLibrary["motifs"].push(result);
                 //console.log(JSON.stringify(result) + "\n");
             });
         });
-        return promises;
+        return promisesList;
+    };
+
+
+    var setMotifValues = function (motif) {
+        _name              = motif["full_name"];
+        _pwmMatrix         = motif["pwm"];
+        _pwmMatrixReversed = reversePwmMatrix(motif["pwm"]);
+        _thresholdList     = motif["threshold_pvalue_list"];
+    };
+
+
+    var setupMotifs = function (motifNameList) {
+        var promises = setPromisesForSelectedMotifs(motifNameList);
+
+        $.when.apply(this, promises)
+            .then(function(){
+                globalMotifLibrary["allMotifsSaved"] = true;
+                for(var i = 0; i < globalMotifLibrary["motifs"].length; i++) {
+                    setMotifValues(globalMotifLibrary["motifs"][i]);
+                }
+                console.log('done, all motifs saved and here they are<\n', globalMotifLibrary, '\n>\n');
+            });
     };
 
 
     return {
-        setMotif: setMotif,
-        returnMotif: returnMotif,
-        findSites: findSitesInSequence,
-        promisesForSelectedMotifs: promisesForSelectedMotifs
+        setupMotifs: setupMotifs,
+        setMotifValues: setMotifValues,
+        findSitesInSequence: findSitesInSequence,
+        setPromisesForSelectedMotifs: setPromisesForSelectedMotifs
     };
 
 }());

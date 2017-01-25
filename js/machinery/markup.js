@@ -19,6 +19,16 @@ function get_strength(motifS) {
 }
 
 
+function checkSegments(segments) {
+    var s = "";
+    for(var i = 0; i < segments.length; i++) {
+        s += segments[i].start + "-";
+        s += segments[i].finish + "   ";
+    }
+    console.log("segments check ", s);
+}
+
+
 /**
  * used setLevels(sites), makeSegmentation(sites, sequence.length), wrapInMultispan
  * @param sequence
@@ -54,16 +64,6 @@ function setLevels(sites) {
     }
 
     return sortedSitesWithLevels;
-}
-
-
-function checkSegments(segments) {
-    var s = "";
-    for(var i = 0; i < segments.length; i++) {
-        s += segments[i].start + "-";
-        s += segments[i].finish + "   ";
-    }
-    console.log("segments check ", s);
 }
 
 

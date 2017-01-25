@@ -1,7 +1,9 @@
 /**
  * Created by Sing on 16.11.2016.
  */
-var myTable = (function () {
+//ToDo: add updateTable
+
+var motifTable = (function () {
     var _table = {}, _columns = [], _rows = [],
         _sitesList = [];
 

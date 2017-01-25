@@ -34,28 +34,6 @@ var pSlider = (function () {
         var logValue = document.getElementById('logSlider-input'),
             linearValue = document.getElementById('linearSlider-input');
 
-        logSlider.noUiSlider.on('update', function( values, handle ) {
-            logValue.value = round(values[handle], _nDigits);
-            linearValue.value = round(Math.pow(10, -values[handle]), _nDigits);
-
-            //
-
-            var sequence = parsing.parseInput()[0]["sequence"],
-                pValueMax = $("#linearSlider-input").val(),
-                sites = [], sequenceToDisplay = "";
-
-            for (var i = 0; i < globalMotifData.length; i++) {
-                motif.setMotif(globalMotifData[i]);
-                sites = sites.concat(motif.findSites(sequence, pValueMax));
-            }
-
-            myTable.redrawTableWithSites(sites);
-            sequenceToDisplay = markupSegmentation(sequence, sites);
-            $('#result').html(sequenceToDisplay);
-
-            //
-        });
-
         logValue.addEventListener('change', function(){
             logSlider.noUiSlider.set(round(this.value, _nDigits));
         });
@@ -63,13 +41,20 @@ var pSlider = (function () {
             logSlider.noUiSlider.set(round(Math.pow(10, -this.value), _nDigits));
         });
 
+        logSlider.noUiSlider.on('update', function( values, handle ) {
+            logValue.value = round(values[handle], _nDigits);
+            linearValue.value = round(Math.pow(10, -values[handle]), _nDigits);
 
+            motifHandler.handleMotifs();
+        });
     };
+
 
     var createSlider = function () {
         var logSlider = setSlider();
         setOutputValues(logSlider)
     };
+
 
     return {
         create: createSlider

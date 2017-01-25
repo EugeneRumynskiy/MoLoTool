@@ -1,7 +1,7 @@
 /**
  * Created by HOME on 18.01.2017.
  */
-var parsing = (function () {
+var inputParsing = (function () {
     //Get input string without leading and ending whitespace characters (space, tab, no-break space, etc.)
     var getInputString = function () {
         return $('#sequenceInput').val().trim();
@@ -56,6 +56,7 @@ var parsing = (function () {
 
         fastaUnits = inputString.split(">");
 
+        //all characters before first ">"
         outOfFormatCharacters = fastaUnits[0];
         check(outOfFormatCharacters);
 
@@ -89,6 +90,7 @@ var parsing = (function () {
 
 
     return {
-        parseInput: parseInputString
+        parseInput: parseInputString,
+        removeSeparators: removeSeparators
     };
 }());

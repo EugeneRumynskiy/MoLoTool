@@ -26,19 +26,20 @@
 //Global data to save ajax request
 //http://epifactors.autosome.ru/protein_complexes - как сделать поиск
 // http://paletton.com/#uid=52Q0p1ki6rV87JXdgxQmgnFqvj3ki6rV87JXdgxQmgnFqvj3kdLmDeBKZcjw8bCe2ce5+
-var globalMotifData = [];
+var globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
 
 
 $(function() {
 
-    var motif_list_formatted, i, $motif, table;
+    var motif_list_formatted, i, $motif,
+        table = motifTable.createTable();
     // TODO: replace this stub with actual Ajax request (see above)
     //creating of motif list
     motif_list_formatted = $.map(["AHR_HUMAN.H10MO.B","AIRE_HUMAN.H10MO.C","ALX1_HUMAN.H10MO.B"], function(el, ind){
         return '<div class="motifToChose">'+ el +'</div>';
     }).join('');
     $('#motifList').html(motif_list_formatted);
-    table = myTable.createTable();
+
 
 
 
@@ -52,40 +53,22 @@ $(function() {
         motifNameListCleared.push(motifNameList[i].split(".").join("_"));
     }
     console.log(motifNameListCleared);
+    console.log(motifNameList);
 
+    // TODO: motif.setupMotifs(motifNameList) must be async with motif downloading
+    motif.setupMotifs(motifNameList);
 
-    promises = motif.promisesForSelectedMotifs(motifNameList);
-    $.when.apply(this, promises)
-        .then(function(){
-            console.log('done, all motifs saved and here they are\n', globalMotifData, '\n');
-            allMotifsSaved = true;
-        });
-
-
-    //markup button functionality
     $('#markupButton').click(function(event){
-        var sequence = parsing.parseInput()[0]["sequence"],
-            pValueMax = $("#linearSlider-input").val(),
-            sites = [], sequenceToDisplay = "";
-
-        for(var i = 0; i < globalMotifData.length; i++) {
-            motif.setMotif(globalMotifData[i]);
-            sites = sites.concat(motif.findSites(sequence, pValueMax));
-        }
-        myTable.redrawTableWithSites(sites);
-        sequenceToDisplay = markupSegmentation(sequence, sites);
-        $('#result').html(sequenceToDisplay);
-
-        console.log("sites and pValue", sites, "   ", pValueMax);
+        motifHandler.handleMotifs();
     });
 
-    //clear button
+
     $('#clearButton').click(function(event){
         var sequence = $('#sequenceInput').val();
         $('#result').html(sequence);
     });
 
-    //clear formatting button
+
     $('#clearFormattingButton').click(function(event){
 
         $('.empty').css("background-color", "white" );
@@ -105,17 +88,21 @@ $(function() {
 
     });
 
+
     pSlider.create();
+
 
     $('#motifList').on('click', '.motifToChose', function(event){
         $motif = $(event.target);
         $motif.appendTo('#motifListSelected');
     });
 
+
     $('#motifListSelected').on('click', '.motifToChose', function(event){
         var $motif = $(event.target);
         $motif.appendTo('#motifList');
     });
+
 
     $('#showMotifListButton').on('click', function(event){
         $('#motifList').toggle();
@@ -123,13 +110,3 @@ $(function() {
     });
 
 });
-
-
-function handleMotifs() {
-    motif.setMotif(motifData);
-    var sequence = $('#sequenceInput').val(), pValueMax = $("#pValue").val(),
-        sites = motif.findSites(sequence, pValueMax);
-    i = markupSegmentation(sequence, sites);
-    myTable.redrawTableWithSites(sites);
-    $('#result').html(i);
-}
