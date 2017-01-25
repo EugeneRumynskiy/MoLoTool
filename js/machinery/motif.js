@@ -36,7 +36,7 @@ var motif = (function () {
     };
 
 
-    var findSitesInSequence = function(sequence, pValueMax) {
+    var findSites = function(sequence, pValueMax) {
         var direct = "+", inverse = "-",   //direction cases
             sitesList = [].concat(
                 findSitesInStrand(sequence, direct, pValueMax),
@@ -205,7 +205,7 @@ var motif = (function () {
     return {
         setupMotifs: setupMotifs,
         setMotifValues: setMotifValues,
-        findSitesInSequence: findSitesInSequence,
+        findSites: findSites,
         setPromisesForSelectedMotifs: setPromisesForSelectedMotifs
     };
 

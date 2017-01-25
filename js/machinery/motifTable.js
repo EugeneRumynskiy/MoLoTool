@@ -5,7 +5,7 @@
 
 var motifTable = (function () {
     var _table = {}, _columns = [], _rows = [],
-        _sitesList = [];
+        _sitesList = [], _primarySequence = {};
 
 
     var getTableColumns = function () {
@@ -89,24 +89,26 @@ var motifTable = (function () {
         return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
             '<tr>'+
             '<td>Motif sequence:</td>'+
-            '<td>'+d.sequence+'</td>'+
+            '<td>' + d.sequence + '</td>'+
             '</tr>'+
-            '<tr>'+
+            '<tr>' +
             '<td>Motif strand:</td>'+
-            '<td>'+d.strand+'</td>'+
-            '</tr>'+
-            '<tr>'+
-            '<td>Sequence ID:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
+            '<td>' + d.strand + '</td>'+
+            '</tr>' +
+            '<tr>' +
+            '<td>Sequence ID:</td>' +
+            '<td>' + _primarySequence["title"] + '</td>'+
             '</tr>'+
             '</table>';
     };
 
 
-    var redrawTableWithSites = function(sites) {
+    var redrawTableWithSites = function(sites, primarySequence) {
         var table = $('#example').DataTable();
+
         _sitesList = sites;
         _rows = getTableRows();
+        _primarySequence = primarySequence;
 
         table.clear();
         table

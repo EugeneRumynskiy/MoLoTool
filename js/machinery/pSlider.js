@@ -3,17 +3,20 @@
  * Note that The slider itself is from 0 to 1000 (min, max) but output values are between 0 and 1
  **/
 var pSlider = (function () {
-    var _initialValue = 3, _nDigits = 5,
-        _sliderRange = {
-            'min': [0],
-            'max': [4]
-        };
+    var _initialLogValue = 3.00,
+        _nDigits = {"log": 3, "linear": 3},
+        _borderValue = {
+            "log": {"min": 0, "max": 4},
+            "linear":{"min": 0.0001, "max": 1}
+        },
+        _sliderRange = {"min": [0], "max": [4]},
+        _fileName = "pSlider";
 
     var setSlider = function() {
         var logSlider = document.getElementById('logSlider');
 
         noUiSlider.create(logSlider, {
-            start: _initialValue,
+            start: _initialLogValue,
             orientation: "horizontal",
             direction: 'rtl', //left to right
             connect: [false, true],
@@ -30,20 +33,52 @@ var pSlider = (function () {
     };
 
 
+    var restrictValue = function (value, type) {
+        var roundedValue = roundValue(value, type);
+
+        if (roundedValue > _borderValue[type]["max"])
+            return _borderValue[type]["max"];
+        else if (roundedValue < _borderValue[type]["min"])
+            return _borderValue[type]["min"];
+        else
+            return roundedValue;
+    };
+
+
+    var roundValue = function (value, type) {
+        var linearValueBorder = 0.001;
+        if (type == "log")
+            return round(value, _nDigits[type]);
+        else if ((type == "linear")&&(value < linearValueBorder)) {
+            return round(value, _nDigits[type] + 1);
+        } else
+            return round(value, _nDigits[type]);
+    };
+
+
     var setOutputValues = function (logSlider) {
         var logValue = document.getElementById('logSlider-input'),
             linearValue = document.getElementById('linearSlider-input');
 
+        logValue.value = roundValue(_initialLogValue, "log");
+        linearValue.value = roundValue(Math.pow(10, -_initialLogValue), "linear");
+
+
         logValue.addEventListener('change', function(){
-            logSlider.noUiSlider.set(round(this.value, _nDigits));
-        });
-        linearValue.addEventListener('change', function(){
-            logSlider.noUiSlider.set(round(Math.pow(10, -this.value), _nDigits));
+            logValue.value = restrictValue(logValue.value, "log");
+            linearValue.value = roundValue(Math.pow(10, -this.value), "linear");
+            logSlider.noUiSlider.set(roundValue(this.value, "log"));
         });
 
-        logSlider.noUiSlider.on('update', function( values, handle ) {
-            logValue.value = round(values[handle], _nDigits);
-            linearValue.value = round(Math.pow(10, -values[handle]), _nDigits);
+        linearValue.addEventListener('change', function(){
+            linearValue.value = restrictValue(linearValue.value, "linear");
+            logValue.value = roundValue(-Math.log10(this.value), "log");
+            logSlider.noUiSlider.set(roundValue(-Math.log10(this.value), "log"));
+        });
+
+        logSlider.noUiSlider.on('slide', function( values, handle ) {
+            logValue.value = roundValue(values[handle], "log");
+            linearValue.value = roundValue(Math.pow(10, -values[handle]), "linear");
 
             motifHandler.handleMotifs();
         });

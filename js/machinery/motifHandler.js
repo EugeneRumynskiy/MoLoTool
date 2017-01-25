@@ -14,24 +14,23 @@ var motifHandler = (function () {
     var handleMotifs = function () {
         //ToDo: add pValue into inputParsing
         var sequence = inputParsing.parseInput()[0]["sequence"], title = inputParsing.parseInput()[0]["title"],
+            primarySequence = inputParsing.parseInput()[0],
             pValue = $("#linearSlider-input").val(),
             sites = [];
 
         if (globalMotifLibrary["allMotifsSaved"] != true) {
-            errorHandler.logError({"fileName": _fileName, "message": "allMotifsSaved is false WTF is that!?"});
+            errorHandler.logError({"fileName": _fileName, "message": "allMotifsSaved"});
             return 0;
         } else {
             for(var i = 0; i < globalMotifLibrary["motifs"].length; i++) {
                 motif.setMotifValues(globalMotifLibrary["motifs"][i]);
-                sites = sites.concat(motif.findSitesInSequence(sequence, pValue));
+                sites = sites.concat(motif.findSites(sequence, pValue));
             }
 
             if (sites.length != 0 ) {
-                sites["title"] = title;
-                motifTable.redrawTableWithSites(sites);
+                motifTable.redrawTableWithSites(sites, primarySequence);
             }
 
-            motifTable.redrawTableWithSites(sites);
             $('#result').html(markupSegmentation(sequence, sites));
         }
     };
