@@ -25,7 +25,7 @@ var motifHandler = (function () {
                 motif.setMotifValues(globalMotifLibrary["motifs"][i]);
                 sites = sites.concat(motif.findSitesInSequence(sequence, pValue));
             }
-            console.log(sites);
+
             if (sites.length != 0 ) {
                 sites["title"] = title;
                 motifTable.redrawTableWithSites(sites);
