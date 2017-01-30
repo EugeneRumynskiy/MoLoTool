@@ -10,6 +10,7 @@ var motifTable = (function () {
 
     var getTableColumns = function () {
         var columns = [
+            //first column
             {
                 "className":      'details-control',
                 "orderable":      false,
@@ -64,7 +65,8 @@ var motifTable = (function () {
 
         var table = $('#example').DataTable(_table);
 
-        $('#example tbody').on('click', 'td.details-control', function () {
+        $('#example tbody')
+            .on('click', 'td.details-control', function () {
             var tr = $(this).closest('tr');
             var row = table.row( tr );
 
@@ -79,6 +81,62 @@ var motifTable = (function () {
                 tr.addClass('shown');
             }
         } );
+
+
+
+        $('#example tbody')
+            .on( 'mouse' + 'enter', 'td', function () {
+                var rowData = table.row( this ).data();
+                if (rowData  != undefined){
+                    var start = rowData.startPosition, finish = rowData.finishPosition,
+                        segment,
+                        firstID = start, lastID;
+
+                    while (start <= finish) {
+                        segment = $('#' + start);
+                        segment.addClass("highlighted");
+                        if ((finish - start + 1) == segment.text().length) {
+                            break
+                        } else {
+                            start = segment.next().attr('id')
+                        }
+                    }
+                    lastID = start;
+
+                    $('#' + firstID).addClass("first");
+                    $('#' + lastID).addClass("last");
+
+
+                }
+            });
+
+        $('#example tbody')
+            .on( 'mouse' + 'leave', 'td', function () {
+                var rowData = table.row( this ).data();
+                if (rowData  != undefined){
+                    var start = rowData.startPosition, finish = rowData.finishPosition,
+                        segment,
+                        firstID = start, lastID;
+                    while (start <= finish) {
+                        segment = $('#' + start);
+                        segment.removeClass("highlighted");
+                        if ((finish - start + 1) == segment.text().length) {
+                            break
+                        } else {
+                            start = segment.next().attr('id')
+                        }
+                    }
+                    lastID = start;
+
+                    $('#' + firstID).removeClass("first");
+                    $('#' + lastID).removeClass("last");
+                }
+            });
+
+
+
+
+
 
         return table;
     };

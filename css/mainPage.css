@@ -1,11 +1,8 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
 
-
 body {
     background-color:  #b8c480;
 }
-
-
 
 .button, #sequenceInput, #result, #pValueSlider {
     border-radius: 5px;
@@ -27,18 +24,13 @@ body {
 
 }
 
-.button:hover {background-color: #509f50
+.button:hover {
+    background-color: #509f50
 }
 
 .button:active {
     background-color: #3e8e41;
     transform: translateY(2px);
-}
-
-
-
-.segment {
-    border-radius: 2px;
 }
 
 .motifToChose {
@@ -56,45 +48,13 @@ body {
     height: 100px;
     overflow-y: scroll;
 }
+
 #motifListSelected {
     height: 100px;
 }
-#sequenceInput {
-    font-family: "Courier New", "Times New Roman";
-    font-size: 20px;
 
-    width: 100%;
-    height: 100px;
 
-    /*#FFD995*/
 
-    background-color: #ffffff;
-
-    margin: 20px auto;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-#result {
-    font-family: "Courier New", "Times New Roman";
-    font-size: 20px;
-
-    width: 100%;
-    height: 100px;
-
-    word-wrap: break-word;
-    overflow:auto;
-
-    background-color: #ffffff;
-
-    margin: 20px auto;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 
 

@@ -1,0 +1,85 @@
+.segment {
+    border-radius: 2px;
+
+    display:inline-block;
+    text-align: center;
+    word-break: break-all;
+
+    margin-top: 5px;
+
+    border-style: solid;
+
+
+    border-color: transparent;
+    border-width: 4px;
+
+
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+.highlighted {
+    border-top-color: #F00;
+    border-bottom-color: #F00;
+    border-width: 4px;
+}
+
+.last {
+    border-right-color: #F00;
+    border-width: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.first {
+    border-left-color: #F00;
+    border-width: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+#sequenceInput {
+    font-family: "Courier New", "Times New Roman";
+    font-size: 23px;
+
+    width: 100%;
+    height: 100px;
+
+    /*#FFD995*/
+
+    background-color: #ffffff;
+
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#result {
+    font-family: "Courier New", "Times New Roman";
+    font-size: 20px;
+
+    width: 100%;
+    height: 100px;
+
+    word-wrap: break-word;
+    overflow:auto;
+    word-break: break-all;
+
+    background-color: #ffffff;
+
+    margin: 20px auto;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

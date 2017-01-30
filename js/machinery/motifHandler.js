@@ -26,12 +26,9 @@ var motifHandler = (function () {
                 motif.setMotifValues(globalMotifLibrary["motifs"][i]);
                 sites = sites.concat(motif.findSites(sequence, pValue));
             }
+            motifTable.redrawTableWithSites(sites, primarySequence);
 
-            if (sites.length != 0 ) {
-                motifTable.redrawTableWithSites(sites, primarySequence);
-            }
-
-            $('#result').html(markupSegmentation(sequence, sites));
+            $('#result').html(markup.markupSegmentation(sequence, sites));
         }
     };
 

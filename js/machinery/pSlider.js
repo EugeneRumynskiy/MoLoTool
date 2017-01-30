@@ -3,7 +3,8 @@
  * Note that The slider itself is from 0 to 1000 (min, max) but output values are between 0 and 1
  **/
 var pSlider = (function () {
-    var _initialLogValue = 3.00,
+    //_initialLogValue = 3.00;
+    var _initialLogValue = 1.78,
         _nDigits = {"log": 3, "linear": 3},
         _borderValue = {
             "log": {"min": 0, "max": 4},

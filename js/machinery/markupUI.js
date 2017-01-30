@@ -17,7 +17,7 @@
  * markupModule         (to be done)
  * markup               (to be refactored)      displaying of information produced in html text
  *
- * errorHanding         (to be done)
+     * errorHanding         (to be done )
  */
 
 

@@ -4,6 +4,7 @@
 
 //NOT DONE YET
 var markup = (function () {
+    var _fileName = "markupModule";
 
     /**
      * used setLevels(sites), makeSegmentation(sites, sequence.length), wrapInMultispan
@@ -67,8 +68,9 @@ var markup = (function () {
 
             sequenceToDisplay += '<span ' + 'style="' +
                 'background-color: '+ backgroundColor +'; ' +
-                'color: '+ color +'; ' +
-                'opacity: '+ opacity +';" ' +
+                'color: ' + color +'; ' +
+                'opacity: ' + opacity +';" ' +
+                'id="' + segments[i].start + '"' +
                 'class="' + spanClass + secondaryClass +'">' +
                 sequence.slice(segments[i].start, segments[i].finish + 1) + '</span>';
 
@@ -77,7 +79,8 @@ var markup = (function () {
         }
 
         if (sequence.length != sequenceLength) {
-            console.log("sequenceToDisplay length is ", sequenceLength, "  must be:", sequence.length);
+            errorHandler.logError({"fileName": _fileName, "message": "sequenceToDisplay length is " + sequenceLength +
+            "  must be:" + sequence.length});
         }
 
         return sequenceToDisplay;
@@ -109,5 +112,5 @@ var markup = (function () {
         }
     };
 
-    return {};
+    return {markupSegmentation: markupSegmentation};
 }());

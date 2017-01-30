@@ -1,10 +1,3 @@
-function rescale(number) {
-    var i = (number - 1)/6;
-    if(i <= 0.4) return 0.4;
-    return 1;
-}
-
-
 /**
  * not used
  * @param motifS
@@ -38,7 +31,7 @@ function checkSegments(segments) {
 function markupSegmentation(sequence, sites) {
     sites = setLevels(sites);  //sorting and setting levels
     var segments = makeSegmentation(sites, sequence.length), s = "",
-        sequenceToDisplay = wrapSegmentsInSpans(segments, sequence);
+        sequenceToDisplay = wwrapSegmentsInSpans(segments, sequence);
     return sequenceToDisplay;
 }
 
