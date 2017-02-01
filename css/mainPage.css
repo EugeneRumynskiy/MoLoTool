@@ -1,5 +1,4 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
-
 body {
     background-color:  #b8c480;
 }
@@ -33,8 +32,8 @@ body {
     transform: translateY(2px);
 }
 
-.motifToChose {
-    display: table;
+.motif-title {
+    display: inline-block;
     padding: 2px;
     margin: 4px;
 
@@ -43,13 +42,13 @@ body {
     border: 0 solid;
 }
 
-#motifList {
+#motif-list {
     display: none;
     height: 100px;
     overflow-y: scroll;
 }
 
-#motifListSelected {
+#motif-list-selected {
     height: 100px;
 }
 

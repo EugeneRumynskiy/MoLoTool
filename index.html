@@ -20,6 +20,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+
 
 
     <script src="js/machinery/motifMath.js"></script>
@@ -40,6 +43,8 @@
     <script src="js/machinery/pSlider.js"></script>
     <script src="js/machinery/inputParsing.js"></script>
     <script src="js/machinery/motifHandler.js"></script>
+    <script src="js/machinery/colorPicker.js"></script>
+
 
 
 
@@ -48,15 +53,36 @@
     <link rel="stylesheet" href="css/nouislider.min.css">
     <link rel="stylesheet" href="css/pSlider.css">
     <link rel="stylesheet" href="css/resultAndSeqInput.css">
+    <link rel="stylesheet" href="css/colorPicker.css">
 </head>
 <body>
     <div class='container'>
 
-        <button type='button' id="showMotifListButton" class="button">Select motifs</button>
-        <button type='button' id="downloadSelected" class="button">Download selected motifs</button>
+        <div id="motif-setup">
+            <div id="motif-picker">
+                <button type='button' id="showMotifListButton" class="button">Select motifs</button>
+                <button type='button' id="downloadSelected" class="button">Download selected motifs</button>
 
-        <div id='motifList'></div>
-        <div id='motifListSelected'></div>
+                <div id='motif-list'></div>
+                <div id='motif-list-selected'></div>
+
+            </div>
+
+
+            <div id="color-picker">
+                <div id="picker" class="block">
+                    <div class="ui-color-picker" data-topic="picker" data-mode="HSL">
+                        <input id='colorpicker' />
+                    </div>
+                    <div id="picker-samples" sample-id="master"></div>
+                    <div id="controls">
+                        <div id="delete">
+                            <div id="trash-can"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div>
             <form>

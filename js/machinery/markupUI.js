@@ -1,7 +1,6 @@
 /**
  * Main UI module
  */
-
 /**
  * markupUI             (to be refactored)      base file
  *
@@ -36,9 +35,11 @@ $(function() {
     // TODO: replace this stub with actual Ajax request (see above)
     //creating of motif list
     motif_list_formatted = $.map(["AHR_HUMAN.H10MO.B","AIRE_HUMAN.H10MO.C","ALX1_HUMAN.H10MO.B"], function(el, ind){
-        return '<div class="motifToChose">'+ el +'</div>';
+        return '<div class="motif-container"' + 'id="' + inputParsing.removeSeparators(el, ".") + '">' +
+                '<div class="motif-title">'+ el +'</div>' +
+                '</div>';
     }).join('');
-    $('#motifList').html(motif_list_formatted);
+    $('#motif-list').html(motif_list_formatted);
 
 
 
@@ -54,6 +55,8 @@ $(function() {
     }
     console.log(motifNameListCleared);
     console.log(motifNameList);
+
+    colorPicker.init();
 
     // TODO: motif.setupMotifs(motifNameList) must be async with motif downloading
     motif.setupMotifs(motifNameList);
@@ -92,21 +95,24 @@ $(function() {
     pSlider.create();
 
 
-    $('#motifList').on('click', '.motifToChose', function(event){
-        $motif = $(event.target);
-        $motif.appendTo('#motifListSelected');
+    $('#motif-list').on('click', '.motif-title', function(event){
+        var $motifContainer = $(event.target).parent();
+        $motifContainer.addClass('chosen-motif');
+        colorPicker.addTo($motifContainer);
+        $motifContainer.appendTo('#motif-list-selected');
     });
 
 
-    $('#motifListSelected').on('click', '.motifToChose', function(event){
-        var $motif = $(event.target);
-        $motif.appendTo('#motifList');
+    $('#motif-list-selected').on('click', '.motif-title', function(event){
+        var $motifContainer = $(event.target).parent();
+        $motifContainer.removeClass('chosen-motif');
+        colorPicker.removeFrom($motifContainer);
+        $motifContainer.appendTo('#motif-list');
     });
 
 
     $('#showMotifListButton').on('click', function(event){
-        $('#motifList').toggle();
-
+        $('#motif-list').toggle();
     });
 
 });
