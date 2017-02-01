@@ -50,19 +50,14 @@ var colorPicker = (function () {
             preferredFormat: "hex",
             localStorageKey: "spectrum.demo",
             move: function (color) {
-
             },
             show: function () {
-
             },
             beforeShow: function () {
-
             },
             hide: function () {
-
             },
             change: function() {
-
             },
             palette: [
                 ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "#F15853",
