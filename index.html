@@ -44,6 +44,7 @@
     <script src="js/machinery/inputParsing.js"></script>
     <script src="js/machinery/motifHandler.js"></script>
     <script src="js/machinery/colorPicker.js"></script>
+    <script src="js/machinery/motifPicker.js"></script>
 
 
 
@@ -54,93 +55,105 @@
     <link rel="stylesheet" href="css/pSlider.css">
     <link rel="stylesheet" href="css/resultAndSeqInput.css">
     <link rel="stylesheet" href="css/colorPicker.css">
+    <link rel="stylesheet" href="css/motifPicker.css">
 </head>
 <body>
-    <div class='container'>
+<div class='container'>
 
-        <div id="motif-setup">
-            <div id="motif-picker">
-                <button type='button' id="showMotifListButton" class="button">Select motifs</button>
-                <button type='button' id="downloadSelected" class="button">Download selected motifs</button>
-
-                <div id='motif-list'></div>
-                <div id='motif-list-selected'></div>
-
-            </div>
-
-
-            <div id="color-picker">
-                <div id="picker" class="block">
-                    <div class="ui-color-picker" data-topic="picker" data-mode="HSL">
-                        <input id='colorpicker' />
-                    </div>
-                    <div id="picker-samples" sample-id="master"></div>
-                    <div id="controls">
-                        <div id="delete">
-                            <div id="trash-can"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <form>
-                <label for="sequenceInput">Sequence:</label>
-                <textarea name="sequenceInput" id="sequenceInput" rows="3" autofocus spellcheck=false>AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
-                <button type="button" id="markupButton" class="button">Markup</button>
-                <button type="button" id="clearButton" class="button">Clear</button>
-                <button type="button" id="clearFormattingButton" class="button">Clear formatting</button>
+    <div id="motif-setup">
+        <div id="motif-picker">
+            <form id="search-form" >
+                <button type='button' id="showMotifListButton" class="button">Show motifs</button>
+                <input type="text" id="search" placeholder="Type here..." autofocus>
             </form>
+            <div id='motif-list'></div>
         </div>
 
+        <div id='motif-list-selected'></div>
 
-        <div>
-            <div class="sliderBox">
-                <div class="inputBox">
-                    <p>
-                        <label for='logSlider-input' class='label'>-log10(P-value):</label>
-                        <input type='text' class='input' id="logSlider-input">
-                    </p>
-                    <p>
-                        <label for='linearSlider-input' class='label'>P-value:</label>
-                        <input type='text' class='input' id="linearSlider-input">
-                    </p>
+
+
+        <script>
+            $( "#search" ).autocomplete({
+                source: ["AHR_HUMAN.H10MO.B", "ALX1_HUMAN.H10MO.B"]
+            });
+        </script>
+
+
+        <!--
+        <div id="color-picker">
+            <div id="picker" class="block">
+                <div class="ui-color-picker" data-topic="picker" data-mode="HSL">
+                    <input id='colorpicker' />
                 </div>
-                <p id='logSlider' class='slider'></p>
+                <div id="picker-samples" sample-id="master"></div>
+                <div id="controls">
+                    <div id="delete">
+                        <div id="trash-can"></div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div id="result" class="box"></div>
-
+        -->
 
     </div>
 
+    <div>
+        <form>
+            <textarea  name="sequenceInput" id="sequenceInput" rows="3" autofocus spellcheck=false placeholder="Put sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+            <button type="button" id="markupButton" class="button">Markup</button>
+            <button type="button" id="clearButton" class="button">Clear</button>
+            <button type="button" id="clearFormattingButton" class="button">Clear formatting</button>
+        </form>
+    </div>
 
-    <table id="example" class="display cell-border compact" width="100%">
-        <thead>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Motif ID</th>
-            <th>Strength</th>
-            <th>Start Position</th>
-            <th>Finish Position</th>
-            <th>Sequence</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Motif ID</th>
-            <th>Strength</th>
-            <th>Start Position</th>
-            <th>Finish Position</th>
-            <th>Sequence</th>
-        </tr>
-        </tfoot>
-    </table>
+
+    <div>
+        <div class="sliderBox">
+            <div class="inputBox">
+                <p>
+                    <label for='logSlider-input' class='label'>-log10(P-value):</label>
+                    <input type='text' class='input' id="logSlider-input">
+                </p>
+                <p>
+                    <label for='linearSlider-input' class='label'>P-value:</label>
+                    <input type='text' class='input' id="linearSlider-input">
+                </p>
+            </div>
+            <p id='logSlider' class='slider'></p>
+        </div>
+    </div>
+
+    <div id="result" class="box"></div>
+
+
+</div>
+
+
+<table id="example" class="display cell-border compact" width="100%">
+    <thead>
+    <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Motif ID</th>
+        <th>Strength</th>
+        <th>Start Position</th>
+        <th>Finish Position</th>
+        <th>Sequence</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Motif ID</th>
+        <th>Strength</th>
+        <th>Start Position</th>
+        <th>Finish Position</th>
+        <th>Sequence</th>
+    </tr>
+    </tfoot>
+</table>
 
 
 </body>

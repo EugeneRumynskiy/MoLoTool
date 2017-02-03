@@ -30,18 +30,12 @@ var globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
 
 $(function() {
 
-    var motif_list_formatted, i, $motif,
+    var i, $motif,
         table = motifTable.createTable();
     // TODO: replace this stub with actual Ajax request (see above)
     //creating of motif list
-    motif_list_formatted = $.map(["AHR_HUMAN.H10MO.B","AIRE_HUMAN.H10MO.C","ALX1_HUMAN.H10MO.B"], function(el, ind){
-        return '<div class="motif-container"' + 'id="' + inputParsing.removeSeparators(el, ".") + '">' +
-                '<div class="motif-title">'+ el +'</div>' +
-                '</div>';
-    }).join('');
-    $('#motif-list').html(motif_list_formatted);
 
-
+    motifPicker.getNames();
 
 
     var data, motifName = "AIRE_HUMAN.H10MO.C",

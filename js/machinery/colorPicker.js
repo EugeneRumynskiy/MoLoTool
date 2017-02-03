@@ -29,7 +29,6 @@ var colorPicker = (function () {
 
 
     var removeFrom = function (motifContainer) {
-        console.log(motifContainer.get());
         motifContainer.children(".motif-color-picker").spectrum("destroy");
         motifContainer.children(".motif-color-picker").remove();
         _freeColorIndex -= 1;

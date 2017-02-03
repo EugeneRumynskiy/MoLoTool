@@ -1,7 +1,3 @@
-/**
- * Created by HOME on 24.01.2017.
- */
-
 var motifHandler = (function () {
     var _fileName = "motifHandler",
         _motifNameList = [];

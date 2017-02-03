@@ -6,51 +6,8 @@ body {
 .button, #sequenceInput, #result, #pValueSlider {
     border-radius: 5px;
     border: 0 solid #4CAF50;
-
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-
-    color: #fff;
-    background-color: #4CAF50;
-
-}
-
-.button:hover {
-    background-color: #509f50
-}
-
-.button:active {
-    background-color: #3e8e41;
-    transform: translateY(2px);
-}
-
-.motif-title {
-    display: inline-block;
-    padding: 2px;
-    margin: 4px;
-
-    background-color: #d4e79e;
-    border-radius: 10px;
-    border: 0 solid;
-}
-
-#motif-list {
-    display: none;
-    height: 100px;
-    overflow-y: scroll;
-}
-
-#motif-list-selected {
-    height: 100px;
-}
 
 
 
