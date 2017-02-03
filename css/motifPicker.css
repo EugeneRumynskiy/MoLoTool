@@ -1,5 +1,6 @@
 #motif-setup{
     width: 100%;
+    height: 250px;
 }
 
 #search-form{
@@ -33,10 +34,7 @@
     background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     background-color: #4CAF50;
     color: #fff;
-
 }
-
-
 
 .button {
     display: inline-block;
@@ -66,15 +64,12 @@
     transform: translateY(0);
 }
 
-#search{
-
+.motif-container{
 }
-
-
 
 .motif-title {
     display: inline-block;
-    padding: 2px;
+    padding: 4px;
     margin: 4px;
 
     background-color: #d4e79e;
@@ -82,14 +77,26 @@
     border: 0 solid;
 }
 
-#motif-list {
-    display: none;
-    height: 160px;
-    overflow-y: scroll;
-
-    padding: 0 0 10px 0;
+.motif-title:hover {
+    cursor: pointer; cursor: hand;
 }
 
-#motif-list-selected {
-    height: 100px;
+#motif-list {
+    display: none;
+    height: 180px;
+    overflow-y: scroll;
+    margin-top: 10px;
+}
+
+#motif-list-selected{
+    display: inline-block;
+    height: 180px;
+    overflow-y: scroll;
+    margin-top: 53px;
+
+    width: 400px;
+}
+
+#motif-list-selected:empty{
+    display: none;
 }
