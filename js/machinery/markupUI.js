@@ -49,7 +49,7 @@ $(function() {
     }
     console.log(motifNameListCleared);
     console.log(motifNameList);
-    motifLibrary.setupMotifs(motifNameList);
+
 
 
     // TODO: motif.setupMotifs(motifNameList) must be async with motif downloading

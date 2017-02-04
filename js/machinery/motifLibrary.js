@@ -2,52 +2,71 @@
  * Created by HOME on 04.02.2017.
  */
 var motifLibrary = (function () {
-    var _fileName = "motifLibrary", _library = [];
+    var _fileName = "motifLibrary", _library = {};
 
-    //Array of promises is returned
-    var setPromisesForSelectedMotifs = function(motifNameList) {
-        var promisesList = [];
-        globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
+    var addUnit = function (motifName) {
+        if (motifIn(motifName)) {
+            errorHandler.logError({"fileName": _fileName, "message": "motif already in the library"});
+        } else {
+            _library[motifName] = {status: "promised"};
+            promiseMotif(motifName).then(
+                function(result){
+                    result.status = "resolved";
+                    _library[result.full_name] = result;
+                    //console.log(JSON.stringify(result) + "\n");
+                });
+        }
+    };
 
-        promisesList = $.map(motifNameList, promiseMotif);
-        return promisesList;
+
+    var motifIn = function (motifName) {
+        return ("undefined" !== typeof(_library[motifName]));
     };
 
 
     var promiseMotif = function (motifName) {
-        var data;
         return $.ajax({
             dataType: "json",
-            url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true",
-            data: data
-        }).then(function(result){
-            globalMotifLibrary["motifs"].push(result);
-            //console.log(JSON.stringify(result) + "\n");
+            url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"
         });
     };
 
 
-    var setupMotifs = function (motifNameList) {
-        var promises = setPromisesForSelectedMotifs(motifNameList);
-
-        $.when.apply(this, promises)
-            .then(function(){
-                globalMotifLibrary["allMotifsSaved"] = true;
-                for(var i = 0; i < globalMotifLibrary["motifs"].length; i++) {
-                    motif.setMotifValues(globalMotifLibrary["motifs"][i]);
-                }
-                console.log('done, all motifs saved and here they are<\n', globalMotifLibrary, '\n>\n');
-            });
+    var getUnit = function (motifName) {
+        if (motifIn(motifName)) {
+            if (_library[motifName].status == "promised") {
+                errorHandler.logError({"fileName": _fileName, "message": "motif status: promised"});
+            } else {
+                return _library[motifName];
+            }
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "motif not in the library"});
+        }
     };
 
 
-    var addToLibrary = function (motifName) {
+    var getUnits = function (motifNameList) {
+        var units = $.map(motifNameList, getUnit);
+        return units;
     };
 
+
+    var getUserRequestedUnits = function () {
+        var requestedNames = motifPicker.getUserRequestedNames();
+        return getUnits(requestedNames);
+    };
+
+
+    var showLibrary = function () {
+        console.log(_library);
+        return 0;
+    };
 
 
     return {
-        setupMotifs: setupMotifs
+        showLibrary: showLibrary,
+        addUnit: addUnit,
+        getUserRequestedUnits: getUserRequestedUnits
     };
 
 }());

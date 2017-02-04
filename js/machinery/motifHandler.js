@@ -13,23 +13,20 @@ var motifHandler = (function () {
         var sequence = inputParsing.parseInput()[0]["sequence"], title = inputParsing.parseInput()[0]["title"],
             primarySequence = inputParsing.parseInput()[0],
             pValue = $("#linearSlider-input").val(),
-            //motifNameList = motifPicker.getUserSetNames(),
+
+            userRequestedMotifs = motifLibrary.getUserRequestedUnits(),
+
             sites = [];
 
-        //motif.setupMotifs(motifNameList);
 
-        if (globalMotifLibrary["allMotifsSaved"] != true) {
-            errorHandler.logError({"fileName": _fileName, "message": "allMotifsSaved"});
-            return 0;
-        } else {
-            for(var i = 0; i < globalMotifLibrary["motifs"].length; i++) {
-                motif.setMotifValues(globalMotifLibrary["motifs"][i]);
-                sites = sites.concat(motif.findSites(sequence, pValue));
-            }
-            motifTable.redrawTableWithSites(sites, primarySequence);
-
-            $('#result').html(markup.markupSegmentation(sequence, sites));
+        for(var i = 0; i < userRequestedMotifs.length; i++) {
+            motif.setMotifValues(userRequestedMotifs[i]);
+            sites = sites.concat(motif.findSites(sequence, pValue));
         }
+        motifTable.redrawTableWithSites(sites, primarySequence);
+
+        $('#result').html(markup.markupSegmentation(sequence, sites));
+
     };
 
 

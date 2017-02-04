@@ -10,6 +10,14 @@ var motif = (function () {
         _nDigits = 3;
 
 
+    var setMotifValues = function (motif) {
+        _name              = motif["full_name"];
+        _pwmMatrix         = motif["pwm"];
+        _pwmMatrixReversed = reversePwmMatrix(motif["pwm"]);
+        _thresholdList     = motif["threshold_pvalue_list"];
+    };
+
+
     /**
      *Flip motif pvm matrix from [[A, C, G, T], ...] to [T, G, C, A], ...]
      *and the entire motif from [0, 1, 2] to [2, 1, 0] according to inverse direction.
@@ -159,54 +167,6 @@ var motif = (function () {
         }
         return scoreList;
     };
-
-
-
-    var setMotifValues = function (motif) {
-        _name              = motif["full_name"];
-        _pwmMatrix         = motif["pwm"];
-        _pwmMatrixReversed = reversePwmMatrix(motif["pwm"]);
-        _thresholdList     = motif["threshold_pvalue_list"];
-    };
-
-
-    /*
-    //Array of promises is returned
-    var setPromisesForSelectedMotifs = function(motifNameList) {
-        var promisesList = [];
-        globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
-
-        promisesList = $.map(motifNameList, promiseMotif);
-        return promisesList;
-    };
-
-
-    var promiseMotif = function (motifName) {
-        var data;
-        return $.ajax({
-            dataType: "json",
-            url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true",
-            data: data
-        }).then(function(result){
-            globalMotifLibrary["motifs"].push(result);
-            //console.log(JSON.stringify(result) + "\n");
-        });
-    };
-
-
-    var setupMotifs = function (motifNameList) {
-        var promises = setPromisesForSelectedMotifs(motifNameList);
-
-        $.when.apply(this, promises)
-            .then(function(){
-                globalMotifLibrary["allMotifsSaved"] = true;
-                for(var i = 0; i < globalMotifLibrary["motifs"].length; i++) {
-                    setMotifValues(globalMotifLibrary["motifs"][i]);
-                }
-                console.log('done, all motifs saved and here they are<\n', globalMotifLibrary, '\n>\n');
-            });
-    };
-    */
 
 
     return {

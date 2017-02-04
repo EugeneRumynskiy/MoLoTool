@@ -9,10 +9,17 @@ var motifPicker = (function () {
         setMotifList();
 
         $('#motif-list').on('click', '.motif-title', function(event){
-            var $motifContainer = $(event.target).parent();
+            var $motifTitle = $(event.target),
+                $motifContainer = $motifTitle.parent();
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
             $motifContainer.appendTo('#motif-list-selected');
+
+            var motifName = $motifTitle.text();
+            motifLibrary.addUnit(motifName);
+
+
+            console.log($motifTitle.text());
         });
 
         $('#motif-list-selected').on('click', '.motif-title', function(event){
@@ -58,7 +65,7 @@ var motifPicker = (function () {
     };
 
 
-    var getUserSetNames = function () {
+    var getUserRequestedNames = function () {
         var $motifTitles = $(".chosen-motif > .motif-title"),
             userSetNames = [];
         if ($motifTitles.length == 0) {
@@ -74,7 +81,7 @@ var motifPicker = (function () {
 
     return {
         init: init,
-        getUserSetNames: getUserSetNames
+        getUserRequestedNames: getUserRequestedNames
     };
 }());/**
  * Created by HOME on 02.02.2017.
