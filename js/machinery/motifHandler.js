@@ -8,11 +8,15 @@ var motifHandler = (function () {
     
     
     var handleMotifs = function () {
+
         //ToDo: add pValue into inputParsing
         var sequence = inputParsing.parseInput()[0]["sequence"], title = inputParsing.parseInput()[0]["title"],
             primarySequence = inputParsing.parseInput()[0],
             pValue = $("#linearSlider-input").val(),
+            //motifNameList = motifPicker.getUserSetNames(),
             sites = [];
+
+        //motif.setupMotifs(motifNameList);
 
         if (globalMotifLibrary["allMotifsSaved"] != true) {
             errorHandler.logError({"fileName": _fileName, "message": "allMotifsSaved"});

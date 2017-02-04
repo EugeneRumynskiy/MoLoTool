@@ -161,30 +161,36 @@ var motif = (function () {
     };
 
 
-    //Array of promises is returned
-    var setPromisesForSelectedMotifs = function(motifNameList) {
-        var data, promisesList = [];
-        globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
-
-        promisesList = $.map(motifNameList, function(motifName){
-            return $.ajax({
-                dataType: "json",
-                url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true",
-                data: data
-            }).then(function(result){
-                globalMotifLibrary["motifs"].push(result);
-                //console.log(JSON.stringify(result) + "\n");
-            });
-        });
-        return promisesList;
-    };
-
 
     var setMotifValues = function (motif) {
         _name              = motif["full_name"];
         _pwmMatrix         = motif["pwm"];
         _pwmMatrixReversed = reversePwmMatrix(motif["pwm"]);
         _thresholdList     = motif["threshold_pvalue_list"];
+    };
+
+
+    /*
+    //Array of promises is returned
+    var setPromisesForSelectedMotifs = function(motifNameList) {
+        var promisesList = [];
+        globalMotifLibrary = {"allMotifsSaved": false, "motifs": []};
+
+        promisesList = $.map(motifNameList, promiseMotif);
+        return promisesList;
+    };
+
+
+    var promiseMotif = function (motifName) {
+        var data;
+        return $.ajax({
+            dataType: "json",
+            url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true",
+            data: data
+        }).then(function(result){
+            globalMotifLibrary["motifs"].push(result);
+            //console.log(JSON.stringify(result) + "\n");
+        });
     };
 
 
@@ -200,13 +206,12 @@ var motif = (function () {
                 console.log('done, all motifs saved and here they are<\n', globalMotifLibrary, '\n>\n');
             });
     };
+    */
 
 
     return {
-        setupMotifs: setupMotifs,
         setMotifValues: setMotifValues,
-        findSites: findSites,
-        setPromisesForSelectedMotifs: setPromisesForSelectedMotifs
+        findSites: findSites
     };
 
 }());

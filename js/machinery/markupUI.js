@@ -35,7 +35,7 @@ $(function() {
     // TODO: replace this stub with actual Ajax request (see above)
     //creating of motif list
 
-    motifPicker.getNames();
+    motifPicker.init();
 
 
     var data, motifName = "AIRE_HUMAN.H10MO.C",
@@ -49,11 +49,11 @@ $(function() {
     }
     console.log(motifNameListCleared);
     console.log(motifNameList);
+    motifLibrary.setupMotifs(motifNameList);
 
-    colorPicker.init();
 
     // TODO: motif.setupMotifs(motifNameList) must be async with motif downloading
-    motif.setupMotifs(motifNameList);
+
 
     $('#markupButton').click(function(event){
         motifHandler.handleMotifs();
@@ -89,24 +89,6 @@ $(function() {
     pSlider.create();
 
 
-    $('#motif-list').on('click', '.motif-title', function(event){
-        var $motifContainer = $(event.target).parent();
-        $motifContainer.addClass('chosen-motif');
-        colorPicker.addTo($motifContainer);
-        $motifContainer.appendTo('#motif-list-selected');
-    });
 
-
-    $('#motif-list-selected').on('click', '.motif-title', function(event){
-        var $motifContainer = $(event.target).parent();
-        $motifContainer.removeClass('chosen-motif');
-        colorPicker.removeFrom($motifContainer);
-        $motifContainer.appendTo('#motif-list');
-    });
-
-
-    $('#showMotifListButton').on('click', function(event){
-        $('#motif-list').toggle();
-    });
 
 });
