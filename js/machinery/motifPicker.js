@@ -5,7 +5,6 @@ var motifPicker = (function () {
 
     //resolve promises for motifs _nameLibrary
     var init = function () {
-        console.log("init");
         setMotifList();
 
         $('#motif-list').on('click', '.motif-title', function(event){
@@ -17,7 +16,6 @@ var motifPicker = (function () {
 
             var motifName = $motifTitle.text();
             motifLibrary.addUnit(motifName);
-
 
             console.log($motifTitle.text());
         });
@@ -59,7 +57,7 @@ var motifPicker = (function () {
 
 
     var createHTMLContainer = function (motifName) {
-        return '<div class="motif-container"' + 'id="' + inputParsing.removeSeparators(motifName, ".") + '">' +
+        return '<div class="motif-container"' + 'id="' + motifName + '">' +
             '<div class="motif-title">'+ motifName +'</div>' +
             '</div>';
     };
@@ -78,10 +76,36 @@ var motifPicker = (function () {
             return userSetNames
         }
     };
+    
+    
+    var getMotifColor = function () {
+        var motifName = "ENOA_HUMAN.H10MO.A",
+            $motifContainer = $(jq(motifName));
+
+        if ($motifContainer.hasClass("chosen-motif")) {
+            var $picker = $motifContainer.children(".motif-color-picker");
+            return colorPicker.getPickerColor($picker);
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "motif not chosen"});
+            return 0;
+        }
+    };
+
+
+    var ifSelected = function (motifName) {
+        return
+    };
+
+
+    //wrap string in order to make id select
+    var jq = function(myid) {
+        return "#" + myid.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
+    };
 
     return {
         init: init,
-        getUserRequestedNames: getUserRequestedNames
+        getUserRequestedNames: getUserRequestedNames,
+        getMotifColor: getMotifColor
     };
 }());/**
  * Created by HOME on 02.02.2017.

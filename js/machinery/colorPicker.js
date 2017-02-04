@@ -15,7 +15,11 @@ var colorPicker = (function () {
 
     var lastFreeColor = function () {
         return _defaultColors[_freeColorIndex];
+    };
 
+
+    var getPickerColor = function ($colorPicker) {
+        return $colorPicker.spectrum("get").toHexString();
     };
 
 
@@ -37,7 +41,6 @@ var colorPicker = (function () {
 
     //by default the colorPicker is "input" element
     var set = function (colorPicker) {
-        console.log(_freeColorIndex, "index");
         colorPicker.spectrum({
             color: lastFreeColor(),
             showInput: true,
@@ -72,7 +75,8 @@ var colorPicker = (function () {
     return {
         init: init,
         addTo: addTo,
-        removeFrom: removeFrom
+        removeFrom: removeFrom,
+        getPickerColor: getPickerColor
     };
 }());
 
