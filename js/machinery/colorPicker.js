@@ -67,6 +67,7 @@ var colorPicker = (function () {
 
                 ["#F15854", "#FAA43A", '#DECF3F', '#60BD68', '#5DA5DA', '#F17CB0', '#B276B2', '#B2912F', '#AAAAAA', '#4D4D4D']
             ]
+
         });
         _freeColorIndex += 1;
     };

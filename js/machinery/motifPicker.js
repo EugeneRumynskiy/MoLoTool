@@ -78,9 +78,8 @@ var motifPicker = (function () {
     };
     
     
-    var getMotifColor = function () {
-        var motifName = "ENOA_HUMAN.H10MO.A",
-            $motifContainer = $(jq(motifName));
+    var getMotifColor = function (motifName) {
+        var $motifContainer = $(jq(motifName));
 
         if ($motifContainer.hasClass("chosen-motif")) {
             var $picker = $motifContainer.children(".motif-color-picker");
