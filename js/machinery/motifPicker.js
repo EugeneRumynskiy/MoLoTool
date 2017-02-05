@@ -1,11 +1,10 @@
 var motifPicker = (function () {
     var _fileName = "motifPicker",
-        _nameLibrary = [], _savedMotifs = [];
+        _nameLibrary = [];
 
 
-    //resolve promises for motifs _nameLibrary
     var init = function () {
-        setMotifList();
+        setupMotifPicker();
 
         $('#motif-list').on('click', '.motif-title', function(event){
             var $motifTitle = $(event.target),
@@ -33,26 +32,30 @@ var motifPicker = (function () {
     };
 
 
-    var setMotifList = function () {
-        $.when(promiseNameLibrary())
-            .then(function(){
-                var motifContainers = $.map(_nameLibrary, createHTMLContainer).join('');
-                $('#motif-list').html(motifContainers);
-            });
+    var setupMotifPicker = function () {
+        promiseNameLibrary().then(function (nameLibrary) {
+            setNameLibrary(nameLibrary);
+            setMotifList(nameLibrary);
+        });
     };
 
 
-    //set promises for motifs _nameLibrary
     var promiseNameLibrary = function () {
         return $.ajax({
             dataType: "json",
             url: "http://hocomoco.autosome.ru/human/mono.json"
-        }).then(setNameLibrary);
+        });
     };
 
 
     var setNameLibrary = function (nameLibrary){
         _nameLibrary = nameLibrary;
+    };
+
+
+    var setMotifList = function (nameLibrary) {
+        var motifContainers = $.map(nameLibrary, createHTMLContainer).join('');
+        $('#motif-list').html(motifContainers);
     };
 
 
@@ -91,11 +94,6 @@ var motifPicker = (function () {
     };
 
 
-    var ifSelected = function (motifName) {
-        return
-    };
-
-
     //wrap string in order to make id select
     var jq = function(myid) {
         return "#" + myid.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
@@ -106,6 +104,7 @@ var motifPicker = (function () {
         getUserRequestedNames: getUserRequestedNames,
         getMotifColor: getMotifColor
     };
-}());/**
+}());
+/**
  * Created by HOME on 02.02.2017.
  */
