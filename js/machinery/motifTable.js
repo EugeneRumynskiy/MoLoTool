@@ -48,6 +48,7 @@ var motifTable = (function () {
             rows[i] = getDataFromSite(i);
         }
         return rows;
+
     };
 
 
@@ -132,12 +133,6 @@ var motifTable = (function () {
                     $('#' + lastID).removeClass("last");
                 }
             });
-
-
-
-
-
-
         return table;
     };
 

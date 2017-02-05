@@ -32,7 +32,9 @@
 //http://epifactors.autosome.ru/protein_complexes - как сделать поиск
 // http://paletton.com/#uid=52Q0p1ki6rV87JXdgxQmgnFqvj3ki6rV87JXdgxQmgnFqvj3kdLmDeBKZcjw8bCe2ce5+
 $(function() {
+
     motifPicker.init();
+    motifTable.createTable();
 
     $('#markupButton').click(function(event){
         motifHandler.handleMotifs();

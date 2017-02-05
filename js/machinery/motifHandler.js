@@ -23,6 +23,7 @@ var motifHandler = (function () {
             motif.setMotifValues(userRequestedMotifs[i]);
             sites = sites.concat(motif.findSites(sequence, pValue));
         }
+
         motifTable.redrawTableWithSites(sites, primarySequence);
 
         $('#result').html(markup.markupSegmentation(sequence, sites));
