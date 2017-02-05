@@ -1,10 +1,15 @@
 #motif-setup{
+    height: 160px;
+}
+
+#motif-picker{
+    display: inline-block;
     width: 100%;
-    height: 250px;
 }
 
 #search-form{
     width: 100%;
+    height: 50px;
 
     border: 0 solid #4CAF50;
     -webkit-border-radius: 5px;
@@ -17,11 +22,22 @@
     background-color: #4CAF50;
 }
 
-#search-form input#search{
+#search-form #showMotifListButton{
+    position: absolute;
+    width: 160px;
+    height: 50px;
+}
+
+#search-form #search{
     display: inline-block;
-    padding: 10px 24px;
+
+    width: 600px;
+    height: 50px;
+    margin-left: 160px;
+
     font-size: 16px;
 
+    padding: 10px 24px;
     padding-left: 40px;
 
     border: 0 solid #4CAF50;
@@ -65,6 +81,11 @@
 }
 
 .motif-container{
+    display: inline-block;
+}
+
+.chosen-motif {
+    margin: 0px 10px 0px 10px;
 }
 
 .motif-title {
@@ -83,20 +104,21 @@
 
 #motif-list {
     display: none;
-    height: 180px;
+    height: 110px;
     overflow-y: scroll;
     margin-top: 10px;
 }
 
 #motif-list-selected{
     display: inline-block;
-    height: 180px;
     overflow-y: scroll;
-    margin-top: 53px;
+    margin-top: 20px;
 
-    width: 400px;
+    width: 100%;
 }
 
 #motif-list-selected:empty{
     display: none;
 }
+
+

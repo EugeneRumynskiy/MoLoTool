@@ -3,6 +3,12 @@ body {
     background-color:  #b8c480;
 }
 
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 .button, #sequenceInput, #result, #pValueSlider {
     border-radius: 5px;
     border: 0 solid #4CAF50;

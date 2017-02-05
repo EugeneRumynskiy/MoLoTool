@@ -36,6 +36,7 @@ var motifPicker = (function () {
         promiseNameLibrary().then(function (nameLibrary) {
             setNameLibrary(nameLibrary);
             setMotifList(nameLibrary);
+            setSearch(nameLibrary);
         });
     };
 
@@ -63,6 +64,13 @@ var motifPicker = (function () {
         return '<div class="motif-container"' + 'id="' + motifName + '">' +
             '<div class="motif-title">'+ motifName +'</div>' +
             '</div>';
+    };
+
+
+    var setSearch = function (nameLibrary) {
+        $( "#search" ).autocomplete({
+            source: nameLibrary
+        });
     };
 
 
