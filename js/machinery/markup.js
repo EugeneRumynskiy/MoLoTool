@@ -14,7 +14,7 @@ var markup = (function () {
      */
     var markupSegmentation = function(sequence, sites) {
         sites = setLevels(sites);  //sorting and setting levels
-        var segments = makeSegmentation(sites, sequence.length), s = "",
+        var segments = makeSegmentation(sites, sequence.length),
             sequenceToDisplay = wrapSegmentsInSpans(segments, sequence);
         return sequenceToDisplay;
     };
@@ -70,7 +70,7 @@ var markup = (function () {
                 'background-color: '+ backgroundColor +'; ' +
                 'color: ' + color +'; ' +
                 'opacity: ' + opacity +';" ' +
-                'id="' + segments[i].start + '"' +
+                'id="' + segments[i].start + '" ' +
                 'class="' + spanClass + secondaryClass +'">' +
                 sequence.slice(segments[i].start, segments[i].finish + 1) + '</span>';
 
