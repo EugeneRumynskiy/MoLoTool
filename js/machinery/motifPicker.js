@@ -16,7 +16,7 @@ var motifPicker = (function () {
             var motifName = $motifTitle.text();
             motifLibrary.addUnit(motifName);
 
-            console.log($motifTitle.text());
+            console.log(motifName);
         });
 
         $('#motif-list-selected').on('click', '.motif-title', function(event){
@@ -36,7 +36,7 @@ var motifPicker = (function () {
         promiseNameLibrary().then(function (nameLibrary) {
             setNameLibrary(nameLibrary);
             setMotifList(nameLibrary);
-            setSearch(nameLibrary);
+            setSearch();
         });
     };
 
@@ -61,16 +61,30 @@ var motifPicker = (function () {
 
 
     var createHTMLContainer = function (motifName) {
-        return '<div class="motif-container"' + 'id="' + motifName + '">' +
+        return '<div class="motif-container"' + ' id="' + motifName + '">' +
             '<div class="motif-title">'+ motifName +'</div>' +
             '</div>';
     };
 
 
-    var setSearch = function (nameLibrary) {
-        $( "#search" ).autocomplete({
-            source: nameLibrary
+    var setSearch = function () {
+        $('#search').on('input', function () {
+            var val = $.trim($(this).val()),
+                reg = RegExp( RegExpEscape(val), 'i'),
+                nameSelection = [];
+
+            for (var i = 0; i < _nameLibrary.length; i++) {
+                if (reg.test(_nameLibrary[i])) {
+                    nameSelection.push(_nameLibrary[i]);
+                }
+            }
+            console.log(nameSelection);
+            setMotifList(nameSelection);
         });
+    };
+
+    var RegExpEscape = function( value ) {
+        return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
     };
 
 

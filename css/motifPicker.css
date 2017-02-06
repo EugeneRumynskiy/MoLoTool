@@ -66,9 +66,10 @@
 
 }
 
-.button:hover, #search-form input#search:hover {
+.button:hover, #search-form #search:hover, #search-form #search:focus {
     background-color: #509f50
 }
+
 
 .button:active {
     background-color: #3e8e41;
@@ -103,7 +104,7 @@
 }
 
 #motif-list {
-    display: none;
+
     height: 110px;
     overflow-y: scroll;
     margin-top: 10px;
