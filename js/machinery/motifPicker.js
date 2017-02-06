@@ -1,29 +1,35 @@
 var motifPicker = (function () {
     var _fileName = "motifPicker",
-        _nameLibrary = [];
+        _nameLibrary = [],
+        _chosenMotifsSet = new Set();
 
 
     var init = function () {
         setupMotifPicker();
 
         $('#motif-list').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target),
+            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
                 $motifContainer = $motifTitle.parent();
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
-            $motifContainer.appendTo('#motif-list-selected');
 
-            var motifName = $motifTitle.text();
+            addChosenMotifToSet(motifName);
             motifLibrary.addUnit(motifName);
 
-            console.log(motifName);
+            $motifContainer.appendTo('#motif-list-selected');
         });
 
         $('#motif-list-selected').on('click', '.motif-title', function(event){
-            var $motifContainer = $(event.target).parent();
+            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
+                $motifContainer = $(event.target).parent();
             $motifContainer.removeClass('chosen-motif');
             colorPicker.removeFrom($motifContainer);
-            $motifContainer.appendTo('#motif-list');
+
+            deleteChosenMotifFromSet(motifName);
+
+            if (testedAgainstSearch(motifName)) {
+                $motifContainer.appendTo('#motif-list');
+            }
         });
 
         $('#showMotifListButton').on('click', function(event){
@@ -34,7 +40,7 @@ var motifPicker = (function () {
 
     var setupMotifPicker = function () {
         promiseNameLibrary().then(function (nameLibrary) {
-            setNameLibrary(nameLibrary);
+            setNameLibrarySet(nameLibrary);
             setMotifList(nameLibrary);
             setSearch();
         });
@@ -49,9 +55,20 @@ var motifPicker = (function () {
     };
 
 
-    var setNameLibrary = function (nameLibrary){
+    var setNameLibrarySet = function (nameLibrary){
         _nameLibrary = nameLibrary;
     };
+
+
+    var addChosenMotifToSet = function (motifName){
+        _chosenMotifsSet.add(motifName);
+    };
+
+
+    var deleteChosenMotifFromSet = function (motifName){
+        _chosenMotifsSet.delete(motifName);
+    };
+
 
 
     var setMotifList = function (nameLibrary) {
@@ -74,13 +91,20 @@ var motifPicker = (function () {
                 nameSelection = [];
 
             for (var i = 0; i < _nameLibrary.length; i++) {
-                if (reg.test(_nameLibrary[i])) {
+                if ( (!_chosenMotifsSet.has(_nameLibrary[i])) && (reg.test(_nameLibrary[i])) ) {
                     nameSelection.push(_nameLibrary[i]);
                 }
             }
-            console.log(nameSelection);
             setMotifList(nameSelection);
         });
+    };
+
+
+    var testedAgainstSearch = function (motifName) {
+        var val = $.trim($("#search").val()),
+            reg = RegExp( RegExpEscape(val), 'i');
+        console.log(reg.test(motifName));
+        return reg.test(motifName);
     };
 
     var RegExpEscape = function( value ) {
@@ -117,8 +141,8 @@ var motifPicker = (function () {
 
 
     //wrap string in order to make id select
-    var jq = function(myid) {
-        return "#" + myid.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
+    var jq = function(myId) {
+        return "#" + myId.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
     };
 
     return {
