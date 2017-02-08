@@ -58,8 +58,12 @@ var motifTable = (function () {
             columnDefs: [
                 { targets: [4, 5], width: "5%"}
             ],
+            dom: 'Bfrtip',
             buttons: [
-                'csv'
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
             ],
             columns: getTableColumns()
         };
