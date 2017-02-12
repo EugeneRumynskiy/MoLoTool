@@ -18,8 +18,9 @@ var colorPicker = (function () {
     };
 
 
-    var getPickerColor = function ($colorPicker) {
-        return $colorPicker.spectrum("get").toHexString();
+    var getColorFromContainer = function ($motifContainer) {
+        var $picker = $motifContainer.children(".motif-color-picker");
+        return $picker.spectrum("get").toHexString();
     };
 
 
@@ -77,7 +78,7 @@ var colorPicker = (function () {
         init: init,
         addTo: addTo,
         removeFrom: removeFrom,
-        getPickerColor: getPickerColor
+        getColorFromContainer: getColorFromContainer
     };
 }());
 

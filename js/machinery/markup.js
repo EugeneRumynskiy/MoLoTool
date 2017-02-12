@@ -4,7 +4,7 @@
 
 //NOT DONE YET
 var markup = (function () {
-    var _fileName = "markupModule";
+    var _fileName = "markup";
 
     /**
      * used setLevels(sites), makeSegmentation(sites, sequence.length), wrapInMultispan
@@ -14,7 +14,7 @@ var markup = (function () {
      */
     var markupSegmentation = function(sequence, sites) {
         sites = setLevels(sites);  //sorting and setting levels
-        var segments = makeSegmentation(sites, sequence.length),
+        var segments = segmentation.makeSegmentation(sites, sequence.length),
             sequenceToDisplay = wrapSegmentsInSpans(segments, sequence);
         return sequenceToDisplay;
     };
@@ -71,7 +71,8 @@ var markup = (function () {
                 backgroundColor = commonBackgroundColor;
             } else if (motifNames.length == 1) {
                 color = commonColor;
-                backgroundColor = motifPicker.getMotifColor(motifNames[0]);
+                $motifContainer = motifPicker.getSelectedMotifContainer(motifNames[0]);
+                backgroundColor = colorPicker.getColorFromContainer($motifContainer);
             } else {
                 color = emptyColor;
                 backgroundColor = emptyBackgroundColor;
@@ -86,6 +87,8 @@ var markup = (function () {
                 'background-color: '+ backgroundColor +'; ' +
                 'color: ' + color +';" ' +
                 'id="' + segments[i].start + '" ' +
+                'title="' + segments[i].start + '" ' +
+
                 'class="segment">' +
                 sequence.slice(segments[i].start, segments[i].finish + 1) + '</span>';
         }

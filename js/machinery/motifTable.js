@@ -8,9 +8,22 @@ var motifTable = (function () {
         _sitesList = [], _primarySequence = {};
 
 
-    var getTableColumns = function () {
+    var getDataFromID = function(siteID) {
+        var site =  _sitesList[siteID];
+        return {
+            "id": siteID + 1,
+            "motifName": site.motifName,
+            "strength": site.strength,
+            "startPosition": site.scorePosition,
+            "finishPosition": site.scorePosition + site.siteLength - 1,
+            "sequence": site.motifSequence,
+            "strand": site.strand
+        };
+    };
+
+
+    var setColumns = function () {
         var columns = [
-            //first column
             {
                 "className":      'details-control',
                 "orderable":      false,
@@ -28,32 +41,16 @@ var motifTable = (function () {
     };
 
 
-    var getDataFromSite = function(siteID) {
-        var site =  _sitesList[siteID];
-        return {
-            "id": siteID + 1,
-            "motifName": site.motifName,
-            "strength": site.strength,
-            "startPosition": site.scorePosition,
-            "finishPosition": site.scorePosition + site.siteLength - 1,
-            "sequence": site.motifSequence,
-            "strand": site.strand
-        };
-    };
-
-
-    var getTableRows = function() {
+    var setRows = function() {
         var rows = new Array(_sitesList.length);
-        for (var i = 0; i < _sitesList.length; i++) {
-            rows[i] = getDataFromSite(i);
+        for (var siteID = 0; siteID < _sitesList.length; siteID++) {
+            rows[siteID] = getDataFromID(siteID);
         }
         return rows;
-
     };
 
 
     var createTable = function() {
-        _columns = getTableColumns();
         _table = {
             columnDefs: [
                 { targets: [4, 5], width: "5%"}
@@ -63,9 +60,15 @@ var motifTable = (function () {
                 'copyHtml5',
                 'excelHtml5',
                 'csvHtml5',
-                'pdfHtml5'
+                'pdfHtml5',
+                {
+                    text: 'My button',
+                    action: function ( e, dt, node, config ) {
+                        alert( 'Button activated' );
+                    }
+                }
             ],
-            columns: getTableColumns()
+            columns: setColumns()
         };
 
         var table = $('#example').DataTable(_table);
@@ -164,7 +167,7 @@ var motifTable = (function () {
         var table = $('#example').DataTable();
 
         _sitesList = sites;
-        _rows = getTableRows();
+        _rows = setRows();
         _primarySequence = primarySequence;
 
         table.clear();

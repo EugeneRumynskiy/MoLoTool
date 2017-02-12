@@ -17,7 +17,6 @@
 }
 
 
-
 .highlighted {
     border-top: solid salmon 4px;
     border-bottom: solid salmon 4px;
@@ -97,9 +96,10 @@
 
     background-color: #ffffff;
 
-    margin: 20px auto;
+    margin: 60px auto;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+

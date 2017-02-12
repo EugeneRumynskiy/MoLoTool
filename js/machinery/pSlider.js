@@ -69,12 +69,16 @@ var pSlider = (function () {
             logValue.value = restrictValue(logValue.value, "log");
             linearValue.value = roundValue(Math.pow(10, -this.value), "linear");
             logSlider.noUiSlider.set(roundValue(this.value, "log"));
+
+            motifHandler.handleMotifs();
         });
 
         linearValue.addEventListener('change', function(){
             linearValue.value = restrictValue(linearValue.value, "linear");
             logValue.value = roundValue(-Math.log10(this.value), "log");
             logSlider.noUiSlider.set(roundValue(-Math.log10(this.value), "log"));
+
+            motifHandler.handleMotifs();
         });
 
         logSlider.noUiSlider.on('slide', function( values, handle ) {
@@ -86,14 +90,14 @@ var pSlider = (function () {
     };
 
 
-    var createSlider = function () {
+    var create = function () {
         var logSlider = setSlider();
         setOutputValues(logSlider)
     };
 
 
     return {
-        create: createSlider
+        create: create
     };
 
 }());

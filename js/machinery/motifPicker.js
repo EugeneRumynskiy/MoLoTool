@@ -6,41 +6,12 @@ var motifPicker = (function () {
 
     var init = function () {
         setupMotifPicker();
-
-        $('#motif-list').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $motifTitle.parent();
-            $motifContainer.addClass('chosen-motif');
-            colorPicker.addTo($motifContainer);
-
-            addChosenMotifToSet(motifName);
-            motifLibrary.addUnit(motifName);
-
-            $motifContainer.appendTo('#motif-list-selected');
-        });
-
-        $('#motif-list-selected').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $(event.target).parent();
-            $motifContainer.removeClass('chosen-motif');
-            colorPicker.removeFrom($motifContainer);
-
-            deleteChosenMotifFromSet(motifName);
-
-            if (testedAgainstSearch(motifName)) {
-                $motifContainer.appendTo('#motif-list');
-            }
-        });
-
-        $('#showMotifListButton').on('click', function(event){
-            $('#motif-list').toggle();
-        });
     };
 
 
     var setupMotifPicker = function () {
         promiseNameLibrary().then(function (nameLibrary) {
-            setNameLibrarySet(nameLibrary);
+            setNameLibrary(nameLibrary);
             setMotifList(nameLibrary);
             setSearch();
         });
@@ -55,7 +26,7 @@ var motifPicker = (function () {
     };
 
 
-    var setNameLibrarySet = function (nameLibrary){
+    var setNameLibrary = function (nameLibrary){
         _nameLibrary = nameLibrary;
     };
 
@@ -127,12 +98,11 @@ var motifPicker = (function () {
     };
     
     
-    var getMotifColor = function (motifName) {
+    var getSelectedMotifContainer = function (motifName) {
         var $motifContainer = $(jq(motifName));
 
         if ($motifContainer.hasClass("chosen-motif")) {
-            var $picker = $motifContainer.children(".motif-color-picker");
-            return colorPicker.getPickerColor($picker);
+            return $motifContainer;
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "motif not chosen"});
             return 0;
@@ -147,8 +117,11 @@ var motifPicker = (function () {
 
     return {
         init: init,
+        addChosenMotifToSet: addChosenMotifToSet,
+        deleteChosenMotifFromSet: deleteChosenMotifFromSet,
+        testedAgainstSearch: testedAgainstSearch,
         getUserRequestedNames: getUserRequestedNames,
-        getMotifColor: getMotifColor
+        getSelectedMotifContainer: getSelectedMotifContainer
     };
 }());
 /**
