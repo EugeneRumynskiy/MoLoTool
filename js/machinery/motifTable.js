@@ -70,27 +70,27 @@ var motifTable = (function () {
             ],
             columns: setColumns()
         };
-
         var table = $('#example').DataTable(_table);
+        return table;
+    };
 
+    var buildUIComponent = function (table) {
         $('#example tbody')
             .on('click', 'td.details-control', function () {
-            var tr = $(this).closest('tr');
-            var row = table.row( tr );
+                var tr = $(this).closest('tr');
+                var row = table.row( tr );
 
-            if ( row.child.isShown() ) {
-                // This row is already open - close it
-                row.child.hide();
-                tr.removeClass('shown');
-            }
-            else {
-                // Open this row
-                row.child( format(row.data()) ).show();
-                tr.addClass('shown');
-            }
-        } );
-
-
+                if ( row.child.isShown() ) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child( format(row.data()) ).show();
+                    tr.addClass('shown');
+                }
+            });
 
         $('#example tbody')
             .on( 'mouse' + 'enter', 'td', function () {
@@ -140,7 +140,6 @@ var motifTable = (function () {
                     $('#' + lastID).removeClass("last");
                 }
             });
-        return table;
     };
 
 
@@ -179,7 +178,8 @@ var motifTable = (function () {
 
     return {
         redrawTableWithSites: redrawTableWithSites,
-        createTable: createTable
+        createTable: createTable,
+        buildUIComponent: buildUIComponent
     };
 
 }());

@@ -4,9 +4,10 @@ var uiBuilder = (function () {
 
     var buildUI = function () {
         motifPicker.init();
-        buildMotifPickerComponent();
+        motifPicker.buildUIComponent();
 
-        motifTable.createTable();
+        var table = motifTable.createTable();
+        motifTable.buildUIComponent(table);
 
         //$( document ).tooltip();
 
@@ -20,41 +21,10 @@ var uiBuilder = (function () {
             motifHandler.handleMotifs();
         });
 
-        pSlider.create();
+        var slider = pSlider.create();
+        pSlider.buildUIComponent(slider);
     };
 
-    var buildMotifPickerComponent = function () {
-        $('#motif-list').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $motifTitle.parent();
-            $motifContainer.addClass('chosen-motif');
-            colorPicker.addTo($motifContainer);
-
-            motifPicker.addChosenMotifToSet(motifName);
-            motifLibrary.addUnit(motifName);
-
-            $motifContainer.appendTo('#motif-list-selected');
-        });
-
-        $('#motif-list-selected').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $(event.target).parent();
-            $motifContainer.removeClass('chosen-motif');
-            colorPicker.removeFrom($motifContainer);
-
-            motifPicker.deleteChosenMotifFromSet(motifName);
-
-            if (motifPicker.testedAgainstSearch(motifName)) {
-                $motifContainer.appendTo('#motif-list');
-            }
-        });
-
-        $('#showMotifListButton').on('click', function(event){
-            $('#motif-list').toggle();
-        });
-
-
-    };
 
     return {
         buildUI: buildUI

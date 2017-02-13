@@ -13,6 +13,13 @@ var pSlider = (function () {
         _sliderRange = {"min": [0], "max": [4]},
         _fileName = "pSlider";
 
+
+    var create = function () {
+        var logSlider = setSlider();
+        return logSlider;
+    };
+
+
     var setSlider = function() {
         var logSlider = document.getElementById('logSlider');
 
@@ -34,6 +41,17 @@ var pSlider = (function () {
     };
 
 
+    var roundValue = function (value, type) {
+        var linearValueBorder = 0.001;
+        if (type == "log")
+            return round(value, _nDigits[type]);
+        else if ((type == "linear")&&(value < linearValueBorder)) {
+            return round(value, _nDigits[type] + 1);
+        } else
+            return round(value, _nDigits[type]);
+    };
+
+
     var restrictValue = function (value, type) {
         var roundedValue = roundValue(value, type);
 
@@ -46,18 +64,7 @@ var pSlider = (function () {
     };
 
 
-    var roundValue = function (value, type) {
-        var linearValueBorder = 0.001;
-        if (type == "log")
-            return round(value, _nDigits[type]);
-        else if ((type == "linear")&&(value < linearValueBorder)) {
-            return round(value, _nDigits[type] + 1);
-        } else
-            return round(value, _nDigits[type]);
-    };
-
-
-    var setOutputValues = function (logSlider) {
+    var buildUIComponent = function (logSlider) {
         var logValue = document.getElementById('logSlider-input'),
             linearValue = document.getElementById('linearSlider-input');
 
@@ -90,14 +97,9 @@ var pSlider = (function () {
     };
 
 
-    var create = function () {
-        var logSlider = setSlider();
-        setOutputValues(logSlider)
-    };
-
-
     return {
-        create: create
+        create: create,
+        buildUIComponent: buildUIComponent
     };
 
 }());
