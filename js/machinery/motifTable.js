@@ -50,7 +50,7 @@ var motifTable = (function () {
     };
 
 
-    var createTable = function() {
+    var create = function() {
         _table = {
             columnDefs: [
                 { targets: [4, 5], width: "5%"}
@@ -71,6 +71,8 @@ var motifTable = (function () {
             columns: setColumns()
         };
         var table = $('#example').DataTable(_table);
+
+        buildUIComponent(table);
         return table;
     };
 
@@ -84,60 +86,10 @@ var motifTable = (function () {
                     // This row is already open - close it
                     row.child.hide();
                     tr.removeClass('shown');
-                }
-                else {
+                } else {
                     // Open this row
                     row.child( format(row.data()) ).show();
                     tr.addClass('shown');
-                }
-            });
-
-        $('#example tbody')
-            .on( 'mouse' + 'enter', 'td', function () {
-                var rowData = table.row( this ).data();
-                if (rowData  != undefined){
-                    var start = rowData.startPosition, finish = rowData.finishPosition,
-                        segment,
-                        firstID = start, lastID;
-
-                    while (start <= finish) {
-                        segment = $('#' + start);
-                        segment.addClass("highlighted");
-                        if ((finish - start + 1) == segment.text().length) {
-                            break
-                        } else {
-                            start = segment.next().attr('id')
-                        }
-                    }
-                    lastID = start;
-
-                    $('#' + firstID).addClass("first");
-                    $('#' + lastID).addClass("last");
-
-
-                }
-            });
-
-        $('#example tbody')
-            .on( 'mouse' + 'leave', 'td', function () {
-                var rowData = table.row( this ).data();
-                if (rowData  != undefined){
-                    var start = rowData.startPosition, finish = rowData.finishPosition,
-                        segment,
-                        firstID = start, lastID;
-                    while (start <= finish) {
-                        segment = $('#' + start);
-                        segment.removeClass("highlighted");
-                        if ((finish - start + 1) == segment.text().length) {
-                            break
-                        } else {
-                            start = segment.next().attr('id')
-                        }
-                    }
-                    lastID = start;
-
-                    $('#' + firstID).removeClass("first");
-                    $('#' + lastID).removeClass("last");
                 }
             });
     };
@@ -178,8 +130,7 @@ var motifTable = (function () {
 
     return {
         redrawTableWithSites: redrawTableWithSites,
-        createTable: createTable,
-        buildUIComponent: buildUIComponent
+        create: create
     };
 
 }());

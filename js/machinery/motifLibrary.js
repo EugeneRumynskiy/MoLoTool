@@ -46,8 +46,7 @@ var motifLibrary = (function () {
 
 
     var getUnits = function (motifNameList) {
-        var units = $.map(motifNameList, getUnit);
-        return units;
+        return $.map(motifNameList, getUnit);
     };
 
 
@@ -59,7 +58,6 @@ var motifLibrary = (function () {
 
     var showLibrary = function () {
         console.log(_library);
-        return 0;
     };
 
 
@@ -68,5 +66,4 @@ var motifLibrary = (function () {
         addUnit: addUnit,
         getUserRequestedUnits: getUserRequestedUnits
     };
-
 }());

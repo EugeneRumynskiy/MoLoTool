@@ -11,11 +11,12 @@ var pSlider = (function () {
             "linear":{"min": 0.0001, "max": 1}
         },
         _sliderRange = {"min": [0], "max": [4]},
-        _fileName = "pSlider";
-
+        _fileName = "pSlider",
+        _eventHandler = function() { return };
 
     var create = function () {
         var logSlider = setSlider();
+        buildUIComponent(logSlider);
         return logSlider;
     };
 
@@ -77,7 +78,8 @@ var pSlider = (function () {
             linearValue.value = roundValue(Math.pow(10, -this.value), "linear");
             logSlider.noUiSlider.set(roundValue(this.value, "log"));
 
-            motifHandler.handleMotifs();
+            //motifHandler.handleMotifs();
+            _eventHandler();
         });
 
         linearValue.addEventListener('change', function(){
@@ -85,21 +87,27 @@ var pSlider = (function () {
             logValue.value = roundValue(-Math.log10(this.value), "log");
             logSlider.noUiSlider.set(roundValue(-Math.log10(this.value), "log"));
 
-            motifHandler.handleMotifs();
+            //motifHandler.handleMotifs();
+            _eventHandler();
         });
 
         logSlider.noUiSlider.on('slide', function( values, handle ) {
             logValue.value = roundValue(values[handle], "log");
             linearValue.value = roundValue(Math.pow(10, -values[handle]), "linear");
 
-            motifHandler.handleMotifs();
+            //motifHandler.handleMotifs();
+            _eventHandler();
         });
+    };
+
+    var setEventHandler = function (eventHandler) {
+        _eventHandler = eventHandler;
     };
 
 
     return {
         create: create,
-        buildUIComponent: buildUIComponent
+        setEventHandler: setEventHandler
     };
 
 }());

@@ -4,7 +4,7 @@ var motifPicker = (function () {
         _chosenMotifsSet = new Set();
 
 
-    var init = function () {
+    var create = function () {
         setupMotifPicker();
     };
 
@@ -115,47 +115,17 @@ var motifPicker = (function () {
         return "#" + myId.replace( /(:|\.|\[|\]|,|=|@)/g, "\\$1" );
     };
 
-    var buildUIComponent = function () {
-        $('#motif-list').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $motifTitle.parent();
-            $motifContainer.addClass('chosen-motif');
-            colorPicker.addTo($motifContainer);
-
-            motifPicker.addChosenMotifToSet(motifName);
-            motifLibrary.addUnit(motifName);
-
-            $motifContainer.appendTo('#motif-list-selected');
-        });
-
-        $('#motif-list-selected').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $(event.target).parent();
-            $motifContainer.removeClass('chosen-motif');
-            colorPicker.removeFrom($motifContainer);
-
-            motifPicker.deleteChosenMotifFromSet(motifName);
-
-            if (motifPicker.testedAgainstSearch(motifName)) {
-                $motifContainer.appendTo('#motif-list');
-            }
-        });
-
-        $('#showMotifListButton').on('click', function(event){
-            $('#motif-list').toggle();
-        });
-    };
-
     return {
-        init: init,
+        create: create,
         addChosenMotifToSet: addChosenMotifToSet,
         deleteChosenMotifFromSet: deleteChosenMotifFromSet,
         testedAgainstSearch: testedAgainstSearch,
         getUserRequestedNames: getUserRequestedNames,
-        getSelectedMotifContainer: getSelectedMotifContainer,
-        buildUIComponent: buildUIComponent
+        getSelectedMotifContainer: getSelectedMotifContainer
     };
 }());
 /**
  * Created by HOME on 02.02.2017.
  */
+
+
