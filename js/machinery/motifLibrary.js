@@ -2,17 +2,36 @@
  * Created by HOME on 04.02.2017.
  */
 var motifLibrary = (function () {
-    var _fileName = "motifLibrary", _library = {};
+    var _fileName = "motifLibrary", _library = {},
+        _eventHandler = function() {};
+
+
+    var create = function (eventHandler) {
+        _library = {};
+        setEventHandlerTo(eventHandler);
+    };
+
+
+    var setEventHandlerTo = function (eventHandler) {
+        _eventHandler = eventHandler;
+    };
+
+    var handleEvent = function () {
+        _eventHandler();
+    };
+
 
     var addUnit = function (motifName) {
         if (motifIn(motifName)) {
+            handleEvent();
             errorHandler.logError({"fileName": _fileName, "message": "motif already in the library"});
         } else {
             _library[motifName] = {status: "promised"};
             promiseMotif(motifName).then(
                 function(result){
                     result.status = "resolved";
-                    _library[result.full_name] = result;
+                    _library[result["full_name"]] = result;
+                    handleEvent();
                     //console.log(JSON.stringify(result) + "\n");
                 });
         }
@@ -64,6 +83,7 @@ var motifLibrary = (function () {
     return {
         showLibrary: showLibrary,
         addUnit: addUnit,
-        getUserRequestedUnits: getUserRequestedUnits
+        getUserRequestedUnits: getUserRequestedUnits,
+        create: create
     };
 }());

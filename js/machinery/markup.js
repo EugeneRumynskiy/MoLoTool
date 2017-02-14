@@ -87,8 +87,6 @@ var markup = (function () {
                 'background-color: '+ backgroundColor +'; ' +
                 'color: ' + color +';" ' +
                 'id="' + segments[i].start + '" ' +
-                'title="' + segments[i].start + '" ' +
-
                 'class="segment">' +
                 sequence.slice(segments[i].start, segments[i].finish + 1) + '</span>';
         }
@@ -99,14 +97,6 @@ var markup = (function () {
         }
 
         return sequenceToDisplay;
-    };
-
-    var getColorFrom = function (palette, sitesCount) {
-        if (( sitesCount >= 0 )&&( sitesCount < palette.length )) {
-            return palette[sitesCount];
-        } else if (sitesCount >= palette.length){
-            return palette[palette.length - 1];
-        }
     };
 
     return {markupSegmentation: markupSegmentation};

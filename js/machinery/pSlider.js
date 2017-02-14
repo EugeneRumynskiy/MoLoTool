@@ -12,7 +12,7 @@ var pSlider = (function () {
         },
         _sliderRange = {"min": [0], "max": [4]},
         _fileName = "pSlider",
-        _eventHandler = function() { return };
+        _eventHandler = function() {};
 
     var create = function () {
         var logSlider = setSlider();
@@ -100,14 +100,14 @@ var pSlider = (function () {
         });
     };
 
-    var setEventHandler = function (eventHandler) {
+    var setEventHandlerTo = function (eventHandler) {
         _eventHandler = eventHandler;
     };
 
 
     return {
         create: create,
-        setEventHandler: setEventHandler
+        setEventHandlerTo: setEventHandlerTo
     };
 
 }());

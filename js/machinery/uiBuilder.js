@@ -1,28 +1,45 @@
 var uiBuilder = (function () {
-    var _fileName = "uiBuilder";
+    var _fileName = "uiBuilder",
+        _eventHandler = undefined;
+
+
+    var setEventHandlerTo = function (eventHandler) {
+        _eventHandler = eventHandler;
+    };
+
+    var handleEvent = function () {
+        _eventHandler();
+    };
+
 
     var buildUI = function () {
+        setEventHandlerTo(motifHandler.handleMotifs);
+
+        motifLibrary.create(handleEvent);
+
         motifPicker.create();
         buildExternalMotifPickerComponent();
 
         var table = motifTable.create();
         buildExternalTableComponent(table);
 
-        var slider = pSlider.create();
+        pSlider.create();
         buildExternalSliderComponent();
 
-        var result = resultContainer.create();
+        resultContainer.create();
 
         //$( document ).tooltip();
 
 
 
-        //$('.segment').hover( handlerIn, handlerOut );
+        $('.segment').on('mouse' + 'enter', function () {
+            console.log("MOUSE OVER");
+            }
+        );
 
-        $('#markupButton').click(function(event){
-            motifHandler.handleMotifs();
+        $('#markupButton').click(function(){
+            handleEvent();
         });
-
     };
 
 
@@ -50,16 +67,20 @@ var uiBuilder = (function () {
             if (motifPicker.testedAgainstSearch(motifName)) {
                 $motifContainer.appendTo('#motif-list');
             }
+
+            handleEvent();
         });
 
-        $('#showMotifListButton').on('click', function(event){
+        $('#showMotifListButton').on('click', function(){
             $('#motif-list').toggle();
         });
     };
 
 
     var buildExternalTableComponent = function (table) {
-        $('#example tbody')
+        var $exampleTBody = $('#example').find('tbody');
+
+        $exampleTBody
             .on( 'mouse' + 'enter', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
@@ -83,7 +104,7 @@ var uiBuilder = (function () {
                 }
             });
 
-        $('#example tbody')
+        $exampleTBody
             .on( 'mouse' + 'leave', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
@@ -109,7 +130,7 @@ var uiBuilder = (function () {
 
 
     var buildExternalSliderComponent = function () {
-        pSlider.setEventHandler(motifHandler.handleMotifs);
+        pSlider.setEventHandlerTo(handleEvent);
     };
 
 
