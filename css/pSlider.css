@@ -33,14 +33,14 @@
 }
 
 .noUi-pips{
-    color: black;
+    color: var(--slider-pips-col);
 }
 
 .noUi-pips-large{
-    color: black;
+    color: var(--slider-pips-col);
 }
 
 
 .noUi-marker{
-    background: white;
+    background: var(--slider-marker-bg);
 }

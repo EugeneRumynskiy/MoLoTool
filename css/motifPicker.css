@@ -11,15 +11,15 @@
     width: 100%;
     height: 50px;
 
-    border: 0 solid #4CAF50;
+    border: 0 solid var(--search-bg-color);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 
     outline: none;
 
-    color: #fff;
-    background-color: #4CAF50;
+    color: var(--search-color);
+    background-color: var(--search-bg-color);
 }
 
 #search-form #showMotifListButton{
@@ -40,7 +40,7 @@
     padding: 10px 24px;
     padding-left: 40px;
 
-    border: 0 solid #4CAF50;
+    border: 0 solid var(--search-bg-color);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -48,8 +48,15 @@
     outline: none;
 
     background: #ededed url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: var(--search-bg-color);
+    color: var(--search-color);
+}
+
+#search-form #markupButton{
+    float: right;
+    width: 160px;
+    height: 50px;
+
 }
 
 .button {
@@ -61,19 +68,18 @@
     text-decoration: none;
     outline: none;
 
-    color: #fff;
-    background-color: #4CAF50;
+    color: var(--button-color);
+    background-color: var(--button-bg-color);
 
 }
 
 .button:hover, #search-form #search:hover, #search-form #search:focus {
-    background-color: #509f50
+    background-color: var(--hoover-bg-color)
 }
 
 
 .button:active {
     background-color: #3e8e41;
-    transform: translateY(2px);
 }
 
 #showMotifListButton:active{
@@ -94,7 +100,7 @@
     padding: 4px;
     margin: 4px;
 
-    background-color: #d4e79e;
+    background-color: var(--motif-title-bg);
     border-radius: 10px;
     border: 0 solid;
 }

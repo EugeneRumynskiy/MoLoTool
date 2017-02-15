@@ -1,6 +1,25 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
+:root {
+    --main-bg-color: #b8c480;
+
+    --hoover-bg-color: #509f50;
+
+    --button-bg-color: #4CAF50;
+    --button-color: #fff;
+
+    --search-bg-color: #4CAF50;
+    --search-color: #fff;
+
+    --slider-pips-col: black;
+    --slider-marker-bg: white;
+
+    --motif-title-bg: #d4e79e;
+
+    --tooltip-container-bg: #2b669a;
+}
+
 body {
-    background-color:  #b8c480;
+    background-color: var(--main-bg-color);
 }
 
 *{
@@ -10,11 +29,12 @@ body {
 }
 
 .button, #sequenceInput, #result, #pValueSlider {
-    border-radius: 5px;
     border: 0 solid #4CAF50;
 }
 
-
+.round {
+    border-radius: 5px;
+}
 
 
 
