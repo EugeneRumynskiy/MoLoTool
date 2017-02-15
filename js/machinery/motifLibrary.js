@@ -54,7 +54,8 @@ var motifLibrary = (function () {
     var getUnit = function (motifName) {
         if (motifIn(motifName)) {
             if (_library[motifName].status == "promised") {
-                errorHandler.logError({"fileName": _fileName, "message": "motif status: promised"});
+                errorHandler.logError({"fileName": _fileName, "message": "Motif status: promised. The result" +
+                " will be updated right after promise completion."});
             } else {
                 return _library[motifName];
             }
