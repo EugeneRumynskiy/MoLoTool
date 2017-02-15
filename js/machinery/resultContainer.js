@@ -33,8 +33,10 @@ var tooltip = (function () {
 
 
     var mouseInHandler = function () {
-        var tooltipElement = createElement();
+        var tooltipElement = createElement(),
+            segment = sequenceConstructor.findSegmentWith(this.getAttribute('start'));
         this.append(tooltipElement);
+        console.log(segment);
     };
 
 

@@ -112,9 +112,9 @@ var sequenceConstructor = (function () {
 
         if (index < 0) {
             errorHandler.logError({"fileName": _fileName, "message": "there is no segment with this position\n"});
-            return -1;
+            return {};
         } else {
-            return index;
+            return _segments[index];
         }
     };
 

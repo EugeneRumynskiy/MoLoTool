@@ -1,6 +1,17 @@
+.sliderBox {
+    padding: 10px;
+    height: 140px;
+}
+
 .inputBox {
     position: relative;
     left: 5px;
+    margin-top: 50px;
+}
+
+.inputUnit{
+    display: inline-block;
+    width: 240px;
 }
 
 .label {
@@ -9,9 +20,10 @@
 }
 
 .input {
-    position: absolute;
-    left: 110px;
-    border:0;
+    position: relative;
+    left: 5px;
+    border: 5px solid white;
+    border-radius: 5px;
     color:black;
     font-weight:bold;
     width: 60px;
@@ -20,6 +32,15 @@
 #logSlider{
 }
 
-.sliderBox {
-    padding: 10px;
+.noUi-pips{
+    color: black;
+}
+
+.noUi-pips-large{
+    color: black;
+}
+
+
+.noUi-marker{
+    background: white;
 }
