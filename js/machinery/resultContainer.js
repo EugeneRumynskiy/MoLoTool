@@ -22,7 +22,12 @@ var resultContainer = (function () {
 var tooltip = (function () {
     var _moduleName = "tooltip",
         _element = "div",
-        _className = "tooltip";
+        _className = "tooltip",
+        _target = "tooltip-container";
+
+    var getElemById = function (id) {
+        return document.getElementById(id);
+    };
 
 
     var addTo = function (selector) {
@@ -33,21 +38,23 @@ var tooltip = (function () {
 
 
     var mouseInHandler = function () {
-        var tooltipElement = createElement(),
-            segment = sequenceConstructor.findSegmentWith(this.getAttribute('start'));
-        this.append(tooltipElement);
+        var segment = sequenceConstructor.findSegmentWith(this.getAttribute('start')),
+            tooltipElement = createElement(segment);
+        getElemById(_target).append(tooltipElement);
         console.log(segment);
     };
 
 
     var mouseOutHandler = function () {
-        this.lastChild.remove();
+        getElemById(_target).lastChild.remove();
     };
 
 
-    var createElement = function () {
+    var createElement = function (segment) {
         var tooltipElement = document.createElement(_element);
         tooltipElement.className = _className;
+
+
         return tooltipElement;
     };
 
