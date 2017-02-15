@@ -8,7 +8,6 @@ var motifHandler = (function () {
     
     
     var handleMotifs = function () {
-
         //ToDo: add pValue into inputParsing
         var sequence = inputParsing.parseInput()[0]["sequence"], title = inputParsing.parseInput()[0]["title"],
             primarySequence = inputParsing.parseInput()[0],
@@ -18,7 +17,6 @@ var motifHandler = (function () {
 
             sites = [];
 
-
         for(var i = 0; i < userRequestedMotifs.length; i++) {
             motif.setMotifValues(userRequestedMotifs[i]);
             sites = sites.concat(motif.findSites(sequence, pValue));
@@ -26,8 +24,7 @@ var motifHandler = (function () {
 
         motifTable.redrawTableWithSites(sites, primarySequence);
 
-        $('#result').empty().html(markup.markupSegmentation(sequence, sites));
-
+        $('#result').empty().html(sequenceConstructor.markupSegmentation(sequence, sites));
     };
 
 

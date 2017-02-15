@@ -33,16 +33,13 @@ var tooltip = (function () {
 
 
     var mouseInHandler = function () {
-        console.log(this);
-
         var tooltipElement = createElement();
         this.append(tooltipElement);
     };
 
 
     var mouseOutHandler = function () {
-        var $segment = $("#" + this.id);
-        $segment.children("." + _className).remove();
+        this.lastChild.remove();
     };
 
 

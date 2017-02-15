@@ -31,13 +31,15 @@ var uiBuilder = (function () {
         //$( document ).tooltip();
 
 
-
         $('.segment').on('mouse' + 'enter', function () {
             console.log("MOUSE OVER");
-            }
-        );
+        });
 
         $('#markupButton').click(function(){
+            handleEvent();
+        });
+
+        $('#sequenceInput').on('input', function () {
             handleEvent();
         });
     };

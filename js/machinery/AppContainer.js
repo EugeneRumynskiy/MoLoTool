@@ -14,7 +14,7 @@
  * motifTable           (good)                  displaying of information produced in tables
  *
  * markupModule         (to be done)
- * markup               (to be refactored)      displaying of information produced in html text
+ * sequenceConstructor               (to be refactored)      displaying of information produced in html text
  *
  * motifPicker
  * motifLibrary
