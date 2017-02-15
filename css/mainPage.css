@@ -1,8 +1,9 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
 :root {
-    --main-bg-color: #b8c480;
+    /*--main-bg-color: #b8c480;
 
     --hoover-bg-color: #509f50;
+    --active-bg-color: #3e8e41;
 
     --button-bg-color: #4CAF50;
     --button-color: #fff;
@@ -15,7 +16,26 @@
 
     --motif-title-bg: #d4e79e;
 
-    --tooltip-container-bg: #2b669a;
+    --tooltip-container-bg: #2b669a;*/
+
+    --main-bg-color: white;
+
+    --hoover-bg-color: white;
+    --active-bg-color: white;
+
+    --button-bg-color: white;
+    --button-color: white;
+
+    --search-bg-color: white;
+    --search-color: white;
+
+    --slider-connect-bg: white;
+    --slider-pips-col: black;
+    --slider-marker-bg: white;
+
+    --motif-title-bg: white;
+
+    --tooltip-container-bg: white;
 }
 
 body {

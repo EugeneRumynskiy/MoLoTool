@@ -40,7 +40,10 @@
     color: var(--slider-pips-col);
 }
 
-
 .noUi-marker{
     background: var(--slider-marker-bg);
+}
+
+.noUi-connect{
+    background: var(--slider-connect-bg);
 }

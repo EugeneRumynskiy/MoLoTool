@@ -79,11 +79,11 @@
 
 
 .button:active {
-    background-color: #3e8e41;
+    background-color: var(--active-bg-color);
 }
 
 #showMotifListButton:active{
-    background-color: #3e8e41;
+    background-color: var(--active-bg-color);
     transform: translateY(0);
 }
 
