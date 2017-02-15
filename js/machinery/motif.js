@@ -58,10 +58,10 @@ var motif = (function () {
      * Find and return pValue in pre-calculated list of scores
      * _thresholdList :pre-calculated list of pairs [[scoreValue, pValue], []...]
      * @param score                 :weight sum for position i, if motif starts in position i
-     * @returns {pvalue}            :pValue
+     * @returns pValue            :pValue
      * ToDo: make binary search not linear, test that returned result isn't 0, test return function
      */
-    var getPvalueFromScoreList = function(score) {
+    var getPValueFromScoreList = function(score) {
         var n = _thresholdList.length;
         if (n == 0) {
             throw new Error("The array cannot be empty");
@@ -79,7 +79,6 @@ var motif = (function () {
             } else {
                 right = mid;
             }
-
             if (left + 1 == right) {
                 break;
             }
@@ -115,7 +114,7 @@ var motif = (function () {
             pValue, scorePosition, motifSequence = " ";
 
         for (scorePosition = 0; scorePosition < scoreList.length; scorePosition++) {
-            pValue = getPvalueFromScoreList(scoreList[scorePosition]);
+            pValue = getPValueFromScoreList(scoreList[scorePosition]);
             if (pValue <= pValueMax) {
                 motifSequence = sequence.slice(scorePosition,  scorePosition + _pwmMatrix.length);
                 sitesList.push({
