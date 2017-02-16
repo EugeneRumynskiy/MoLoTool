@@ -56,18 +56,25 @@ var motifPicker = (function () {
 
 
     var setSearch = function () {
-        $('#search').on('input', function () {
-            var val = $.trim($(this).val()),
-                reg = RegExp( RegExpEscape(val), 'i'),
-                nameSelection = [];
-
-            for (var i = 0; i < _nameLibrary.length; i++) {
-                if ( (!_chosenMotifsSet.has(_nameLibrary[i])) && (reg.test(_nameLibrary[i])) ) {
-                    nameSelection.push(_nameLibrary[i]);
-                }
-            }
-            setMotifList(nameSelection);
+        $('#search').val("");
+        $('#search').on('input', search);
+        $('#search').on('submit', function () {
+            
         });
+
+    };
+
+    var search = function () {
+        var val = $.trim($(this).val()),
+            reg = RegExp( RegExpEscape(val), 'i'),
+            nameSelection = [];
+
+        for (var i = 0; i < _nameLibrary.length; i++) {
+            if ( (!_chosenMotifsSet.has(_nameLibrary[i])) && (reg.test(_nameLibrary[i])) ) {
+                nameSelection.push(_nameLibrary[i]);
+            }
+        }
+        setMotifList(nameSelection);
     };
 
 

@@ -15,27 +15,52 @@
     --slider-marker-bg: white;
 
     --motif-title-bg: #d4e79e;
+    --motif-title-color: black;
 
     --tooltip-container-bg: #2b669a;*/
 
-    --main-bg-color: white;
 
-    --hoover-bg-color: white;
-    --active-bg-color: white;
+    --main-bg-color:#9AB87A ;
 
-    --button-bg-color: white;
+    --hoover-bg-color: #436449;
+    --active-bg-color: #436449;
+
+    --button-bg-color: #537258;
     --button-color: white;
 
-    --search-bg-color: white;
+    --search-bg-color: #537258;
     --search-color: white;
 
-    --slider-connect-bg: white;
-    --slider-pips-col: black;
-    --slider-marker-bg: white;
+    --slider-connect-bg:#537258;
+    --slider-pips-col: #0F0A0A;
+    --slider-marker-bg: #0F0A0A;
 
-    --motif-title-bg: white;
+    --motif-title-bg: #F8F991;
+    --motif-title-color: black;
 
     --tooltip-container-bg: white;
+
+    /*--main-bg-color:#84AE31 ;
+
+    --hoover-bg-color: #436400;
+    --active-bg-color: #436400;
+
+    --button-bg-color: #658C17  ;
+    --button-color: white;
+
+    --search-bg-color: #658C17;
+    --search-color: white;
+
+    --slider-connect-bg:#436400;
+    --slider-pips-col: #0F0A0A;
+    --slider-marker-bg: #0F0A0A;
+
+    --motif-title-bg:#B6D369;
+    --motif-title-color: black;
+
+    --tooltip-container-bg: white;*/
+
+
 }
 
 body {
@@ -48,8 +73,12 @@ body {
     box-sizing: border-box;
 }
 
-.button, #sequenceInput, #result, #pValueSlider {
+.button, #pValueSlider {
     border: 0 solid #4CAF50;
+}
+
+#sequenceInput, #result, #tooltip-container{
+    border: 2px solid black;
 }
 
 .round {

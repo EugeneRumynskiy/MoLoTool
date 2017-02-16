@@ -67,7 +67,10 @@ var uiBuilder = (function () {
             motifPicker.deleteChosenMotifFromSet(motifName);
 
             if (motifPicker.testedAgainstSearch(motifName)) {
+                console.log("added/n");
                 $motifContainer.appendTo('#motif-list');
+            } else {
+                $motifContainer.remove();
             }
 
             handleEvent();
@@ -80,7 +83,8 @@ var uiBuilder = (function () {
 
 
     var buildExternalTableComponent = function (table) {
-        var $exampleTBody = $('#example').find('tbody');
+        var $exampleTBody = $('#example').find('tbody'),
+            $result = $("#result");
 
         $exampleTBody
             .on( 'mouse' + 'enter', 'td', function () {
@@ -91,12 +95,12 @@ var uiBuilder = (function () {
                         firstID = start, lastID;
 
                     while (start <= finish) {
-                        segment = $('#' + start);
+                        segment = $result.children('[start=' + start + ']');
                         segment.addClass("highlighted");
                         if ((finish - start + 1) == segment.text().length) {
                             break
                         } else {
-                            start = segment.next().attr('id')
+                            start = segment.next().attr('start')
                         }
                     }
                     lastID = start;
@@ -113,13 +117,14 @@ var uiBuilder = (function () {
                     var start = rowData.startPosition, finish = rowData.finishPosition,
                         segment,
                         firstID = start, lastID;
+
                     while (start <= finish) {
-                        segment = $('#' + start);
+                        segment = $result.children('[start=' + start + ']');
                         segment.removeClass("highlighted");
                         if ((finish - start + 1) == segment.text().length) {
                             break
                         } else {
-                            start = segment.next().attr('id')
+                            start = segment.next().attr('start')
                         }
                     }
                     lastID = start;

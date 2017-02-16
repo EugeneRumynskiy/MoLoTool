@@ -59,7 +59,7 @@ var sequenceConstructor = (function () {
             positionInSequence = 0,
             motifCount, motifs, $motifContainer,
             backgroundColor, color,
-            commonBackgroundColor = "#d9d9d9", commonColor = "#ffffff",
+            commonBackgroundColor = "#BEC5AD", commonColor = "#ffffff",
             emptyBackgroundColor = "#ffffff", emptyColor = "#000000";
 
         for(var i = 0; i < segments.length; i++) {

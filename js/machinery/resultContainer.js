@@ -53,7 +53,7 @@ var tooltip = (function () {
     var createElement = function (segment) {
         var tooltipElement = document.createElement(_element);
         tooltipElement.className = _className;
-
+        tooltipElement.textContent = "Hello!";
 
         return tooltipElement;
     };

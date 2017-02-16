@@ -34,16 +34,17 @@ var segmentation = (function () {
             ifStart = checkPointType(points[i], "start");
 
             //console.log("getting segments", leftPoint.position, rightPoint.position, i, isPointType(points[i], "start"));
-
-            //if there are tow END points in one POSITION we should update last segment
+            //if there are two END points in one POSITION we should update last segment
             if ((rightPoint.position == leftPoint.position) && (rightPoint.type == "end") && (leftPoint.type == "end")) {
-                segments[segments.length - 1].sites.push(sites[rightPoint.siteIndex]);
+                ;//segments[segments.length - 1].sites.push(sites[rightPoint.siteIndex]);
+                //see ALX1 ALX4 pval 15 case, we already have needed sites from ifSiteInSegment
             } else if((rightPoint.position == leftPoint.position) && (rightPoint.type == "start") && (leftPoint.type == "start")) {
                 ; //do nothing
             } else if((getSegmentEdgePosition(rightPoint, "rightPoint") - getSegmentEdgePosition(leftPoint, "leftPoint")) >= 0)   {
                 //push new segment if it's actual length is not 0
                 //console.log("getting segments pushed!", leftPoint.position + 1 * isPointType(leftPoint, "end"), rightPoint.position - 1 * isPointType(rightPoint, "start"),
                 //    leftPoint.position, rightPoint.position);
+
                 segments.push({
                     start: leftPoint.position + 1 * checkPointType(leftPoint, "end") ,
                     finish: rightPoint.position - 1 * checkPointType(rightPoint, "start"),
