@@ -51,9 +51,19 @@ var tooltip = (function () {
 
 
     var createElement = function (segment) {
-        var tooltipElement = document.createElement(_element);
+        var tooltipElement = document.createElement(_element), tip = "";
         tooltipElement.className = _className;
-        tooltipElement.textContent = "Hello!";
+
+        for (var i = 0; i < segment.sites.length; i++) {
+            tip += segment.sites[i].motifName + "   >   ";
+            tip += segment.sites[i].scorePosition + "   //   "
+        }
+
+        if (tip.length == 0)
+            tip = "empty";
+
+        tooltipElement.textContent = tip;
+
 
         return tooltipElement;
     };
