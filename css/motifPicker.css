@@ -93,6 +93,9 @@
 
 .chosen-motif {
     margin: 0px 10px 0px 10px;
+    background-color: #F8F991;
+    border-radius: 5px;
+    padding: 0 8px 0 0px;
 }
 
 .motif-title {
