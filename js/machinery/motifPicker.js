@@ -66,7 +66,7 @@ var motifPicker = (function () {
 
     var search = function () {
         var val = $.trim($(this).val()),
-            reg = RegExp( RegExpEscape(val), 'i'),
+            reg = new RegExp( RegExpEscape(val), 'i'),
             nameSelection = [];
 
         for (var i = 0; i < _nameLibrary.length; i++) {
@@ -80,7 +80,7 @@ var motifPicker = (function () {
 
     var testedAgainstSearch = function (motifName) {
         var val = $.trim($("#search").val()),
-            reg = RegExp( RegExpEscape(val), 'i');
+            reg = new RegExp( RegExpEscape(val), 'i');
         console.log(reg.test(motifName));
         return reg.test(motifName);
     };

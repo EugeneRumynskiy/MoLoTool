@@ -95,7 +95,7 @@
     margin: 0px 10px 0px 10px;
     background-color: #F8F991;
     border-radius: 5px;
-    padding: 0 8px 0 0px;
+    padding: 2px 8px 2px 2px;
 }
 
 .motif-title {
@@ -114,6 +114,10 @@
 
 .motif-title:hover {
     cursor: pointer; cursor: hand;
+}
+
+.motif-result-hover {
+    background-color: salmon;
 }
 
 #motif-list {
