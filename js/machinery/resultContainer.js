@@ -55,8 +55,9 @@ var tooltip = (function () {
         tooltipElement.className = _className;
 
         for (var i = 0; i < segment.sites.length; i++) {
-            tip += segment.sites[i].motifName + "   >   ";
-            tip += segment.sites[i].scorePosition + "   //   "
+            tip += segment.sites[i].motifName + ">" +
+                segment.sites[i].scorePosition + "..." +
+                (segment.sites[i].scorePosition + segment.sites[i].siteLength - 1) + "//"
         }
 
         if (tip.length == 0)

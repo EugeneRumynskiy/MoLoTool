@@ -70,9 +70,8 @@ var motifLibrary = (function () {
     };
 
 
-    var getUserRequestedUnits = function () {
-        var requestedNames = motifPicker.getUserRequestedNames();
-        return getUnits(requestedNames);
+    var getUserRequestedUnits = function (userRequestedNames) {
+        return getUnits(userRequestedNames);
     };
 
 

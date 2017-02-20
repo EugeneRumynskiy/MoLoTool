@@ -13,7 +13,8 @@ var motifHandler = (function () {
             primarySequence = inputParsing.parseInput()[0],
             pValue = $("#linearSlider-input").val(),
 
-            userRequestedMotifs = motifLibrary.getUserRequestedUnits(),
+            userRequestedNames = motifPicker.getUserRequestedNames(),
+            userRequestedMotifs = motifLibrary.getUserRequestedUnits(userRequestedNames),
 
             sites = [];
 
