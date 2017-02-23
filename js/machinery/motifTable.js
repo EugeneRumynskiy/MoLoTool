@@ -8,6 +8,11 @@ var motifTable = (function () {
         _sitesList = [], _primarySequence = {};
 
 
+    var getMotif = function (motifName) {
+        return motifLibrary.getUnitByName(motifName);
+    };
+
+
     var getDataFromID = function(siteID) {
         var site =  _sitesList[siteID];
         return {
@@ -57,6 +62,7 @@ var motifTable = (function () {
             ],
             dom: 'Bfrtip',
             buttons: [
+                { extend: 'colvis', text: 'Select Columns', columns: ':gt(0)'},
                 'copyHtml5',
                 'excelHtml5',
                 'csvHtml5',
@@ -73,11 +79,13 @@ var motifTable = (function () {
         var table = $('#example').DataTable(_table);
 
         buildUIComponent(table);
+        console.log(table);
+        console.log(table.buttons().container());
         return table;
     };
 
     var buildUIComponent = function (table) {
-        $('#example tbody')
+        $('#example').find('tbody')
             .on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row( tr );
@@ -114,7 +122,8 @@ var motifTable = (function () {
     };
 
 
-    var redrawTableWithSites = function(sites, primarySequence) {
+    var redrawTableWithSites = function(sites, primarySequence, userRequestedMotifs) {
+        console.log(userRequestedMotifs);
         var table = $('#example').DataTable();
 
         _sitesList = sites;

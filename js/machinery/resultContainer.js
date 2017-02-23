@@ -44,14 +44,12 @@ var tooltip = (function () {
             $motif, $motifList = $("#motif-list-selected");
         getElemById(_target).append(tooltipElement);
 
-        console.log(_$hoveredMotifs);
         for (var i = 0; i < segment.sites.length; i++) {
             $motif = $motifList.find(jq(segment.sites[i].motifName));
             _$hoveredMotifs = _$hoveredMotifs.add($motif);
         }
-        console.log(_$hoveredMotifs);
+
         _$hoveredMotifs.addClass("motif-result-hover");
-        console.log(segment);
     };
 
 

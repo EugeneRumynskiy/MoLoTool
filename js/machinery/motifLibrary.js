@@ -51,7 +51,7 @@ var motifLibrary = (function () {
     };
 
 
-    var getUnit = function (motifName) {
+    var getUnitByName = function (motifName) {
         if (motifIn(motifName)) {
             if (_library[motifName].status == "promised") {
                 errorHandler.logError({"fileName": _fileName, "message": "Motif status: promised. The result" +
@@ -66,13 +66,14 @@ var motifLibrary = (function () {
 
 
     var getUnits = function (motifNameList) {
-        return $.map(motifNameList, getUnit);
+        return $.map(motifNameList, getUnitByName);
     };
 
 
     var getUserRequestedUnits = function (userRequestedNames) {
         return getUnits(userRequestedNames);
     };
+
 
 
     var showLibrary = function () {
@@ -84,6 +85,7 @@ var motifLibrary = (function () {
         showLibrary: showLibrary,
         addUnit: addUnit,
         getUserRequestedUnits: getUserRequestedUnits,
+        getUnitByName: getUnitByName,
         create: create
     };
 }());

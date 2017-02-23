@@ -86,6 +86,8 @@ var uiBuilder = (function () {
         var $exampleTBody = $('#example').find('tbody'),
             $result = $("#result");
 
+
+
         $exampleTBody
             .on( 'mouse' + 'enter', 'td', function () {
                 var rowData = table.row( this ).data();
