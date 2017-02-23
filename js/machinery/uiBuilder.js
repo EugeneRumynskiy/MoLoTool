@@ -16,6 +16,7 @@ var uiBuilder = (function () {
         setEventHandlerTo(motifHandler.handleMotifs);
 
         motifLibrary.create(handleEvent);
+        colorPicker.init(handleEvent);
 
         motifPicker.create();
         buildExternalMotifPickerComponent();
