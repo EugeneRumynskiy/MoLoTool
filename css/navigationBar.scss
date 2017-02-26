@@ -1,0 +1,121 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  > li {
+    margin: 0;
+  }
+}
+
+/* Nav-bar Styles */
+.nav-bar {
+  width: 100%;
+  height: 40px;
+  margin: 0 0 10px 0;
+  padding: 0 10px;
+  position: relative;
+  background: #fafafa;
+  font-family: "Lato", sans-serif;
+  box-shadow: 0 1px 1px 0 #dddddd;
+}
+
+.nav {
+  height: 40px;
+
+  /* Dropdown */
+  > li {
+    float: left;
+    display: inline-block;
+    position: relative;
+
+    > a {
+      padding: 10px 10px;
+      display: inline-block;
+      color: #A7A7A7;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+
+      > .caret {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin: 8px 0 2px 0;
+
+        border-top: 4px solid #A7A7A7;
+        border-bottom: 4px transparent;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+
+        vertical-align: top;
+        content: "";
+      }
+    }
+
+    /* Sub-nav */
+    > .sub-nav {
+      position: absolute;
+      display: none;
+      width: 180px;
+      min-width: 160px;
+      box-shadow: 0 1px 1px 0 #DDDDDD;
+      background-color: #f9f9f9;
+      z-index: 1;
+
+      >li a {
+        display: block;
+        padding: 10px 10px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* Active State */
+.nav > li:hover {
+  > a {
+    color: #303030;
+  }
+
+  > a > .caret {
+    border-top-color: #303030;
+    border-bottom-color: #303030;
+  }
+
+  > .sub-nav {
+    display: block;
+  }
+}
+
+.nav > li > .sub-nav > li:hover a{
+  background: #ff8358;
+  color: white;
+}
+
+.pull-left {float: left;}
+.pull-right {float: right;}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear:both;
+}
+
+.container {
+  font-family: 'Lato', 'serif', "Times New Roman";
+  width: 95%;
+  margin: 0 auto;
+  &.nav-bar {
+    width: 100%;
+  }
+
+  &:before, &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
