@@ -9,17 +9,20 @@ ul {
 /* Nav-bar Styles */
 .nav-bar {
   width: 100%;
-  height: 40px;
+  height: 80px;
   margin: 0 0 10px 0;
   padding: 0 10px;
   position: relative;
   background: #fafafa;
   font-family: "Lato", sans-serif;
   box-shadow: 0 1px 1px 0 #dddddd; }
+  .nav-bar > .the-nav {
+    height: 80px; }
 
 .nav {
   height: 40px;
-  /* Dropdown */ }
+  /* Dropdown */
+  /* Search input */ }
   .nav > li {
     float: left;
     display: inline-block;
@@ -50,15 +53,31 @@ ul {
       min-width: 160px;
       box-shadow: 0 1px 1px 0 #DDDDDD;
       background-color: #f9f9f9;
-      z-index: 1; }
+      z-index: 1;
+      border-radius: 5px; }
       .nav > li > .sub-nav > li a {
         display: block;
         padding: 10px 10px;
         text-decoration: none; }
+  .nav > .search-container > #search {
+    display: inline-block;
+    width: 320px;
+    margin-left: 10px;
+    padding: 10px 24px 10px 40px;
+    border: 0 solid #A7A7A7;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+    background: white url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    color: #303030;
+    font-size: 15px; }
 
 /* Active State */
 .nav > li:hover > a {
   color: #303030; }
+.nav > li:hover > a:active {
+  color: green; }
 .nav > li:hover > a > .caret {
   border-top-color: #303030;
   border-bottom-color: #303030; }
@@ -67,13 +86,24 @@ ul {
 
 .nav > li > .sub-nav > li:hover a {
   background: #ff8358;
-  color: white; }
+  box-shadow: 0 1px 1px 0 #ff8358;
+  color: white;
+  border-radius: 5px; }
 
 .pull-left {
   float: left; }
 
 .pull-right {
   float: right; }
+
+.rounded {
+  border-radius: 5px; }
+
+.top-second {
+  top: 40px; }
+
+.top-first {
+  top: 0; }
 
 .clearfix:after {
   content: "";
@@ -90,5 +120,26 @@ ul {
     content: "";
     display: table;
     clear: both; }
+
+/*Positioning*/
+/* Default media < 800px - two line menu */
+.the-nav {
+  min-width: 500px; }
+  .the-nav .top-first {
+    position: absolute; }
+  .the-nav .top-second {
+    position: relative; }
+
+/* Media for larger devices */
+@media screen and (min-width: 800px) {
+  .nav-bar {
+    height: 40px; }
+    .nav-bar > .the-nav {
+      min-width: unset;
+      height: 40px; }
+      .nav-bar > .the-nav .top-first {
+        position: static; }
+      .nav-bar > .the-nav .top-second {
+        position: static; } }
 
 /*# sourceMappingURL=navigationBar.css.map */

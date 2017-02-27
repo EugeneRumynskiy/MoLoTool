@@ -56,7 +56,6 @@
     float: right;
     width: 160px;
     height: 50px;
-
 }
 
 .button {
@@ -73,17 +72,8 @@
 
 }
 
-.button:hover, #search-form #search:hover, #search-form #search:focus {
-    background-color: var(--hoover-bg-color)
-}
-
-
-.button:active {
-    background-color: var(--active-bg-color);
-}
 
 #showMotifListButton:active{
-    background-color: var(--active-bg-color);
     transform: translateY(0);
 }
 
