@@ -1,34 +1,13 @@
-#motif-setup{
-    display: inline-block;
-    width: 100%;
-}
-
 #motif-picker{
-    display: inline-block;
-    width: 100%;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-
-    color: var(--button-color);
-    background-color: var(--button-bg-color);
 
 }
-
 
 .motif-container{
     display: inline-block;
 }
 
 .chosen-motif {
-    margin: 0px 10px 0px 10px;
+    margin: 0 10px 0 10px;
     background-color: #F8F991;
     border-radius: 5px;
     padding: 2px 8px 2px 2px;
@@ -57,7 +36,6 @@
 }
 
 #motif-list {
-
     height: 80px;
     overflow-y: scroll;
     margin-top: 10px;

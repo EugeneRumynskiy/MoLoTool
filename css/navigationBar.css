@@ -130,6 +130,8 @@ ul {
   min-width: 500px; }
   .the-nav .top-first {
     position: absolute; }
+    .the-nav .top-first > .search-container {
+      min-width: 380px; }
   .the-nav .top-second {
     position: relative; }
 

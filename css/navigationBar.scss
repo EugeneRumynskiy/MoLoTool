@@ -127,9 +127,9 @@ ul {
 
   > .sub-nav {
     display: block;
+
   }
 }
-
 
 .nav > li > .sub-nav > li:hover a{
   background: $secondaryMenuBackground;
@@ -177,6 +177,9 @@ ul {
   min-width: 500px;
   .top-first{
     position: absolute;
+    > .search-container {
+      min-width: 380px;
+    }
   }
   .top-second {
     position: relative;
