@@ -15,7 +15,7 @@ ul {
   position: relative;
   background: #fafafa;
   font-family: "Lato", sans-serif;
-  box-shadow: 0 1px 1px 0 #dddddd; }
+  box-shadow: 0 1px 1px 0 #DDDDDD; }
   .nav-bar > .the-nav {
     height: 80px; }
 
@@ -52,7 +52,7 @@ ul {
       width: 180px;
       min-width: 160px;
       box-shadow: 0 1px 1px 0 #DDDDDD;
-      background-color: #f9f9f9;
+      background-color: #fafafa;
       z-index: 1;
       border-radius: 5px; }
       .nav > li > .sub-nav > li a {
@@ -69,7 +69,7 @@ ul {
     -moz-border-radius: 5px;
     border-radius: 5px;
     outline: none;
-    background: white url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    background: #fafafa url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     color: #303030;
     font-size: 15px; }
 
@@ -87,7 +87,7 @@ ul {
 .nav > li > .sub-nav > li:hover a {
   background: #ff8358;
   box-shadow: 0 1px 1px 0 #ff8358;
-  color: white;
+  color: #fafafa;
   border-radius: 5px; }
 
 .pull-left {
@@ -97,6 +97,8 @@ ul {
   float: right; }
 
 .rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px; }
 
 .top-second {

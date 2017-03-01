@@ -8,11 +8,6 @@ var motifTable = (function () {
         _sitesList = [], _primarySequence = {};
 
 
-    var getMotif = function (motifName) {
-        return motifLibrary.getUnitByName(motifName);
-    };
-
-
     var getDataFromID = function(siteID) {
         var site =  _sitesList[siteID];
         return {
@@ -79,6 +74,20 @@ var motifTable = (function () {
         var table = $('#example').DataTable(_table);
 
         buildUIComponent(table);
+
+
+        new $.fn.dataTable.Buttons( table, {
+            name: 'commands',
+            buttons: [{
+                text: '<i class="fa fa-lg fa-clipboard"></i>',
+                extend: 'copy',
+                className: 'export-copy_',
+                name: "myB"
+            }]
+        } );
+
+        table.buttons(1, null).container().appendTo( "#dtTest" );
+
         console.log(table);
         console.log(table.buttons().container());
         return table;

@@ -1,3 +1,12 @@
+$primaryMenuBackground: #fafafa;
+$secondaryMenuBackground: #ff8358;
+
+$primaryMenuText: #A7A7A7;
+$secondaryMenuText: #303030;
+
+$primaryBoxShadow: #DDDDDD;
+$secondaryBoxShadow: #ff8358;
+
 $nav-line-height: 40px;
 
 ul {
@@ -16,9 +25,9 @@ ul {
   margin: 0 0 10px 0;
   padding: 0 10px;
   position: relative;
-  background: #fafafa;
+  background: $primaryMenuBackground;
   font-family: "Lato", sans-serif;
-  box-shadow: 0 1px 1px 0 #dddddd;
+  box-shadow: 0 1px 1px 0 $primaryBoxShadow;
   > .the-nav {
     height: $nav-line-height * 2;
   }
@@ -35,7 +44,7 @@ ul {
     > a {
       padding: 10px 10px;
       display: inline-block;
-      color: #A7A7A7;
+      color: $primaryMenuText;
       font-weight: 500;
       text-align: center;
       text-decoration: none;
@@ -62,8 +71,8 @@ ul {
       display: none;
       width: 180px;
       min-width: 160px;
-      box-shadow: 0 1px 1px 0 #DDDDDD;
-      background-color: #f9f9f9;
+      box-shadow: 0 1px 1px 0 $primaryBoxShadow;
+      background-color: $primaryMenuBackground;
       z-index: 1;
       border-radius: 5px;
 
@@ -90,8 +99,8 @@ ul {
       border-radius: 5px;
       outline: none;
 
-      background: white url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-      color: #303030;
+      background: $primaryMenuBackground url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+      color: $secondaryMenuText;
       font-size: 15px;
     }
   }
@@ -119,19 +128,24 @@ ul {
 
 
 .nav > li > .sub-nav > li:hover a{
-  background: #ff8358;
-  box-shadow: 0 1px 1px 0 #ff8358;
-  color: white;
+  background: $secondaryMenuBackground;
+  box-shadow: 0 1px 1px 0 $secondaryBoxShadow;
+  color: $primaryMenuBackground;
   border-radius: 5px;
 }
 //////////////////
 
 .pull-left {float: left;}
 .pull-right {float: right;}
-.rounded {border-radius: 5px;}
+.rounded {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 .top-second {top: $nav-line-height}
 .top-first {top: 0;}
 
+//////////////////
 .clearfix:after {
   content: "";
   display: table;
