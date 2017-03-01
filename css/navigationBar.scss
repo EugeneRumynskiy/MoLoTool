@@ -8,6 +8,7 @@ $primaryBoxShadow: #DDDDDD;
 $secondaryBoxShadow: #ff8358;
 
 $nav-line-height: 40px;
+$subNavMinWidth: 150px;
 
 ul {
     list-style: none;
@@ -70,7 +71,7 @@ ul {
       position: absolute;
       display: none;
       width: 180px;
-      min-width: 160px;
+      min-width: $subNavMinWidth;
       box-shadow: 0 1px 1px 0 $primaryBoxShadow;
       background-color: $primaryMenuBackground;
       z-index: 1;
@@ -86,12 +87,14 @@ ul {
 
   /* Search input */
   > .search-container {
+    padding: 10px 24px 10px 10px;
+
     > #search {
       display: inline-block;
       width: 320px;
+      padding-left: 5px;
+      //padding: 10px 24px 10px 40px;
 
-      margin-left: 10px;
-      padding: 10px 24px 10px 40px;
 
       border: 0 solid #A7A7A7;
       -webkit-border-radius: 5px;
@@ -99,7 +102,8 @@ ul {
       border-radius: 5px;
       outline: none;
 
-      background: $primaryMenuBackground url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+      background: $primaryMenuBackground;
+      //url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
       color: $secondaryMenuText;
       font-size: 15px;
     }
@@ -188,11 +192,17 @@ ul {
       min-width: unset;
       height: $nav-line-height;
 
-      .top-first {
+      >.top-first {
         position: static;
+
+        > .search-container {
+          margin-left: 10px;
+          > #search {
+          }
+        }
       }
 
-      .top-second {
+      >.top-second {
         position: static;
       }
     }

@@ -50,7 +50,7 @@ ul {
       position: absolute;
       display: none;
       width: 180px;
-      min-width: 160px;
+      min-width: 150px;
       box-shadow: 0 1px 1px 0 #DDDDDD;
       background-color: #fafafa;
       z-index: 1;
@@ -59,19 +59,20 @@ ul {
         display: block;
         padding: 10px 10px;
         text-decoration: none; }
-  .nav > .search-container > #search {
-    display: inline-block;
-    width: 320px;
-    margin-left: 10px;
-    padding: 10px 24px 10px 40px;
-    border: 0 solid #A7A7A7;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    outline: none;
-    background: #fafafa url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-    color: #303030;
-    font-size: 15px; }
+  .nav > .search-container {
+    padding: 10px 24px 10px 10px; }
+    .nav > .search-container > #search {
+      display: inline-block;
+      width: 320px;
+      padding-left: 5px;
+      border: 0 solid #A7A7A7;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      outline: none;
+      background: #fafafa;
+      color: #303030;
+      font-size: 15px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -139,9 +140,11 @@ ul {
     .nav-bar > .the-nav {
       min-width: unset;
       height: 40px; }
-      .nav-bar > .the-nav .top-first {
+      .nav-bar > .the-nav > .top-first {
         position: static; }
-      .nav-bar > .the-nav .top-second {
+        .nav-bar > .the-nav > .top-first > .search-container {
+          margin-left: 10px; }
+      .nav-bar > .the-nav > .top-second {
         position: static; } }
 
 /*# sourceMappingURL=navigationBar.css.map */

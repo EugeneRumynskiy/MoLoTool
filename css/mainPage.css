@@ -69,7 +69,7 @@ body {
     background-color: var(--main-bg-color);
 }
 
-*{
+* {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -81,6 +81,10 @@ body {
 
 #sequenceInput, #result, #tooltip-container{
     border: 2px solid black;
+}
+
+.interface-component {
+    padding: 0 10px 0 10px;
 }
 
 .round {

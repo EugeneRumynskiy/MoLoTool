@@ -36,6 +36,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
 
+    <!--Github icons - Octicons -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.0.0/font/octicons.min.css">
+
+
 
     <script src="js/machinery/motifMath.js"></script>
     <script src="js/nouislider.min.js"></script>
@@ -75,7 +79,7 @@
             <!-- Structure -->
             <ul class="nav pull-left top-second">
                 <li class="dropdown">
-                    <a href="#">Export <b class="caret"></b></a>
+                    <a href="#">Export <span class="icon octicon octicon-cloud-download"></span> <b class="caret"></b></a>
                     <ul class="sub-nav">
                         <li>
                             <a href="#">Table</a>
@@ -84,7 +88,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#">Show  <b class="caret"></b></a>
+                    <a href="#">Show <span class="icon octicon octicon-eye"></span> <b class="caret"></b></a>
                     <ul class="sub-nav">
                         <li><a id="showMotifListButton" href="#">Motifs</a></li>
                     </ul>
@@ -104,6 +108,7 @@
             </ul>
             <ul class="nav pull-left top-first">
                 <li class="search-container">
+                    <span class="icon octicon octicon-search"></span>
                     <input type="text" id="search" placeholder="Select motif..." autofocus>
                 </li>
             </ul>
@@ -114,22 +119,19 @@
         </nav>
     </div>
 
-
-    <div id="motif-setup">
+    <div id="motif-setup" class="interface-component">
         <div id="motif-picker">
-            <form id="search-form" >
-            </form>
             <div id='motif-list'></div>
         </div>
     </div>
 
-    <div id="input-area">
+    <div id="input-area" class="interface-component">
         <textarea  name="sequenceInput" id="sequenceInput" class="round" rows="3" autofocus spellcheck=false
                    placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
     </div>
 
 
-    <div class="sliderBox">
+    <div class="sliderBox interface-component">
         <div id='logSlider' class='slider'></div>
         <div class="inputBox">
             <div class="inputUnit">
@@ -143,10 +145,10 @@
         </div>
     </div>
 
-    <div id='motif-list-selected'></div>
+    <div id='motif-list-selected' class="interface-component"></div>
 
-    <div id="tooltip-container" class="round"></div>
-    <div id="result" class="box round"></div>
+    <div id="tooltip-container" class="round interface-component"></div>
+    <div id="result" class="box round interface-component"></div>
 
 
 </div>
