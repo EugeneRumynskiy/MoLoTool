@@ -90,21 +90,8 @@
                 <li class="dropdown">
                     <a href="#">Show <span class="icon octicon octicon-eye"></span> <b class="caret"></b></a>
                     <ul class="sub-nav">
-                        <li><a class="show-button" applyTo="#motif-list" href="#">Motifs</a></li>
-                        <li><a class="show-button" applyTo="#sequence" href="#">sequence</a></li>
-                        <li><a id="showMotifListButton" href="#">Motifs</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Primates  <b class="caret"></b></a>
-                    <ul class="sub-nav">
-                        <li><a href="#">Monkey</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Reptiles  <b class="caret"></b></a>
-                    <ul class="sub-nav">
-                        <li><a href="#">Boa</a></li>
+                        <li><a class="show-button" applyToId="motif-list-cmp" href="#">Motifs</a></li>
+                        <li><a class="show-button" applyToId="sequence-input-cmp" href="#">Sequence input</a></li>
                     </ul>
                 </li>
             </ul>
@@ -121,18 +108,18 @@
         </nav>
     </div>
 
-    <div class="interface-component">
+    <div class="interface-component" id="motif-list-cmp">
         <div id='motif-list'></div>
     </div>
 
-    <div class="interface-component input-area">
-        <textarea  name="sequenceInput" id="sequenceInput" class="round" rows="3" autofocus spellcheck=false
-                   placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+    <div class="interface-component" id="sequence-input-cmp">
+        <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
+                  placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
     </div>
 
-    <div class="interface-component">
+    <div class="interface-component" id="log-slider-cmp">
         <div class="sliderBox">
-            <div id='logSlider' class='slider'></div>
+            <div id='log-slider' class='slider'></div>
             <div class="inputBox">
                 <div class="inputUnit">
                     <label for='logSlider-input' class='label'>-log10(P-value):</label>

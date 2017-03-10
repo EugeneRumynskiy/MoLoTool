@@ -4,7 +4,7 @@
 var inputParsing = (function () {
     //Get input string without leading and ending whitespace characters (space, tab, no-break space, etc.)
     var getInputString = function () {
-        return $('#sequenceInput').val().trim();
+        return $('#sequence-input').val().trim();
     };
 
 

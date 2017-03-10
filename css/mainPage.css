@@ -79,7 +79,7 @@ body {
     border: 0 solid #4CAF50;
 }
 
-#sequenceInput, #result, #tooltip-container{
+#sequence-input, #result, #tooltip-container{
     border: 2px solid black;
 }
 

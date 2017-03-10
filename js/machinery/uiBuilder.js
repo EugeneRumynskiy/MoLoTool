@@ -30,7 +30,7 @@ var uiBuilder = (function () {
         resultContainer.create();
         buildExternalResultContainerComponent();
 
-        $('#sequenceInput').on('input', function () {
+        $('#sequence-input').on('input', function () {
             handleEvent();
         });
     };
@@ -68,8 +68,12 @@ var uiBuilder = (function () {
         });
 
         $('.show-button').on('click', function(){
-            $('#motif-list').toggle();
+            var $source = $(this),
+                $target = $("#" + $source.attr("applyToId"));
+            $target.toggle();
         });
+
+
 
 
     };

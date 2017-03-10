@@ -5,9 +5,12 @@ ul {
   padding: 0; }
   ul > li {
     margin: 0; }
+    ul > li > a {
+      outline: none; }
 
 /* Nav-bar Styles */
 .nav-bar {
+  z-index: 3;
   width: 100%;
   height: 80px;
   margin: 0 0 10px 0;
@@ -58,6 +61,7 @@ ul {
       .nav > li > .sub-nav > li a {
         display: block;
         padding: 10px 10px;
+        color: #A7A7A7;
         text-decoration: none; }
   .nav > .search-container {
     padding: 10px 24px 10px 10px; }
@@ -78,7 +82,7 @@ ul {
 .nav > li:hover > a {
   color: #303030; }
 .nav > li:hover > a:active {
-  color: green; }
+  color: red; }
 .nav > li:hover > a > .caret {
   border-top-color: #303030;
   border-bottom-color: #303030; }

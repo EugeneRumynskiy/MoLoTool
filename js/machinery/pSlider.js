@@ -4,9 +4,9 @@
  *
  **/
 var pSlider = (function () {
-    var _initialLogValue = 1.78,
+    var _initialLogValue = 1.711,
         _nDigits = {"log": 3, "linear": 3},
-        _borderValue = {
+        _restrictionValue = {
             "log": {"min": 1.3010, "max": 6},
             "linear":{"min": 0.000001, "max": 0.0500}
         },
@@ -27,7 +27,7 @@ var pSlider = (function () {
 
 
     var setSlider = function() {
-        var logSlider = document.getElementById('logSlider');
+        var logSlider = document.getElementById('log-slider');
 
         noUiSlider.create(logSlider, {
             start: _initialLogValue,
@@ -46,38 +46,32 @@ var pSlider = (function () {
 
         logSlider.noUiSlider.on('start', function(){
             _isActive = true;
-            console.log(_isActive);
         });
 
         logSlider.noUiSlider.on('end', function(){
             _isActive = false;
-            console.log(_isActive);
         });
 
         return logSlider;
     };
 
 
-    var roundValue = function (value, type) {
-        var linearValueBorder = 1;
-        if (type == "log")
-            return round(value, _nDigits[type]);
-        else if ((type == "linear")&&(value < linearValueBorder)) {
-            return round(value, _nDigits[type] + 1);
-        } else
-            return round(value, _nDigits[type]);
+    var roundAccordingType = function (value, type, additionalDigits) {
+        return round(value, _nDigits[type] + additionalDigits);
     };
 
-
     var restrictValue = function (value, type) {
-        var roundedValue = roundValue(value, type);
-
-        if (roundedValue > _borderValue[type]["max"])
-            return _borderValue[type]["max"];
-        else if (roundedValue < _borderValue[type]["min"])
-            return _borderValue[type]["min"];
+        if (value > _restrictionValue[type]["max"])
+            return _restrictionValue[type]["max"];
+        else if (value < _restrictionValue[type]["min"])
+            return _restrictionValue[type]["min"];
         else
-            return roundedValue;
+            return value;
+    };
+
+    var roundThenRestrict = function (value, type, additionalDigits) {
+        var rounded = roundAccordingType(value, type, additionalDigits);
+        return restrictValue(rounded, type);
     };
 
 
@@ -85,30 +79,28 @@ var pSlider = (function () {
         var logValue = document.getElementById('logSlider-input'),
             linearValue = document.getElementById('linearSlider-input');
 
-        logValue.value = roundValue(_initialLogValue, "log");
-        linearValue.value = roundValue(Math.pow(10, -_initialLogValue), "linear");
+        //default values
+        logValue.value = roundThenRestrict(_initialLogValue, "log", 0);
+        linearValue.value = roundThenRestrict(Math.pow(10, -_initialLogValue), "linear", Math.floor(logValue.value));
 
 
         logValue.addEventListener('change', function(){
-            logValue.value = restrictValue(logValue.value, "log");
-            linearValue.value = roundValue(Math.pow(10, -this.value), "linear");
-            logSlider.noUiSlider.set(roundValue(this.value, "log"));
-
+            logValue.value = roundThenRestrict(logValue.value, "log", 0);
+            linearValue.value = roundThenRestrict(Math.pow(10, -this.value), "linear", Math.floor(logValue.value));
+            logSlider.noUiSlider.set(logValue.value);
             handleEvents();
         });
 
         linearValue.addEventListener('change', function(){
-            linearValue.value = restrictValue(linearValue.value, "linear");
-            logValue.value = roundValue(-Math.log10(this.value), "log");
-            logSlider.noUiSlider.set(roundValue(-Math.log10(this.value), "log"));
-
+            linearValue.value = roundThenRestrict(linearValue.value, "linear", Math.floor(-Math.log10(linearValue.value)));
+            logValue.value = roundThenRestrict(-Math.log10(linearValue.value), "log", 0);
+            logSlider.noUiSlider.set(logValue.value);
             handleEvents();
         });
 
         logSlider.noUiSlider.on('slide', function( values, handle ) {
-            logValue.value = roundValue(values[handle], "log");
-            linearValue.value = roundValue(Math.pow(10, -values[handle]), "linear");
-
+            logValue.value = roundThenRestrict(values[handle], "log", 0);
+            linearValue.value = roundThenRestrict(Math.pow(10, -values[handle]), "linear", Math.floor(logValue.value));
             handleEvents();
         });
     };
