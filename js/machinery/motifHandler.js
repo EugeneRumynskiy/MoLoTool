@@ -25,7 +25,7 @@ var motifHandler = (function () {
 
         motifTable.redrawTableWithSites(sites, primarySequence, userRequestedMotifs);
 
-        $('#result').empty().html(sequenceConstructor.markupSegmentation(sequence, sites));
+        resultContainer.updateWith(sequenceConstructor.markupSegmentation(sequence, sites));
     };
 
 

@@ -90,6 +90,8 @@
                 <li class="dropdown">
                     <a href="#">Show <span class="icon octicon octicon-eye"></span> <b class="caret"></b></a>
                     <ul class="sub-nav">
+                        <li><a class="show-button" applyTo="#motif-list" href="#">Motifs</a></li>
+                        <li><a class="show-button" applyTo="#sequence" href="#">sequence</a></li>
                         <li><a id="showMotifListButton" href="#">Motifs</a></li>
                     </ul>
                 </li>
@@ -119,62 +121,68 @@
         </nav>
     </div>
 
-    <div id="motif-picker" class="interface-component">
+    <div class="interface-component">
         <div id='motif-list'></div>
     </div>
 
-    <div class="input-area interface-component">
+    <div class="interface-component input-area">
         <textarea  name="sequenceInput" id="sequenceInput" class="round" rows="3" autofocus spellcheck=false
                    placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
     </div>
 
-
-    <div class="sliderBox interface-component">
-        <div id='logSlider' class='slider'></div>
-        <div class="inputBox">
-            <div class="inputUnit">
-                <label for='logSlider-input' class='label'>-log10(P-value):</label>
-                <input type='text' class='input' id="logSlider-input">
-            </div>
-            <div class="inputUnit">
-                <label for='linearSlider-input' class='label'>P-value:</label>
-                <input type='text' class='input' id="linearSlider-input">
+    <div class="interface-component">
+        <div class="sliderBox">
+            <div id='logSlider' class='slider'></div>
+            <div class="inputBox">
+                <div class="inputUnit">
+                    <label for='logSlider-input' class='label'>-log10(P-value):</label>
+                    <input type='text' class='input' id="logSlider-input">
+                </div>
+                <div class="inputUnit">
+                    <label for='linearSlider-input' class='label'>P-value:</label>
+                    <input type='text' class='input' id="linearSlider-input">
+                </div>
             </div>
         </div>
     </div>
 
-    <div id='motif-list-selected' class="interface-component"></div>
+    <div class="interface-component">
+        <div id='motif-list-selected' class="interface-component"></div>
+    </div>
 
-    <div id="tooltip-container" class="round interface-component"></div>
-    <div id="result" class="box round interface-component"></div>
+    <div class="interface-component">
+        <div id="tooltip-container" class="interface-component round"></div>
+        <div id="result" class="interface-component box round"></div>
+    </div>
 
+    <div class="interface-component">
+        <table id='motif-table' class="display cell-border compact" width="100%">
+            <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Motif ID</th>
+                <th>Strength</th>
+                <th>Start Position</th>
+                <th>Finish Position</th>
+                <th>Sequence</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Motif ID</th>
+                <th>Strength</th>
+                <th>Start Position</th>
+                <th>Finish Position</th>
+                <th>Sequence</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 
 </div>
-
-<table id="example" class="display cell-border compact" width="100%">
-    <thead>
-    <tr>
-        <th></th>
-        <th>ID</th>
-        <th>Motif ID</th>
-        <th>Strength</th>
-        <th>Start Position</th>
-        <th>Finish Position</th>
-        <th>Sequence</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th></th>
-        <th>ID</th>
-        <th>Motif ID</th>
-        <th>Strength</th>
-        <th>Start Position</th>
-        <th>Finish Position</th>
-        <th>Sequence</th>
-    </tr>
-    </tfoot>
-</table>
 
 </body>
 </html>

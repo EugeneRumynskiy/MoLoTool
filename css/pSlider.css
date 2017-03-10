@@ -26,7 +26,11 @@
     border-radius: 5px;
     color:black;
     font-weight:bold;
-    width: 60px;
+    width: 80px;
+}
+
+#linearSlider-input {
+    width: 100px;
 }
 
 #logSlider{

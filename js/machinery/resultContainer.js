@@ -2,18 +2,34 @@
  * Created by HOME on 13.02.2017.
  */
 var resultContainer = (function () {
-    var _fileName = "resultContainer";
+    var _moduleName = "resultContainer",
+        _hasExternalFocusObject = function () {}; // currently focus from pSlider
 
     var create = function () {
         buildUIComponent();
+    };
+
+    var updateWith = function (newSpanSequence) {
+        $('#result').empty().html(newSpanSequence);
     };
 
     var buildUIComponent = function () {
         tooltip.addTo(".segment");
     };
 
+    var setExternalFocusObject = function (externalFocusObject) {
+        _hasExternalFocusObject = externalFocusObject;
+    };
+
+    var ifHasExternalFocus = function () {
+        return _hasExternalFocusObject();
+    };
+
     return {
-        create: create
+        create: create,
+        updateWith: updateWith,
+        setExternalFocusObject: setExternalFocusObject,
+        ifHasExternalFocus: ifHasExternalFocus
     };
 }());
 
@@ -33,30 +49,37 @@ var tooltip = (function () {
 
     var addTo = function (selectorName) {
         var $result = $("#result");
-        $result.on('mouse' + 'enter', selectorName, mouseInHandler);
-        $result.on('mouse' + 'leave', selectorName, mouseOutHandler);
+        $result.on('mouseenter', selectorName, mouseInHandler);
+        $result.on('mouseleave', selectorName, mouseOutHandler);
     };
 
 
     var mouseInHandler = function () {
-        var segment = sequenceConstructor.findSegmentWith(this.getAttribute('start')),
-            tooltipElement = createElement(segment),
-            $motif, $motifList = $("#motif-list-selected");
-        getElemById(_target).append(tooltipElement);
+        if (resultContainer.ifHasExternalFocus() == true) {
+            return;
+        } else {
+            var segment = sequenceConstructor.findSegmentWith(this.getAttribute('start')),
+                tooltipElement = createElement(segment),
+                $motif, $motifList = $("#motif-list-selected");
+            getElemById(_target).append(tooltipElement);
 
-        for (var i = 0; i < segment.sites.length; i++) {
-            $motif = $motifList.find(jq(segment.sites[i].motifName));
-            _$hoveredMotifs = _$hoveredMotifs.add($motif);
+            for (var i = 0; i < segment.sites.length; i++) {
+                $motif = $motifList.find(jq(segment.sites[i].motifName));
+                _$hoveredMotifs = _$hoveredMotifs.add($motif);
+            }
+
+            _$hoveredMotifs.addClass("motif-result-hover");
         }
-
-        _$hoveredMotifs.addClass("motif-result-hover");
     };
 
 
     var mouseOutHandler = function () {
-        getElemById(_target).lastChild.remove();
-        _$hoveredMotifs.removeClass("motif-result-hover");
-        _$hoveredMotifs = $("");
+        child = getElemById(_target).lastChild;
+        if (child != null) {
+            child.remove();
+            _$hoveredMotifs.removeClass("motif-result-hover");
+            _$hoveredMotifs = $("");
+        }
     };
 
 
@@ -89,4 +112,29 @@ var tooltip = (function () {
         addTo: addTo
     };
 }());
+
+/*
+var mouseListener = (function () {
+    var _moduleName = "mouseListener",
+        isDown = false; // Tracks status of a mouse button
+
+    var create = function () {
+        $("#logSlider").mousedown(function() {
+            isDown = true;      // When mouse goes down, set isDown to true
+            console.log(isDown);
+        })
+            .mouseup(function() {
+                isDown = false;    // When mouse goes up, set isDown to false
+                console.log(isDown);
+            });
+    };
+
+    var isPressed = function () {
+        return isDown;
+    };
+    return {
+        create: create,
+        isPressed: isPressed
+    };
+}());*/
 

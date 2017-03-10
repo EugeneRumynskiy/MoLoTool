@@ -28,17 +28,7 @@ var uiBuilder = (function () {
         buildExternalSliderComponent();
 
         resultContainer.create();
-
-        //$( document ).tooltip();
-
-
-        $('.segment').on('mouse' + 'enter', function () {
-            console.log("MOUSE OVER");
-        });
-
-        $('#markupButton').click(function(){
-            handleEvent();
-        });
+        buildExternalResultContainerComponent();
 
         $('#sequenceInput').on('input', function () {
             handleEvent();
@@ -77,19 +67,20 @@ var uiBuilder = (function () {
             handleEvent();
         });
 
-        $('#showMotifListButton').on('click', function(){
+        $('.show-button').on('click', function(){
             $('#motif-list').toggle();
         });
+
+
     };
 
 
     var buildExternalTableComponent = function (table) {
-        var $exampleTBody = $('#example').find('tbody'),
+        var $motifTableTBody = $('#motif-table').find('tbody'),
             $result = $("#result");
 
 
-
-        $exampleTBody
+        $motifTableTBody
             .on( 'mouse' + 'enter', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
@@ -113,7 +104,7 @@ var uiBuilder = (function () {
                 }
             });
 
-        $exampleTBody
+        $motifTableTBody
             .on( 'mouse' + 'leave', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
@@ -141,11 +132,12 @@ var uiBuilder = (function () {
 
     var buildExternalSliderComponent = function () {
         pSlider.setEventHandlerTo(handleEvent);
+
     };
 
 
-    var buildResultComponent = function () {
-
+    var buildExternalResultContainerComponent = function () {
+        resultContainer.setExternalFocusObject(pSlider.isActive)
     };
 
 

@@ -71,7 +71,7 @@ var motifTable = (function () {
             ],
             columns: setColumns()
         };
-        var table = $('#example').DataTable(_table);
+        var table = $('#motif-table').DataTable(_table);
 
         buildUIComponent(table);
 
@@ -94,7 +94,7 @@ var motifTable = (function () {
     };
 
     var buildUIComponent = function (table) {
-        $('#example').find('tbody')
+        $('#motif-table').find('tbody')
             .on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
                 var row = table.row( tr );
@@ -132,8 +132,8 @@ var motifTable = (function () {
 
 
     var redrawTableWithSites = function(sites, primarySequence, userRequestedMotifs) {
-        console.log(userRequestedMotifs);
-        var table = $('#example').DataTable();
+        //console.log(userRequestedMotifs);
+        var table = $('#motif-table').DataTable();
 
         _sitesList = sites;
         _rows = setRows();

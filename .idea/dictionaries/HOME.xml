@@ -3,6 +3,9 @@
     <words>
       <w>clearfix</w>
       <w>dropdown</w>
+      <w>mouseenter</w>
+      <w>mouseleave</w>
+      <w>mouseup</w>
       <w>octicon</w>
     </words>
   </dictionary>
