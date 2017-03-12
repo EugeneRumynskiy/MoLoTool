@@ -57,14 +57,17 @@ var pSlider = (function () {
 
 
     var roundAccordingType = function (value, type, additionalDigits) {
-        return round(value, _nDigits[type] + additionalDigits);
+        if (type == "log") {
+            return round(value, _nDigits[type] + additionalDigits);
+        } else if (type == "linear")
+            return parseFloat(value).toExponential(_nDigits[type] - 1);
     };
 
     var restrictValue = function (value, type) {
         if (value > _restrictionValue[type]["max"])
-            return _restrictionValue[type]["max"];
+            return roundAccordingType(_restrictionValue[type]["max"], type);
         else if (value < _restrictionValue[type]["min"])
-            return _restrictionValue[type]["min"];
+            return roundAccordingType(_restrictionValue[type]["min"], type);
         else
             return value;
     };
