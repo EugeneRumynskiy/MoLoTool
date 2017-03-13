@@ -65,9 +65,9 @@ var pSlider = (function () {
 
     var restrictValue = function (value, type) {
         if (value > _restrictionValue[type]["max"])
-            return roundAccordingType(_restrictionValue[type]["max"], type);
+            return roundAccordingType(_restrictionValue[type]["max"], type, 0);
         else if (value < _restrictionValue[type]["min"])
-            return roundAccordingType(_restrictionValue[type]["min"], type);
+            return roundAccordingType(_restrictionValue[type]["min"], type, 0);
         else
             return value;
     };

@@ -58,7 +58,6 @@ var uiBuilder = (function () {
             motifPicker.deleteChosenMotifFromSet(motifName);
 
             if (motifPicker.testedAgainstSearch(motifName)) {
-                console.log("added/n");
                 $motifContainer.appendTo('#motif-list');
             } else {
                 $motifContainer.remove();
