@@ -2,11 +2,19 @@
  * Created by HOME on 04.02.2017.
  */
 var motifLibrary = (function () {
-    var _fileName = "motifLibrary", _library = {},
-        _eventHandler = function() {};
+    var _moduleName = "motifLibrary", _library = {},
+        _eventHandler = function() {},
+        _featuresForTable = null,
+        _featuresForTableLibrary = {}, //created to speed up requests when building table
+        _logoUrl = "http://hocomoco.autosome.ru";
 
 
     var create = function (eventHandler) {
+        _featuresForTable = {
+            "direct_logo_url": "Logo",
+            "uniprot_id": "Uniprot ID",
+            "motif_families": "Families",
+            "motif_subfamilies": "Subfamilies"};
         _library = {};
         setEventHandlerTo(eventHandler);
     };
@@ -22,23 +30,24 @@ var motifLibrary = (function () {
 
 
     var addUnit = function (motifName) {
-        if (motifIn(motifName)) {
+        if (inLibrary(motifName)) {
             handleEvent();
-            errorHandler.logError({"fileName": _fileName, "message": "motif already in the library"});
+            errorHandler.logError({"fileName": _moduleName, "message": "motif already in the library"});
         } else {
             _library[motifName] = {status: "promised"};
             promiseMotif(motifName).then(
-                function(result){
-                    result.status = "resolved";
-                    _library[result["full_name"]] = result;
+                function(motif){
+                    motif.status = "resolved";
+                    _library[motif["full_name"]] = motif;
+                    _featuresForTableLibrary[motif["full_name"]] = requestTableValues(motif);
                     handleEvent();
-                    //console.log(JSON.stringify(result) + "\n");
+                    //console.log(JSON.stringify(motif) + "\n");
                 });
         }
     };
 
 
-    var motifIn = function (motifName) {
+    var inLibrary = function (motifName) {
         return ("undefined" !== typeof(_library[motifName]));
     };
 
@@ -51,17 +60,55 @@ var motifLibrary = (function () {
     };
 
 
+    var requestTableValues = function (motif) {
+        if (_featuresForTable == null) {
+            errorHandler.logError({"fileName": _moduleName, "message": "motifLibrary must be created _featuresForTable = null"});
+            return {};
+        } else {
+            var motifTableValues = {}, propertyName, logoFullUrl;
+            for (var property in _featuresForTable) {
+                propertyName = _featuresForTable[property];
+                if (propertyName == "Logo") {
+                    logoFullUrl = _logoUrl + motif[property];
+                    motifTableValues[propertyName] = '<img src="'+logoFullUrl+'" />';
+                } else {
+                    motifTableValues[propertyName] = motif[property];
+                }
+            }
+            return motifTableValues;
+        }
+    };
+
+
+    var getFeaturesForTable = function () {
+        if (_featuresForTable == null) {
+            errorHandler.logError({
+                "fileName": _moduleName,
+                "message": "motifLibrary must be created _featuresForTable = null"
+            });
+            return [];
+        } else {
+            return Object.values(_featuresForTable);
+        }
+    };
+
+
     var getUnitByName = function (motifName) {
-        if (motifIn(motifName)) {
+        if (inLibrary(motifName)) {
             if (_library[motifName].status == "promised") {
-                errorHandler.logError({"fileName": _fileName, "message": "Motif status: promised. The result" +
+                errorHandler.logError({"fileName": _moduleName, "message": "Motif status: promised. The result" +
                 " will be updated right after promise completion."});
             } else {
                 return _library[motifName];
             }
         } else {
-            errorHandler.logError({"fileName": _fileName, "message": "motif not in the library"});
+            errorHandler.logError({"fileName": _moduleName, "message": "motif not in the library"});
         }
+    };
+
+
+    var getMotifFeaturesForTable = function (motifName) {
+        return _featuresForTableLibrary[motifName];
     };
 
 
@@ -82,10 +129,12 @@ var motifLibrary = (function () {
 
 
     return {
+        create: create,
         showLibrary: showLibrary,
         addUnit: addUnit,
         getUserRequestedUnits: getUserRequestedUnits,
-        getUnitByName: getUnitByName,
-        create: create
+        getMotifFeaturesForTable: getMotifFeaturesForTable,
+        getFeaturesForTable: getFeaturesForTable
+
     };
 }());

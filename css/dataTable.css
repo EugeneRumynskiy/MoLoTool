@@ -1,3 +1,9 @@
+
+td > img {
+    height: 30px;
+    width: 210px;
+}
+
 td.details-control {
     background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
     cursor: pointer;
