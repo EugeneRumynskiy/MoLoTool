@@ -1,0 +1,107 @@
+// from navigationBar.scss
+$nav-line-height: 40px;
+
+// Options
+$sidebar-initial-width: 3.5rem;
+$navColor: #2680F3;
+//#2680F3;
+
+// Sidebar
+
+.nav-sidebar {
+  position: absolute;
+  top: $nav-line-height * 2;
+  left: 0;
+  height: 100%;
+  z-index: 2;
+
+  > nav {
+    width: $sidebar-initial-width;
+    height: 100%;
+    background: $navColor;
+    color: white;
+    transition: all 300ms ease;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #333;
+
+    // SIDEBAR EXPAND
+    &:hover {
+      width: $sidebar-initial-width * 4;
+    }
+
+    * {
+      user-select: none;
+    }
+
+    // SIDEBAR MENU
+    > ul {
+      display: table;
+      width: $sidebar-initial-width * 4;
+
+      // SIDEBAR MENU ITEM
+      > li {
+        display: table-row;
+        background: darken($navColor, 10%);
+        cursor: pointer;
+
+        > a {
+          padding: 10px 10px;
+          display: inline-block;
+          color: white;
+          font-weight: 500;
+          text-align: center;
+          text-decoration: none;
+
+          > .caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin: 8px 0 2px 0;
+
+            border-top: 4px solid #A7A7A7;
+            border-bottom: 4px transparent;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+
+            vertical-align: top;
+            content: "";
+          }
+        }
+
+        &:hover {
+          background: lighten($navColor, 10%);
+        }
+
+        &:active {
+          background: lighten($navColor, 20%);
+        }
+
+        > div {
+          height: $sidebar-initial-width;
+          line-height: $sidebar-initial-width;
+          display: table-cell;
+
+          // ICON
+          &:nth-child(1) {
+            width: $sidebar-initial-width;
+            text-align: center;
+          }
+
+          // DESCRIPTION
+          &:nth-child(2) {
+            width: $sidebar-initial-width * 3;
+            text-align: left;
+            padding-left: $sidebar-initial-width / 5;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Media for larger devices */
+@media screen and (min-width: 800px) {
+  .nav-sidebar {
+    top: $nav-line-height * 1;
+  }
+}

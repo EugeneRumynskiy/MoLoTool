@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Quicksand', 'Open Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  background: radial-gradient(ellipse at bottom left, rgba(104,128,138,0.4) 10%, rgba(138,114,76,0) 40%),
+  linear-gradient(to bottom, rgba(57,173,219,.25), rgba(42,60,87,0.4)), linear-gradient(135deg, #670d10, #092756);
+}
+
+// SIDEBAR
+
+$navW: 3.5rem;
+$navColor: #2680F3;
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $navW;
+  height: 100%;
+  background: $navColor;
+  transition: all 300ms ease;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0px 0px 10px #333;
+
+  // SIDEBAR EXPAND
+  &:hover {
+    width: $navW * 4;
+  }
+
+  * {
+    user-select: none;
+  }
+
+  // SIDEBAR MENU
+  > ul {
+    display: table;
+    width: $navW * 4;
+
+    // SIDEBAR MENU ITEM
+    > li {
+      display: table-row;
+      background: darken($navColor, 10%);
+      cursor: pointer;
+
+      &:hover {
+        background: lighten($navColor, 10%);
+      }
+
+      &:active {
+        background: lighten($navColor, 20%);
+      }
+
+      > div {
+        height: $navW;
+        line-height: $navW;
+        display: table-cell;
+
+        // ICON
+        &:nth-child(1) {
+          width: $navW;
+          text-align: center;
+        }
+
+        // DESCRIPTION
+        &:nth-child(2) {
+          width: $navW * 3;
+          text-align: left;
+          padding-left: $navW / 5;
+        }
+      }
+    }
+  }
+}
+
+// DESKTOP
+
+.desktop {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1rem 1rem $navW + 1rem;
+  transition: all 500ms ease;
+  overflow: auto;
+
+  // INSIDE STYLING
+  h1 {
+    margin: 1rem 0;
+    font-weight: 300;
+
+    &:nth-child(1) {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    font-weight: 300;
+    text-align: justify;
+    margin: 0 0 1rem 0;
+  }
+}
+
+#one {
+  background: radial-gradient(ellipse at bottom left, rgba(104,128,138,0.4) 10%, rgba(138,114,76,0) 40%), linear-gradient(to bottom, rgba(57,173,219,.25), rgba(42,60,87,0.4)), linear-gradient(135deg, #670d10, #092756);
+}
+#two {
+  background: linear-gradient(135deg, #723362, #9d223c);
+}
+#three {
+  background: linear-gradient(135deg,  #2c539e, #63967d);
+}
+#four {
+  background: linear-gradient(135deg, rgba(244,226,156,0) 0%,rgba(59,41,58,1) 100%), linear-gradient(to right, rgba(244,226,156,1) 0%,rgba(130,96,87,1) 100%);
+}
+#five {
+  background: linear-gradient(45deg, rgba(194, 233, 221, 0.5) 1%, rgba(104, 119, 132, 0.5) 100%), linear-gradient(-45deg, #494d71 0%, rgba(217, 230, 185, 0.5) 80%);
+}

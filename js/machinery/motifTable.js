@@ -30,7 +30,6 @@ var motifTable = (function () {
     };
 
 
-
     var createTable = function () {
         var tableObject = function () {
             return {

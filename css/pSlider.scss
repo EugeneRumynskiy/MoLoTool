@@ -1,0 +1,46 @@
+.sliderBox {
+  padding: 10px;
+  height: 140px;
+
+  .inputBox {
+    position: relative;
+    left: 5px;
+    margin-top: 50px;
+
+    .inputUnit{
+      display: inline-block;
+      width: 240px;
+
+      .label {
+        left: 5px;
+        width: 110px;
+      }
+
+      .input {
+        position: relative;
+        left: 5px;
+        border: 5px solid white;
+        border-radius: 5px;
+        color:black;
+        font-weight:bold;
+        width: 80px;
+      }
+    }
+  }
+}
+
+.noUi-pips{
+  color: var(--slider-pips-col);
+}
+
+.noUi-pips-large{
+  color: var(--slider-pips-col);
+}
+
+.noUi-marker{
+  background: var(--slider-marker-bg);
+}
+
+.noUi-connect{
+  background: var(--slider-connect-bg);
+}

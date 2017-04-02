@@ -1,45 +1,77 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
+
+// from navigationBar.scss
+$nav-line-height: 40px;
+
+// from sidenav.scss
+$sidebar-initial-width: 3.5rem;
+
+// Options
+
+
 :root {
-  --main-bg-color: #9AB87A;
+  --main-bg-color:#9AB87A ;
+
   --hoover-bg-color: #436449;
   --active-bg-color: #436449;
+
   --button-bg-color: #537258;
   --button-color: white;
+
   --search-bg-color: #537258;
   --search-color: white;
-  --slider-connect-bg: #537258;
+
+  --slider-connect-bg:#537258;
   --slider-pips-col: #0F0A0A;
   --slider-marker-bg: #0F0A0A;
+
   --motif-title-bg: #F8F991;
   --motif-title-color: black;
-  --tooltip-container-bg: #F8F991; }
+
+  --tooltip-container-bg: #F8F991;
+}
 
 html {
-  height: 100%; }
+  height: 100%;
+}
 
 body {
   height: 100%;
   margin: 0;
-  background-color: var(--main-bg-color); }
+  background-color: var(--main-bg-color);
+}
 
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .interface-component {
-  padding: 0 10px 0 10px;
-  margin-left: 3.5rem;
+  margin-left: $sidebar-initial-width;
 }
 
 .button, #pValueSlider {
-  border: 0 solid #4CAF50; }
+  border: 0 solid #4CAF50;
+}
 
-#sequence-input, #result, #tooltip-container {
-  border: 2px solid black; }
+#sequence-input, #result, #tooltip-container{
+  border: 2px solid black;
+}
 
+.interface-component {
+  padding: 0 10px 0 10px;
+}
 
 .round {
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
-/*# sourceMappingURL=mainPage.css.map */
+
+
+
+
+
+
+
+

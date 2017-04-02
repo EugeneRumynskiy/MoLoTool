@@ -71,10 +71,6 @@ var uiBuilder = (function () {
                 $target = $("#" + $source.attr("applyToId"));
             $target.toggle();
         });
-
-
-
-
     };
 
 
@@ -87,9 +83,10 @@ var uiBuilder = (function () {
             .on( 'mouse' + 'enter', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
-                    var start = rowData.startPosition, finish = rowData.finishPosition,
+                    var start = rowData["Start Position"], finish = rowData["Finish Position"],
                         segment,
-                        firstID = start, lastID;
+                        firstID = start,
+                        lastID;
 
                     while (start <= finish) {
                         segment = $result.children('[start=' + start + ']');
@@ -111,9 +108,10 @@ var uiBuilder = (function () {
             .on( 'mouse' + 'leave', 'td', function () {
                 var rowData = table.row( this ).data();
                 if (rowData  != undefined){
-                    var start = rowData.startPosition, finish = rowData.finishPosition,
+                    var start = rowData["Start Position"], finish = rowData["Finish Position"],
                         segment,
-                        firstID = start, lastID;
+                        firstID = start,
+                        lastID;
 
                     while (start <= finish) {
                         segment = $result.children('[start=' + start + ']');

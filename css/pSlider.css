@@ -1,53 +1,35 @@
 .sliderBox {
-    padding: 10px;
-    height: 140px;
-}
-
-.inputBox {
+  padding: 10px;
+  height: 140px; }
+  .sliderBox .inputBox {
     position: relative;
     left: 5px;
-    margin-top: 50px;
-}
+    margin-top: 50px; }
+    .sliderBox .inputBox .inputUnit {
+      display: inline-block;
+      width: 240px; }
+      .sliderBox .inputBox .inputUnit .label {
+        left: 5px;
+        width: 110px; }
+      .sliderBox .inputBox .inputUnit .input {
+        position: relative;
+        left: 5px;
+        border: 5px solid white;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        width: 80px; }
 
-.inputUnit{
-    display: inline-block;
-    width: 240px;
-}
+.noUi-pips {
+  color: var(--slider-pips-col); }
 
-.label {
-    left: 5px;
-    width: 110px;
-}
+.noUi-pips-large {
+  color: var(--slider-pips-col); }
 
-.input {
-    position: relative;
-    left: 5px;
-    border: 5px solid white;
-    border-radius: 5px;
-    color:black;
-    font-weight:bold;
-    width: 80px;
-}
+.noUi-marker {
+  background: var(--slider-marker-bg); }
 
-#linearSlider-input {
-    width: 100px;
-}
+.noUi-connect {
+  background: var(--slider-connect-bg); }
 
-#log-slider{
-}
-
-.noUi-pips{
-    color: var(--slider-pips-col);
-}
-
-.noUi-pips-large{
-    color: var(--slider-pips-col);
-}
-
-.noUi-marker{
-    background: var(--slider-marker-bg);
-}
-
-.noUi-connect{
-    background: var(--slider-connect-bg);
-}
+/*# sourceMappingURL=pSlider.css.map */
