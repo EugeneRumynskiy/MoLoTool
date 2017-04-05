@@ -1,16 +1,4 @@
-// Options
-
-$primaryMenuBackground: #fafafa;
-$secondaryMenuBackground: #ff8358;
-
-$primaryMenuText: #A7A7A7;
-$secondaryMenuText: #303030;
-
-$primaryBoxShadow: #DDDDDD;
-$secondaryBoxShadow: #ff8358;
-
-$nav-line-height: 40px;
-$subNavMinWidth: 150px;
+@import "utilities/variables";
 
 ul {
     list-style: none;
@@ -29,20 +17,20 @@ ul {
   z-index: 3;
 
   width: 100%;
-  height: $nav-line-height * 2;
+  height: $topNav-navLineHeight * 2;
   margin: 0 0 10px 0;
   padding: 0 10px;
   position: relative;
-  background: $primaryMenuBackground;
+  background: $topNav-primaryMenuBackground;
   font-family: "Lato", sans-serif;
-  box-shadow: 0 1px 1px 0 $primaryBoxShadow;
+  box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
   > .the-nav {
-    height: $nav-line-height * 2;
+    height: $topNav-navLineHeight * 2;
   }
 }
 
 .nav {
-  height: $nav-line-height;
+  height: $topNav-navLineHeight;
   /* Dropdown */
   > li {
     float: left;
@@ -52,7 +40,7 @@ ul {
     > a {
       padding: 10px 10px;
       display: inline-block;
-      color: $primaryMenuText;
+      color: $topNav-primaryMenuText;
       font-weight: 500;
       text-align: center;
       text-decoration: none;
@@ -78,16 +66,16 @@ ul {
       position: absolute;
       display: none;
       width: 180px;
-      min-width: $subNavMinWidth;
-      box-shadow: 0 1px 1px 0 $primaryBoxShadow;
-      background-color: $primaryMenuBackground;
+      min-width: $topNav-subNavMinWidth;
+      box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
+      background-color: $topNav-primaryMenuBackground;
       z-index: 1;
       border-radius: 5px;
 
       >li a {
         display: block;
         padding: 10px 10px;
-        color: $primaryMenuText;
+        color: $topNav-primaryMenuText;
         text-decoration: none;
       }
     }
@@ -108,8 +96,8 @@ ul {
       border-radius: 5px;
       outline: none;
 
-      background: $primaryMenuBackground;  //url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-      color: $secondaryMenuText;
+      background: $topNav-primaryMenuBackground;  //url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+      color: $topNav-secondaryMenuText;
       font-size: 15px;
     }
   }
@@ -136,9 +124,9 @@ ul {
 }
 
 .nav > li > .sub-nav > li:hover a{
-  background: $secondaryMenuBackground;
-  box-shadow: 0 1px 1px 0 $secondaryBoxShadow;
-  color: $primaryMenuBackground;
+  background: $topNav-secondaryMenuBackground;
+  box-shadow: 0 1px 1px 0 $topNav-secondaryBoxShadow;
+  color: $topNav-primaryMenuBackground;
   border-radius: 5px;
 }
 //////////////////
@@ -150,7 +138,8 @@ ul {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-.top-second {top: $nav-line-height}
+.top-second {top: $topNav-navLineHeight
+}
 .top-first {top: 0;}
 
 //////////////////
@@ -193,11 +182,11 @@ ul {
 /* Media for larger devices */
 @media screen and (min-width: 800px) {
   .nav-bar {
-    height: $nav-line-height;
+    height: $topNav-navLineHeight;
 
     > .the-nav {
       min-width: unset;
-      height: $nav-line-height;
+      height: $topNav-navLineHeight;
 
       >.top-first {
         position: static;
