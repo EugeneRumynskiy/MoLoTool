@@ -1,3 +1,57 @@
+#motif-list-cmp {
+  /*Positioning*/
+  /* Default media < 800px - two line menu */
+  margin-top: 80px; }
+  #motif-list-cmp #motif-list {
+    height: 80px;
+    overflow-y: scroll;
+    margin-top: 10px; }
+    #motif-list-cmp #motif-list .motif-container {
+      display: inline-block; }
+      #motif-list-cmp #motif-list .motif-container .motif-title {
+        display: inline-block;
+        padding: 4px;
+        margin: 4px;
+        background-color: #F8F991;
+        border-radius: 10px;
+        border: 1px solid black;
+        font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
+        font-size: 16px;
+        color: black; }
+      #motif-list-cmp #motif-list .motif-container .motif-title:hover {
+        cursor: pointer;
+        cursor: hand; }
 
+#motif-list-selected-cmp #motif-list-selected {
+  display: inline-block;
+  margin-top: 20px;
+  width: 100%; }
+  #motif-list-selected-cmp #motif-list-selected .chosen-motif {
+    display: inline-block;
+    margin: 0 10px 0 10px;
+    background-color: #F8F991;
+    border-radius: 5px;
+    padding: 2px 8px 2px 2px; }
+    #motif-list-selected-cmp #motif-list-selected .chosen-motif .motif-title {
+      display: inline-block;
+      padding: 4px;
+      margin: 4px;
+      background-color: #F8F991;
+      border-radius: 10px;
+      border: 1px solid black;
+      font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
+      font-size: 16px;
+      color: black; }
+  #motif-list-selected-cmp #motif-list-selected .motif-result-hover {
+    background-color: salmon; }
+#motif-list-selected-cmp #motif-list-selected:empty {
+  display: none; }
+
+/* Media for larger devices */
+@media screen and (min-width: 800px) {
+  #motif-list-cmp {
+    /*Positioning*/
+    /* Default media > 800px - one line menu */
+    margin-top: 40px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */

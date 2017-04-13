@@ -15,12 +15,12 @@ ul {
 /* Nav-bar Styles */
 .nav-bar {
   z-index: 3;
-
   width: 100%;
   height: $topNav-navLineHeight * 2;
+  top: 0;
   margin: 0 0 10px 0;
   padding: 0 10px;
-  position: relative;
+  position: fixed;
   background: $topNav-primaryMenuBackground;
   font-family: "Lato", sans-serif;
   box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;

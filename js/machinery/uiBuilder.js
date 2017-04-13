@@ -3,9 +3,10 @@ var uiBuilder = (function () {
         _eventHandler = undefined;
 
 
-    var setEventHandlerTo = function (eventHandler) {
+    var setUIEventHandlerTo = function (eventHandler) {
         _eventHandler = eventHandler;
     };
+
 
     var handleEvent = function () {
         _eventHandler();
@@ -13,7 +14,7 @@ var uiBuilder = (function () {
 
 
     var buildUI = function () {
-        setEventHandlerTo(motifHandler.handleMotifs);
+        setUIEventHandlerTo(motifHandler.handleMotifs);
 
         motifLibrary.create(handleEvent);
         colorPicker.init(handleEvent);
@@ -133,7 +134,6 @@ var uiBuilder = (function () {
 
     var buildExternalSliderComponent = function () {
         pSlider.setEventHandlerTo(handleEvent);
-
     };
 
 

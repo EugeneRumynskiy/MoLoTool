@@ -1,7 +1,5 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
-
-// from navigationBar.scss
-$nav-line-height: 40px;
+@import "utilities/variables";
 
 // from sidenav.scss
 $sidebar-initial-width: 3.5rem;
@@ -10,8 +8,6 @@ $sidebar-initial-width: 3.5rem;
 
 
 :root {
-  --main-bg-color:#9AB87A ;
-
   --hoover-bg-color: #436449;
   --active-bg-color: #436449;
 
@@ -38,7 +34,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  background-color: var(--main-bg-color);
+  background-color: $main-bg-color;
 }
 
 * {
@@ -48,7 +44,7 @@ body {
 }
 
 .interface-component {
-  margin-left: $sidebar-initial-width;
+  margin-left: $sideNav-initialWidth;
 }
 
 .button, #pValueSlider {

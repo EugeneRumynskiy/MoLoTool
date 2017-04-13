@@ -37,7 +37,7 @@
     margin-top: 10px;
 }
 
-#motif-list-selected{
+#motif-list-selected-cmp{
     display: inline-block;
     overflow-y: scroll;
     margin-top: 20px;
@@ -45,7 +45,7 @@
     width: 100%;
 }
 
-#motif-list-selected:empty{
+#motif-list-selected-cmp:empty{
     display: none;
 }
 

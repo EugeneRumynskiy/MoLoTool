@@ -1,6 +1,5 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
 :root {
-  --main-bg-color: #9AB87A;
   --hoover-bg-color: #436449;
   --active-bg-color: #436449;
   --button-bg-color: #537258;
@@ -20,7 +19,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  background-color: var(--main-bg-color); }
+  background-color: #9AB87A; }
 
 * {
   -webkit-box-sizing: border-box;
@@ -28,9 +27,7 @@ body {
   box-sizing: border-box; }
 
 .interface-component {
-  padding: 0 10px 0 10px;
-  margin-left: 3.5rem;
-}
+  margin-left: 4rem; }
 
 .button, #pValueSlider {
   border: 0 solid #4CAF50; }
@@ -38,6 +35,8 @@ body {
 #sequence-input, #result, #tooltip-container {
   border: 2px solid black; }
 
+.interface-component {
+  padding: 0 10px 0 10px; }
 
 .round {
   border-radius: 5px; }
