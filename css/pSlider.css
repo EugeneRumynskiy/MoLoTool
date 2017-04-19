@@ -1,6 +1,6 @@
 .sliderBox {
   padding: 10px;
-  height: 140px; }
+  height: 120px; }
   .sliderBox .inputBox {
     position: relative;
     left: 5px;
@@ -21,15 +21,15 @@
         width: 80px; }
 
 .noUi-pips {
-  color: #0F0A0A; }
+  color: #797979; }
 
 .noUi-pips-large {
-  color: #0F0A0A; }
+  color: #797979; }
 
 .noUi-marker {
-  background: #0F0A0A; }
+  background: #797979; }
 
 .noUi-connect {
-  background: #537258; }
+  background: #a3a3a3; }
 
 /*# sourceMappingURL=pSlider.css.map */

@@ -2,13 +2,13 @@
 $topNav-navLineHeight: 40px;
 $topNav-subNavMinWidth: 150px;
 
-$topNav-primaryMenuBackground: #fafafa;
+$topNav-primaryMenuBackground: #ededf2;
 $topNav-secondaryMenuBackground: #ff8358;
 
-$topNav-primaryMenuText: #A7A7A7;
-$topNav-secondaryMenuText: #303030;
+$topNav-primaryMenuText: #797979;
+$topNav-secondaryMenuText: #797979;
 
-$topNav-primaryBoxShadow: #DDDDDD;
+$topNav-primaryBoxShadow: white;
 $topNav-secondaryBoxShadow: #ff8358;
 
 //nav-sidebar
@@ -16,16 +16,19 @@ $sideNav-initialWidth: 4.0rem;
 $sideNav-mainColor: #2680F3;
 
 //motif titles
-$motif-title-bg: #F8F991;
+$motif-title-bg: white;
 $motif-title-color: black;
+$motif-in-result-bg: #dadada;
+$motif-in-result-round-bg: white;
+$motif-selected-on-result-hover: salmon;
 
 //main page
-$main-bg-color:#9AB87A;
+$main-bg-color: #dadada;
 $search-color: white;
 
 //P-slider slider
-$slider-pips-col: #0F0A0A;
-$slider-connect-bg:#537258;
-$slider-marker-bg: #0F0A0A;
+$slider-connect-bg: #a3a3a3;
+$slider-pips-col: #797979;
+$slider-marker-bg: #797979;
 
-$tooltip-container-bg: #F8F991;
+$tooltip-container-bg: white;

@@ -1,7 +1,7 @@
 #motif-list-cmp {
   /*Positioning*/
   /* Default media < 800px - two line menu */
-  margin-top: 80px; }
+  margin-top: 90px; }
   #motif-list-cmp #motif-list {
     height: 80px;
     overflow-y: scroll;
@@ -12,7 +12,7 @@
         display: inline-block;
         padding: 4px;
         margin: 4px;
-        background-color: #F8F991;
+        background-color: white;
         border-radius: 10px;
         border: 1px solid black;
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
@@ -28,20 +28,25 @@
   width: 100%; }
   #motif-list-selected-cmp #motif-list-selected .chosen-motif {
     display: inline-block;
-    margin: 0 10px 0 10px;
-    background-color: #F8F991;
+    margin: 0 10px 10px 10px;
+    background-color: #dadada;
     border-radius: 5px;
     padding: 2px 8px 2px 2px; }
     #motif-list-selected-cmp #motif-list-selected .chosen-motif .motif-title {
       display: inline-block;
       padding: 4px;
       margin: 4px;
-      background-color: #F8F991;
+      vertical-align: middle;
+      background-color: white;
       border-radius: 10px;
-      border: 1px solid black;
+      border: none;
       font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
       font-size: 16px;
       color: black; }
+    #motif-list-selected-cmp #motif-list-selected .chosen-motif .sp-replacer {
+      border-radius: inherit;
+      border: none;
+      background-color: white; }
   #motif-list-selected-cmp #motif-list-selected .motif-result-hover {
     background-color: salmon; }
 #motif-list-selected-cmp #motif-list-selected:empty {
@@ -52,6 +57,6 @@
   #motif-list-cmp {
     /*Positioning*/
     /* Default media > 800px - one line menu */
-    margin-top: 40px; } }
+    margin-top: 50px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */

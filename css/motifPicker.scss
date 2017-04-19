@@ -1,3 +1,4 @@
+/*
 @import "utilities/variables";
 
 .motif-container{
@@ -6,7 +7,7 @@
 
 .chosen-motif {
   margin: 0 10px 0 10px;
-  background-color: #F8F991;
+  background-color: $motif-in-result-bg;
   border-radius: 5px;
   padding: 2px 8px 2px 2px;
 }
@@ -30,7 +31,7 @@
 }
 
 .motif-result-hover {
-  background-color: salmon;
+  background-color: $motif-selected-on-result-hover;
 }
 
 #motif-list {
@@ -49,4 +50,4 @@
 
 #motif-list-selected-cmp:empty{
   display: none;
-}
+}*/
