@@ -1,3 +1,5 @@
+@import "utilities/variables";
+
 .sliderBox {
   padding: 10px;
   height: 140px;
@@ -30,17 +32,17 @@
 }
 
 .noUi-pips{
-  color: var(--slider-pips-col);
+  color: $slider-pips-col;
 }
 
 .noUi-pips-large{
-  color: var(--slider-pips-col);
+  color: $slider-pips-col;
 }
 
 .noUi-marker{
-  background: var(--slider-marker-bg);
+  background: $slider-marker-bg;
 }
 
 .noUi-connect{
-  background: var(--slider-connect-bg);
+  background: $slider-connect-bg;
 }

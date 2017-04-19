@@ -1,42 +1,52 @@
-.motif-container {
-  display: inline-block; }
+@import "utilities/variables";
+
+.motif-container{
+  display: inline-block;
+}
 
 .chosen-motif {
   margin: 0 10px 0 10px;
   background-color: #F8F991;
   border-radius: 5px;
-  padding: 2px 8px 2px 2px; }
+  padding: 2px 8px 2px 2px;
+}
 
 .motif-title {
   display: inline-block;
   padding: 4px;
   margin: 4px;
-  background-color: #F8F991;
+
+  background-color: $motif-title-bg;
   border-radius: 10px;
   border: 1px solid black;
+
   font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
   font-size: 16px;
-  color: black; }
+  color: $motif-title-color;
+}
 
 .motif-title:hover {
-  cursor: pointer;
-  cursor: hand; }
+  cursor: pointer; cursor: hand;
+}
 
 .motif-result-hover {
-  background-color: salmon; }
+  background-color: salmon;
+}
 
 #motif-list {
   height: 80px;
   overflow-y: scroll;
-  margin-top: 10px; }
+  margin-top: 10px;
+}
 
-#motif-list-selected-cmp {
+#motif-list-selected-cmp{
   display: inline-block;
   overflow-y: scroll;
   margin-top: 20px;
-  width: 100%; }
 
-#motif-list-selected-cmp:empty {
-  display: none; }
+  width: 100%;
+}
 
-/*# sourceMappingURL=motifPicker.css.map */
+#motif-list-selected-cmp:empty{
+  display: none;
+}

@@ -1,18 +1,4 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
-:root {
-  --hoover-bg-color: #436449;
-  --active-bg-color: #436449;
-  --button-bg-color: #537258;
-  --button-color: white;
-  --search-bg-color: #537258;
-  --search-color: white;
-  --slider-connect-bg: #537258;
-  --slider-pips-col: #0F0A0A;
-  --slider-marker-bg: #0F0A0A;
-  --motif-title-bg: #F8F991;
-  --motif-title-color: black;
-  --tooltip-container-bg: #F8F991; }
-
 html {
   height: 100%; }
 

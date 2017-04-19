@@ -1,25 +1,40 @@
-#tooltip-container {
+@import "utilities/variables";
+
+#tooltip-container{
   width: 100%;
   height: 50px;
+
   padding: 5px;
   margin-top: 5px;
-  background-color: #F8F991;
+
+  background-color: $tooltip-container-bg;
   border-bottom: dashed 1px;
-  vertical-align: middle; }
+
+  vertical-align: middle;
+}
 
 .segment .tooltip {
   background: #1496bb;
   color: #fff;
+
   display: inline;
   vertical-align: top;
-  overflow: auto; }
 
-.tooltip {
+  overflow: auto;
+}
+
+.tooltip{
   text-align: center;
   vertical-align: middle;
-  font-size: 26px; }
+  font-size: 26px;
+}
+
 
 /* This bridges the gap so you can mouse into the tooltip without it disappearing */
+.segment .tooltip:before {
+
+}
+
 /* CSS Triangles - see Trevor's post */
 .segment .tooltip:after {
   /*border-left: solid transparent 10px;*/
@@ -30,7 +45,8 @@
   /*height: 0;*/
   /*left: 50%;*/
   /*margin-left: -13px;*/
-  /*width: 0;*/ }
+  /*width: 0;*/
+}
 
 .segment:hover .tooltip {
   /*opacity: 1;*/
@@ -39,6 +55,5 @@
   /*-moz-transform: translateY(0px);*/
   /*-ms-transform: translateY(0px);*/
   /*-o-transform: translateY(0px);*/
-  /*transform: translateY(0px);*/ }
-
-/*# sourceMappingURL=resultContainer.css.map */
+  /*transform: translateY(0px);*/
+}

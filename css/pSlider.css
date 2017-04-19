@@ -21,15 +21,15 @@
         width: 80px; }
 
 .noUi-pips {
-  color: var(--slider-pips-col); }
+  color: #0F0A0A; }
 
 .noUi-pips-large {
-  color: var(--slider-pips-col); }
+  color: #0F0A0A; }
 
 .noUi-marker {
-  background: var(--slider-marker-bg); }
+  background: #0F0A0A; }
 
 .noUi-connect {
-  background: var(--slider-connect-bg); }
+  background: #537258; }
 
 /*# sourceMappingURL=pSlider.css.map */
