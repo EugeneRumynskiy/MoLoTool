@@ -42,9 +42,10 @@
     .chosen-motif {
       display: inline-block;
       margin: 0 10px 10px 10px;
-      background-color: $motif-in-result-bg;
-      border-radius: 5px;
       padding: 2px 8px 2px 2px;
+      border-radius: 10px;
+      border: 1px solid black;
+      background-color: $motif-in-result-bg;
 
       .motif-title {
         display: inline-block;
@@ -53,8 +54,7 @@
         vertical-align: middle;
 
         background-color: $motif-in-result-round-bg;
-        border-radius: 10px;
-        border: none; // 1px solid black;
+        border: none;
 
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
         font-size: 16px;
@@ -63,7 +63,7 @@
 
       .sp-replacer {
         border-radius: inherit;
-        border: none; //1px solid black;
+        border: none;
         background-color: $motif-in-result-round-bg;
       }
     }
