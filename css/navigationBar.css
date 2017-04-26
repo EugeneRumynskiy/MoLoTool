@@ -65,7 +65,8 @@ ul {
         color: #797979;
         text-decoration: none; }
   .nav > .search-container {
-    padding: 10px 24px 10px 10px; }
+    padding: 10px 24px 10px 10px;
+    margin-left: 3.6rem; }
     .nav > .search-container > #search {
       display: inline-block;
       width: 320px;
@@ -82,11 +83,9 @@ ul {
 /* Active State */
 .nav > li:hover > a {
   color: #303030; }
-.nav > li:hover > a:active {
-  color: red; }
-.nav > li:hover > a > .caret {
-  border-top-color: #303030;
-  border-bottom-color: #303030; }
+  .nav > li:hover > a > .caret {
+    border-top-color: #303030;
+    border-bottom-color: #303030; }
 .nav > li:hover > .sub-nav {
   display: block; }
 
@@ -136,7 +135,7 @@ ul {
   .the-nav .top-first {
     position: absolute; }
     .the-nav .top-first > .search-container {
-      min-width: 380px; }
+      min-width: 500px; }
   .the-nav .top-second {
     position: relative; }
 

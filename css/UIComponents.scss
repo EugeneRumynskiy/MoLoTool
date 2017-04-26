@@ -1,39 +1,48 @@
 @import "utilities/variables";
 
-#motif-list-cmp {
-  /*Positioning*/
-  /* Default media < 800px - two line menu */
-  margin-top: 2 * $topNav-navLineHeight + 10px;
+.suggestions {
+  margin-top: 10px;
+  background-color: $topNav-primaryMenuBackground;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
+
+  .suggestion {
+    border-top: 1px solid white;
+    border-radius: 0;
+    padding: 2px;
+    margin: 2px;
+  }
+
   #motif-list {
-    height: 80px;
-    overflow-y: scroll;
-    margin-top: 10px;
-
     .motif-container {
-      display: inline-block;
-
       .motif-title {
         display: inline-block;
         padding: 4px;
         margin: 4px;
 
         background-color: $motif-title-bg;
-        border-radius: 10px;
         border: 1px solid black;
+        border-radius: 10px;
 
-        font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
+        font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
         font-size: 16px;
         color: $motif-title-color;
       }
       .motif-title:hover {
-        cursor: pointer; cursor: hand;
+        cursor: pointer;
+        cursor: hand;
       }
+    }
 
+    div:first-child {
+      border-top: none;
     }
   }
 }
 
+
 #motif-list-selected-cmp {
+  min-height: 75px;
   #motif-list-selected {
     display: inline-block;
     margin-top: 20px;
@@ -75,14 +84,5 @@
 
   #motif-list-selected:empty{
     display: none;
-  }
-}
-
-/* Media for larger devices */
-@media screen and (min-width: 800px) {
-  #motif-list-cmp {
-    /*Positioning*/
-    /* Default media > 800px - one line menu */
-    margin-top: $topNav-navLineHeight + 10px;
   }
 }

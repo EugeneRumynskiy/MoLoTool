@@ -4,6 +4,12 @@
 // from sidenav.scss
 
 // Options
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -14,19 +20,11 @@ body {
   background-color: $main-bg-color;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.interface-component {
+.interface-area {
   margin-left: $sideNav-initialWidth;
+  margin-top: 2 * $topNav-navLineHeight + 10px;
 }
 
-.button, #pValueSlider {
-  border: 0 solid #4CAF50;
-}
 
 #sequence-input, #result, #tooltip-container{
   border: 2px solid black;
@@ -40,7 +38,14 @@ body {
   border-radius: 5px;
 }
 
-
+/* Media for larger devices */
+@media screen and (min-width: 800px) {
+  .interface-area {
+    /*Positioning*/
+    /* Default media > 800px - one line menu */
+    margin-top: $topNav-navLineHeight + 10px;
+  }
+}
 
 
 

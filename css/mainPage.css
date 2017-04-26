@@ -1,4 +1,9 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 html {
   height: 100%; }
 
@@ -7,16 +12,9 @@ body {
   margin: 0;
   background-color: #dadada; }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.interface-component {
-  margin-left: 4rem; }
-
-.button, #pValueSlider {
-  border: 0 solid #4CAF50; }
+.interface-area {
+  margin-left: 4rem;
+  margin-top: 90px; }
 
 #sequence-input, #result, #tooltip-container {
   border: 2px solid black; }
@@ -26,5 +24,12 @@ body {
 
 .round {
   border-radius: 5px; }
+
+/* Media for larger devices */
+@media screen and (min-width: 800px) {
+  .interface-area {
+    /*Positioning*/
+    /* Default media > 800px - one line menu */
+    margin-top: 50px; } }
 
 /*# sourceMappingURL=mainPage.css.map */

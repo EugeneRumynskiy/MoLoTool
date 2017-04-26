@@ -60,6 +60,7 @@
     <script src="js/machinery/motifLibrary.js"></script>
     <script src="js/machinery/uiBuilder.js"></script>
     <script src="js/machinery/resultContainer.js"></script>
+    <script src="js/machinery/combinations.js"></script>
 
 
     <link rel="stylesheet" href="css/mainPage.css">
@@ -72,133 +73,142 @@
     <link rel="stylesheet" href="css/navigationBar.css">
     <link rel="stylesheet" href="css/sidenav.css">
 
+    <!-- Search engine -->
+    <link rel="stylesheet" href="css/awesomplete.css">
+    <script src="js/awesomplete.js" async></script>
+
 </head>
 <body>
 <div>
-    <div class='nav-bar container'>
-        <nav class="the-nav clearfix">
-            <!-- Structure -->
-            <ul class="nav pull-left top-second">
-                <li class="dropdown">
-                    <a href="#">Export! <span class="icon octicon octicon-cloud-download"></span> <b class="caret"></b></a>
-                    <ul class="sub-nav">
-                        <li>
-                            <a href="#">Table</a>
-                            <a id="dtTest"></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Show <span class="icon octicon octicon-eye"></span> <b class="caret"></b></a>
-                    <ul class="sub-nav">
-                        <li><a class="show-button" applyToId="motif-list-cmp" href="#">Motifs</a></li>
-                        <li><a class="show-button" applyToId="sequence-input-cmp" href="#">Sequence input</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav pull-left top-first">
-                <li class="search-container">
-                    <span class="icon octicon octicon-search"></span>
-                    <input type="text" id="search" placeholder="Select motif..." autofocus>
-                </li>
-            </ul>
-            <ul class="nav pull-right top-second">
-                <li><a href="#">Help </a></li>
-                <li><a href="#">About </a></li>
-            </ul>
-        </nav>
-    </div>
+    <div class="nav-area">
+        <div class='nav-bar container'>
+            <nav class="the-nav clearfix">
+                <!-- Structure -->
+                <ul class="nav pull-left top-second">
+                    <li class="dropdown">
+                        <a href="#">Export! <span class="icon octicon octicon-cloud-download"></span> <b class="caret"></b></a>
+                        <ul class="sub-nav">
+                            <li>
+                                <a href="#">Table</a>
+                                <a id="dtTest"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Show <span class="icon octicon octicon-eye"></span> <b class="caret"></b></a>
+                        <ul class="sub-nav">
+                            <li><a class="show-button" applyToId="motif-list-cmp" href="#">Motifs</a></li>
+                            <li><a class="show-button" applyToId="sequence-input-cmp" href="#">Sequence input</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav pull-left top-first">
+                    <li class="search-container">
+                        <span class="icon octicon octicon-search"></span>
+                        <input type="text" id="search" placeholder="Select motif..." autofocus>
+                        <div class="suggestions">
+                            <div id='motif-list'></div>
+                            <div id="ifMore-container"></div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav pull-right top-second">
+                    <li><a href="#">Help </a></li>
+                    <li><a href="#">About </a></li>
+                </ul>
+            </nav>
+        </div>
 
-    <div class="nav-sidebar">
-        <nav>
-            <ul>
-                <li id="link-zero">
-                    <div></div>
+        <div class="nav-sidebar">
+            <nav>
+                <ul>
+                    <li id="link-zero">
+                        <div></div>
 
-                    <a>
+                        <a>
 
-                    </a>
-                </li>
-                <li id="link-one">
-                    <div>Save</div>
+                        </a>
+                    </li>
+                    <li id="link-one">
+                        <div>Save</div>
 
-                    <a>
-                        <span class="icon octicon octicon-cloud-download"></span>
-                    </a>
-                </li>
-                <li id="link-two">
-                    <div>Sequence</div>
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-two">
+                        <div>Sequence</div>
 
-                    <a class="show-button" applyToId="sequence-input-cmp" href="#">
-                        <span class="icon octicon octicon-eye"></span>
-                    </a>
-                </li>
-                <li id="link-three">
-                    <div>Slider</div>
+                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+                    </li>
+                    <li id="link-three">
+                        <div>Slider</div>
 
-                    <a class="show-button" applyToId="log-slider-cmp" href="#">
-                        <span class="icon octicon octicon-eye"></span>
-                    </a>
-                </li>
-                <li id="link-four">
-                    <div>Table</div>
+                        <a class="show-button" applyToId="log-slider-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+                    </li>
+                    <li id="link-four">
+                        <div>Table</div>
 
-                    <a>
-                        <span class="icon octicon octicon-cloud-download"></span>
-                    </a>
-                </li>
-                <li id="link-five">
-                    <div>Markup</div>
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-five">
+                        <div>Markup</div>
 
-                    <a>
-                        <span class="icon octicon octicon-cloud-download"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <div class="interface-component" id="motif-list-cmp">
-        <div id='motif-list'></div>
-    </div>
-
-    <div class="interface-component" id="sequence-input-cmp">
-        <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
-                  placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
-    </div>
-
-    <div class="interface-component" id="log-slider-cmp">
-        <div class="sliderBox">
-            <div id='log-slider' class='slider'></div>
-            <div class="inputBox">
-                <div class="inputUnit">
-                    <label for='logSlider-input' class='label'>-log10(P-value):</label>
-                    <input type='text' class='input' id="logSlider-input">
-                </div>
-                <div class="inputUnit">
-                    <label for='linearSlider-input' class='label'>P-value:</label>
-                    <input type='text' class='input' id="linearSlider-input">
-                </div>
-            </div>
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 
+    <div class="interface-area">
+        <div class="interface-component" id="sequence-input-cmp">
+        <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
+                  placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+        </div>
 
-    <div id='motif-list-selected-cmp' class="interface-component">
-        <div id='motif-list-selected'></div>
+
+        <div class="interface-component" id="log-slider-cmp">
+            <div class="sliderBox">
+                <div id='log-slider' class='slider'></div>
+                <div class="inputBox">
+                    <div class="inputUnit">
+                        <label for='logSlider-input' class='label'>-log10(P-value):</label>
+                        <input type='text' class='input' id="logSlider-input">
+                    </div>
+                    <div class="inputUnit">
+                        <label for='linearSlider-input' class='label'>P-value:</label>
+                        <input type='text' class='input' id="linearSlider-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id='motif-list-selected-cmp' class="interface-component">
+            <div id='motif-list-selected'></div>
+        </div>
+
+
+        <div class="interface-component">
+            <div id="tooltip-container" class="round"></div>
+            <div id="result" class="box round"></div>
+        </div>
+
+
+        <div class="interface-component">
+            <table id='motif-table' class="display cell-border compact" width="100%">
+            </table>
+        </div>
     </div>
-
-
-    <div class="interface-component">
-        <div id="tooltip-container" class="round"></div>
-        <div id="result" class="box round"></div>
-    </div>
-
-    <div class="interface-component">
-        <table id='motif-table' class="display cell-border compact" width="100%">
-        </table>
-    </div>
-
 </div>
 
 </body>

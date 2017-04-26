@@ -122,7 +122,6 @@ var motifLibrary = (function () {
     };
 
 
-
     var showLibrary = function () {
         console.log(_library);
     };

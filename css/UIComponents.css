@@ -1,62 +1,59 @@
-#motif-list-cmp {
-  /*Positioning*/
-  /* Default media < 800px - two line menu */
-  margin-top: 90px; }
-  #motif-list-cmp #motif-list {
-    height: 80px;
-    overflow-y: scroll;
-    margin-top: 10px; }
-    #motif-list-cmp #motif-list .motif-container {
-      display: inline-block; }
-      #motif-list-cmp #motif-list .motif-container .motif-title {
+.suggestions {
+  margin-top: 10px;
+  background-color: #ededf2;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0 white; }
+  .suggestions .suggestion {
+    border-top: 1px solid white;
+    border-radius: 0;
+    padding: 2px;
+    margin: 2px; }
+  .suggestions #motif-list .motif-container .motif-title {
+    display: inline-block;
+    padding: 4px;
+    margin: 4px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
+    font-size: 16px;
+    color: black; }
+  .suggestions #motif-list .motif-container .motif-title:hover {
+    cursor: pointer;
+    cursor: hand; }
+  .suggestions #motif-list div:first-child {
+    border-top: none; }
+
+#motif-list-selected-cmp {
+  min-height: 75px; }
+  #motif-list-selected-cmp #motif-list-selected {
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%; }
+    #motif-list-selected-cmp #motif-list-selected .chosen-motif {
+      display: inline-block;
+      margin: 0 10px 10px 10px;
+      padding: 2px 8px 2px 2px;
+      border-radius: 10px;
+      border: 1px solid black;
+      background-color: white; }
+      #motif-list-selected-cmp #motif-list-selected .chosen-motif .motif-title {
         display: inline-block;
         padding: 4px;
         margin: 4px;
+        vertical-align: middle;
         background-color: white;
-        border-radius: 10px;
-        border: 1px solid black;
+        border: none;
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
         font-size: 16px;
         color: black; }
-      #motif-list-cmp #motif-list .motif-container .motif-title:hover {
-        cursor: pointer;
-        cursor: hand; }
-
-#motif-list-selected-cmp #motif-list-selected {
-  display: inline-block;
-  margin-top: 20px;
-  width: 100%; }
-  #motif-list-selected-cmp #motif-list-selected .chosen-motif {
-    display: inline-block;
-    margin: 0 10px 10px 10px;
-    padding: 2px 8px 2px 2px;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: white; }
-    #motif-list-selected-cmp #motif-list-selected .chosen-motif .motif-title {
-      display: inline-block;
-      padding: 4px;
-      margin: 4px;
-      vertical-align: middle;
-      background-color: white;
-      border: none;
-      font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
-      font-size: 16px;
-      color: black; }
-    #motif-list-selected-cmp #motif-list-selected .chosen-motif .sp-replacer {
-      border-radius: inherit;
-      border: none;
-      background-color: white; }
-  #motif-list-selected-cmp #motif-list-selected .motif-result-hover {
-    background-color: salmon; }
-#motif-list-selected-cmp #motif-list-selected:empty {
-  display: none; }
-
-/* Media for larger devices */
-@media screen and (min-width: 800px) {
-  #motif-list-cmp {
-    /*Positioning*/
-    /* Default media > 800px - one line menu */
-    margin-top: 50px; } }
+      #motif-list-selected-cmp #motif-list-selected .chosen-motif .sp-replacer {
+        border-radius: inherit;
+        border: none;
+        background-color: white; }
+    #motif-list-selected-cmp #motif-list-selected .motif-result-hover {
+      background-color: salmon; }
+  #motif-list-selected-cmp #motif-list-selected:empty {
+    display: none; }
 
 /*# sourceMappingURL=UIComponents.css.map */
