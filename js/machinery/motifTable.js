@@ -79,7 +79,11 @@ var motifTable = (function () {
                 'copyHtml5',
                 'excelHtml5',
                 'csvHtml5',
-                'pdfHtml5',
+                {
+                    extend: 'pdfHtml5',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL'
+                },
                 {
                     text: 'My button',
                     action: function ( e, dt, node, config ) {

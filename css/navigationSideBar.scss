@@ -47,19 +47,9 @@
           text-align: center;
           text-decoration: none;
 
-          > .caret {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            margin: 8px 0 2px 0;
-
-            border-top: 4px solid #A7A7A7;
-            border-bottom: 4px transparent;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-
-            vertical-align: top;
-            content: "";
+          > .icon:hover {
+              background: lighten($sideNav-mainColor, 15%);
+              background-image: url('alternative_sprite.png');
           }
         }
 

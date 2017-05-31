@@ -70,6 +70,14 @@ var uiBuilder = (function () {
                 $target = $("#" + $source.attr("applyToId"));
             $target.toggle();
         });
+
+        $('body').click(function(e) {
+            if (e.target.id != "search" &&  e.target.className != "motif-title") {
+                if (!$(e.target).closest('.suggestions').length) {
+                    $(".suggestions").hide();
+                }
+            }
+        });
     };
 
 

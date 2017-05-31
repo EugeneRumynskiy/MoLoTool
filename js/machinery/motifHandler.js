@@ -22,6 +22,7 @@ var motifHandler = (function () {
             motif.setMotifValues(userRequestedMotifs[i]);
             sites = sites.concat(motif.findSites(sequence, pValue));
         }
+        console.log(sites, "sites found");
 
         motifTable.redrawTableWithSites(sites, primarySequence);
 

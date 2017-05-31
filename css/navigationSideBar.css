@@ -30,17 +30,9 @@
           font-weight: 500;
           text-align: center;
           text-decoration: none; }
-          .nav-sidebar > nav > ul > li > a > .caret {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            margin: 8px 0 2px 0;
-            border-top: 4px solid #A7A7A7;
-            border-bottom: 4px transparent;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            vertical-align: top;
-            content: ""; }
+          .nav-sidebar > nav > ul > li > a > .icon:hover {
+            background: #6eaaf7;
+            background-image: url("alternative_sprite.png"); }
         .nav-sidebar > nav > ul > li:hover {
           background: #569cf6; }
         .nav-sidebar > nav > ul > li:active {
@@ -62,4 +54,4 @@
   .nav-sidebar {
     top: 40px; } }
 
-/*# sourceMappingURL=sidenav.css.map */
+/*# sourceMappingURL=navigationSideBar.css.map */

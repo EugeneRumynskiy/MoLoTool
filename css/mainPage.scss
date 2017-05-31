@@ -1,7 +1,7 @@
 /* color palette http://paletton.com/#uid=30A0e0kmcsrbjzrhHuar+sQvap-*/
 @import "utilities/variables";
 
-// from sidenav.scss
+// from navigationSideBar.scss
 
 // Options
 * {
@@ -24,7 +24,6 @@ body {
   margin-left: $sideNav-initialWidth;
   margin-top: 2 * $topNav-navLineHeight + 10px;
 }
-
 
 #sequence-input, #result, #tooltip-container{
   border: 2px solid black;
