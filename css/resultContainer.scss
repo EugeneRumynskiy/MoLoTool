@@ -1,59 +1,56 @@
 @import "utilities/variables";
 
-#tooltip-container{
+#sequence-input {
+  font-family: "Courier New", "Times New Roman";
+  font-size: 23px;
+
   width: 100%;
-  height: 50px;
+  height: 100px;
 
-  padding: 5px;
-  margin-top: 5px;
+  background-color: #ffffff;
 
-  background-color: $tooltip-container-bg;
-  border-bottom: dashed 1px;
-
-  vertical-align: middle;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.segment .tooltip {
-  background: #1496bb;
-  color: #fff;
+#result {
+  font-family: "Courier New", "Times New Roman";
+  font-size: 23px;
 
-  display: inline;
-  vertical-align: top;
+  width: 100%;
+  height: 100px;
 
-  overflow: auto;
+  word-wrap: break-word;
+  overflow:auto;
+  word-break: break-all;
+
+  background-color: #ffffff;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.tooltip{
+.segment {
+  border-radius: 2px;
+
+  vertical-align: -4px;
   text-align: center;
-  vertical-align: middle;
-  font-size: 26px;
+  overflow: hidden;
 }
 
-
-/* This bridges the gap so you can mouse into the tooltip without it disappearing */
-.segment .tooltip:before {
-
+.highlighted {
+  border-top: solid salmon 4px;
+  border-bottom: solid salmon 4px;
 }
 
-/* CSS Triangles - see Trevor's post */
-.segment .tooltip:after {
-  /*border-left: solid transparent 10px;*/
-  /*border-right: solid transparent 10px;*/
-  /*border-top: solid #1496bb 10px;*/
-  /*bottom: -10px;*/
-  /*content: " ";*/
-  /*height: 0;*/
-  /*left: 50%;*/
-  /*margin-left: -13px;*/
-  /*width: 0;*/
+.last {
+  border-top: solid salmon 4px;
+  border-bottom: solid salmon 4px;
 }
 
-.segment:hover .tooltip {
-  /*opacity: 1;*/
-  /*pointer-events: auto;*/
-  /*-webkit-transform: translateY(0px);*/
-  /*-moz-transform: translateY(0px);*/
-  /*-ms-transform: translateY(0px);*/
-  /*-o-transform: translateY(0px);*/
-  /*transform: translateY(0px);*/
+.first {
+  border-top: solid salmon 4px;
+  border-bottom: solid salmon 4px;
 }

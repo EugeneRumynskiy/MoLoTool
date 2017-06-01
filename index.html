@@ -41,14 +41,14 @@
 
 
 
-    <script src="js/machinery/motifMath.js"></script>
+    <script src="js/machinery/calculations/motifMath.js"></script>
     <script src="js/nouislider.min.js"></script>
     <script src="js/machinery/AppContainer.js"></script>
 
-    <script src="js/machinery/errorHandler.js"></script>
+    <script src="js/machinery/calculations/errorHandler.js"></script>
 
     <script src="js/machinery/motifTable.js"></script>
-    <script src="js/machinery/segmentation.js"></script>
+    <script src="js/machinery/calculations/segmentation.js"></script>
     <script src="js/machinery/motif.js"></script>
     <script src="js/machinery/sequenceConstructor.js"></script>
 
@@ -60,10 +60,10 @@
     <script src="js/machinery/motifLibrary.js"></script>
     <script src="js/machinery/uiBuilder.js"></script>
     <script src="js/machinery/resultContainer.js"></script>
-    <script src="js/machinery/combinations.js"></script>
+    <script src="js/machinery/calculations/combinations.js"></script>
 
 
-    <link rel="stylesheet" href="css/mainPage.css">
+    <link rel="stylesheet" href="css/primaryComponentsSettings.css">
     <link rel="stylesheet" href="css/dataTable.css">
     <link rel="stylesheet" href="css/nouislider.min.css">
     <link rel="stylesheet" href="css/pSlider.css">
@@ -73,9 +73,6 @@
     <link rel="stylesheet" href="css/navigationTopBar.css">
     <link rel="stylesheet" href="css/navigationSideBar.css">
 
-    <!-- Search engine -->
-    <link rel="stylesheet" href="css/awesomplete.css">
-    <script src="js/awesomplete.js" async></script>
 
 </head>
 <body>
@@ -175,8 +172,11 @@
 
     <div class="interface-area">
         <div class="interface-component" id="sequence-input-cmp">
-        <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
-                  placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+            <a class="interface-button stretch-button" applyToId="sequence-input" href="#">
+                <span class="icon icon-medium octicon octicon-screen-full"></span>
+            </a>
+            <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
+                      placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
         </div>
 
 
@@ -203,7 +203,6 @@
 
 
         <div class="interface-component">
-            <div id="tooltip-container" class="round"></div>
             <div id="result" class="box round"></div>
         </div>
 

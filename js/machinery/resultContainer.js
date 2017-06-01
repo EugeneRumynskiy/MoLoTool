@@ -14,7 +14,7 @@ var resultContainer = (function () {
     };
 
     var buildUIComponent = function () {
-        tooltip.addTo(".segment");
+        supportTooltip.addTo(".segment");
     };
 
     var setExternalFocusObject = function (externalFocusObject) {
@@ -35,11 +35,10 @@ var resultContainer = (function () {
 
 
 
-var tooltip = (function () {
+var supportTooltip = (function () {
     var _moduleName = "tooltip",
         _element = "div",
         _className = "tooltip",
-        _target = "tooltip-container",
         _$hoveredMotifs = $("");
 
     var getElemById = function (id) {
@@ -59,9 +58,7 @@ var tooltip = (function () {
             return;
         } else {
             var segment = sequenceConstructor.findSegmentWith(this.getAttribute('start')),
-                tooltipElement = createElement(segment),
                 $motif, $motifList = $("#motif-list-selected");
-            getElemById(_target).append(tooltipElement);
 
             for (var i = 0; i < segment.sites.length; i++) {
                 $motif = $motifList.find(jq(segment.sites[i].motifName));
@@ -74,12 +71,8 @@ var tooltip = (function () {
 
 
     var mouseOutHandler = function () {
-        child = getElemById(_target).lastChild;
-        if (child != null) {
-            child.remove();
-            _$hoveredMotifs.removeClass("motif-result-hover");
-            _$hoveredMotifs = $("");
-        }
+        _$hoveredMotifs.removeClass("motif-result-hover");
+        _$hoveredMotifs = $("");
     };
 
 
@@ -97,7 +90,6 @@ var tooltip = (function () {
             tip = "empty";
 
         tooltipElement.textContent = tip;
-
 
         return tooltipElement;
     };

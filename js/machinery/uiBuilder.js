@@ -71,6 +71,7 @@ var uiBuilder = (function () {
             $target.toggle();
         });
 
+        //search bar usability
         $('body').click(function(e) {
             if (e.target.id != "search" &&  e.target.className != "motif-title") {
                 if (!$(e.target).closest('.suggestions').length) {
@@ -85,7 +86,7 @@ var uiBuilder = (function () {
         var $motifTableTBody = $('#motif-table').find('tbody'),
             $result = $("#result");
 
-
+        //highlight sequence
         $motifTableTBody
             .on( 'mouse' + 'enter', 'td', function () {
                 var rowData = table.row( this ).data();
@@ -144,7 +145,7 @@ var uiBuilder = (function () {
 
 
     var buildExternalResultContainerComponent = function () {
-        resultContainer.setExternalFocusObject(pSlider.isActive)
+        resultContainer.setExternalFocusObject(pSlider.isActive);
     };
 
 

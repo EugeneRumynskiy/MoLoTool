@@ -35,6 +35,5 @@ $(function() {
     uiBuilder.buildUI();
     motifHandler.handleMotifs();
 
-
     $('#motif-list').delay(8000).children().first().children().trigger("click");
 });

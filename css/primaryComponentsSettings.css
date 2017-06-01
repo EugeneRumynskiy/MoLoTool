@@ -16,11 +16,39 @@ body {
   margin-left: 4rem;
   margin-top: 90px; }
 
-#sequence-input, #result, #tooltip-container {
+#sequence-input, #result {
   border: 2px solid black; }
 
+.icon {
+  color: black; }
+
+.icon:hover {
+  color: #797979; }
+
+.icon:active {
+  color: #a3a3a3; }
+
+.icon-medium {
+  font-size: 32px; }
+
 .interface-component {
-  padding: 0 10px 0 10px; }
+  padding: 0 10px 0 10px;
+  margin-bottom: 15px; }
+
+.interface-button {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 0.333em;
+  padding: 0.5em 1em;
+  border: 1px solid #999;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.88em;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #e9e9e9; }
 
 .round {
   border-radius: 5px; }
@@ -32,4 +60,4 @@ body {
     /* Default media > 800px - one line menu */
     margin-top: 50px; } }
 
-/*# sourceMappingURL=mainPage.css.map */
+/*# sourceMappingURL=primaryComponentsSettings.css.map */
