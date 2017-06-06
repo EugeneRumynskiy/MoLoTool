@@ -30,17 +30,25 @@ body {
 
 
 
-.icon {
+.interface-button  {
   color: $icon-default-color;
 }
-.icon:hover {
+.interface-button:hover {
   color: $icon-hover-color;
 }
-.icon:active {
+.interface-button:active {
   color: $icon-active-color;
 }
+
 .icon-medium{
-  font-size: 32px;
+  font-size: 1em;
+}
+
+input.file_input_with_replacement {display: none;}
+input.file_input_replacement {
+  background: $button-bg;
+  padding: 10px;
+  border: none;
 }
 
 
@@ -62,7 +70,8 @@ body {
   color: black;
   white-space: nowrap;
   overflow: hidden;
-  background-color:#e9e9e9
+  background-color:#e9e9e9;
+  text-decoration: none;
 }
 
 .round {

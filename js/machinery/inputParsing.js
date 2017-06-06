@@ -2,6 +2,8 @@
  * Created by HOME on 18.01.2017.
  */
 var inputParsing = (function () {
+    var _fileName = "inputParsing";
+
     //Get input string without leading and ending whitespace characters (space, tab, no-break space, etc.)
     var getInputString = function () {
         return $('#sequence-input').val().trim();
