@@ -28,11 +28,30 @@ body {
   border: 2px solid black;
 }
 
-
-
-.interface-button  {
+.interface-button {
   color: $icon-default-color;
+  background-color:#e9e9e9;
+  border: 1px solid #999;
+  border-radius: 5px;
+
+  position: relative;
+  display: inline-block;
+
+  margin-right: 0.333em;
+  padding: 0.5em 1em;
+
+  cursor: pointer;
+  font-size: 0.88em;
+  white-space: nowrap;
+  overflow: hidden;
+
+  text-decoration: none;
+
+  >#fileInput {
+    height: 17px;
+  }
 }
+
 .interface-button:hover {
   color: $icon-hover-color;
 }
@@ -40,39 +59,11 @@ body {
   color: $icon-active-color;
 }
 
-.icon-medium{
-  font-size: 1em;
-}
-
-input.file_input_with_replacement {display: none;}
-input.file_input_replacement {
-  background: $button-bg;
-  padding: 10px;
-  border: none;
-}
-
-
 .interface-component {
   padding: 0 10px 0 10px;
   margin-bottom: 15px;
 }
 
-.interface-button {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  margin-right: 0.333em;
-  padding: 0.5em 1em;
-  border: 1px solid #999;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.88em;
-  color: black;
-  white-space: nowrap;
-  overflow: hidden;
-  background-color:#e9e9e9;
-  text-decoration: none;
-}
 
 .round {
   border-radius: 5px;

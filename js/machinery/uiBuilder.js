@@ -31,6 +31,7 @@ var uiBuilder = (function () {
         resultContainer.create();
         buildExternalResultContainerComponent();
 
+        fileUploader.create();
         $('#sequence-input').on('input', function () {
             handleEvent();
         });
