@@ -92,7 +92,6 @@ var inputParsing = (function () {
 
 
     return {
-        parseInput: parseInputString,
-        removeSeparators: removeSeparators
+        parseInput: parseInputString
     };
 }());

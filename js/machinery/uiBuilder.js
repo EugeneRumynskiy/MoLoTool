@@ -17,6 +17,7 @@ var uiBuilder = (function () {
         setUIEventHandlerTo(motifHandler.handleMotifs);
 
         motifLibrary.create(handleEvent);
+
         colorPicker.init(handleEvent);
 
         motifPicker.create();

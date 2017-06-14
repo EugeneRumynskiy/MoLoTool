@@ -2,20 +2,25 @@
  * Created by HOME on 04.02.2017.
  */
 var motifLibrary = (function () {
-    var _moduleName = "motifLibrary", _library = {},
+    var _moduleName = "motifLibrary",
         _eventHandler = function() {},
-        _featuresForTable = null,
+        _displayedFeatures = null,
+
+        _library = {}
         _featuresForTableLibrary = {}, //created to speed up requests when building table
-        _logoUrl = "http://hocomoco.autosome.ru";
+
+        _logoBaseUrl = "http://hocomoco.autosome.ru";
 
 
     var create = function (eventHandler) {
-        _featuresForTable = {
+        _displayedFeatures = {
             "direct_logo_url": "Logo",
             "uniprot_id": "Uniprot ID",
             "motif_families": "Families",
             "motif_subfamilies": "Subfamilies"};
+
         _library = {};
+
         setEventHandlerTo(eventHandler);
     };
 
@@ -23,6 +28,7 @@ var motifLibrary = (function () {
     var setEventHandlerTo = function (eventHandler) {
         _eventHandler = eventHandler;
     };
+
 
     var handleEvent = function () {
         _eventHandler();
@@ -35,13 +41,17 @@ var motifLibrary = (function () {
             errorHandler.logError({"fileName": _moduleName, "message": "motif already in the library"});
         } else {
             _library[motifName] = {status: "promised"};
+
             promiseMotif(motifName).then(
                 function(motif){
                     motif.status = "resolved";
+
                     _library[motif["full_name"]] = motif;
-                    _featuresForTableLibrary[motif["full_name"]] = requestTableValues(motif);
+                    _featuresForTableLibrary[motif["full_name"]] = extractDisplayedFeatures(motif);
+
                     handleEvent();
-                    //console.log(JSON.stringify(motif) + "\n");
+                    console.log(JSON.stringify(motif) + " motif added \n\n");
+                    console.log(extractDisplayedFeatures(motif));
                 });
         }
     };
@@ -60,35 +70,37 @@ var motifLibrary = (function () {
     };
 
 
-    var requestTableValues = function (motif) {
-        if (_featuresForTable == null) {
-            errorHandler.logError({"fileName": _moduleName, "message": "motifLibrary must be created _featuresForTable = null"});
+    var extractDisplayedFeatures = function (motif) {
+        if (_displayedFeatures == null) {
+            errorHandler.logError({"fileName": _moduleName, "message": "motifLibrary must be created _displayedFeatures = null"});
             return {};
         } else {
-            var motifTableValues = {}, propertyName, logoFullUrl;
-            for (var property in _featuresForTable) {
-                propertyName = _featuresForTable[property];
-                if (propertyName == "Logo") {
-                    logoFullUrl = _logoUrl + motif[property];
-                    motifTableValues[propertyName] = '<img src="'+logoFullUrl+'" />';
+            var valuesToDisplay = {}, displayedFeature, logoFullUrl;
+
+            for (var jsonFeature in _displayedFeatures) {
+                displayedFeature = _displayedFeatures[jsonFeature];
+
+                if (displayedFeature == "Logo") {
+                    logoFullUrl = _logoBaseUrl + motif[jsonFeature];
+                    valuesToDisplay[displayedFeature] = '<img src="'+logoFullUrl+'" />';
                 } else {
-                    motifTableValues[propertyName] = motif[property];
+                    valuesToDisplay[displayedFeature] = motif[jsonFeature];
                 }
             }
-            return motifTableValues;
+            return valuesToDisplay;
         }
     };
 
 
-    var getFeaturesForTable = function () {
-        if (_featuresForTable == null) {
+    var getNamesOfDisplayedFeatures = function () {
+        if (_displayedFeatures == null) {
             errorHandler.logError({
                 "fileName": _moduleName,
-                "message": "motifLibrary must be created _featuresForTable = null"
+                "message": "motifLibrary must be created _displayedFeatures = null"
             });
             return [];
         } else {
-            return Object.values(_featuresForTable);
+            return Object.values(_displayedFeatures);
         }
     };
 
@@ -128,12 +140,12 @@ var motifLibrary = (function () {
 
 
     return {
+        showLibrary: showLibrary, //used for debug
+
         create: create,
-        showLibrary: showLibrary,
         addUnit: addUnit,
         getUserRequestedUnits: getUserRequestedUnits,
         getMotifFeaturesForTable: getMotifFeaturesForTable,
-        getFeaturesForTable: getFeaturesForTable
-
+        getNamesOfDisplayedFeatures: getNamesOfDisplayedFeatures
     };
 }());

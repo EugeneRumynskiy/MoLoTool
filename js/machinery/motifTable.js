@@ -186,7 +186,7 @@ var features = (function () {
 
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifLibrary.getFeaturesForTable(), ["Strand"]);
+        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
         _rowFeatures.toShow = ["Motif ID", "Strength", "Start Position", "Finish Position", "Sequence"];
     };
 

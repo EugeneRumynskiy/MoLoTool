@@ -13,7 +13,7 @@ var motifHandler = (function () {
             primarySequence = inputParsing.parseInput()[0],
             pValue = $("#linearSlider-input").val(),
 
-            userRequestedNames = motifPicker.getUserRequestedNames(),
+            userRequestedNames = motifPicker.getRequestedMotifNames(),
             userRequestedMotifs = motifLibrary.getUserRequestedUnits(userRequestedNames),
 
             sites = [];
@@ -22,7 +22,6 @@ var motifHandler = (function () {
             motif.setMotifValues(userRequestedMotifs[i]);
             sites = sites.concat(motif.findSites(sequence, pValue));
         }
-        console.log(sites, "sites found");
 
         motifTable.redrawTableWithSites(sites, primarySequence);
 

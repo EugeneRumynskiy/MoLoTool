@@ -72,7 +72,7 @@ var sequenceConstructor = (function () {
                 backgroundColor = commonBackgroundColor;
             } else if (motifCount == 1) {
                 color = commonColor;
-                $motifContainer = motifPicker.getSelectedMotifContainer(motifs[0]);
+                $motifContainer = motifPicker.getChosenMotifContainer(motifs[0]);
                 backgroundColor = colorPicker.getColorFromContainer($motifContainer);
             } else {
                 color = emptyColor;
