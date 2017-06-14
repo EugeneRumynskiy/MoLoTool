@@ -6,7 +6,7 @@ var motifLibrary = (function () {
         _eventHandler = function() {},
         _displayedFeatures = null,
 
-        _library = {}
+        _library = {},
         _featuresForTableLibrary = {}, //created to speed up requests when building table
 
         _logoBaseUrl = "http://hocomoco.autosome.ru";
@@ -50,8 +50,8 @@ var motifLibrary = (function () {
                     _featuresForTableLibrary[motif["full_name"]] = extractDisplayedFeatures(motif);
 
                     handleEvent();
-                    console.log(JSON.stringify(motif) + " motif added \n\n");
-                    console.log(extractDisplayedFeatures(motif));
+                    //console.log(JSON.stringify(motif) + " motif added \n\n");
+                    //console.log(extractDisplayedFeatures(motif));
                 });
         }
     };

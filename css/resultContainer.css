@@ -39,4 +39,18 @@
   border-top: solid salmon 4px;
   border-bottom: solid salmon 4px; }
 
+.full-screen {
+  height: 80vh !important; }
+
+.flattened {
+  line-height: 3em !important;
+  height: 3em !important;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  word-wrap: normal;
+  text-align: center; }
+
+.hidden {
+  display: none; }
+
 /*# sourceMappingURL=resultContainer.css.map */

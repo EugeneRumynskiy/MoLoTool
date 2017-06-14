@@ -183,7 +183,7 @@
 
         <div class="interface-component" id="sequence-input-cmp">
             <div class="controls">
-                <a class="interface-button stretch-button" applyToId="sequence-input" href="#">
+                <a class="interface-button to-full-screen-button" applyToId="sequence-input" state="full-screen" href="#">
                     <span class="icon icon-medium">Full screen</span>
                 </a>
 
@@ -192,11 +192,23 @@
                     <input type="file" id="fileInput">
                 </a>
 
-                <a class="interface-button show-button" applyToId="sequence-input" href="#">
+                <a class="interface-button to-hidden-button" applyToId="sequence-input" state="hidden" href="#">
                     <span class="icon icon-medium">Show sequence</span>
                 </a>
+
+                <a class="interface-button to-flattened-button" applyToId="sequence-input" state="flattened" href="#">
+                    <span class="icon icon-medium">Make inline</span>
+                </a>
+
+                <a class="interface-button to-zoom-in-button" applyToId="sequence-input" href="#">
+                    <span class="icon icon-medium">[+]</span>
+                </a>
+
+                <a class="interface-button to-zoom-out-button" applyToId="sequence-input" href="#">
+                    <span class="icon icon-medium">[-]</span>
+                </a>
             </div>
-            <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" autofocus spellcheck=false
+            <textarea name="sequenceInput" id="sequence-input" class="round hidden" rows="3" autofocus spellcheck=false
                       placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
         </div>
 
@@ -217,7 +229,7 @@
         </div>
 
         <div class="interface-component">
-            <div id="result" class="box round"></div>
+            <div id="result" class="round"></div>
         </div>
 
         <div class="interface-component">

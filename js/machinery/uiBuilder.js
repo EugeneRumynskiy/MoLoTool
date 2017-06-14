@@ -67,11 +67,29 @@ var uiBuilder = (function () {
             handleEvent();
         });
 
-        $('.show-button').on('click', function(){
-            var $source = $(this),
-                $target = $("#" + $source.attr("applyToId"));
-            $target.toggle();
-        });
+
+
+        var buttonStates = ["hidden", "full-screen", "flattened"], button;
+        for(var i = 0; i < buttonStates.length; i++) {
+            button = ".to-" + buttonStates[i] + "-button";
+
+            $(button).on('click', function() {
+                var $source = $(this),
+                    classToSet = $source.attr("state"), $target = $("#" + $source.attr("applyToId")),
+                    currentClass = motifPicker.getCurrentInterfaceState();
+
+                $target.removeClass(currentClass);
+                if (currentClass == classToSet) {
+                    //toggle class
+                    motifPicker.setCurrentInterfaceState("default");
+                } else {
+                    //add new class
+                    motifPicker.setCurrentInterfaceState(classToSet);
+                    $target.addClass(classToSet);
+                }
+            });
+        }
+
 
         //search bar usability
         $('body').click(function(e) {
