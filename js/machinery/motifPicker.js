@@ -2,7 +2,6 @@ var motifPicker = (function () {
     var _fileName = "motifPicker",
         _motifSummaries = [],
         _chosenMotifsSet = new Set(),
-        _ifMoreValue = 0,
 
         _maxResultCount,
         _currentInterfaceState;
@@ -31,7 +30,7 @@ var motifPicker = (function () {
     var setMotifSummaries = function (promisedMotifSummaries){
         console.log(promisedMotifSummaries);
 
-        if (!_motifSummaries.length == 0) {
+        if (_motifSummaries.length != 0) {
             errorHandler.logError({"fileName": _fileName, "message": "warning, library is not empty"});
             console.log(_motifSummaries);
         }
@@ -40,40 +39,43 @@ var motifPicker = (function () {
 
 
     var setSuggestedMotifList = function (suggestedMotifs) {
-        var motifContainers = $.map(suggestedMotifs.slice(0, _maxResultCount), wrapMotifInContainer).join(''),
+        var topMotifs = suggestedMotifs.slice(0, _maxResultCount),
+            ifMoreValue = ifMore(suggestedMotifs),
 
-            ifMoreValue = ifMore(suggestedMotifs);
+            motifContainers = $.map(topMotifs, wrapMotifInContainer).join(''),
+            ifMoreContainer = wrapIfMoreValueInContainer(ifMoreValue);
 
         $('#motif-list').html(motifContainers);
-
-        setIfMoreValue(ifMoreValue);
+        $('#ifMore-container').html(ifMoreContainer);
     };
 
     var ifMore = function (suggestedMotifs) {
         return (suggestedMotifs.length > _maxResultCount) ? (suggestedMotifs.length - _maxResultCount) : 0;
     };
 
-    var setIfMoreValue = function (ifMoreValue) {
-        var ifMoreBox = "";
-
-        if (ifMoreValue != 0) {
-            ifMoreBox = '<div class="ifMore-value suggestion">'
-                + 'And ' + ifMoreValue + ' more motifs.' +
-                '</div>';
-        }
-
-        $('#ifMore-container').html(ifMoreBox);
-        _ifMoreValue = ifMoreValue;
-    };
-
-
     var wrapMotifInContainer = function (suggestedMotif) {
-        var motifName = suggestedMotif[0];
-        return '<div class="motif-container suggestion"' + ' id="' + motifName + '">' +
-            '<div class="motif-title">'+ motifName +'</div>' +
+        console.log(suggestedMotif, "suggestion");
+
+        var summary = suggestedMotif[0],
+            name = summary["full_name"], family = summary["motif_families"];
+
+        return '<div class="motif-container suggestion"' + ' id="' + name + '">' +
+            '<div class="motif-title feature">'+ name +'</div>' +
+
+            '<div class="motif-family feature second">'+ family +'</div>' +
             '</div>';
     };
 
+    var wrapIfMoreValueInContainer = function (ifMoreValue) {
+        var ifMoreContainer = "";
+
+        if (ifMoreValue != 0) {
+            ifMoreContainer = '<div class="ifMore-value suggestion">'
+                + 'And ' + ifMoreValue + ' more motifs.' +
+                '</div>';
+        }
+        return ifMoreContainer;
+    };
 
     var ifMotifIsChosen = function (motifName) {
         return _chosenMotifsSet.has(motifName);
@@ -85,7 +87,7 @@ var motifPicker = (function () {
             requestedMotifNames = [];
 
         if ($motifTitles.length > 0) {
-            $motifTitles.each(function (index) {
+            $motifTitles.each(function () {
                 requestedMotifNames.push($(this).text());
             });
         }
@@ -148,27 +150,22 @@ var motifPicker = (function () {
             reg = new RegExp( RegExpEscape(val), 'i');
         return reg.test(motifName);
     };
-    var getCurrentIfMoreValue = function () {
-        return _ifMoreValue;
-    };
 
     return {
         create: create,
 
         addChosenMotifToSet: addChosenMotifToSet,
         deleteChosenMotifFromSet: deleteChosenMotifFromSet,
-
         ifMotifIsChosen: ifMotifIsChosen,
 
         getMotifSummaries: getMotifSummaries,
-
         getRequestedMotifNames: getRequestedMotifNames,
         getChosenMotifContainer: getChosenMotifContainer,
 
         setSuggestedMotifList: setSuggestedMotifList,
 
         getCurrentInterfaceState: getCurrentInterfaceState,
-        setCurrentInterfaceState: setCurrentInterfaceState,
+        setCurrentInterfaceState: setCurrentInterfaceState
     };
 }());
 /**
@@ -190,7 +187,7 @@ var motifSearch = (function () {
         $search.on('input', applySearch);
         $search.on( "focusout", function () {
             if (    !($search.is(':hover') || $(".suggestions").is(':hover') ||
-                $("#motif-list-selected-cmp").is(':hover')  )) {
+                $("#motif-list-selected-cmp").is(':hover'))  ) {
                     $(".suggestions").hide();
             }
         });
@@ -205,30 +202,35 @@ var motifSearch = (function () {
         $('#search').focus();
 
         var motifSummaries = motifPicker.getMotifSummaries(), //probably must be in picker
-            regExpsToCheck = getRegExpsToCheck();
+            regExpsToCheck = getRegExpsToCheck(),
+            motifsToSuggest = getMotifsToSuggest(motifSummaries, regExpsToCheck);
 
-        if (regExpsToCheck.length == 0) {
-            motifPicker.setSuggestedMotifList([]);
-        } else {
-            var suggestedMotifs = [], testResult = 0, motifSummary;
-            for (var i = 0; i < motifSummaries.length; i++) {
-                motifSummary = motifSummaries[i];
-                testResult = testMotif(motifSummary, regExpsToCheck);
-                if (testResult) {
-                    suggestedMotifs.push([motifSummary["full_name"], testResult]);
-                }
-            }
-            motifPicker.setSuggestedMotifList(suggestedMotifs);
-        }
+        motifPicker.setSuggestedMotifList(motifsToSuggest);
     };
 
+    var getMotifsToSuggest = function (motifSummaries, regExpsToCheck) {
+        var suggestedMotifs = [];
+        
+        if (regExpsToCheck.length > 0) {
+            var i, testResult = 0, currentSummary;
 
+            for (i = 0; i < motifSummaries.length; i++) {
+                currentSummary = motifSummaries[i];
+                testResult = testMotif(currentSummary, regExpsToCheck);
+
+                if (testResult != 0) {
+                    suggestedMotifs.push([currentSummary, testResult]);
+                }
+            }
+        }
+
+        return suggestedMotifs;
+    };
 
     var getRegExpsToCheck = function () {
         var searchInput = getSearchInput(),
-            tokens = splitInputIntoTokens(searchInput),
-            regExpsToCheck = $.map(tokens, tokenToRegExp);
-        return regExpsToCheck;
+            tokens = splitInputIntoTokens(searchInput);
+        return $.map(tokens, tokenToRegExp);
     };
 
     var getSearchInput = function () {
@@ -250,7 +252,7 @@ var motifSearch = (function () {
     };
 
 
-    var testMotif = function (motifSummary, regExpsToCheck) {
+    var testMotif = function (motifSummary, regExpsToTest) {
         var motifName = motifSummary["full_name"];
         if (motifPicker.ifMotifIsChosen(motifName)) {
             return 0;
@@ -258,29 +260,35 @@ var motifSearch = (function () {
             var testResult = 0, keysToTest = _keysToTest;
             for(var i = 0, key; i < keysToTest.length; i++) {
                 key = keysToTest[i];
-                testResult += testKeysWithRegExps(motifSummary[key], regExpsToCheck);
+                testResult += testKeysWithRegExps(motifSummary[key], regExpsToTest);
             }
             return testResult;
         }
     };
 
-    var testKeysWithRegExps = function (key, regExpsToCheck) {
-        var testString = "";
+    var testKeysWithRegExps = function (key, regExpsToTest) {
+        var testString = keyToString(key);
 
-        if (typeof(key) == "string") {
-            testString = key;
-        } else {
-            for (var i = 0; i < key.length; i++) {
-                testString += " " + key[i];
-            }
-        }
-
-        for (i = 0; i < regExpsToCheck.length; i++) {
-            if (!regExpsToCheck[i].test(testString)) {
+        for (i = 0; i < regExpsToTest.length; i++) {
+            if (!regExpsToTest[i].test(testString)) {
                 return 0;
             }
         }
         return 1;
+    };
+
+
+    var keyToString = function (key) {
+        var stringToTest = "";
+
+        if (typeof key === 'undefined') {
+            errorHandler.logError({"fileName": _fileName, "message": "motif summary key is undefined"});
+        } else if (typeof key === "string") {
+            stringToTest = key;
+        } else {
+            stringToTest = key.join(" "); //key is array and we join elements with " " separator
+        }
+        return stringToTest;
     };
 
 

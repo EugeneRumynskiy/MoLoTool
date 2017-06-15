@@ -2,12 +2,23 @@
   margin-top: 10px;
   background-color: #ededf2;
   border-radius: 10px;
-  box-shadow: 0 1px 1px 0 white; }
+  box-shadow: 0 1px 1px 0 white;
+  min-width: 500px; }
   .suggestions .suggestion {
+    min-height: 46px;
     border-top: 1px solid white;
     border-radius: 0;
     padding: 2px;
     margin: 2px; }
+    .suggestions .suggestion .feature {
+      display: inline;
+      vertical-align: middle; }
+    .suggestions .suggestion .second {
+      position: absolute;
+      left: 250px;
+      padding: 4px;
+      margin: 4px;
+      max-width: 240px; }
   .suggestions #motif-list .motif-container .motif-title {
     display: inline-block;
     padding: 4px;
@@ -23,6 +34,8 @@
     cursor: hand; }
   .suggestions #motif-list div:first-child {
     border-top: none; }
+  .suggestions .ifMore-value {
+    min-height: unset; }
 
 #motif-list-selected-cmp {
   min-height: 75px; }

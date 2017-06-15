@@ -6,11 +6,27 @@
   border-radius: 10px;
   box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
 
+  min-width: 500px;
+
   .suggestion {
+    min-height: 46px;
     border-top: 1px solid white;
     border-radius: 0;
     padding: 2px;
     margin: 2px;
+
+    .feature {
+      display: inline;
+      vertical-align: middle;
+    }
+
+    .second {
+      position: absolute;
+      left: 250px;
+      padding: 4px;
+      margin: 4px;
+      max-width: 240px;
+    }
   }
 
   #motif-list {
@@ -37,6 +53,10 @@
     div:first-child {
       border-top: none;
     }
+  }
+
+  .ifMore-value {
+    min-height: unset;
   }
 }
 
