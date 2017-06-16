@@ -48,6 +48,9 @@ body {
 .round {
   border-radius: 5px; }
 
+.empty {
+  display: none; }
+
 /* Media for larger devices */
 @media screen and (min-width: 800px) {
   .interface-area {

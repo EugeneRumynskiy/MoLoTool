@@ -44,6 +44,10 @@ var uiBuilder = (function () {
             var $motifTitle = $(event.target), motifName = $motifTitle.text(),
                 $motifContainer = $motifTitle.parent();
 
+            if (motifPicker.getChosenMotifSet().size == 0) {
+                $('#motif-list-selected-cmp').removeClass("empty");
+            }
+
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
 
@@ -63,6 +67,10 @@ var uiBuilder = (function () {
             motifPicker.deleteChosenMotifFromSet(motifName);
             $motifContainer.remove();
             motifSearch.applySearch();
+
+            if (motifPicker.getChosenMotifSet().size == 0) {
+                $('#motif-list-selected-cmp').addClass("empty");
+            }
 
             handleEvent();
         });
@@ -93,9 +101,18 @@ var uiBuilder = (function () {
 
         //search bar usability
         $('body').click(function(e) {
-            if (e.target.id != "search" &&  e.target.className != "motif-title") {
-                if (!$(e.target).closest('.suggestions').length) {
+            var $target = $(e.target);
+
+            if ($target.attr('id') != "search") {
+                if (!$target.parent().hasClass("chosen-motif")) {
+                    //if motif has this class than it's JUST chosen
                     $(".suggestions").hide();
+                } else {
+                    if (!$target.hasClass("feature")) {
+                        if (($target.closest('.suggestions').length == 0)) {
+                            $(".suggestions").hide();
+                        }
+                    }
                 }
             }
         });

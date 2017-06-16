@@ -54,8 +54,6 @@ var motifPicker = (function () {
     };
 
     var wrapMotifInContainer = function (suggestedMotif) {
-        console.log(suggestedMotif, "suggestion");
-
         var summary = suggestedMotif[0],
             name = summary["full_name"], family = summary["motif_families"];
 
@@ -161,6 +159,7 @@ var motifPicker = (function () {
         getMotifSummaries: getMotifSummaries,
         getRequestedMotifNames: getRequestedMotifNames,
         getChosenMotifContainer: getChosenMotifContainer,
+        getChosenMotifSet: getChosenMotifSet,
 
         setSuggestedMotifList: setSuggestedMotifList,
 
