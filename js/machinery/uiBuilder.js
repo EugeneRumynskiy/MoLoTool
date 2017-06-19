@@ -48,6 +48,9 @@ var uiBuilder = (function () {
                 $('#motif-list-selected-cmp').removeClass("empty");
             }
 
+            var $closeButton = $('<a href="#" class="close">');
+            $closeButton.insertAfter($motifContainer.children(".motif-title"));
+
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
 
@@ -58,14 +61,15 @@ var uiBuilder = (function () {
             motifSearch.applySearch();
         });
 
-        $('#motif-list-selected').on('click', '.motif-title', function(event){
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
-                $motifContainer = $(event.target).parent();
+        $('#motif-list-selected').on('click', '.close', function(event){
+            var $motifContainer = $(event.target).parent(),
+                $motifTitle = $(event.target).siblings(".motif-title"), motifName = $motifTitle.text();
+
             $motifContainer.removeClass('chosen-motif');
             colorPicker.removeFrom($motifContainer);
-
             motifPicker.deleteChosenMotifFromSet(motifName);
             $motifContainer.remove();
+
             motifSearch.applySearch();
 
             if (motifPicker.getChosenMotifSet().size == 0) {
@@ -116,6 +120,7 @@ var uiBuilder = (function () {
                 }
             }
         });
+
     };
 
 

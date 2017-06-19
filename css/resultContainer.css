@@ -47,8 +47,7 @@
   height: 3em !important;
   overflow-x: scroll;
   overflow-y: hidden;
-  word-wrap: normal;
-  text-align: center; }
+  word-wrap: normal; }
 
 .hidden {
   display: none; }

@@ -1,7 +1,7 @@
 var motifPicker = (function () {
     var _fileName = "motifPicker",
         _motifSummaries = [],
-        _chosenMotifsSet = new Set(),
+        _chosenMotifsSet = new Set(), //ToDo Change Set To Dictionary o(1)
 
         _maxResultCount,
         _currentInterfaceState;
@@ -14,7 +14,16 @@ var motifPicker = (function () {
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
             motifSearch.create();
+
+            //ToDo initial state
+            $("#search").val("g");
+            motifSearch.applySearch();
+            $("#motif-list").children().first().children().first().children().first().click();
+            $('body').click();
         });
+
+        //ToDo
+
     };
 
 
@@ -55,13 +64,31 @@ var motifPicker = (function () {
 
     var wrapMotifInContainer = function (suggestedMotif) {
         var summary = suggestedMotif[0],
-            name = summary["full_name"], family = summary["motif_families"];
+            primaryInfo = wrapSummaryPrimaryInformation(summary),
+            additionalInfo = wrapSummaryAdditionalInformation(summary);
 
-        return '<div class="motif-container suggestion"' + ' id="' + name + '">' +
+
+        return '<div class="motif-container">' +
+            primaryInfo +
+            '</div>';
+
+        /*'<div class="motif-container suggestion"' + ' id="' + name + '">' +
             '<div class="motif-title feature">'+ name +'</div>' +
+            '<div class="motif-family feature second">'+ family +'</div>' +
+            '</div>';*/
+    };
 
+    var wrapSummaryPrimaryInformation = function (motifSummary) {
+        var name = motifSummary["full_name"], family = motifSummary["motif_families"];
+
+        return '<div class="suggestion"' + ' id="' + name + '">' +
+            '<div class="motif-title feature">'+ name +'</div>' +
             '<div class="motif-family feature second">'+ family +'</div>' +
             '</div>';
+    };
+
+    var wrapSummaryAdditionalInformation = function (motifSummary) {
+        return motifSummary["motif_subfamilies"];
     };
 
     var wrapIfMoreValueInContainer = function (ifMoreValue) {
@@ -184,13 +211,17 @@ var motifSearch = (function () {
         $search.val("");
 
         $search.on('input', applySearch);
-        $search.on( "focusout", function () {
+
+        $search.on("focusout", function () {
             if (    !($search.is(':hover') || $(".suggestions").is(':hover') ||
                 $("#motif-list-selected-cmp").is(':hover'))  ) {
                     $(".suggestions").hide();
             }
         });
-        $search.on( "focus", function () {
+        $search.on("focus", function () {
+            $(".suggestions").show();
+        });
+        $search.on("click", function () {
             $(".suggestions").show();
         });
     };

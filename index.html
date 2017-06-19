@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <!-- favicon --->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
     <title>Sequence Motif Location Tool (MoLoTool)</title>
 
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
     <!--Data tables -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
+
     <!--Data tables (buttons) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+
+
     <!--Data tables (buttons) -->
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+
+
     <!--Data tables (buttons) [jszip, pdfmake, vfs_fonts] alert: fonts must be after pdfmake -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
@@ -40,21 +50,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
 
+
     <!--Github icons - Octicons -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.0.0/octicons.min.css">
-
 
 
     <script src="js/machinery/calculations/motifMath.js"></script>
     <script src="js/nouislider.min.js"></script>
     <script src="js/machinery/AppContainer.js"></script>
 
+
     <script src="js/machinery/calculations/errorHandler.js"></script>
+
 
     <script src="js/machinery/motifTable.js"></script>
     <script src="js/machinery/calculations/segmentation.js"></script>
     <script src="js/machinery/motif.js"></script>
     <script src="js/machinery/sequenceConstructor.js"></script>
+
 
     <script src="js/machinery/pSlider.js"></script>
     <script src="js/machinery/inputParsing.js"></script>
@@ -68,7 +81,6 @@
     <script src="js/machinery/calculations/combinations.js"></script>
 
 
-
     <link rel="stylesheet" href="css/primaryComponentsSettings.css">
     <link rel="stylesheet" href="css/dataTable.css">
     <link rel="stylesheet" href="css/nouislider.min.css">
@@ -78,8 +90,7 @@
     <link rel="stylesheet" href="css/resultContainer.css">
     <link rel="stylesheet" href="css/navigationTopBar.css">
     <link rel="stylesheet" href="css/navigationSideBar.css">
-
-
+    <link rel="stylesheet" href="css/controlElements.css">
 </head>
 <body>
 <div>
@@ -181,6 +192,7 @@
             <div id='motif-list-selected'></div>
         </div>
 
+
         <div class="interface-component" id="sequence-input-cmp">
             <div class="controls">
                 <a class="interface-button to-full-screen-button" applyToId="sequence-input" state="full-screen" href="#">
@@ -212,6 +224,7 @@
                       placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
         </div>
 
+
         <div class="interface-component" id="log-slider-cmp">
             <div class="sliderBox">
                 <div id='log-slider' class='slider'></div>
@@ -228,9 +241,11 @@
             </div>
         </div>
 
+
         <div class="interface-component">
             <div id="result" class="round"></div>
         </div>
+
 
         <div class="interface-component">
             <table id='motif-table' class="display cell-border compact" width="100%">
@@ -238,7 +253,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

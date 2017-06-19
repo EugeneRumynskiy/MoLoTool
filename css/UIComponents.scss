@@ -84,6 +84,7 @@
 
         background-color: $motif-in-result-round-bg;
         border: none;
+        border-radius: 5px;
 
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
         font-size: 16px;
@@ -98,7 +99,9 @@
     }
 
     .motif-result-hover {
-      background-color: $motif-selected-on-result-hover;
+      .motif-title {
+        background-color: $motif-selected-on-result-hover;
+      }
     }
   }
 

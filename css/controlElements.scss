@@ -1,0 +1,31 @@
+/*
+Close element
+Example: <a href="#" class="close">
+*/
+
+.close {
+  position: relative;
+  float: right;
+  top: 5%;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  content: ' ';
+  height: 24px;
+  width: 4px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
