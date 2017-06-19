@@ -48,11 +48,15 @@ var uiBuilder = (function () {
                 $('#motif-list-selected-cmp').removeClass("empty");
             }
 
-            var $closeButton = $('<a href="#" class="close">');
+            var $closeButton = $('<a href="#" class="close"></a>');
             $closeButton.insertAfter($motifContainer.children(".motif-title"));
 
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
+
+            var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName;
+                $hocomocoInfo = $('<a href=' + hocomocoRef + ' "class=hocomoco-info target=_blank">HOCOMOCO</a>');
+            $hocomocoInfo.insertAfter($motifContainer.children(".full-spectrum"));
 
             motifPicker.addChosenMotifToSet(motifName);
             motifLibrary.addUnit(motifName);
