@@ -6,7 +6,8 @@
 var motifTable = (function () {
     var _moduleName = "motifTable",
         _dtTable = undefined, _rows = [],
-        _sitesList = [], _primarySequence = {}, _tableID = "#motif-table";
+        _sitesList = [],
+        _tableID = "#motif-table";
 
     var create = function() {
         features.setFeatures();
@@ -145,7 +146,6 @@ var motifTable = (function () {
     var redrawTableWithSites = function(sites, primarySequence, userRequestedNames) {
         _sitesList = sites;
         _rows = getRows();
-        _primarySequence = primarySequence;
 
         _dtTable.clear();
         _dtTable
@@ -173,7 +173,6 @@ var motifTable = (function () {
         redrawTableWithSites: redrawTableWithSites,
         create: create
     };
-
 }());
 
 
@@ -235,7 +234,5 @@ var features = (function () {
         getFeatures: getFeatures,
         getFrom: getFrom,
         setFeatures: setFeatures
-
     };
-
 }());

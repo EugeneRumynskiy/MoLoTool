@@ -36,6 +36,9 @@ var uiBuilder = (function () {
         $('#sequence-input').on('input', function () {
             handleEvent();
         });
+
+        sequenceTabs.create();
+        buildExternalTabComponent();
     };
 
 
@@ -53,6 +56,7 @@ var uiBuilder = (function () {
 
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
+
 
             var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName;
                 $hocomocoInfo = $('<a href=' + hocomocoRef + ' "class=hocomoco-info target=_blank">HOCOMOCO</a>');
@@ -90,8 +94,8 @@ var uiBuilder = (function () {
             button = ".to-" + buttonStates[i] + "-button";
 
             $(button).on('click', function() {
-                var $source = $(this),
-                    classToSet = $source.attr("state"), $target = $("#" + $source.attr("applyToId")),
+                var $source = $(this),  $target = $("#" + $source.attr("applyToId")),
+                    classToSet = $source.attr("state"),
                     currentClass = motifPicker.getCurrentInterfaceState();
 
                 $target.removeClass(currentClass);
@@ -124,8 +128,18 @@ var uiBuilder = (function () {
                 }
             }
         });
-
     };
+
+
+    var buildExternalTabComponent = function () {
+        sequenceTabs.addTab({"title": "", "sequence": "AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA"},
+            makeCurrent=true);
+
+        $("#add-tab-button").on("click", function (event) {
+            sequenceTabs.addTab({"title": "", "sequence": ""});
+        });
+    };
+
 
 
     var buildExternalTableComponent = function (table) {

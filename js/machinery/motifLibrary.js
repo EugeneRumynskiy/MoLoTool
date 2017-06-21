@@ -144,7 +144,7 @@ var motifLibrary = (function () {
 
         create: create,
         addUnit: addUnit,
-        getUserRequestedUnits: getUserRequestedUnits,
+        getUserRequestedMotifUnits: getUserRequestedUnits,
         getMotifFeaturesForTable: getMotifFeaturesForTable,
         getNamesOfDisplayedFeatures: getNamesOfDisplayedFeatures
     };

@@ -18,6 +18,14 @@ var moduleName = (function () {
 }());
 
 /*
+    INLINE IF
+
+ var c = (a < b) ? "a is less than b"  : "a is not less than b";
+ b = (typeof b !== 'undefined') ?  b : 1;
+ */
+
+
+/*
 segment object:
     segment = { start: 37, finish: 40, sites: Array[2], motifsInSegment: Object }
 

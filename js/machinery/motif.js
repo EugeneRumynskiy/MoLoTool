@@ -2,10 +2,13 @@
  * Created by Sing on 06.11.2016.
  */
 var motif = (function () {
-    var _name              = "",
+    var _fileName = "motif",
+
+        _name              = "",
         _pwmMatrix         = [],
         _pwmMatrixReversed = [],
         _thresholdList     = [],
+        _length,
         _fileName = "motif",
         _nDigits = 3;
 
@@ -15,6 +18,7 @@ var motif = (function () {
         _pwmMatrix         = motif["pwm"];
         _pwmMatrixReversed = reversePwmMatrix(motif["pwm"]);
         _thresholdList     = motif["threshold_pvalue_list"];
+        _length = motif["pwm"].length;
     };
 
 
@@ -168,9 +172,14 @@ var motif = (function () {
     };
 
 
-    return {
-        setMotifValues: setMotifValues,
-        findSites: findSites
+    var getLength = function () {
+        return (typeof _length === 'undefined') ?  0 : _length;
     };
 
+
+    return {
+        setMotifValues: setMotifValues,
+        findSites: findSites,
+        getLength: getLength
+    };
 }());
