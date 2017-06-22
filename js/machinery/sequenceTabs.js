@@ -68,22 +68,58 @@ var sequenceTabs = (function () {
 
 
     var createInterfaceTab = function (newTab) {
-        var $interfaceTab = $('<li class="tab-link interface-button" data-tab=' + newTab["name"] + '>'
-            + "Tab#" + newTab["name"] +
-            '</li>');
+        var $interfaceTab = $(
+                '<li class="tab-link interface-button" data-tab=' + newTab["name"] + '>' +
+                    '<a href="#" class="close"></a>' +
+                    '<a class="tab-name" href="#">' +"Tab#" + newTab["name"] + '</a>' +
+                '</li>'
+        );
 
-        $interfaceTab.on("click", function() {
-            var tabId = $(this).attr('data-tab'),
-                tabContent = sequenceTabs.getTabContentById(tabId);
-            sequenceTabs.setSeqInputToTabContent(tabContent);
 
-            $('.tab-link').removeClass('current-tab');
-            $(this).addClass('current-tab');
+        $interfaceTab.on("click", function(event) {
+            if (event.target.className == "close") {
+                deleteTab(this);
+            } else {
+                setTabToCurrent(this);
+            }
         });
+
 
         return $interfaceTab;
     };
 
+
+    var deleteTab = function (source) {
+        var $tab = $(source),
+            tabId = $tab.attr('data-tab'),
+            notLastTab = Object.keys(_openedTabsIds).length > 1;
+
+        if (notLastTab) {
+            deleteTabContentById(tabId);
+            $tab.remove();
+            if ($tab.hasClass("current-tab")) {
+                var lastTab = $("li.tab-link").last();
+                setTabToCurrent(lastTab);
+            }
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "last tab cannot be deleted"});
+        }
+
+    };
+
+
+    var setTabToCurrent = function (source) {
+        var $source = $(source),
+            tabId = $source.attr('data-tab'),
+            tabContent = getTabContentById(tabId);
+
+        updateSeqInputWithTabContent(tabContent);
+
+        $('.tab-link').removeClass('current-tab');
+        $source.addClass('current-tab');
+
+        motifHandler.handleMotifs();
+    };
 
     var getTabContentById = function (tabId) {
         if ($.isEmptyObject(_openedTabsIds[tabId])) {
@@ -94,13 +130,13 @@ var sequenceTabs = (function () {
     };
 
 
-    var setSeqInputToTabContent = function (tabContent) {
+    var updateSeqInputWithTabContent = function (tabContent) {
         var $seqInput = $("#sequence-input");
         $seqInput.val(tabContent["seqValues"]["sequence"]);
     };
 
 
-    var deleteTab = function (tabId) {
+    var deleteTabContentById = function (tabId) {
         if (tabId in _openedTabsIds) {
             delete _openedTabsIds[tabId];
             return true;
@@ -111,26 +147,34 @@ var sequenceTabs = (function () {
     };
 
 
+    var updateCurrentTabSequence = function (newSequence) {
+        var currentTabId = $("li.current-tab").attr("data-tab");
+
+        if($.isEmptyObject(_openedTabsIds[currentTabId])) {
+            errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated because not exists"});
+        } else {
+            _openedTabsIds[currentTabId]["seqValues"]["sequence"] = newSequence;
+        }
+    };
+
+
+    //debug
     var show = function () {
         console.log(_openedTabsIds);
     };
 
 
-    var getCurrentSequence = function () {
-        console.log($(".current"));
-    };
-
     return {
         create: create,
-        deleteTab: deleteTab,
+        deleteTab: deleteTabContentById,
         addTab: addTab,
 
         getTabContentById: getTabContentById,
 
-        setSeqInputToTabContent: setSeqInputToTabContent,
+        updateSeqInputWithTabContent: updateSeqInputWithTabContent,
+        updateCurrentTabSequence: updateCurrentTabSequence,
 
         //debug
-        getCurrentSequence: getCurrentSequence,
         show: show
     };
 }());

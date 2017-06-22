@@ -77,14 +77,18 @@
     margin: 0px;
     padding: 0px;
     list-style: none; }
-  #sequence-input-cmp #sequence-tabs ul.tabs li {
-    background: none;
-    color: #222;
-    display: inline-block;
-    padding: 10px 15px;
-    cursor: pointer; }
-  #sequence-input-cmp #sequence-tabs ul.tabs li.current-tab {
-    background: #ededed;
-    color: #222; }
+    #sequence-input-cmp #sequence-tabs ul.tabs .tab-link {
+      background: none;
+      color: #222;
+      display: inline-block;
+      cursor: pointer; }
+      #sequence-input-cmp #sequence-tabs ul.tabs .tab-link .close:before, #sequence-input-cmp #sequence-tabs ul.tabs .tab-link .close:after {
+        position: absolute;
+        left: 8px;
+        height: 20px; }
+      #sequence-input-cmp #sequence-tabs ul.tabs .tab-link .tab-name {
+        text-decoration: none;
+        color: #222222;
+        padding: 0.75em 1.25em; }
 
 /*# sourceMappingURL=UIComponents.css.map */

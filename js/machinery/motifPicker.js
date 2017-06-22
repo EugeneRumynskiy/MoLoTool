@@ -9,7 +9,10 @@ var motifPicker = (function () {
 
     var create = function () {
         _maxResultCount = 5;
-        _currentInterfaceState = "hidden";
+
+        //ToDo
+        setCurrentInterfaceState("flattened");
+        $("#sequence-input").addClass("flattened");
 
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
@@ -21,9 +24,6 @@ var motifPicker = (function () {
             $("#motif-list").children().first().children().first().children().first().click();
             $('body').click();
         });
-
-        //ToDo
-
     };
 
 

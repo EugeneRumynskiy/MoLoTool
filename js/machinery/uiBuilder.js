@@ -33,9 +33,6 @@ var uiBuilder = (function () {
         buildExternalResultContainerComponent();
 
         fileUploader.create();
-        $('#sequence-input').on('input', function () {
-            handleEvent();
-        });
 
         sequenceTabs.create();
         buildExternalTabComponent();
@@ -102,6 +99,7 @@ var uiBuilder = (function () {
                 if (currentClass == classToSet) {
                     //toggle class
                     motifPicker.setCurrentInterfaceState("default");
+                    $target.addClass("default");
                 } else {
                     //add new class
                     motifPicker.setCurrentInterfaceState(classToSet);
@@ -132,11 +130,18 @@ var uiBuilder = (function () {
 
 
     var buildExternalTabComponent = function () {
-        sequenceTabs.addTab({"title": "", "sequence": "AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA"},
+        var defaultSequence = "AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA";
+        sequenceTabs.addTab({"title": "", "sequence": defaultSequence},
             makeCurrent=true);
 
         $("#add-tab-button").on("click", function (event) {
             sequenceTabs.addTab({"title": "", "sequence": ""});
+        });
+
+        $('#sequence-input').on('input', function (event) {
+            var newSequence = $(event.target).val();
+            sequenceTabs.updateCurrentTabSequence(newSequence);
+            handleEvent();
         });
     };
 
