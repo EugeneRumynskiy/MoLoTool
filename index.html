@@ -91,7 +91,7 @@
     <link rel="stylesheet" href="css/UIComponents.css">
     <link rel="stylesheet" href="css/resultContainer.css">
     <link rel="stylesheet" href="css/navigationTopBar.css">
-    <link rel="stylesheet" href="css/navigationSideBar.css">
+    <!-- <link rel="stylesheet" href="css/navigationSideBar.css"> -->
     <link rel="stylesheet" href="css/controlElements.css">
 </head>
 <body>
@@ -135,58 +135,7 @@
             </nav>
         </div>
 
-        <div class="nav-sidebar">
-            <nav>
-                <ul>
-                    <li id="link-zero">
-                        <div></div>
 
-                        <a>
-                        </a>
-                    </li>
-                    <li id="link-one">
-                        <div>Save</div>
-
-                        <a>
-                            <span class="icon octicon octicon-cloud-download"></span>
-                        </a>
-                    </li>
-                    <li id="link-two">
-                        <div>Sequence</div>
-
-                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
-                            <span class="icon octicon octicon-eye"></span>
-                        </a>
-
-                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
-                            <span class="icon octicon octicon-graph"></span>
-                        </a>
-                    </li>
-                    <li id="link-three">
-                        <div>Slider</div>
-
-                        <a class="show-button" applyToId="log-slider-cmp" href="#">
-                            <span class="icon octicon octicon-eye"></span>
-                        </a>
-                    </li>
-                    <li id="link-four">
-                        <div>Table</div>
-
-                        <a>
-                            <span class="icon octicon octicon-cloud-download"></span>
-                        </a>
-                    </li>
-                    <li id="link-five">
-                        <div>Markup</div>
-
-                        <a>
-                            <span class="icon octicon octicon-cloud-download"></span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 
 
     <div class="interface-area">
@@ -196,35 +145,33 @@
 
 
         <div class="interface-component" id="sequence-input-cmp">
-            <div class="controls">
-                <a class="interface-button to-full-screen-button" applyToId="sequence-input" state="full-screen" href="#">
-                    <span class="icon icon-medium">Full screen</span>
-                </a>
-
-                <a class="interface-button to-hidden-button" applyToId="sequence-input" state="hidden" href="#">
-                    <span class="icon icon-medium">Show sequence</span>
-                </a>
-
-                <a class="interface-button to-flattened-button" applyToId="sequence-input" state="flattened" href="#">
-                    <span class="icon icon-medium">Make inline</span>
-                </a>
-
-                <a class="interface-button" id="add-tab-button" applyToId="sequence-tabs" href="#">
-                    <span class="icon icon-medium">Add tab</span>
-                </a>
-
-                <a class="interface-button upload-button" applyToId="sequence-input" href="#">
-                    <span class="icon icon-medium">Select a text file:</span>
-                    <input type="file" id="fileInput">
-                </a>
-            </div>
-
             <div id="sequence-tabs">
                 <ul class="tabs"></ul>
-
-                <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" spellcheck=false
-                          placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
             </div>
+
+            <div class="controls">
+                <div class="button-container">
+                    <a class="interface-button to-full-screen-button" applyToId="sequence-input" state="full-screen" href="#">
+                        <span class="icon icon-medium">Full screen</span>
+                    </a>
+                    <a class="interface-button to-hidden-button" applyToId="sequence-input" state="hidden" href="#">
+                        <span class="icon icon-medium">Show sequence</span>
+                    </a>
+                    <a class="interface-button to-flattened-button" applyToId="sequence-input" state="flattened" href="#">
+                        <span class="icon icon-medium">Make inline</span>
+                    </a>
+                    <a class="interface-button" id="add-tab-button" applyToId="sequence-tabs" href="#">
+                        <span class="icon icon-medium">Add tab</span>
+                    </a>
+                    <a class="interface-button upload-button" applyToId="sequence-input" href="#">
+                        <span class="icon icon-medium">Select a text file:</span>
+                        <input type="file" id="fileInput">
+                    </a>
+                </div>
+            </div>
+
+            <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" spellcheck=false
+                      placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
         </div>
 
 

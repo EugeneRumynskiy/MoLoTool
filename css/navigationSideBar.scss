@@ -85,3 +85,58 @@
     top: $topNav-navLineHeight * 1;
   }
 }
+
+/*HTML
+<div class="nav-sidebar">
+            <nav>
+                <ul>
+                    <li id="link-zero">
+                        <div></div>
+
+                        <a>
+                        </a>
+                    </li>
+                    <li id="link-one">
+                        <div>Save</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-two">
+                        <div>Sequence</div>
+
+                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+
+                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
+                            <span class="icon octicon octicon-graph"></span>
+                        </a>
+                    </li>
+                    <li id="link-three">
+                        <div>Slider</div>
+
+                        <a class="show-button" applyToId="log-slider-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+                    </li>
+                    <li id="link-four">
+                        <div>Table</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-five">
+                        <div>Markup</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+*/

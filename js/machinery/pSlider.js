@@ -121,10 +121,16 @@ var pSlider = (function () {
     };
 
 
+    var getPValue = function () {
+        return $("#linearSlider-input").val();
+    };
+
+
     return {
         create: create,
         setEventHandlerTo: setEventHandlerTo,
-        isActive: isActive
+        isActive: isActive,
+        getPValue: getPValue
     };
 
 }());

@@ -26,25 +26,3 @@ Example: <a href="#" class="close">
 .close:after {
   transform: rotate(-45deg);
 }
-
-
-#motif-list-selected {
-}
-
-
-.tab-link {
-  padding: 4px;
-
-  .close:before, .close:after {
-    position: absolute;
-    left: 8px;
-    height: 20px;
-  }
-
-  .tab-name {
-    text-decoration: none;
-    color: #222222;
-    padding: inherit;
-  }
-}
-

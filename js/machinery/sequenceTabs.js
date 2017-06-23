@@ -21,6 +21,7 @@ var sequenceTabs = (function () {
 
         if ($.isEmptyObject(newTab)) {
             errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab"});
+            startErrorAnimation(source = $(".tab-link").last());
         } else {
             addTabToInterface(newTab, makeCurrent);
         }
@@ -77,14 +78,14 @@ var sequenceTabs = (function () {
 
 
         $interfaceTab.on("click", function(event) {
+            event.preventDefault();
+
             if (event.target.className == "close") {
                 deleteTab(this);
             } else {
                 setTabToCurrent(this);
             }
         });
-
-
         return $interfaceTab;
     };
 
@@ -103,6 +104,7 @@ var sequenceTabs = (function () {
             }
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "last tab cannot be deleted"});
+            startErrorAnimation(source);
         }
 
     };
@@ -157,6 +159,14 @@ var sequenceTabs = (function () {
         }
     };
 
+
+    var startErrorAnimation = function (source) {
+        var $source = $(source);
+        console.log($source);
+
+        $source.animate({backgroundColor: '#FA8072'}, "fast");
+        $source.animate({backgroundColor: '#EDEDF2'}, "fast");
+    };
 
     //debug
     var show = function () {

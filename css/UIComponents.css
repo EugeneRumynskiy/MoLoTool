@@ -45,7 +45,7 @@
     width: 100%; }
     #motif-list-selected-cmp #motif-list-selected .chosen-motif {
       display: inline-block;
-      margin: 0 10px 10px 10px;
+      margin: 0 5px 5px 5px;
       padding: 2px 8px 2px 2px;
       border-radius: 10px;
       border: 1px solid black;
@@ -71,13 +71,16 @@
     display: none; }
 
 #sequence-input-cmp {
-  background-color: #ededf2;
-  padding: 10px 10px 10px 10px; }
+  background-color: #ededf2; }
   #sequence-input-cmp #sequence-tabs ul.tabs {
     margin: 0px;
     padding: 0px;
     list-style: none; }
     #sequence-input-cmp #sequence-tabs ul.tabs .tab-link {
+      border: 2px solid #999;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: none;
       background: none;
       color: #222;
       display: inline-block;
@@ -90,5 +93,25 @@
         text-decoration: none;
         color: #222222;
         padding: 0.75em 1.25em; }
+    #sequence-input-cmp #sequence-tabs ul.tabs .current-tab {
+      border-bottom-color: #e9e9e9;
+      background-color: #e9e9e9;
+      top: 6px;
+      padding-bottom: 10px; }
+  #sequence-input-cmp .controls {
+    border: 2px solid #999;
+    border-radius: 2px;
+    background-color: #e9e9e9;
+    padding: 15px; }
+    #sequence-input-cmp .controls .button-container {
+      display: inline-block;
+      border: 2px solid #999;
+      border-radius: 5px; }
+      #sequence-input-cmp .controls .button-container .interface-button {
+        outline: none;
+        border-right: 2px solid #999;
+        margin: 0; }
+      #sequence-input-cmp .controls .button-container .interface-button:last-child {
+        border-right: none; }
 
 /*# sourceMappingURL=UIComponents.css.map */

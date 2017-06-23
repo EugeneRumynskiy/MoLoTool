@@ -5,7 +5,7 @@
   height: 100%;
   z-index: 2; }
   .nav-sidebar > nav {
-    width: 4rem;
+    width: 0;
     height: 100%;
     background: #2680F3;
     color: white;
@@ -13,12 +13,12 @@
     overflow: hidden;
     box-shadow: 0px 0px 10px #333; }
     .nav-sidebar > nav:hover {
-      width: 16rem; }
+      width: 0; }
     .nav-sidebar > nav * {
       user-select: none; }
     .nav-sidebar > nav > ul {
       display: table;
-      width: 16rem; }
+      width: 0; }
       .nav-sidebar > nav > ul > li {
         display: table-row;
         background: #0c66da;
@@ -35,20 +35,74 @@
         .nav-sidebar > nav > ul > li:active {
           background: #87b9f8; }
         .nav-sidebar > nav > ul > li > div {
-          height: 4rem;
-          line-height: 4rem;
+          height: 0;
+          line-height: 0;
           display: table-cell; }
           .nav-sidebar > nav > ul > li > div:nth-child(1) {
-            width: 4rem;
+            width: 0;
             text-align: center; }
           .nav-sidebar > nav > ul > li > div:nth-child(2) {
-            width: 12rem;
+            width: 0;
             text-align: left;
-            padding-left: 0.8rem; }
+            padding-left: 0; }
 
 /* Media for larger devices */
 @media screen and (min-width: 800px) {
   .nav-sidebar {
     top: 40px; } }
+/*HTML
+<div class="nav-sidebar">
+            <nav>
+                <ul>
+                    <li id="link-zero">
+                        <div></div>
+
+                        <a>
+                        </a>
+                    </li>
+                    <li id="link-one">
+                        <div>Save</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-two">
+                        <div>Sequence</div>
+
+                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+
+                        <a class="show-button" applyToId="sequence-input-cmp" href="#">
+                            <span class="icon octicon octicon-graph"></span>
+                        </a>
+                    </li>
+                    <li id="link-three">
+                        <div>Slider</div>
+
+                        <a class="show-button" applyToId="log-slider-cmp" href="#">
+                            <span class="icon octicon octicon-eye"></span>
+                        </a>
+                    </li>
+                    <li id="link-four">
+                        <div>Table</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                    <li id="link-five">
+                        <div>Markup</div>
+
+                        <a>
+                            <span class="icon octicon octicon-cloud-download"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+*/
 
 /*# sourceMappingURL=navigationSideBar.css.map */

@@ -1,18 +1,34 @@
 var motifHandler = (function () {
     var _fileName = "motifHandler",
-        _motifNameList = [];
+        _motifNameList = [],
+
+        //debug
+        _timeStamp = 0,
+        _timeString = "";
 
     var setup = function (motifNameList) {
         //Todo
     };
-    
+
+
+    //debug
+
+
+    var getThenSetTime = function () {
+        var result = performance.now() - _timeStamp;
+        _timeStamp = performance.now();
+        _timeString += result + " ";
+        return result;
+    };
+
     
     var handleMotifs = function () {
         //ToDo: add pValue into inputParsing
+
         var sequence = inputParsing.parseInput()[0]["sequence"],
             //title = inputParsing.parseInput()[0]["title"],
             //primarySequence = inputParsing.parseInput()[0],
-            pValue = $("#linearSlider-input").val(),
+            pValue = pSlider.getPValue(),
 
             userRequestedNames = motifPicker.getRequestedMotifNames(),
             userRequestedMotifs = motifLibrary.getUserRequestedMotifUnits(userRequestedNames),
@@ -27,9 +43,9 @@ var motifHandler = (function () {
             }
         }
 
-        motifTable.redrawTableWithSites(sites);
-
         resultContainer.updateWith(sequenceConstructor.markupSegmentation(sequence, sites));
+
+        motifTable.redrawTableWithSites(sites);
     };
 
 

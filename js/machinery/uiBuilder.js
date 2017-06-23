@@ -41,6 +41,8 @@ var uiBuilder = (function () {
 
     var buildExternalMotifPickerComponent = function () {
         $('#motif-list').on('click', '.motif-title', function(event){
+            event.preventDefault();
+
             var $motifTitle = $(event.target), motifName = $motifTitle.text(),
                 $motifContainer = $motifTitle.parent();
 
@@ -90,7 +92,9 @@ var uiBuilder = (function () {
         for(var i = 0; i < buttonStates.length; i++) {
             button = ".to-" + buttonStates[i] + "-button";
 
-            $(button).on('click', function() {
+            $(button).on('click', function(event) {
+                event.preventDefault();
+
                 var $source = $(this),  $target = $("#" + $source.attr("applyToId")),
                     classToSet = $source.attr("state"),
                     currentClass = motifPicker.getCurrentInterfaceState();
@@ -110,9 +114,10 @@ var uiBuilder = (function () {
 
 
         //search bar usability
+        //ToDo bad-bad-bad code
         $('body').click(function(e) {
             var $target = $(e.target);
-
+            console.log("boo");
             if ($target.attr('id') != "search") {
                 if (!$target.parent().hasClass("chosen-motif")) {
                     //if motif has this class than it's JUST chosen
@@ -133,8 +138,16 @@ var uiBuilder = (function () {
         var defaultSequence = "AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA";
         sequenceTabs.addTab({"title": "", "sequence": defaultSequence},
             makeCurrent=true);
+        sequenceTabs.addTab({"title": "", "sequence": defaultSequence},
+            makeCurrent=true);
+        sequenceTabs.addTab({"title": "", "sequence": defaultSequence},
+            makeCurrent=true);
+
+
 
         $("#add-tab-button").on("click", function (event) {
+            event.preventDefault();
+
             sequenceTabs.addTab({"title": "", "sequence": ""});
         });
 
