@@ -4,10 +4,9 @@ Example: <a href="#" class="close">
 */
 .close {
   position: relative;
-  float: right;
+  opacity: 0.3;
   width: 20px;
-  height: 20px;
-  opacity: 0.3; }
+  height: 20px; }
 
 .close:hover {
   opacity: 1; }
@@ -25,5 +24,46 @@ Example: <a href="#" class="close">
 
 .close:after {
   transform: rotate(-45deg); }
+
+.chosen-motif .close {
+  float: right; }
+
+.tab-result .close {
+  position: absolute; }
+
+.tab-link .close {
+  display: none;
+  right: 0.5em;
+  position: absolute; }
+
+/*Add element
+Example: <a href="#" class="add">
+*/
+.add {
+  position: absolute;
+  opacity: 0.3;
+  width: 20px;
+  height: 20px; }
+
+.add:hover {
+  opacity: 1; }
+
+.add:before, .add:after {
+  position: absolute;
+  left: 8px;
+  content: ' ';
+  height: 18px;
+  width: 4px;
+  background-color: #333; }
+
+.add:before {
+  transform: rotate(90deg); }
+
+.add:active {
+  background-color: #a3a3a3; }
+
+.tab-link .add {
+  right: 0.5em;
+  position: absolute; }
 
 /*# sourceMappingURL=controlElements.css.map */

@@ -105,7 +105,7 @@
     padding: 15px; }
     #sequence-input-cmp .controls .button-container {
       display: inline-block;
-      border: 2px solid #999;
+      border: 5px solid #999;
       border-radius: 5px; }
       #sequence-input-cmp .controls .button-container .interface-button {
         outline: none;
@@ -113,5 +113,93 @@
         margin: 0; }
       #sequence-input-cmp .controls .button-container .interface-button:last-child {
         border-right: none; }
+
+#result-cmp {
+  /*#sequence-tabs {
+    display: inline-block;
+    width: $sideTab-width;
+
+    ul.tabs {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+
+      .tab-link {
+        border: 2px solid #999;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: none;
+
+        background: none;
+        color: #222;
+        display: block;
+        cursor: pointer;
+
+        .close:before, .close:after {
+          position: absolute;
+          left: 8px;
+          height: 20px;
+        }
+
+        .tab-name {
+          text-decoration: none;
+          color: #222222;
+          padding: 0.75em 1.25em;
+        }
+      }
+
+      .current-tab {
+        border-bottom-color: #e9e9e9;
+        background-color: #e9e9e9;
+
+        top: 6px;
+        padding-bottom: 10px;
+      }
+    }
+  }*/ }
+  #result-cmp .tab-result {
+    height: 3em;
+    line-height: 3em;
+    margin: 1em 0 1em 0; }
+    #result-cmp .tab-result .tab-result-name {
+      float: left;
+      height: inherit;
+      width: 3em;
+      border: 2px solid #999;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-right: none;
+      background: none;
+      color: #222;
+      display: inline-block;
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+      outline: none;
+      padding-left: 0.3em; }
+    #result-cmp .tab-result .tab-result-sequence {
+      font-family: "Courier New", "Times New Roman";
+      font-size: 23px;
+      margin-left: 3em;
+      height: inherit;
+      word-wrap: break-word;
+      overflow: auto;
+      word-break: break-all;
+      background-color: #ffffff; }
+  #result-cmp .current-tab-result {
+    border-bottom-color: #e9e9e9;
+    background-color: #e9e9e9;
+    top: 6px;
+    padding-bottom: 10px; }
+  #result-cmp #result {
+    display: inline-block;
+    font-family: "Courier New", "Times New Roman";
+    font-size: 23px;
+    width: 100%;
+    height: 100px;
+    word-wrap: break-word;
+    overflow: auto;
+    word-break: break-all;
+    background-color: #ffffff; }
 
 /*# sourceMappingURL=UIComponents.css.map */

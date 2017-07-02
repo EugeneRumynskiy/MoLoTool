@@ -79,6 +79,7 @@
     <script src="js/machinery/resultContainer.js"></script>
     <script src="js/machinery/fileUploader.js"></script>
     <script src="js/machinery/sequenceTabs.js"></script>
+    <script src="js/machinery/resultTabs.js"></script>
     <script src="js/machinery/calculations/combinations.js"></script>
 
 
@@ -167,11 +168,26 @@
                         <span class="icon icon-medium">Select a text file:</span>
                         <input type="file" id="fileInput">
                     </a>
+                    <a class="interface-button" id="show-title-button" applyToId="sequence-tabs" href="#">
+                        <span class="icon icon-medium">Show title</span>
+                    </a>
+                    <a class="interface-button" id="add-to-results-button" applyToId="sequence-tabs" href="#">
+                        <span class="icon icon-medium">Add to Result</span>
+                    </a>
                 </div>
+
+                <a class="interface-button to-hidden-button" applyToId="motif-table-cmp" state="hidden" href="#">
+                    <span class="icon icon-medium">Hide table</span>
+                </a>
             </div>
 
             <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" spellcheck=false
                       placeholder="Put a sequence here...">AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA</textarea>
+        </div>
+
+
+        <div class="interface-component" id="result-cmp">
+            <div id="result" class="round"></div>
         </div>
 
 
@@ -192,12 +208,7 @@
         </div>
 
 
-        <div class="interface-component">
-            <div id="result" class="round"></div>
-        </div>
-
-
-        <div class="interface-component">
+        <div class="interface-component" id="motif-table-cmp">
             <table id='motif-table' class="display cell-border compact" width="100%">
             </table>
         </div>

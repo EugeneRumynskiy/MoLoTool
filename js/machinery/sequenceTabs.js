@@ -3,15 +3,20 @@
  */
 var sequenceTabs = (function () {
     var _fileName = "sequenceTabs",
+
         _openedTabsIds,
+
         _features,
-        _maxTabs;
+        _maxTabCount;
 
 
     var create = function () {
         _openedTabsIds = {};
+
         _features = ["name", "seqTitle", "seqSequence"];
-        _maxTabs = 10;
+        _maxTabCount = 10;
+
+        resultTabs.create();
     };
 
 
@@ -21,7 +26,6 @@ var sequenceTabs = (function () {
 
         if ($.isEmptyObject(newTab)) {
             errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab"});
-            startErrorAnimation(source = $(".tab-link").last());
         } else {
             addTabToInterface(newTab, makeCurrent);
         }
@@ -47,7 +51,7 @@ var sequenceTabs = (function () {
 
 
     var getNextTabId = function () {
-        for(var i = 1; i <= _maxTabs; i++) {
+        for(var i = 1; i <= _maxTabCount; i++) {
             if (!(i in _openedTabsIds)) {
                 return i;
             }
@@ -70,23 +74,32 @@ var sequenceTabs = (function () {
 
     var createInterfaceTab = function (newTab) {
         var $interfaceTab = $(
-                '<li class="tab-link interface-button" data-tab=' + newTab["name"] + '>' +
-                    '<a href="#" class="close"></a>' +
-                    '<a class="tab-name" href="#">' +"Tab#" + newTab["name"] + '</a>' +
-                '</li>'
+            '<li class="tab-link interface-button" data-tab=' + newTab["name"] + '>' +
+            '<a class="tab-name" href="#">' +"Tab#" + newTab["name"] + '</a>' +
+            '<a href="#" class="add"></a>' +
+            '<a href="#" class="close"></a>' +
+            '</li>'
         );
-
 
         $interfaceTab.on("click", function(event) {
             event.preventDefault();
 
-            if (event.target.className == "close") {
-                deleteTab(this);
+            if (event.target.className == "add") {
+                //deleteTab(this);
             } else {
+                var tabId = $(this).attr("data-tab");
                 setTabToCurrent(this);
+                //resultTabs.setToCurrent($(".tab-result[data-tab=" + tabId + "]"));
+                resultTabs.setToCurrent(tabId);
             }
         });
+
         return $interfaceTab;
+    };
+
+
+    var switchButton = function ($target) {
+        console.log($target);
     };
 
 
@@ -104,7 +117,6 @@ var sequenceTabs = (function () {
             }
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "last tab cannot be deleted"});
-            startErrorAnimation(source);
         }
 
     };
@@ -123,6 +135,7 @@ var sequenceTabs = (function () {
         motifHandler.handleMotifs();
     };
 
+
     var getTabContentById = function (tabId) {
         if ($.isEmptyObject(_openedTabsIds[tabId])) {
             return {};
@@ -139,7 +152,7 @@ var sequenceTabs = (function () {
 
 
     var deleteTabContentById = function (tabId) {
-        if (tabId in _openedTabsIds) {
+        if (isRecorded(tabId)) {
             delete _openedTabsIds[tabId];
             return true;
         } else {
@@ -168,6 +181,17 @@ var sequenceTabs = (function () {
         $source.animate({backgroundColor: '#EDEDF2'}, "fast");
     };
 
+
+    var getMaxTabCount = function () {
+        return _maxTabCount;
+    };
+
+
+    var isRecorded = function(tabId) {
+        return tabId in _openedTabsIds;
+    };
+
+
     //debug
     var show = function () {
         console.log(_openedTabsIds);
@@ -176,14 +200,17 @@ var sequenceTabs = (function () {
 
     return {
         create: create,
-        deleteTab: deleteTabContentById,
         addTab: addTab,
 
+        getMaxTabCount: getMaxTabCount,
         getTabContentById: getTabContentById,
+        isRecorded: isRecorded,
 
         updateSeqInputWithTabContent: updateSeqInputWithTabContent,
         updateCurrentTabSequence: updateCurrentTabSequence,
 
+        setTabToCurrent: setTabToCurrent,
+        switchButton: switchButton,
         //debug
         show: show
     };

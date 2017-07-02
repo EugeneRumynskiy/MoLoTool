@@ -45,7 +45,9 @@ var motifHandler = (function () {
 
         resultContainer.updateWith(sequenceConstructor.markupSegmentation(sequence, sites));
 
-        motifTable.redrawTableWithSites(sites);
+        if (!$("#motif-table-cmp").hasClass("hidden")) {
+            motifTable.redrawTableWithSites(sites);
+        }
     };
 
 
