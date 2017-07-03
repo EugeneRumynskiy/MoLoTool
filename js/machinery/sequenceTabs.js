@@ -5,16 +5,15 @@ var sequenceTabs = (function () {
     var _fileName = "sequenceTabs",
 
         _openedTabsIds,
-
         _features,
-        _maxTabCount;
+        _tabIdRange;
 
 
     var create = function () {
         _openedTabsIds = {};
 
         _features = ["name", "seqTitle", "seqSequence"];
-        _maxTabCount = 10;
+        _tabIdRange = {"min": 1, "max": 10};
 
         resultTabs.create();
     };
@@ -51,9 +50,9 @@ var sequenceTabs = (function () {
 
 
     var getNextTabId = function () {
-        for(var i = 1; i <= _maxTabCount; i++) {
-            if (!(i in _openedTabsIds)) {
-                return i;
+        for(var tabId = _tabIdRange.min; tabId <= _tabIdRange.max; tabId++) {
+            if (!(tabId in _openedTabsIds)) {
+                return tabId;
             }
         }
         errorHandler.logError({"fileName": _fileName, "message": "maximum tabs count exceeded, delete one of current tabs"});
@@ -69,6 +68,16 @@ var sequenceTabs = (function () {
         if (makeCurrent) {
             $interfaceTab.click();
         }
+    };
+
+
+    var getTabIdRange = function () {
+        return _tabIdRange;
+    };
+
+
+    var isRecorded = function(tabId) {
+        return tabId in _openedTabsIds;
     };
 
 
@@ -182,16 +191,6 @@ var sequenceTabs = (function () {
     };
 
 
-    var getMaxTabCount = function () {
-        return _maxTabCount;
-    };
-
-
-    var isRecorded = function(tabId) {
-        return tabId in _openedTabsIds;
-    };
-
-
     //debug
     var show = function () {
         console.log(_openedTabsIds);
@@ -202,7 +201,7 @@ var sequenceTabs = (function () {
         create: create,
         addTab: addTab,
 
-        getMaxTabCount: getMaxTabCount,
+        getTabIdRange: getTabIdRange,
         getTabContentById: getTabContentById,
         isRecorded: isRecorded,
 

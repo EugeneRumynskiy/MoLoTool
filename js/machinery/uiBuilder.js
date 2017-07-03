@@ -34,7 +34,7 @@ var uiBuilder = (function () {
 
         fileUploader.create();
 
-        sequenceTabs.create();
+        sequenceTabs.create(handleEvent);
         buildExternalTabComponent();
     };
 

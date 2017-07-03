@@ -10,15 +10,25 @@ var motifHandler = (function () {
         //Todo
     };
 
-
     //debug
-
-
     var getThenSetTime = function () {
         var result = performance.now() - _timeStamp;
         _timeStamp = performance.now();
         _timeString += result + " ";
         return result;
+    };
+    //
+
+    var getResultTabsSequences = function () {
+        return $.map(
+            resultTabs.getOpenedTabsIds(),
+            sequenceTabs.getTabContentById
+        );
+    };
+
+
+    var updateResultTab = function (tabId) {
+        sequenceTabs.getTabContentById
     };
 
     
@@ -35,6 +45,7 @@ var motifHandler = (function () {
 
             sites = [];
 
+
         for(var i = 0; i < userRequestedMotifs.length; i++) {
             motif.setMotifValues(userRequestedMotifs[i]);
 
@@ -48,11 +59,35 @@ var motifHandler = (function () {
         if (!$("#motif-table-cmp").hasClass("hidden")) {
             motifTable.redrawTableWithSites(sites);
         }
+
+
+        var openedTabsIds = resultTabs.getOpenedTabsIds();
+        for(var g = 0; g < openedTabsIds.length; g++) {
+            tabId = openedTabsIds[g];
+            sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence;
+            sites = [];
+
+            for(var i = 0; i < userRequestedMotifs.length; i++) {
+                motif.setMotifValues(userRequestedMotifs[i]);
+
+                if (sequence.length >= motif.getLength()) {
+                    sites = sites.concat(motif.findSites(sequence, pValue));
+                }
+            }
+
+            resultTabs.updateTab(tabId,
+                sequenceConstructor.markupSegmentation(sequence, sites)
+            );
+        }
+
+
+
     };
 
 
     return {
-        handleMotifs: handleMotifs
+        handleMotifs: handleMotifs,
+        getResultTabsSequences: getResultTabsSequences
     };
 
 }());
