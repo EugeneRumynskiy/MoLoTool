@@ -6,6 +6,7 @@ var resultTabs = (function () {
 
         _tabStates,
         _resultTabsObjects,
+        _currentResultTabId,
 
         _features,
         _tabIdRange;
@@ -77,6 +78,11 @@ var resultTabs = (function () {
     };
 
 
+    var isCurrent = function (tabId) {
+        return _currentResultTabId == tabId;
+    };
+
+
     var getNextHighestResultTabId = function (tabId) {
         for (var i = _tabIdRange.min; i <= _tabIdRange.max; i++) {
             if (_tabStates[i] && (tabId < i)) {
@@ -107,6 +113,8 @@ var resultTabs = (function () {
 
         $('#result-cmp').children(".tab-result").removeClass('current-tab-result');
         $source.addClass('current-tab-result');
+
+        _currentResultTabId = tabId;
     };
 
 
@@ -137,17 +145,17 @@ var resultTabs = (function () {
             }
             makeOpened(tabId);
             setToCurrent(tabId);
+            motifHandler.updateResultTab(tabId);
         }
     };
 
 
     var createTab = function (tabId) {
-        //'<a href="#" class="close"></a>' +
         var $resultTab = $(
             '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>#' + tabId + '</a>' +
                 '<a href="#" class="close"></a>' +
-                '<div class="tab-result-sequence round"></div>' +
+                '<div class="tab-result-sequence round flattened"></div>' +
             '</div>'
         );
 
@@ -163,7 +171,7 @@ var resultTabs = (function () {
 
                 closeTab(this);
             } else {
-                var tabId = $(event.target).attr("data-tab");
+                var tabId = $(event.target).parents(".tab-result").attr("data-tab");
                 setToCurrent(tabId);
                 sequenceTabs.setTabToCurrent($(".tab-link[data-tab=" + tabId + "]"));
             }
@@ -213,6 +221,7 @@ var resultTabs = (function () {
         setToCurrent: setToCurrent,
         addInterfaceTabToResult: addInterfaceTabToResult,
         getOpenedTabsIds: getOpenedTabsIds,
+        isCurrent: isCurrent,
 
         updateTab: updateTab,
 

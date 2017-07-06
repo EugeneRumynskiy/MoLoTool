@@ -6,7 +6,8 @@ Example: <a href="#" class="close">
   position: relative;
   opacity: 0.3;
   width: 20px;
-  height: 20px; }
+  height: 20px;
+  outline: none; }
 
 .close:hover {
   opacity: 1; }
@@ -43,7 +44,8 @@ Example: <a href="#" class="add">
   position: absolute;
   opacity: 0.3;
   width: 20px;
-  height: 20px; }
+  height: 20px;
+  outline: none; }
 
 .add:hover {
   opacity: 1; }

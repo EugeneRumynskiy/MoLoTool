@@ -3,16 +3,11 @@ var motifPicker = (function () {
         _motifSummaries = [],
         _chosenMotifsSet = new Set(), //ToDo Change Set To Dictionary o(1)
 
-        _maxResultCount,
-        _currentInterfaceState;
+        _maxResultCount;
 
 
     var create = function () {
         _maxResultCount = 5;
-
-        //ToDo
-        setCurrentInterfaceState("flattened");
-        $("#sequence-input").addClass("flattened");
 
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
@@ -36,9 +31,7 @@ var motifPicker = (function () {
     };
 
 
-    var setMotifSummaries = function (promisedMotifSummaries){
-        console.log(promisedMotifSummaries);
-
+    var setMotifSummaries = function (promisedMotifSummaries) {
         if (_motifSummaries.length != 0) {
             errorHandler.logError({"fileName": _fileName, "message": "warning, library is not empty"});
             console.log(_motifSummaries);
@@ -58,9 +51,11 @@ var motifPicker = (function () {
         $('#ifMore-container').html(ifMoreContainer);
     };
 
+
     var ifMore = function (suggestedMotifs) {
         return (suggestedMotifs.length > _maxResultCount) ? (suggestedMotifs.length - _maxResultCount) : 0;
     };
+
 
     var wrapMotifInContainer = function (suggestedMotif) {
         var summary = suggestedMotif[0],
@@ -71,12 +66,8 @@ var motifPicker = (function () {
         return '<div class="motif-container">' +
             primaryInfo +
             '</div>';
-
-        /*'<div class="motif-container suggestion"' + ' id="' + name + '">' +
-            '<div class="motif-title feature">'+ name +'</div>' +
-            '<div class="motif-family feature second">'+ family +'</div>' +
-            '</div>';*/
     };
+
 
     var wrapSummaryPrimaryInformation = function (motifSummary) {
         var name = motifSummary["full_name"], family = motifSummary["motif_families"];
@@ -87,9 +78,11 @@ var motifPicker = (function () {
             '</div>';
     };
 
+
     var wrapSummaryAdditionalInformation = function (motifSummary) {
         return motifSummary["motif_subfamilies"];
     };
+
 
     var wrapIfMoreValueInContainer = function (ifMoreValue) {
         var ifMoreContainer = "";
@@ -101,6 +94,7 @@ var motifPicker = (function () {
         }
         return ifMoreContainer;
     };
+
 
     var ifMotifIsChosen = function (motifName) {
         return _chosenMotifsSet.has(motifName);
@@ -154,22 +148,16 @@ var motifPicker = (function () {
     };
 
 
-    var setCurrentInterfaceState = function (classToSet) {
-        _currentInterfaceState = classToSet;
-    };
-
-    var getCurrentInterfaceState = function () {
-        return _currentInterfaceState;
-    };
-
-
-
     var getChosenMotifSet = function () {
         return _chosenMotifsSet;
     };
+
+
     var RegExpEscape = function( value ) {
         return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
     };
+
+
     var testedAgainstSearch = function (motifName) {
         var val = $.trim($("#search").val()),
             reg = new RegExp( RegExpEscape(val), 'i');
@@ -189,9 +177,6 @@ var motifPicker = (function () {
         getChosenMotifSet: getChosenMotifSet,
 
         setSuggestedMotifList: setSuggestedMotifList,
-
-        getCurrentInterfaceState: getCurrentInterfaceState,
-        setCurrentInterfaceState: setCurrentInterfaceState
     };
 }());
 /**
@@ -238,6 +223,7 @@ var motifSearch = (function () {
         motifPicker.setSuggestedMotifList(motifsToSuggest);
     };
 
+
     var getMotifsToSuggest = function (motifSummaries, regExpsToCheck) {
         var suggestedMotifs = [];
         
@@ -257,15 +243,18 @@ var motifSearch = (function () {
         return suggestedMotifs;
     };
 
+
     var getRegExpsToCheck = function () {
         var searchInput = getSearchInput(),
             tokens = splitInputIntoTokens(searchInput);
         return $.map(tokens, tokenToRegExp);
     };
 
+
     var getSearchInput = function () {
         return $("#search").val();
     };
+
 
     var splitInputIntoTokens = function (searchString) {
         var trimmedString = $.trim(searchString),
@@ -273,9 +262,11 @@ var motifSearch = (function () {
         return tokens.filter(function(s){ return s != "" });
     };
 
+
     var tokenToRegExp = function (token) {
         return new RegExp(RegExpEscape(token), 'i');
     };
+
 
     var RegExpEscape = function( value ) {
         return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
@@ -295,6 +286,7 @@ var motifSearch = (function () {
             return testResult;
         }
     };
+
 
     var testKeysWithRegExps = function (key, regExpsToTest) {
         var testString = keyToString(key);

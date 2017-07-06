@@ -1,4 +1,4 @@
-#sequence-input {
+#sequence-input, #title-input {
   font-family: "Courier New", "Times New Roman";
   font-size: 23px;
   width: 100%;
@@ -27,8 +27,8 @@
   height: 80vh !important; }
 
 .flattened {
-  line-height: 3em !important;
-  height: 3em !important;
+  line-height: 70px !important;
+  height: 70px !important;
   overflow-x: scroll;
   overflow-y: hidden;
   word-wrap: normal; }

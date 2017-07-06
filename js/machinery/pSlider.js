@@ -11,6 +11,7 @@ var pSlider = (function () {
             "linear":{"min": 0.000001, "max": 0.0500}
         },
         _sliderRange = {"min": [1.3010], "max": [6]},
+
         _fileName = "pSlider",
                 _eventHandler = function() {
             errorHandler.logError({"fileName": _fileName, "message": "_eventHandler hasn't been set"});
@@ -19,7 +20,9 @@ var pSlider = (function () {
 
 
 
-    var create = function () {
+    var create = function (eventHandler) {
+        setEventHandlerTo(eventHandler);
+
         var logSlider = setSlider();
         buildUIComponent(logSlider);
         return logSlider;
@@ -128,7 +131,6 @@ var pSlider = (function () {
 
     return {
         create: create,
-        setEventHandlerTo: setEventHandlerTo,
         isActive: isActive,
         getPValue: getPValue
     };

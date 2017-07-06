@@ -8,6 +8,8 @@ Example: <a href="#" class="close">
   opacity: 0.3;
   width: 20px;
   height: 20px;
+
+  outline: none;
 }
 .close:hover {
   opacity: 1;
@@ -51,6 +53,8 @@ Example: <a href="#" class="add">
   opacity: 0.3;
   width: 20px;
   height: 20px;
+
+  outline: none;
 }
 .add:hover {
   opacity: 1;

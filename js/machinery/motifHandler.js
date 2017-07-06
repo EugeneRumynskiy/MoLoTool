@@ -1,12 +1,14 @@
 var motifHandler = (function () {
     var _fileName = "motifHandler",
-        _motifNameList = [],
+
+        _pValue,
+        _requestedMotifs,
 
         //debug
         _timeStamp = 0,
         _timeString = "";
 
-    var setup = function (motifNameList) {
+    var create = function (motifNameList) {
         //Todo
     };
 
@@ -26,68 +28,81 @@ var motifHandler = (function () {
         );
     };
 
-
-    var updateResultTab = function (tabId) {
-        sequenceTabs.getTabContentById
+    var updatePvalue = function () {
+        _pValue = pValue = pSlider.getPValue();
     };
 
-    
-    var handleMotifs = function () {
-        //ToDo: add pValue into inputParsing
 
-        var sequence = inputParsing.parseInput()[0]["sequence"],
-            //title = inputParsing.parseInput()[0]["title"],
-            //primarySequence = inputParsing.parseInput()[0],
-            pValue = pSlider.getPValue(),
+    var updateMotifs = function () {
+        var userRequestedNames = motifPicker.getRequestedMotifNames();
+        _requestedMotifs = motifLibrary.getUserRequestedMotifUnits(userRequestedNames);
+    };
 
-            userRequestedNames = motifPicker.getRequestedMotifNames(),
-            userRequestedMotifs = motifLibrary.getUserRequestedMotifUnits(userRequestedNames),
 
+    var updateResultTab = function(tabId) {
+        var sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence,
             sites = [];
 
-
-        for(var i = 0; i < userRequestedMotifs.length; i++) {
-            motif.setMotifValues(userRequestedMotifs[i]);
+        for(var i = 0; i < _requestedMotifs.length; i++) {
+            motif.setMotifValues(_requestedMotifs[i]);
 
             if (sequence.length >= motif.getLength()) {
-                sites = sites.concat(motif.findSites(sequence, pValue));
+                sites = sites.concat(motif.findSites(sequence, _pValue));
             }
         }
 
-        resultContainer.updateWith(sequenceConstructor.markupSegmentation(sequence, sites));
+        resultTabs.updateTab(tabId,
+            sequenceConstructor.markupSegmentation(sequence, sites)
+        );
 
-        if (!$("#motif-table-cmp").hasClass("hidden")) {
-            motifTable.redrawTableWithSites(sites);
+        if (resultTabs.isCurrent(tabId)) {
+            if (!$("#motif-table-cmp").hasClass("hidden")) {
+                motifTable.redrawTableWithSites(sites);
+            }
         }
+    };
 
 
+    var updateAllResultTabs = function () {
         var openedTabsIds = resultTabs.getOpenedTabsIds();
-        for(var g = 0; g < openedTabsIds.length; g++) {
-            tabId = openedTabsIds[g];
-            sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence;
-            sites = [];
+        $.map(openedTabsIds, updateResultTab);
+    };
 
-            for(var i = 0; i < userRequestedMotifs.length; i++) {
-                motif.setMotifValues(userRequestedMotifs[i]);
 
-                if (sequence.length >= motif.getLength()) {
-                    sites = sites.concat(motif.findSites(sequence, pValue));
-                }
+    var handleMotifs = function () {
+        /*var sequence = inputParsing.parseInput()[0]["sequence"],
+            sites = [];*/
+
+       /* for(var i = 0; i < _requestedMotifs.length; i++) {
+            motif.setMotifValues(_requestedMotifs[i]);
+
+            if (sequence.length >= motif.getLength()) {
+                sites = sites.concat(motif.findSites(sequence, _pValue));
             }
-
-            resultTabs.updateTab(tabId,
-                sequenceConstructor.markupSegmentation(sequence, sites)
-            );
         }
 
+        resultContainer.updateWith(sequenceConstructor.markupSegmentation(sequence, sites));*/
 
+        updatePvalue();
+        updateMotifs();
+        updateAllResultTabs();
+    };
+
+
+    var handleTab = function () {
 
     };
 
 
     return {
         handleMotifs: handleMotifs,
-        getResultTabsSequences: getResultTabsSequences
+        getResultTabsSequences: getResultTabsSequences,
+
+        updatePvalue: updatePvalue,
+        updateMotifs: updateMotifs,
+
+        updateResultTab: updateResultTab,
+        updateAllResultTabs: updateAllResultTabs
     };
 
 }());

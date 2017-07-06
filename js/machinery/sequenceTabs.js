@@ -140,8 +140,6 @@ var sequenceTabs = (function () {
 
         $('.tab-link').removeClass('current-tab');
         $source.addClass('current-tab');
-
-        motifHandler.handleMotifs();
     };
 
 

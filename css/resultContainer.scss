@@ -1,6 +1,6 @@
 @import "utilities/variables";
 
-#sequence-input {
+#sequence-input, #title-input {
   font-family: "Courier New", "Times New Roman";
   font-size: 23px;
 
@@ -39,8 +39,8 @@
 }
 
 .flattened {
-  line-height: 3em !important;
-  height: 3em !important;
+  line-height: $resultTab-height !important;
+  height: $resultTab-height !important;
   overflow-x: scroll;
   overflow-y: hidden;
   word-wrap: normal;

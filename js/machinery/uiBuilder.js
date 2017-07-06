@@ -26,8 +26,7 @@ var uiBuilder = (function () {
         var table = motifTable.create();
         buildExternalTableComponent(table);
 
-        pSlider.create();
-        buildExternalSliderComponent();
+        pSlider.create(handleEvent);
 
         resultContainer.create();
         buildExternalResultContainerComponent();
@@ -68,6 +67,7 @@ var uiBuilder = (function () {
             motifSearch.applySearch();
         });
 
+
         $('#motif-list-selected').on('click', '.close', function(event){
             var $motifContainer = $(event.target).parent(),
                 $motifTitle = $(event.target).siblings(".motif-title"), motifName = $motifTitle.text();
@@ -87,79 +87,33 @@ var uiBuilder = (function () {
         });
 
 
-
-        var buttonStates = ["hidden", "full-screen", "flattened"], button;
-        for(var i = 0; i < buttonStates.length; i++) {
-            button = ".to-" + buttonStates[i] + "-button";
-
-            $(button).on('click', function(event) {
-                event.preventDefault();
-
-                var $source = $(this),  $target = $("#" + $source.attr("applyToId")),
-                    classToSet = $source.attr("state"),
-                    currentClass = motifPicker.getCurrentInterfaceState();
-
-                $target.removeClass(currentClass);
-                if (currentClass == classToSet) {
-                    //toggle class
-                    motifPicker.setCurrentInterfaceState("default");
-                    $target.addClass("default");
-                } else {
-                    //add new class
-                    motifPicker.setCurrentInterfaceState(classToSet);
-                    $target.addClass(classToSet);
-                }
-            });
-        }
+        motifPickerButtons.create();
 
 
         //search bar usability
         //ToDo bad-bad-bad code
-        $('body').click(function(e) {
-            var $target = $(e.target);
-            console.log("boo");
-            if ($target.attr('id') != "search") {
-                if (!$target.parent().hasClass("chosen-motif")) {
-                    //if motif has this class than it's JUST chosen
-                    $(".suggestions").hide();
-                } else {
-                    if (!$target.hasClass("feature")) {
-                        if (($target.closest('.suggestions').length == 0)) {
-                            $(".suggestions").hide();
-                        }
-                    }
-                }
+        $('body').click(function(event) {
+            var $target = $(event.target);
+
+            if (($target.parents(".search-container").length == 0) &&
+                (!$target.hasClass("feature"))) {
+                $(".suggestions").hide();
             }
         });
     };
 
 
     var buildExternalTabComponent = function () {
-        var defaultSequence = "AAAGTGCTGCTGAGGCGTAGAGCGTCGGCTGATGCGCTTGACTAGACTAACGTTA",
+        var defaultSequence = "AAAGGCAGGTGTAGAGCGTCTGCTGAGGCAGGCGTAGAGCGTCGGCTGATATAGAGCGTGGCGCGCTTGACTAGACTAGAGCGTAGGGCAGGCTAACGTTAGCAGG",
             maxTabCount = 10;
 
         for(var i = 0; i < maxTabCount; i++) {
-            if (i == 0) {
+            if (i <= 3) {
                 sequenceTabs.addTab({"title": "", "sequence": defaultSequence}, true);
             } else {
                 sequenceTabs.addTab({"title": "", "sequence": ""});
             }
         }
-        //resultTabs.addInterfaceTabToResult(1);
-
-        $("#add-tab-button").on("click", function (event) {
-            event.preventDefault();
-
-            sequenceTabs.addTab({"title": "", "sequence": ""});
-        });
-
-
-        $("#add-to-results-button").on("click", function (event) {
-            event.preventDefault();
-            var currentTabId = $(".current-tab").attr("data-tab");
-
-            resultTabs.addInterfaceTabToResult(currentTabId);
-        });
 
 
         $(".tab-link .add").on("click", function (event) {
@@ -251,11 +205,6 @@ var uiBuilder = (function () {
                     $('#' + lastID).removeClass("last");
                 }
             });
-    };
-
-
-    var buildExternalSliderComponent = function () {
-        pSlider.setEventHandlerTo(handleEvent);
     };
 
 
