@@ -14,8 +14,6 @@ var sequenceTabs = (function () {
 
         _features = ["name", "seqTitle", "seqSequence"];
         _tabIdRange = {"min": 1, "max": 10};
-
-        resultTabs.create();
     };
 
 
@@ -100,6 +98,10 @@ var sequenceTabs = (function () {
                 setTabToCurrent(this);
                 //resultTabs.setToCurrent($(".tab-result[data-tab=" + tabId + "]"));
                 resultTabs.setToCurrent(tabId);
+
+                if (resultTabs.isOpened(tabId)) {
+                    motifHandler.updateResultTab(tabId);
+                }
             }
         });
 

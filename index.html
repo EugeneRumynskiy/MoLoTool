@@ -140,11 +140,6 @@
 
 
     <div class="interface-area">
-        <div id='motif-list-selected-cmp' class="interface-component empty">
-            <div id='motif-list-selected'></div>
-        </div>
-
-
         <div class="interface-component" id="sequence-input-cmp">
             <div id="sequence-tabs">
                 <ul class="tabs"></ul>
@@ -152,11 +147,11 @@
 
             <div class="controls">
                 <div class="button-container">
-                    <a class="interface-button" id="change-sequence-view" href="#">
-                        <span class="icon icon-medium">change-sequence-view</span>
-                    </a>
                     <a class="interface-button" id="show-title-button" href="#">
                         <span class="icon icon-medium">Show title</span>
+                    </a>
+                    <a class="interface-button" id="change-sequence-view" href="#">
+                        <span class="icon icon-medium">change-sequence-view</span>
                     </a>
                     <a class="interface-button upload-button" applyToId="sequence-input" href="#">
                         <span class="icon icon-medium">Select a text file:</span>
@@ -171,8 +166,13 @@
 
             <textarea id="title-input" class="round flattened" rows="3" spellcheck=false
                       placeholder="Put a title here..."></textarea>
+
             <textarea name="sequenceInput" id="sequence-input" class="round flattened" rows="3" spellcheck=false
                       placeholder="Put a sequence here..."></textarea>
+
+            <div id='motif-list-selected-cmp' class="interface-component empty">
+                <div id='motif-list-selected'></div>
+            </div>
         </div>
 
 

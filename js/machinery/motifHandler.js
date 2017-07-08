@@ -40,6 +40,7 @@ var motifHandler = (function () {
 
 
     var updateResultTab = function(tabId) {
+        console.log("updated");
         var sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence,
             sites = [];
 
@@ -54,7 +55,7 @@ var motifHandler = (function () {
         resultTabs.updateTab(tabId,
             sequenceConstructor.markupSegmentation(sequence, sites, tabId)
         );
-
+        
         if (resultTabs.isCurrent(tabId)) {
             if (!$("#motif-table-cmp").hasClass("hidden")) {
                 motifTable.redrawTableWithSites(sites);

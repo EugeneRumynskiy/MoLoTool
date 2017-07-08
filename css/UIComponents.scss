@@ -4,7 +4,9 @@
   margin-top: 10px;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
-  box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
+  //box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
+  border: 1px solid $sequence-input-borders;
+  border-top: none;
 
   min-width: 500px;
 
@@ -111,7 +113,7 @@
 }
 
 #sequence-input-cmp {
-  background-color: $topNav-primaryMenuBackground;
+  background-color: $main-bg-color; //#e9e9e9;
 
   #sequence-tabs {
     ul.tabs {
@@ -120,13 +122,13 @@
       list-style: none;
 
       .tab-link {
-        border: 2px solid #999;
+        border: 2px solid $sequence-input-borders;//#999;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         border-bottom: none;
 
         background: none;
-        color: #222;
+        color: black;;
         display: inline-block;
         cursor: pointer;
 
@@ -138,14 +140,14 @@
 
         .tab-name {
           text-decoration: none;
-          color: #222222;
+          color: inherit;
           padding: 0.75em 1.25em;
         }
       }
 
       .current-tab {
-        border-bottom-color: #e9e9e9;
-        background-color: #e9e9e9;
+        border-bottom-color: $topNav-primaryMenuBackground;
+        background-color: $topNav-primaryMenuBackground;
 
         top: 6px;
         padding-bottom: 10px;
@@ -154,20 +156,21 @@
   }
 
   .controls {
-    border: 2px solid #999;
+    border: 2px solid $sequence-input-borders;//#999;
     border-radius: 2px;
-    background-color: #e9e9e9;
+    background-color: $topNav-primaryMenuBackground;
     padding: 15px;
 
     .button-container{
       display: inline-block;
-      border: 5px solid #999;
+      border: 2px solid $sequence-input-borders;//#999;
       border-radius: 5px;
+      background-color: $main-bg-color;
 
 
       .interface-button {
         outline: none;
-        border-right: 2px solid #999;
+        border-right: 2px solid $sequence-input-borders;//#999;
         margin: 0;
         text-align: center;
 
@@ -199,7 +202,7 @@
       height: inherit;
       width: 3em;
 
-      border: 2px solid #999;
+      border: 2px solid $sequence-input-borders;//#999;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
       border-right: none;

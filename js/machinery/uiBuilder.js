@@ -34,6 +34,7 @@ var uiBuilder = (function () {
         fileUploader.create();
 
         sequenceTabs.create(handleEvent);
+        resultTabs.create();
         buildExternalTabComponent();
     };
 
@@ -104,12 +105,17 @@ var uiBuilder = (function () {
 
 
     var buildExternalTabComponent = function () {
-        var defaultSequence = "AAAGGCAGGTGTAGAGCGTCTGCTGAGGCAGGCGTAGAGCGTCGGCTGATATAGAGCGTGGCGCGCTTGACTAGACTAGAGCGTAGGGCAGGCTAACGTTAGCAGG",
+        var defaultSequence = [
+                "CGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG",
+                "GAAGTAGTGTCTTAGGCGCTGGGTGGGGACAACCATCGCCGAAGCGGGACCCCGAGGAACGTCTGATAACGTACAGGAGACGGTGGAGGGGTGAATGCTGGTATTG",
+                "CTAGACTTGGAGAGAGGGGCAGCACTAACAGGGAGATGGAAAACAGGGGCTGCGCAATGCGTGGCCAGGGCGGTGTAGAGTTCTCAGTTCTGGTGGAGTGCCTACG",
+                "TCGGGTGCGACGCACACTGGGCATTGGTCAGTGACGTGAACTGAGGGCACAAGAGCTACGGTTGTGGGCGTTGTGAGAGGAATCGGGGGCACTAGAGTACACGAGA"
+        ],
             maxTabCount = 10;
 
         for(var i = 0; i < maxTabCount; i++) {
             if (i <= 3) {
-                sequenceTabs.addTab({"title": "", "sequence": defaultSequence}, true);
+                sequenceTabs.addTab({"title": "", "sequence": defaultSequence[i]}, true);
             } else {
                 sequenceTabs.addTab({"title": "", "sequence": ""});
             }
