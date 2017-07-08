@@ -22,8 +22,6 @@ body {
 .interface-button {
   color: black;
   background-color: #e9e9e9;
-  /*border: 2px solid #999;
-  border-radius: 5px;*/
   position: relative;
   line-height: 30px;
   margin-right: 0.333em;
@@ -48,6 +46,19 @@ body {
   border-radius: 5px; }
 
 .empty {
+  display: none; }
+
+.full-screen {
+  height: 80vh !important; }
+
+.flattened {
+  line-height: 70px !important;
+  height: 70px !important;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  word-wrap: normal; }
+
+.hidden {
   display: none; }
 
 /* Media for larger devices */

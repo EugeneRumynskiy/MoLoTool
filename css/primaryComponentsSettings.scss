@@ -30,13 +30,8 @@ body {
 
 .interface-button {
   color: $icon-default-color;
-
   background-color:#e9e9e9;
-  /*border: 2px solid #999;
-  border-radius: 5px;*/
-
   position: relative;
-  //display: inline-block;
 
   line-height: 30px;
   margin-right: 0.333em;
@@ -70,6 +65,24 @@ body {
   display: none;
 }
 
+
+
+//toggled classes
+.full-screen {
+  height: 80vh !important;
+}
+
+.flattened {
+  line-height: $resultTab-height !important;
+  height: $resultTab-height !important;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  word-wrap: normal;
+}
+
+.hidden {
+  display: none;
+}
 
 
 /* Media for larger devices */

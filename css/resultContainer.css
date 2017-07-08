@@ -11,6 +11,10 @@
   text-align: center;
   overflow: hidden; }
 
+.segment:hover {
+  border-top: solid salmon 4px;
+  border-bottom: solid salmon 4px; }
+
 .highlighted {
   border-top: solid salmon 4px;
   border-bottom: solid salmon 4px; }
@@ -22,18 +26,5 @@
 .first {
   border-top: solid salmon 4px;
   border-bottom: solid salmon 4px; }
-
-.full-screen {
-  height: 80vh !important; }
-
-.flattened {
-  line-height: 70px !important;
-  height: 70px !important;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  word-wrap: normal; }
-
-.hidden {
-  display: none; }
 
 /*# sourceMappingURL=resultContainer.css.map */

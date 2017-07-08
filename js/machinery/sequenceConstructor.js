@@ -5,7 +5,8 @@
 //NOT DONE YET
 var sequenceConstructor = (function () {
     var _fileName = "sequenceConstructor",
-        _sequence, _sortedSites, _segments;
+        _sequence, _sortedSites,
+        _segmentsForTabId = {};
 
 
     var setSequence = function (sequence) {
@@ -18,8 +19,8 @@ var sequenceConstructor = (function () {
     };
 
 
-    var setSegments = function (segments) {
-        _segments = segments;
+    var setSegments = function (segments, tabId) {
+        _segmentsForTabId[tabId] = segments;
     };
 
 
@@ -32,17 +33,16 @@ var sequenceConstructor = (function () {
      * used setLevels(sites), makeSegmentation(sites, sequence.length), wrapInMultiSpan
      * @param sequence
      * @param sites Object { motif: "AHR_HUMAN.H10MO.B", pos: 33, length: 9, strength: 1.0830571865297753, strand: "-", level: 3 }
+     * @param tabId
      * @returns {string}
      */
-    var markupSegmentation = function(sequence, sites) {
+    var markupSegmentation = function(sequence, sites, tabId) {
         setSequence(sequence);
         setSortedSites(sortSites(sites)); //sorting and setting levels
-        setSegments(segmentation.makeSegmentation(_sortedSites, _sequence.length));
+        setSegments(segmentation.makeSegmentation(_sortedSites, _sequence.length), tabId);
 
-        var sequenceToDisplay = wrapSegmentsInSpans(_segments);
-        //console.log(_segments);
-        //console.log(_sortedSites);
-        return sequenceToDisplay;
+        //var sequenceToDisplay = wrapSegmentsInSpans(_segmentsForTabId[tabId]);
+        return wrapSegmentsInSpans(_segmentsForTabId[tabId]);
     };
 
 
@@ -52,7 +52,6 @@ var sequenceConstructor = (function () {
      *      motifName, level, motifSequence, pValue, scorePosition, siteLength, strand, strength
      * }]}
      * @returns {*}
-     * last scheme http://paletton.com/#uid=7000X0kqNHXg5QzlJLOzMEBCtrd
      */
     var wrapSegmentsInSpans = function(segments) {
         var sequenceToDisplay = "",
@@ -70,7 +69,7 @@ var sequenceConstructor = (function () {
             if (motifCount > 1) {
                 color = commonColor;
                 backgroundColor = commonBackgroundColor;
-            } else if (motifCount == 1) {
+            } else if (motifCount === 1) {
                 color = commonColor;
                 $motifContainer = motifPicker.getChosenMotifContainer(motifs[0]);
                 backgroundColor = colorPicker.getColorFromContainer($motifContainer);
@@ -82,7 +81,7 @@ var sequenceConstructor = (function () {
             sequenceToDisplay += createSpan(color, backgroundColor, segments[i]);
         }
 
-        if (_sequence.length != positionInSequence) {
+        if (_sequence.length !== positionInSequence) {
             errorHandler.logError({"fileName": _fileName, "message": "sequenceToDisplay length is " + positionInSequence +
             "  must be:" + _sequence.length});
         }
@@ -94,11 +93,11 @@ var sequenceConstructor = (function () {
     var createSpan = function (color, backgroundColor, segment) {
         return '<span ' +
             'style="' + 'background-color: '+ backgroundColor +'; ' + 'color: ' + color +';" ' +
-            'start="' + segment.start + '" ' +
+            'data-start="' + segment.start + '" ' +
+            'data-finish="' + segment.finish + '" ' +
             'class="segment">' +
             _sequence.slice(segment.start, segment.finish + 1) +
             '</span>'
-
     };
 
 
@@ -107,16 +106,24 @@ var sequenceConstructor = (function () {
     };
 
 
-    var findSegmentWith = function (startPosition) {
-        var index =  binarySearch(_segments, startPosition, compareStartPositionAndSegment);
+    var findSegmentWith = function (startPosition, tabId) {
+        var segments = _segmentsForTabId[tabId], index;
+
+        if (segments === undefined) {
+            index = -1;
+        } else {
+            index =  binarySearch(segments, startPosition, compareStartPositionAndSegment);
+        }
 
         if (index < 0) {
             errorHandler.logError({"fileName": _fileName, "message": "there is no segment with this position\n"});
+            //ToDo Return result must be something like Object { start: 41, finish: 80, sites: Array[0], motifsInSegment: Object }
             return {};
         } else {
-            return _segments[index];
+            return segments[index];
         }
     };
+
 
     /*
      * Binary search in JavaScript.
@@ -154,10 +161,10 @@ var sequenceConstructor = (function () {
     }
 
 
-
     var show = function () {
-        console.log(_segments);
+        console.log(_segmentsForTabId);
     };
+
 
     return {
         markupSegmentation: markupSegmentation,

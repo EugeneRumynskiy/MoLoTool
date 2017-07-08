@@ -109,11 +109,14 @@ var motifPickerButtons = (function () {
         $target.addClass("hidden");
 
         var nextInputState = getNextState(currentInputState, "textarea");
+        setCurrentStateTo(nextInputState, "textarea");
+
         $target = $("#" + nextInputState);
         $target.removeClass("hidden flattened full-screen");
+        if (getCurrentState("inputView") == "hidden") {
+            switchViewToNextState($("#change-sequence-view"));
+        }
         $target.addClass(getCurrentState("inputView"));
-
-        setCurrentStateTo(nextInputState, "textarea");
 
         $button.children(".icon").html("Input: " + nextInputState);
     };

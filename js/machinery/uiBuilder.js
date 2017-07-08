@@ -45,7 +45,7 @@ var uiBuilder = (function () {
             var $motifTitle = $(event.target), motifName = $motifTitle.text(),
                 $motifContainer = $motifTitle.parent();
 
-            if (motifPicker.getChosenMotifSet().size == 0) {
+            if (motifPicker.getChosenMotifSet().size === 0) {
                 $('#motif-list-selected-cmp').removeClass("empty");
             }
 
@@ -56,7 +56,7 @@ var uiBuilder = (function () {
             colorPicker.addTo($motifContainer);
 
 
-            var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName;
+            var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName,
                 $hocomocoInfo = $('<a href=' + hocomocoRef + ' "class=hocomoco-info target=_blank">HOCOMOCO</a>');
             $hocomocoInfo.insertAfter($motifContainer.children(".full-spectrum"));
 
@@ -79,7 +79,7 @@ var uiBuilder = (function () {
 
             motifSearch.applySearch();
 
-            if (motifPicker.getChosenMotifSet().size == 0) {
+            if (motifPicker.getChosenMotifSet().size === 0) {
                 $('#motif-list-selected-cmp').addClass("empty");
             }
 
@@ -95,7 +95,7 @@ var uiBuilder = (function () {
         $('body').click(function(event) {
             var $target = $(event.target);
 
-            if (($target.parents(".search-container").length == 0) &&
+            if (($target.parents(".search-container").length === 0) &&
                 (!$target.hasClass("feature"))) {
                 $(".suggestions").hide();
             }
@@ -153,25 +153,27 @@ var uiBuilder = (function () {
 
     var buildExternalTableComponent = function (table) {
         var $motifTableTBody = $('#motif-table').find('tbody'),
-            $result = $("#result");
+            $result = $("#result-cmp");
 
         //highlight sequence
         $motifTableTBody
             .on( 'mouse' + 'enter', 'td', function () {
-                var rowData = table.row( this ).data();
-                if (rowData  != undefined){
+                var rowData = table.row( this ).data(),
+                    $resultTab = $result.children(".current-tab-result").find(".tab-result-sequence");
+
+                if (rowData !== undefined){
                     var start = rowData["Start Position"], finish = rowData["Finish Position"],
-                        segment,
+                        $segment,
                         firstID = start,
                         lastID;
 
                     while (start <= finish) {
-                        segment = $result.children('[start=' + start + ']');
-                        segment.addClass("highlighted");
-                        if ((finish - start + 1) == segment.text().length) {
+                        $segment = $resultTab.children('[data-start=' + start + ']');
+                        $segment.addClass("highlighted");
+                        if ((finish - start + 1) === $segment.text().length) {
                             break
                         } else {
-                            start = segment.next().attr('start')
+                            start = $segment.next().attr('data-start')
                         }
                     }
                     lastID = start;
@@ -183,20 +185,22 @@ var uiBuilder = (function () {
 
         $motifTableTBody
             .on( 'mouse' + 'leave', 'td', function () {
-                var rowData = table.row( this ).data();
-                if (rowData  != undefined){
+                var rowData = table.row( this ).data(),
+                    $resultTab = $result.children(".current-tab-result").find(".tab-result-sequence");
+
+                if (rowData  !== undefined) {
                     var start = rowData["Start Position"], finish = rowData["Finish Position"],
-                        segment,
+                        $segment,
                         firstID = start,
                         lastID;
 
                     while (start <= finish) {
-                        segment = $result.children('[start=' + start + ']');
-                        segment.removeClass("highlighted");
-                        if ((finish - start + 1) == segment.text().length) {
+                        $segment = $resultTab.children('[data-start=' + start + ']');
+                        $segment.removeClass("highlighted");
+                        if ((finish - start + 1) === $segment.text().length) {
                             break
                         } else {
-                            start = segment.next().attr('start')
+                            start = $segment.next().attr('data-start');
                         }
                     }
                     lastID = start;

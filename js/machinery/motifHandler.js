@@ -52,7 +52,7 @@ var motifHandler = (function () {
         }
 
         resultTabs.updateTab(tabId,
-            sequenceConstructor.markupSegmentation(sequence, sites)
+            sequenceConstructor.markupSegmentation(sequence, sites, tabId)
         );
 
         if (resultTabs.isCurrent(tabId)) {

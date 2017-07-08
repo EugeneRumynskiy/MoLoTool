@@ -18,6 +18,11 @@
   overflow: hidden;
 }
 
+.segment:hover {
+  border-top: solid salmon 4px;
+  border-bottom: solid salmon 4px;
+}
+
 .highlighted {
   border-top: solid salmon 4px;
   border-bottom: solid salmon 4px;
@@ -31,21 +36,4 @@
 .first {
   border-top: solid salmon 4px;
   border-bottom: solid salmon 4px;
-}
-
-//toggled classes
-.full-screen {
-  height: 80vh !important;
-}
-
-.flattened {
-  line-height: $resultTab-height !important;
-  height: $resultTab-height !important;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  word-wrap: normal;
-}
-
-.hidden {
-  display: none;
 }

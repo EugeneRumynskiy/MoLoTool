@@ -169,6 +169,12 @@
         outline: none;
         border-right: 2px solid #999;
         margin: 0;
+        text-align: center;
+
+        span {
+          display: inline-block;
+          width: 150px;
+        }
       }
 
       .interface-button:last-child {
