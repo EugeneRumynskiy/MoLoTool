@@ -79,7 +79,7 @@ var resultTabs = (function () {
 
 
     var isCurrent = function (tabId) {
-        console.log(parseInt(_currentResultTabId));
+        console.log(parseInt(_currentResultTabId), parseInt(tabId));
         return parseInt(_currentResultTabId) === parseInt(tabId);
     };
 

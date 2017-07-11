@@ -10,7 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bootstrap-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="spectrum" level="application" />
     <orderEntry type="library" name="vfs_fonts" level="application" />
     <orderEntry type="library" name="pdfmake" level="application" />
     <orderEntry type="library" name="jszip" level="application" />

@@ -113,6 +113,7 @@ var uiBuilder = (function () {
         ],
             maxTabCount = 10;
 
+
         for(var i = 0; i < maxTabCount; i++) {
             if (i <= 3) {
                 sequenceTabs.addTab({"title": "", "sequence": defaultSequence[i]}, true);
@@ -153,6 +154,16 @@ var uiBuilder = (function () {
             sequenceTabs.updateCurrentTabSequence(newSequence);
             handleEvent();
         });
+
+
+        //debug
+        window.setTimeout(function () {
+            for(i = 0; i < 4; i++) {
+                console.log($(".tab-link[data-tab=" + i +"]").children(".add"));
+                $(".tab-link[data-tab=" + i +"]").children(".add").trigger("click");
+            }
+        }, 600);
+
     };
 
 

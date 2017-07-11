@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{buttons.colVis, buttons.flash, buttons.html5, dataTables.buttons, jquery, jquery-ui, jquery.dataTables, jszip, pdfmake, spectrum, vfs_fonts}" />
+    <file url="PROJECT" libraries="{buttons.colVis, buttons.flash, buttons.html5, dataTables.buttons, jquery, jquery-ui, jquery.dataTables, jszip, pdfmake, vfs_fonts}" />
   </component>
 </project>
