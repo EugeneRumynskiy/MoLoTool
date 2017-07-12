@@ -144,7 +144,7 @@ var uiBuilder = (function () {
 
 
     var buildExternalTabComponent = function () {
-        $(".tab-link .add").on("click", function (event) {
+  /*      $(".tab-link .add").on("click", function (event) {
             event.preventDefault();
 
             var $target = $(event.target);
@@ -167,7 +167,7 @@ var uiBuilder = (function () {
             $target.siblings(".tab-name").click();
             $target.css("display", "none");
             $target.siblings(".add").css("display", "inherit");
-        });
+        });*/
 
 
         $('#sequence-input').on('input', function (event) {

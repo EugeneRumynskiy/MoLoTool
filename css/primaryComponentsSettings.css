@@ -22,11 +22,11 @@ body {
 .interface-button {
   color: black;
   position: relative;
-  line-height: 30px;
+  line-height: 20px;
   margin-right: 0.333em;
   padding: 0.5em 1em;
   cursor: pointer;
-  font-size: 0.88em;
+  font-size: 0.77em;
   white-space: nowrap;
   overflow: hidden;
   text-decoration: none;

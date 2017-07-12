@@ -4,10 +4,16 @@
   padding: 10px;
   height: 120px;
 
+  #log-slider {
+    display: inline-block;
+    width: 700px;
+  }
+
   .inputBox {
+    display: inline-block;
     position: relative;
     left: 5px;
-    margin-top: 50px;
+    margin-top: 5px;
 
     .inputUnit{
       display: inline-block;

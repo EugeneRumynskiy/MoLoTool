@@ -1,10 +1,14 @@
 .sliderBox {
   padding: 10px;
   height: 120px; }
+  .sliderBox #log-slider {
+    display: inline-block;
+    width: 700px; }
   .sliderBox .inputBox {
+    display: inline-block;
     position: relative;
     left: 5px;
-    margin-top: 50px; }
+    margin-top: 5px; }
     .sliderBox .inputBox .inputUnit {
       display: inline-block;
       width: 240px; }

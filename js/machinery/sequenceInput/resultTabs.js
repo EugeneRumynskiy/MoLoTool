@@ -49,6 +49,7 @@ var resultTabs = (function () {
             errorHandler.logError({"fileName": _fileName, "message": "comparisonMode is undefined"});
         }
 
+        motifHandler.handleMotifs();
         return newMode;
     };
     
@@ -211,6 +212,7 @@ var resultTabs = (function () {
 
             if (event.target.className === "close") {
                 closeTab(this);
+                motifHandler.handleMotifs();
             } else {
                 if (getCurrentMode() === "Single") {
                     var tabId = $(this).attr('data-tab');
@@ -270,6 +272,14 @@ var resultTabs = (function () {
 
         $tab.remove();
         $(".tab-result-sequence[data-tab=" + tabId + "]").remove();
+
+        if (
+            getCurrentMode() === "Single" &&
+            !$.isEmptyObject(getOpenedIds())
+        ) {
+            var newCurrentTabId = $(".tab-result").first().attr("data-tab");
+            setToCurrent(newCurrentTabId);
+        }
     };
 
 
@@ -291,7 +301,6 @@ var resultTabs = (function () {
 
     return {
         create: create,
-        closeTab: closeTab,
         switchComparisonMode: switchComparisonMode,
 
         addIdToResult: addIdToResult,
