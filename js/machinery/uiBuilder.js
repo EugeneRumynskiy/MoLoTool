@@ -36,6 +36,8 @@ var uiBuilder = (function () {
         sequenceTabs.create(handleEvent);
         resultTabs.create();
         buildExternalTabComponent();
+
+        resultSlider.create();
     };
 
 
@@ -159,7 +161,6 @@ var uiBuilder = (function () {
         //debug
         window.setTimeout(function () {
             for(i = 0; i < 4; i++) {
-                console.log($(".tab-link[data-tab=" + i +"]").children(".add"));
                 $(".tab-link[data-tab=" + i +"]").children(".add").trigger("click");
             }
         }, 600);

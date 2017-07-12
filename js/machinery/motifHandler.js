@@ -40,7 +40,6 @@ var motifHandler = (function () {
 
 
     var updateResultTab = function(tabId) {
-        console.log("_requestedMotifs", _requestedMotifs);
         var sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence,
             sites = [];
 

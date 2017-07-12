@@ -47,7 +47,7 @@ var resultTabs = (function () {
             errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeOpened"});
         } else {
             _tabStates[tabId] = true;
-            _resultTabsObjects[tabId] = $(".tab-result[data-tab=" + tabId + "]").children(".tab-result-sequence");
+            _resultTabsObjects[tabId] = $(".tab-result[data-tab=" + tabId + "]").children(".tab-result-sequence").children(".sequence");
         }
     };
 
@@ -79,7 +79,6 @@ var resultTabs = (function () {
 
 
     var isCurrent = function (tabId) {
-        console.log(parseInt(_currentResultTabId), parseInt(tabId));
         return parseInt(_currentResultTabId) === parseInt(tabId);
     };
 
@@ -156,7 +155,9 @@ var resultTabs = (function () {
             '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>#' + tabId + '</a>' +
                 '<a href="#" class="close"></a>' +
-                '<div class="tab-result-sequence round flattened"></div>' +
+                '<div class="tab-result-sequence round flattened">'
+                    + '<div class="sequence"></div>' +
+                '</div>' +
             '</div>'
         );
 
@@ -172,7 +173,17 @@ var resultTabs = (function () {
 
                 closeTab(this);
             } else {
-                var tabId = $(event.target).parents(".tab-result").attr("data-tab");
+                //ToDo must be shorter
+                var $target = $(event.target), tabId;
+                if ($target.hasClass("tab-result")) {
+                    tabId = $target.attr("data-tab");
+                } else {
+                    tabId = $target.parents(".tab-result").attr("data-tab");
+                }
+                if (tabId === undefined) {
+                    errorHandler.logError({"fileName": _fileName, "message": "tabId is undefined, tab on click"})
+                }
+
                 setToCurrent(tabId);
                 sequenceTabs.setTabToCurrent($(".tab-link[data-tab=" + tabId + "]"));
 

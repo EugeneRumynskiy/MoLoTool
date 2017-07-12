@@ -94,7 +94,6 @@ var sequenceConstructor = (function () {
         return '<span ' +
             'style="' + 'background-color: '+ backgroundColor +'; ' + 'color: ' + color +';" ' +
             'data-start="' + segment.start + '" ' +
-            'data-finish="' + segment.finish + '" ' +
             'class="segment">' +
             _sequence.slice(segment.start, segment.finish + 1) +
             '</span>'

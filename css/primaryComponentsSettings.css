@@ -29,7 +29,8 @@ body {
   font-size: 0.88em;
   white-space: nowrap;
   overflow: hidden;
-  text-decoration: none; }
+  text-decoration: none;
+  outline: none; }
 
 .interface-button:hover {
   color: #797979; }
