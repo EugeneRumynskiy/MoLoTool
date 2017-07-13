@@ -2,36 +2,109 @@
  * Created by HOME on 18.01.2017.
  */
 var inputParsing = (function () {
-    var _fileName = "inputParsing";
+    var _fileName = "inputParsing",
+        _parsedSequences,
+        _defaultParsedValues,
+        _test = ">myTitle_1 Second Third\n" +
+            "CGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG\n" +
+            ">myTitle_2 Second Third\n" +
+            "GAAGTAGTGTCTTAGGCGCTGGGTGGGGACAACCATCGCCGAAGCGGGACCCCGAGGAACGTCTGATAACGTACAGGAGACGGTGGAGGGGTGAATGCTGGTATTG\n" +
+            ">myTitle_3 Second Third\n" +
+            "CTAGACTTGGAGAGAGGGGCAGCACTAACAGGGAGATGGAAAACAGGGGCTGCGCAATGCGTGGCCAGGGCGGTGTAGAGTTCTCAGTTCTGGTGGAGTGCCTACG\n" +
+            ">myTitle_4 Second Third\n" +
+            "TCGGGTGCGACGCACACTGGGCATTGGTCAGTGACGTGAACTGAGGGCACAAGAGCTACGGTTGTGGGCGTTGTGAGAGGAATCGGGGGCACTAGAGTACACGAGACC\n",
 
-    //Get input string without leading and ending whitespace characters (space, tab, no-break space, etc.)
-    var getInputString = function () {
-        return $('#sequence-input').val().trim();
+        _test2 = "AAACGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG\n" +
+            "GAAGTAGTGTCTTAGGCGCTGGGTGGGGACAACCATCGCCGAAGCGGGACCCCGAGGAACGTCTGATAACGTACAGGAGACGGTGGAGGGGTGAATGCTGGTATTG\n" +
+            "CTAGACTTGGAGAGAGGGGCAGCACTAACAGGGAGATGGAAAACAGGGGCTGCGCAATGCGTGGCCAGGGCGGTGTAGAGTTCTCAGTTCTGGTGGAGTGCCTACG\n" +
+            "TCGGGTGCGACGCACACTGGGCATTGGTCAGTGACGTGAACTGAGGGCACAAGAGCTACGGTTGTGGGCGTTGTGAGAGGAATCGGGGGCACTAGAGTACACGAGA\n";
+
+
+    var create = function () {
+        setDefaultParsedValues({
+            "title": "None",
+            "sequence": "None"
+        });
     };
 
 
-    //TRUE if there are 1 or more fasta format sequences
-    var ifFasta = function (inputString) {
-        return inputString.indexOf(">") != -1;
+    var inputTest = function () {
+        return parseInput(_test);
     };
 
 
-    var parseInputString = function () {
-        var inputString = getInputString(), parsedUnits = [];
+    var setDefaultParsedValues = function (defaultParsedValues) {
+        _defaultParsedValues = defaultParsedValues;
+    };
+
+
+    var getDefaultParsedValues = function () {
+        return {
+            "title": _defaultParsedValues["title"],
+            "sequence": _defaultParsedValues["sequence"]
+        };
+    };
+
+
+    var parseInput = function (inputString) {
+        var sequences;
 
         if (ifFasta(inputString)) {
-            parsedUnits = parseFastaInput(inputString);
+            sequences = parseAsFasta(inputString);
         } else {
-            parsedUnits.push({
-                "sequence": parseNotFastaInput(inputString),
-                "title": ""
-            });
+            sequences = parseAsText(inputString);
         }
-        //console.log("parsed into parsedUnits ", parsedUnits, " \n")
-        return parsedUnits;
+
+        console.log(sequences, "Parsed Input");
     };
 
 
+    var ifFasta = function (inputString) {
+        return inputString.indexOf(">") !== -1;
+    };
+
+
+    var parseAsFasta = function (inputString) {
+        var descriptionIndex = inputString.indexOf(">"),
+            inputDescription = inputString.slice(0, descriptionIndex),
+            inputWithoutDescription = inputString.slice(descriptionIndex + 1),
+
+            sequencesWithTitles = inputWithoutDescription.split(">");
+
+        return $.map(sequencesWithTitles, parseSequenceWithTitle);
+    };
+
+    var parseSequenceWithTitle = function (sequenceWithTitle) {
+        var parsedValues = getDefaultParsedValues(),
+            splitResult = $.trim(sequenceWithTitle).split("\n");
+
+        if (splitResult.length === 2) {
+            parsedValues["title"] = splitResult[0];
+            parsedValues["sequence"] = splitResult[1];
+        }
+
+        return parsedValues;
+    };
+
+
+    var parseAsText = function (inputString) {
+        var sequences = $.trim(inputString).split("\n");
+        return $.map(sequences, parseSequence);
+    };
+
+    var parseSequence = function (sequence) {
+        var parsedValues = getDefaultParsedValues(),
+            trimmedSequence = $.trim(sequence);
+
+        if (trimmedSequence.length !== 0) {
+            parsedValues["sequence"] = trimmedSequence;
+        }
+
+        return parsedValues;
+    };
+
+
+    ////Legacy
     var joinStrings = function (stringsList) {
         joinedString = "";
         for (var i = 0; i < stringsList.length; i++) {
@@ -46,52 +119,9 @@ var inputParsing = (function () {
     };
 
 
-    var parseNotFastaInput = function (inputString) {
-        var separator = /\W/;
-        return removeSeparators(inputString, separator);
-    };
-
-
-    var parseFastaInput= function (inputString) {
-        var outOfFormatCharacters = "",
-            fastaUnits = [], parsedUnits = [];
-
-        fastaUnits = inputString.split(">");
-
-        //all characters before first ">"
-        outOfFormatCharacters = fastaUnits[0];
-        check(outOfFormatCharacters);
-
-        for (var i = 1; i < fastaUnits.length; i++){
-            parsedUnits.push(parseFastaUnit(fastaUnits[i]));
-        }
-        return parsedUnits;
-    };
-
-
-    var check = function (outOfFormatCharacters) {
-        if (outOfFormatCharacters.length > 0) {
-            console.log(outOfFormatCharacters + "<   alert outOfFormatCharacters before '<' \n")
-        }
-    };
-
-
-    var parseFastaUnit= function (fastaUnit) {
-        var separator = /\W/,
-            titleEndPosition = fastaUnit.indexOf("\n"),
-            title = fastaUnit.slice(0, titleEndPosition).trim(),
-            sequence = fastaUnit.slice(titleEndPosition).trim();
-
-        sequence = removeSeparators(sequence, separator);
-
-        return {
-            "sequence": sequence,
-            "title": title
-        };
-    };
-
-
     return {
-        parseInput: parseInputString
+        create: create,
+        parseInput: parseInput,
+        inputTest: inputTest
     };
 }());

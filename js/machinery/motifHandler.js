@@ -24,7 +24,7 @@ var motifHandler = (function () {
     var getResultTabsSequences = function () {
         return $.map(
             resultTabs.getOpenedTabsIds(),
-            sequenceTabs.getTabContentById
+            sequenceLibrary.getTabContentById
         );
     };
 
@@ -40,7 +40,7 @@ var motifHandler = (function () {
 
 
     var updateResultTab = function(tabId) {
-        var sequence = sequenceTabs.getTabContentById(tabId).seqValues.sequence,
+        var sequence = sequenceLibrary.getTabContentById(tabId).seqValues.sequence,
             sites = [];
 
         for(var i = 0; i < _requestedMotifs.length; i++) {

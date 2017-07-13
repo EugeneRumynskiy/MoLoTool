@@ -16,7 +16,7 @@ body {
   margin-left: 0;
   margin-top: 90px; }
 
-#sequence-input, #title-input, #result-cmp .tab-result-sequence {
+#sequence-input, #title-input {
   border: 2px solid black; }
 
 .interface-button {

@@ -33,11 +33,17 @@ var uiBuilder = (function () {
 
         fileUploader.create();
 
-        sequenceTabs.create(handleEvent);
+        sequenceLibrary.create();
         resultTabs.create();
         buildExternalTabComponent();
 
         resultSlider.create();
+
+        inputParsing.create();
+        //test
+        var test = inputParsing.inputTest();
+        console.log(test);
+        $.map(test, sequenceLibrary.addTab);
     };
 
 
@@ -108,7 +114,7 @@ var uiBuilder = (function () {
 
     var buildExternalTabComponent = function () {
         var defaultSequence = [
-                "CGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG",
+                "CGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG\n",
                 "GAAGTAGTGTCTTAGGCGCTGGGTGGGGACAACCATCGCCGAAGCGGGACCCCGAGGAACGTCTGATAACGTACAGGAGACGGTGGAGGGGTGAATGCTGGTATTG",
                 "CTAGACTTGGAGAGAGGGGCAGCACTAACAGGGAGATGGAAAACAGGGGCTGCGCAATGCGTGGCCAGGGCGGTGTAGAGTTCTCAGTTCTGGTGGAGTGCCTACG",
                 "TCGGGTGCGACGCACACTGGGCATTGGTCAGTGACGTGAACTGAGGGCACAAGAGCTACGGTTGTGGGCGTTGTGAGAGGAATCGGGGGCACTAGAGTACACGAGA"
@@ -118,9 +124,9 @@ var uiBuilder = (function () {
 
         for(var i = 0; i < maxTabCount; i++) {
             if (i <= 3) {
-                sequenceTabs.addTab({"title": "", "sequence": defaultSequence[i]}, true);
+                sequenceLibrary.addTab({"title": "", "sequence": defaultSequence[i]}, true);
             } else {
-                sequenceTabs.addTab({"title": "", "sequence": ""});
+                sequenceLibrary.addTab({"title": "", "sequence": ""});
             }
         }
 
@@ -134,7 +140,7 @@ var uiBuilder = (function () {
             $target.css("display", "none");
 
             var currentTabId = $(".current-tab").attr("data-tab");
-            resultTabs.addInterfaceTabToResult(currentTabId);
+            resultTabs.addTabToResultById(currentTabId);
         });
 
 
@@ -153,7 +159,7 @@ var uiBuilder = (function () {
 
         $('#sequence-input').on('input', function (event) {
             var newSequence = $(event.target).val();
-            sequenceTabs.updateCurrentTabSequence(newSequence);
+            sequenceLibrary.updateCurrentTabSequence(newSequence);
             handleEvent();
         });
 

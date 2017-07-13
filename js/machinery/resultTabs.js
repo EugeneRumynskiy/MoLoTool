@@ -4,17 +4,14 @@
 var resultTabs = (function () {
     var _fileName = "resultTabs",
 
-        _tabStates,  //isOpened
+        _tabStates,  //isOpened?
         _resultTabsObjects,
-        _currentResultTabId,
 
-        _features,
         _tabIdRange;
 
 
     var create = function () {
-        _features = ["name", "seqTitle", "seqSequence"];
-        _tabIdRange = sequenceTabs.getTabIdRange();
+        _tabIdRange = sequenceLibrary.getTabIdRange();
 
         _tabStates = initTabStates();
         _resultTabsObjects = {};
@@ -29,7 +26,7 @@ var resultTabs = (function () {
         return initialState;
     };
 
-
+    //
     var isOpened = function (tabId) {
         var tabState = _tabStates[tabId];
 
@@ -41,7 +38,7 @@ var resultTabs = (function () {
         return tabState;
     };
 
-
+    //
     var makeOpened = function (tabId) {
         if (_tabStates[tabId] === undefined) {
             errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeOpened"});
@@ -51,7 +48,7 @@ var resultTabs = (function () {
         }
     };
 
-
+    //
     var makeClosed = function (tabId) {
         if (_tabStates[tabId] === undefined) {
             errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeClosed"});
@@ -60,7 +57,7 @@ var resultTabs = (function () {
         }
     };
 
-
+    //
     var getOpenedTabsIds = function () {
         var openedTabsIds = [];
 
@@ -78,73 +75,23 @@ var resultTabs = (function () {
     };
 
 
-    var isCurrent = function (tabId) {
-        return parseInt(_currentResultTabId) === parseInt(tabId);
-    };
-
-
-    var getNextHighestResultTabId = function (tabId) {
-        for (var i = _tabIdRange.min; i <= _tabIdRange.max; i++) {
-            if (_tabStates[i] && (tabId < i)) {
-                return i;
-            }
-        }
-        return tabId;
-    };
-
-
-    var getNextCurrentTabId = function ($tab) {
-        var $nextTab = $tab.prev(".tab-result");
-
-        if ($nextTab.length === 0) {
-            $nextTab = $tab.next(".tab-result");
-        }
-
-        if ($nextTab.length === 0) {
-            errorHandler.logError({"fileName": _fileName, "message": "getNextCurrentTabId error"});
-        } else {
-            return $nextTab.attr('data-tab');
-        }
-    };
-
-
-    var setToCurrent = function (tabId) {
-        var $source = $(".tab-result[data-tab=" + tabId + "]");
-
-        $('#result-cmp').children(".tab-result").removeClass('current-tab-result');
-        $source.addClass('current-tab-result');
-
-        _currentResultTabId = tabId;
-    };
-
-
-    var updateTab = function (tabId, content) {
-        _resultTabsObjects[tabId].empty().html(content);
-    };
-
-
-    var addInterfaceTabToResult = function (tabId) {
-        if (!sequenceTabs.isRecorded(tabId)) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, id not in sequenceTabs"});
+    var addTabToResultById = function (tabId) {
+        if (!sequenceLibrary.isRecorded(tabId)) {
+            errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, id not in sequenceLibrary"});
         } else if (isOpened(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, it's already in result"});
-
-            var $seqTabToAnimate = $(".tab-link[data-tab=" + tabId + "]"),
-                $resultTabToAnimate = $(".tab-result[data-tab=" + tabId + "]").children("a");
-
-            startErrorAnimation($seqTabToAnimate);
-            startErrorAnimation($resultTabToAnimate);
         } else {
             var $target = $("#result-cmp"),
                 $resultTab = createTab(tabId),
                 insertBeforeId = getNextHighestResultTabId(tabId);
+
             if (insertBeforeId === tabId) {
                 $target.append($resultTab);
             } else {
                 $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"))
             }
+
             makeOpened(tabId);
-            setToCurrent(tabId);
             motifHandler.updateResultTab(tabId);
         }
     };
@@ -165,29 +112,7 @@ var resultTabs = (function () {
             event.preventDefault();
 
             if (event.target.className === "close") {
-                var tabId = $(this).attr('data-tab'),
-                    $target = $(".tab-link[data-tab=" + tabId + "]").children(".close");
-                $target.siblings(".tab-name").click();
-                $target.siblings(".add").css("display", "inherit");
-                $target.css("display", "none");
-
                 closeTab(this);
-            } else {
-                //ToDo must be shorter
-                var $target = $(event.target), tabId;
-                if ($target.hasClass("tab-result")) {
-                    tabId = $target.attr("data-tab");
-                } else {
-                    tabId = $target.parents(".tab-result").attr("data-tab");
-                }
-                if (tabId === undefined) {
-                    errorHandler.logError({"fileName": _fileName, "message": "tabId is undefined, tab on click"})
-                }
-
-                setToCurrent(tabId);
-                sequenceTabs.setTabToCurrent($(".tab-link[data-tab=" + tabId + "]"));
-
-                motifHandler.updateResultTab(tabId);
             }
         });
 
@@ -195,29 +120,33 @@ var resultTabs = (function () {
     };
 
 
-    var closeTab = function (source) {
-        var $tab = $(source),
-            notLastTab = $(".tab-result").length > 1;
-
-        if ($tab.hasClass("current-tab-result") && notLastTab) {
-            var nextCurrentTabId = getNextCurrentTabId($tab);
-            setToCurrent(nextCurrentTabId);
+    var getNextHighestResultTabId = function (tabId) {
+        for (var i = _tabIdRange.min; i <= _tabIdRange.max; i++) {
+            if (_tabStates[i] && (tabId < i)) {
+                return i;
+            }
         }
-
-        var tabId = $tab.attr('data-tab');
-        makeClosed(tabId);
-        $tab.remove();
+        return tabId;
     };
 
 
     var startErrorAnimation = function (source) {
-        return;
         var $source = $(source);
         console.log($source.css("backgroundColor"));
 
 
         $source.animate({backgroundColor: '#FA8072'}, "fast");
         $source.animate({backgroundColor: '#EDEDF2'}, "fast");
+    };
+
+
+
+    var closeTab = function (source) {
+        var $tab = $(source),
+            tabId = $tab.attr('data-tab');
+
+        makeClosed(tabId);
+        $tab.remove();
     };
 
 
@@ -228,26 +157,14 @@ var resultTabs = (function () {
     };
 
 
-    var showCurr = function () {
-        console.log(_currentResultTabId);
-        return _currentResultTabId;
-    };
-
-
     return {
         create: create,
         closeTab: closeTab,
 
-        setToCurrent: setToCurrent,
-        addInterfaceTabToResult: addInterfaceTabToResult,
+        addTabToResultById: addTabToResultById,
         getOpenedTabsIds: getOpenedTabsIds,
-        isCurrent: isCurrent,
-        isOpened: isOpened,
-
-        updateTab: updateTab,
 
         //debug
         show: show,
-        showCurr: showCurr
     };
 }());
