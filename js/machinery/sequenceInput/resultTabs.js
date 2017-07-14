@@ -10,8 +10,8 @@ var resultTabs = (function () {
         _tabIdRange;
 
 
-    var create = function () {
-        _tabIdRange = sequenceLibrary.getTabIdRange();
+    var create = function (tabIdRange) {
+        _tabIdRange = tabIdRange;
 
         _tabStates = initTabStates();
         _resultTabsObjects = {};
@@ -49,9 +49,9 @@ var resultTabs = (function () {
     };
 
     //
-    var makeClosed = function (tabId) {
+    var deleteTab = function (tabId) {
         if (_tabStates[tabId] === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeClosed"});
+            errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, deleteTab"});
         } else {
             _tabStates[tabId] = false;
         }
@@ -92,7 +92,7 @@ var resultTabs = (function () {
             }
 
             makeOpened(tabId);
-            motifHandler.updateResultTab(tabId);
+            //motifHandler.updateResultTab(tabId);
         }
     };
 
@@ -130,6 +130,11 @@ var resultTabs = (function () {
     };
 
 
+    var updateTab = function (tabId, content) {
+        _resultTabsObjects[tabId].empty().html(content);
+    };
+
+
     var startErrorAnimation = function (source) {
         var $source = $(source);
         console.log($source.css("backgroundColor"));
@@ -145,7 +150,8 @@ var resultTabs = (function () {
         var $tab = $(source),
             tabId = $tab.attr('data-tab');
 
-        makeClosed(tabId);
+        deleteTab(tabId);
+        sequenceLibrary.deleteTabContentById(tabId);
         $tab.remove();
     };
 
@@ -164,6 +170,7 @@ var resultTabs = (function () {
         addTabToResultById: addTabToResultById,
         getOpenedTabsIds: getOpenedTabsIds,
 
+        updateTab: updateTab,
         //debug
         show: show,
     };

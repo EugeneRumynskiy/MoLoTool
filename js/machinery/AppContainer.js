@@ -34,9 +34,7 @@
 $(function() {
     uiBuilder.buildUI();
 
-    motifHandler.updatePvalue();
-    motifHandler.updateMotifs();
-    motifHandler.updateAllResultTabs();
+    motifHandler.handleMotifs();
 
     //$('#motif-list').delay(8000).children().first().children().trigger("click");
 

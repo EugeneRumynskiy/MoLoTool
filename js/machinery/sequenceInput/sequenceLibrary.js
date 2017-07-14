@@ -8,36 +8,42 @@ var sequenceLibrary = (function () {
         _tabIdRange;
 
 
-    var create = function () {
+    var create = function (tabIdRange) {
         _tabLibrary = {};
-
-        _tabIdRange = {"min": 1, "max": 10};
+        _tabIdRange = tabIdRange;
     };
 
 
     var addTab = function (seqValues) {
-        var newTab = createTab(seqValues);
+        var newTab = createTab(seqValues),
+            newItemId = undefined;
 
         if ($.isEmptyObject(newTab)) {
             errorHandler.logError({"fileName": _fileName, "message": "can't create add new newTab"});
         } else {
-            addTabToLibrary(newTab);
+            newItemId = addTabToLibrary(newTab);
         }
+
+        return newItemId;
     };
 
 
     var createTab = function (seqValues) {
+        var title = "None", sequence = "None";
+
         if (seqValues === undefined) {
             errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab"});
-            return undefined
         } else {
-            return {
-                "seqValues": {
-                    "title": seqValues["title"],
-                    "sequence": seqValues["sequence"]
-                }
-            };
+            title = seqValues["title"];
+            sequence = seqValues["sequence"];
         }
+
+        return {
+            "seqValues": {
+                "title": title,
+                "sequence": sequence
+            }
+        };
     };
 
 
@@ -46,10 +52,9 @@ var sequenceLibrary = (function () {
 
         if (nextTabId !== -1) {
             _tabLibrary[nextTabId] = newTab;
-            resultTabs. addTabToResultById(nextTabId);
-            return true;
+            return nextTabId;
         } else {
-            return false;
+            return undefined;
         }
     };
 
@@ -60,27 +65,31 @@ var sequenceLibrary = (function () {
                 return tabId;
             }
         }
-        errorHandler.logError({"fileName": _fileName, "message": "maximum tabs count exceeded, delete one of current tabs"});
+        errorHandler.logError({"fileName": _fileName, "message": "maximum sequenceInput count exceeded, delete one of current sequenceInput"});
         return -1;
     };
 
 
-    var getTabIdRange = function () {
-        return _tabIdRange;
-    };
-
-
     var isRecorded = function(tabId) {
-        return tabId in _tabLibrary;
+        return _tabLibrary.hasOwnProperty(tabId);
     };
 
 
-    var getTabContentById = function (tabId) {
-        if ($.isEmptyObject(_tabLibrary[tabId])) {
-            return {};
+    var getItemById = function (tabId) {
+        var item = {};
+
+        if (isRecorded(tabId)) {
+            item = _tabLibrary[tabId];
         } else {
-            return _tabLibrary[tabId];
+            errorHandler.logError({"fileName": _fileName, "message": "getItemById error, empty _tabLibrary item"});
         }
+
+        return item;
+    };
+
+
+    var getAllItems = function () {
+        return $.map(Object.keys(_tabLibrary), getItemById);
     };
 
 
@@ -123,12 +132,13 @@ var sequenceLibrary = (function () {
         create: create,
         addTab: addTab,
 
-        getTabIdRange: getTabIdRange,
-        getTabContentById: getTabContentById,
+        getItemById: getItemById,
+        //getAllItems: getAllItems,
         isRecorded: isRecorded,
 
         updateCurrentTabSequence: updateCurrentTabSequence,
 
+        deleteTabContentById:deleteTabContentById,
         //debug
         show: show
     };

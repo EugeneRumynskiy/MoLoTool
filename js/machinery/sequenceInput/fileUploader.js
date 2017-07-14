@@ -16,14 +16,14 @@
 //         }
 //     });
 // });
-
-
 var fileUploader = (function () {
-    var _fileName = "fileUploader";
+    var _fileName = "fileUploader",
+        _uploadCallback;
 
 
-    var create = function () {
+    var create = function (uploadCallback) {
         if (ifSupported()) {
+            setUploadCallback(uploadCallback);
             setup();
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "warning: file can't be loaded in this browser"});
@@ -42,6 +42,11 @@ var fileUploader = (function () {
     };
 
 
+    var setUploadCallback = function (uploadCallback) {
+        _uploadCallback = uploadCallback;
+    };
+
+
     var setup = function () {
         var fileInput = document.getElementById('fileInput');
 
@@ -55,7 +60,7 @@ var fileUploader = (function () {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#sequence-input').val(reader.result);
+                    _uploadCallback(reader.result);
                 };
 
                 reader.readAsText(file);

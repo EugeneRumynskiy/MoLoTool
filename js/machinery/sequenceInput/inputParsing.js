@@ -55,7 +55,7 @@ var inputParsing = (function () {
             sequences = parseAsText(inputString);
         }
 
-        console.log(sequences, "Parsed Input");
+        return sequences;
     };
 
 
@@ -122,6 +122,8 @@ var inputParsing = (function () {
     return {
         create: create,
         parseInput: parseInput,
+
+        //debug
         inputTest: inputTest
     };
 }());
