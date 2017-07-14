@@ -7,11 +7,16 @@ var resultTabs = (function () {
         _tabStates,  //isOpened?
         _resultTabsObjects,
 
-        _tabIdRange;
+        _tabIdRange,
+
+        _libraryIdCheck,
+        _libraryIdDelete;
 
 
-    var create = function () {
-        _tabIdRange = sequenceLibrary.getTabIdRange();
+    var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
+        _tabIdRange = tabIdRange;
+        _libraryIdCheck = libraryIdCheck;
+        _libraryIdDelete= libraryIdDelete;
 
         _tabStates = initTabStates();
         _resultTabsObjects = {};
@@ -58,11 +63,11 @@ var resultTabs = (function () {
     };
 
     //
-    var getOpenedTabsIds = function () {
+    var getOpenedIds = function () {
         var openedTabsIds = [];
 
         if (_tabStates === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab _tabStates is undefined, getOpenedTabsIds"});
+            errorHandler.logError({"fileName": _fileName, "message": "tab _tabStates is undefined, getOpenedIds"});
         } else {
             for (var key in _tabStates) {
                 if (_tabStates.hasOwnProperty(key) && isOpened(key)) {
@@ -75,8 +80,8 @@ var resultTabs = (function () {
     };
 
 
-    var addTabToResultById = function (tabId) {
-        if (!sequenceLibrary.isRecorded(tabId)) {
+    var addIdToResult = function (tabId) {
+        if (!_libraryIdCheck(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, id not in sequenceLibrary"});
         } else if (isOpened(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, it's already in result"});
@@ -92,7 +97,6 @@ var resultTabs = (function () {
             }
 
             makeOpened(tabId);
-            motifHandler.updateResultTab(tabId);
         }
     };
 
@@ -130,6 +134,15 @@ var resultTabs = (function () {
     };
 
 
+    var updateTab = function (tabId, content) {
+        if (isOpened(tabId)) {
+            _resultTabsObjects[tabId].empty().html(content);
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});
+        }
+    };
+
+
     var startErrorAnimation = function (source) {
         var $source = $(source);
         console.log($source.css("backgroundColor"));
@@ -146,6 +159,7 @@ var resultTabs = (function () {
             tabId = $tab.attr('data-tab');
 
         makeClosed(tabId);
+        _libraryIdDelete(tabId);
         $tab.remove();
     };
 
@@ -161,9 +175,10 @@ var resultTabs = (function () {
         create: create,
         closeTab: closeTab,
 
-        addTabToResultById: addTabToResultById,
-        getOpenedTabsIds: getOpenedTabsIds,
+        addIdToResult: addIdToResult,
+        getOpenedIds: getOpenedIds,
 
+        updateTab: updateTab,
         //debug
         show: show,
     };

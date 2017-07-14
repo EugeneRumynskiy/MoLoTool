@@ -31,19 +31,44 @@ var uiBuilder = (function () {
         resultContainer.create();
         buildExternalResultContainerComponent();
 
-        fileUploader.create();
+        fileUploader.create(fileUploadCallback);
 
-        sequenceLibrary.create();
-        resultTabs.create();
+        var tabIdRange = {"min": 1, "max": 10};
+        sequenceLibrary.create(tabIdRange);
+        resultTabs.create(
+            tabIdRange,
+            sequenceLibrary.isRecorded,
+            sequenceLibrary.deleteTabContentById
+        );
         buildExternalTabComponent();
 
         resultSlider.create();
 
         inputParsing.create();
-        //test
-        var test = inputParsing.inputTest();
-        console.log(test);
-        $.map(test, sequenceLibrary.addTab);
+
+        //debug
+        /*window.setTimeout(function () {
+            var test = inputParsing.inputTest();
+            $.map(test, sequenceLibrary.addTab);
+            handleEvent();
+        }, 600);*/
+    };
+
+
+    var clearSequenceLibrary = function () {
+        $(".tab-result .close").trigger("click");
+    };
+
+
+    var fileUploadCallback = function (inputString) {
+        clearSequenceLibrary();
+
+        var sequences = inputParsing.parseInput(inputString),
+            libraryIds = $.map(sequences, sequenceLibrary.addTab);
+        $.map(libraryIds, resultTabs.addIdToResult);
+
+        console.log(libraryIds);
+        handleEvent();
     };
 
 
@@ -113,24 +138,6 @@ var uiBuilder = (function () {
 
 
     var buildExternalTabComponent = function () {
-        var defaultSequence = [
-                "CGTACGGCTCCAGCGGTGAAATAGCGCGCTGAAATGTTGAGAAATGGTGGGTACACCTCCGTCGAATGCGGTAAGAGATGTGGCCGTGGGGGAAAGGGGCTAGGCG\n",
-                "GAAGTAGTGTCTTAGGCGCTGGGTGGGGACAACCATCGCCGAAGCGGGACCCCGAGGAACGTCTGATAACGTACAGGAGACGGTGGAGGGGTGAATGCTGGTATTG",
-                "CTAGACTTGGAGAGAGGGGCAGCACTAACAGGGAGATGGAAAACAGGGGCTGCGCAATGCGTGGCCAGGGCGGTGTAGAGTTCTCAGTTCTGGTGGAGTGCCTACG",
-                "TCGGGTGCGACGCACACTGGGCATTGGTCAGTGACGTGAACTGAGGGCACAAGAGCTACGGTTGTGGGCGTTGTGAGAGGAATCGGGGGCACTAGAGTACACGAGA"
-        ],
-            maxTabCount = 10;
-
-
-        for(var i = 0; i < maxTabCount; i++) {
-            if (i <= 3) {
-                sequenceLibrary.addTab({"title": "", "sequence": defaultSequence[i]}, true);
-            } else {
-                sequenceLibrary.addTab({"title": "", "sequence": ""});
-            }
-        }
-
-
         $(".tab-link .add").on("click", function (event) {
             event.preventDefault();
 
@@ -140,7 +147,7 @@ var uiBuilder = (function () {
             $target.css("display", "none");
 
             var currentTabId = $(".current-tab").attr("data-tab");
-            resultTabs.addTabToResultById(currentTabId);
+            resultTabs.addIdToResult(currentTabId);
         });
 
 
@@ -162,15 +169,6 @@ var uiBuilder = (function () {
             sequenceLibrary.updateCurrentTabSequence(newSequence);
             handleEvent();
         });
-
-
-        //debug
-        window.setTimeout(function () {
-            for(i = 0; i < 4; i++) {
-                $(".tab-link[data-tab=" + i +"]").children(".add").trigger("click");
-            }
-        }, 600);
-
     };
 
 
