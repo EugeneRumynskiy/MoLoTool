@@ -27,10 +27,14 @@ var resultSlider = (function () {
         });
 
         slider.noUiSlider.on('slide', function( values, handle ) {
-            var $target = $('#result-cmp').children(".current-tab-result"),
+            var $target = $('#result-cmp').children(".tab-result"),
                 tabId = $target.attr("data-tab"),
                 $sequence = $target.find(".sequence");
-            console.log($sequence);
+
+            $sequence.css({ "-webkit-transform":"translate(10px)",
+                "-ms-transform":"translate(10px)",
+                "transform":"translate(10px)"
+            });
         });
     };
 

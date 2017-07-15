@@ -70,19 +70,21 @@ body {
 
 //toggled classes
 .full-screen {
-  height: 80vh !important;
+  height: 400px !important;
+  word-break: break-all;
+  border-bottom: none !important;
 }
 
 .flattened {
   line-height: $resultTab-height !important;
   height: $resultTab-height !important;
-  overflow-x: scroll;
-  overflow-y: hidden;
+/*  overflow-x: scroll;
+  overflow-y: hidden;*/
   word-wrap: normal;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 

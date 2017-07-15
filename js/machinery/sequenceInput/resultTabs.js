@@ -10,7 +10,9 @@ var resultTabs = (function () {
         _tabIdRange,
 
         _libraryIdCheck,
-        _libraryIdDelete;
+        _libraryIdDelete,
+
+        _comparisonMode;
 
 
     var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
@@ -20,6 +22,85 @@ var resultTabs = (function () {
 
         _tabStates = initTabStates();
         _resultTabsObjects = {};
+        _comparisonMode = getDefaultComparisonMode();
+    };
+
+
+    ////Comparison Mode
+    var getDefaultComparisonMode = function () {
+        return "Single";
+    };
+
+
+    var getCurrentMode = function () {
+        return _comparisonMode;
+    };
+
+
+    var switchComparisonMode = function () {
+        var newMode = "";
+        if (_comparisonMode === "Single"){
+            switchToMultiplyMode();
+            newMode = "Multiply";
+        } else if (_comparisonMode === "Multiply") {
+            switchToSingleMode();
+            newMode = "Single";
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "comparisonMode is undefined"});
+        }
+
+        return newMode;
+    };
+    
+    
+    var switchToSingleMode = function () {
+        _comparisonMode = "Single";
+
+        $(".tab-result").removeClass("current-tab");
+        $(".tab-result").first().addClass("current-tab");
+
+        $(".tab-result-sequence").removeClass("flattened");
+        $(".tab-result-sequence").addClass("hidden full-screen");
+        $(".tab-result-sequence").first().removeClass("hidden");
+    };
+
+    
+    var switchToMultiplyMode = function () {
+        _comparisonMode = "Multiply";
+
+        $(".tab-result").removeClass("current-tab");
+
+        $(".tab-result-sequence").removeClass("hidden full-screen");
+        $(".tab-result-sequence").addClass("flattened");
+
+        $
+    };
+    ////Comparison Mode End
+
+
+    var getIdsToHandle = function (event) {
+        if ((getCurrentMode() !== "Single") || event === "fileUpload") {
+            return getOpenedIds();
+        } else {
+            return getCurrentTabId();
+        }
+    };
+
+
+    var getCurrentTabId = function () {
+        if ($.isEmptyObject(getOpenedIds())) {
+            return []
+        }
+
+        var $currentTab = $(".tab-result.current-tab"),
+            currentTabId = $currentTab.attr("data-tab");
+
+        if (($currentTab.length !== 1) || currentTabId === undefined) {
+            errorHandler.logError({"fileName": _fileName, "message": "currentTab Id is undefined"});
+            return [];
+        } else {
+            return [currentTabId];
+        }
     };
 
 
@@ -35,7 +116,7 @@ var resultTabs = (function () {
     var isOpened = function (tabId) {
         var tabState = _tabStates[tabId];
 
-        if (tabState === undefined) {
+        if ((tabState === undefined) || (!_tabStates.hasOwnProperty(tabId))) {
             errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, isOpened"});
             tabState = false;
         }
@@ -86,14 +167,29 @@ var resultTabs = (function () {
         } else if (isOpened(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, it's already in result"});
         } else {
-            var $target = $("#result-cmp"),
-                $resultTab = createTab(tabId),
+            var $targetTab = $("#result-tabs"),
+                $resultTab = createResultTab(tabId),
+
+                $targetSequence = $("#result-sequences"),
+                $resultSequence = createResultSequence(tabId),
+
                 insertBeforeId = getNextHighestResultTabId(tabId);
 
             if (insertBeforeId === tabId) {
-                $target.append($resultTab);
+                $targetTab.append($resultTab);
+                $targetSequence.append($resultSequence);
             } else {
-                $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"))
+                $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"));
+                $resultSequence.insertBefore($(".tab-result-sequence[data-tab=" + insertBeforeId + "]"));
+            }
+
+            if (getCurrentMode() === "Single") {
+                $resultSequence.addClass("hidden full-screen");
+                $resultSequence.removeClass("flattened");
+            }
+
+            if (getCurrentMode() === "Single" && $.isEmptyObject(getOpenedIds())) {
+                setToCurrent(tabId);
             }
 
             makeOpened(tabId);
@@ -101,26 +197,35 @@ var resultTabs = (function () {
     };
 
 
-    var createTab = function (tabId) {
+    var createResultTab = function (tabId) {
         var $resultTab = $(
-            '<div class="tab-result" data-tab=' + tabId + '>' +
+                '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>#' + tabId + '</a>' +
                 '<a href="#" class="close"></a>' +
-                '<div class="tab-result-sequence round flattened">'
-                    + '<div class="sequence"></div>' +
                 '</div>' +
-            '</div>'
-        );
+                '</div>'
+            );
 
         $resultTab.on("click", function(event) {
             event.preventDefault();
 
             if (event.target.className === "close") {
                 closeTab(this);
+            } else {
+                if (getCurrentMode() === "Single") {
+                    var tabId = $(this).attr('data-tab');
+                    setToCurrent(tabId);
+                    motifHandler.handleMotifs();
+                }
             }
         });
 
         return $resultTab;
+    };
+
+
+    var createResultSequence = function (tabId) {
+        return  $('<div class="tab-result-sequence round flattened" data-tab=' + tabId + '></div>');
     };
 
 
@@ -136,8 +241,10 @@ var resultTabs = (function () {
 
     var updateTab = function (tabId, content) {
         if (isOpened(tabId)) {
-            _resultTabsObjects[tabId].empty().html(content);
+            //_resultTabsObjects[tabId].empty().html(content);
+            $(".tab-result-sequence[data-tab=" + tabId + "]").empty().html(content);
         } else {
+            console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});
         }
     };
@@ -160,7 +267,18 @@ var resultTabs = (function () {
 
         makeClosed(tabId);
         _libraryIdDelete(tabId);
+
         $tab.remove();
+        $(".tab-result-sequence[data-tab=" + tabId + "]").remove();
+    };
+
+
+    var setToCurrent = function (tabId) {
+        $(".tab-result").removeClass("current-tab");
+        $(".tab-result[data-tab=" + tabId + "]").addClass("current-tab");
+
+        $(".tab-result-sequence").addClass("hidden");
+        $(".tab-result-sequence[data-tab=" + tabId + "]").removeClass("hidden");
     };
 
 
@@ -174,12 +292,14 @@ var resultTabs = (function () {
     return {
         create: create,
         closeTab: closeTab,
+        switchComparisonMode: switchComparisonMode,
 
         addIdToResult: addIdToResult,
         getOpenedIds: getOpenedIds,
+        getIdsToHandle: getIdsToHandle,
 
         updateTab: updateTab,
         //debug
-        show: show,
+        show: show
     };
 }());

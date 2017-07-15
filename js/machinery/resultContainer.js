@@ -76,7 +76,7 @@ var supportTooltip = (function () {
 
         } else {
 
-            var tabId = $(this).parents(".tab-result").attr("data-tab"),
+            var tabId = $(this).parents(".tab-result-sequence").attr("data-tab"),
                 segment = sequenceConstructor.findSegmentWith(this.getAttribute('data-start'), tabId),
                 $motifList = $("#motif-list-selected"), $motif;
 

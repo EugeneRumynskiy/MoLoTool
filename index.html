@@ -160,10 +160,6 @@
 
     <div class="interface-area">
         <div class="interface-component" id="sequence-input-cmp">
-            <div id="sequence-tabs">
-                <ul class="tabs"></ul>
-            </div>
-
             <div class="controls">
                 <div class="button-container">
                     <a class="interface-button" id="show-title-button" href="#">
@@ -181,8 +177,8 @@
                 <a class="interface-button to-hidden-button" data-applyToId="motif-table-cmp" data-state="hidden" href="#">
                     <span class="icon icon-medium">Hide table</span>
                 </a>
-                <a class="interface-button" data-applyToId="motif-table-cmp" href="#">
-                    <span class="icon icon-medium">Comparison mode - multiply</span>
+                <a id="cmp-mode-button" class="interface-button" data-applyToId="motif-table-cmp" href="#">
+                    <span class="icon icon-medium">Comparison mode - Single</span>
                 </a>
                 <a class="interface-button add-to-result-button" data-applyToId="motif-table-cmp" href="#">
                     <span class="icon icon-medium">Add tab</span>
@@ -202,6 +198,8 @@
 
 
         <div class="interface-component" id="result-cmp">
+            <div id='result-tabs'></div>
+            <div id='result-sequences'></div>
             <div id='result-slider' class='slider'></div>
         </div>
 

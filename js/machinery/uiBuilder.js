@@ -8,8 +8,8 @@ var uiBuilder = (function () {
     };
 
 
-    var handleEvent = function () {
-        _eventHandler();
+    var handleEvent = function (event) {
+        _eventHandler(event);
     };
 
 
@@ -41,17 +41,16 @@ var uiBuilder = (function () {
             sequenceLibrary.deleteTabContentById
         );
         buildExternalTabComponent();
+        buildSwitchComparisonModeButton();
 
         resultSlider.create();
 
         inputParsing.create();
-
         //debug
-        /*window.setTimeout(function () {
+        window.setTimeout(function () {
             var test = inputParsing.inputTest();
-            $.map(test, sequenceLibrary.addTab);
-            handleEvent();
-        }, 600);*/
+            fileUploadCallback(test);
+        }, 800);
     };
 
 
@@ -62,13 +61,20 @@ var uiBuilder = (function () {
 
     var fileUploadCallback = function (inputString) {
         clearSequenceLibrary();
-
         var sequences = inputParsing.parseInput(inputString),
             libraryIds = $.map(sequences, sequenceLibrary.addTab);
-        $.map(libraryIds, resultTabs.addIdToResult);
 
+        $.map(libraryIds, resultTabs.addIdToResult);
         console.log(libraryIds);
-        handleEvent();
+        handleEvent("fileUpload");
+    };
+
+
+    var buildSwitchComparisonModeButton = function () {
+        $("#cmp-mode-button").on('click', function(event){
+            var newMode = resultTabs.switchComparisonMode();
+            $(this).html("Comparison mode - " + newMode);
+        });
     };
 
 

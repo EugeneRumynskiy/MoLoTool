@@ -49,17 +49,19 @@ body {
   display: none; }
 
 .full-screen {
-  height: 80vh !important; }
+  height: 400px !important;
+  word-break: break-all;
+  border-bottom: none !important; }
 
 .flattened {
   line-height: 70px !important;
   height: 70px !important;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  /*  overflow-x: scroll;
+    overflow-y: hidden;*/
   word-wrap: normal; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 /* Media for larger devices */
 @media screen and (min-width: 800px) {

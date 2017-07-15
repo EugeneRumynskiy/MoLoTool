@@ -22,15 +22,6 @@ var motifHandler = (function () {
         return result;
     };
     //
-
-
-    var getResultTabsSequences = function () {
-        return $.map(
-            resultTabs.getOpenedIds(),
-            sequenceLibrary.getItemById
-        );
-    };
-
     var updatePvalue = function () {
         _pValue = pValue = pSlider.getPValue();
     };
@@ -67,17 +58,17 @@ var motifHandler = (function () {
     };
 
 
-    var updateAllResultTabs = function () {
-        var openedTabsIds = resultTabs.getOpenedIds(),
+    var updateAllResultTabs = function (event) {
+        var openedTabsIds = resultTabs.getIdsToHandle(event),
             sites = $.map(openedTabsIds, updateResultTab);
         return sites;
     };
 
 
-    var handleMotifs = function () {
+    var handleMotifs = function (event) {
         updatePvalue();
         updateMotifs();
-        var sites = updateAllResultTabs();
+        var sites = updateAllResultTabs(event);
         updateTable(sites);
     };
 
