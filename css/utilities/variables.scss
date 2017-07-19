@@ -1,12 +1,17 @@
+$primaryColor: #ededf2;
+$secondaryColor: #dadada;
+$accentColor: #a3a3a3;
+$textColor: black; //#797979;
+
 //nav-bar
 $topNav-navLineHeight: 40px;
 $topNav-subNavMinWidth: 150px;
 
-$topNav-primaryMenuBackground: #ededf2;
+$topNav-primaryMenuBackground: $primaryColor;
 $topNav-secondaryMenuBackground: #ff8358;
 
-$topNav-primaryMenuText: #797979;
-$topNav-secondaryMenuText: #797979;
+$topNav-primaryMenuText: $textColor;
+$topNav-secondaryMenuText: $textColor;
 
 $topNav-primaryBoxShadow: white;
 $topNav-secondaryBoxShadow: #ff8358;
@@ -18,31 +23,32 @@ $sideNav-mainColor: #2680F3;
 
 
 //motif titles
-$motif-title-bg: white;
-$motif-title-color: black;
-$motif-in-result-bg: white;
-$motif-in-result-round-bg: white;
+//BLACK WHITE SALMON
+$motif-title-bg: $primaryColor;
+$motif-title-color: $textColor;
+$motif-in-result-bg: $primaryColor;
+$motif-in-result-round-bg: $primaryColor;
 $motif-selected-on-result-hover: salmon;
 $motif-title-matched-suggestion: salmon;
 
 
 //main page
-$main-bg-color: #dadada;
-$search-color: white;
+$main-bg-color: $secondaryColor;
+$search-color: $primaryColor;
 
 
 //P-slider slider
-$slider-connect-bg: #a3a3a3;
-$slider-pips-col: #797979;
-$slider-marker-bg: #797979;
+$slider-connect-bg: $accentColor; //
+$slider-pips-col: $textColor;
+$slider-marker-bg: $textColor;
 
 
 //buttons
-$icon-default-color: black;
-$icon-hover-color: #797979;
-$icon-active-color: #a3a3a3;
-$button-bg: $topNav-primaryMenuBackground;
-$sequence-input-borders:#A3A3A3;
+$icon-default-color: $textColor;
+$icon-hover-color: $textColor;
+$icon-active-color: $accentColor;
+$button-bg: $primaryColor;
+$sequence-input-borders: $accentColor;
 
 
 //sequenceInput

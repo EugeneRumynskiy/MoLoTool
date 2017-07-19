@@ -33,7 +33,7 @@ body {
   outline: none; }
 
 .interface-button:hover {
-  color: #797979; }
+  color: black; }
 
 .interface-button:active {
   color: #a3a3a3; }
@@ -49,6 +49,7 @@ body {
   display: none; }
 
 .full-screen {
+  line-height: 28px !important;
   height: 400px !important;
   word-break: break-all;
   border-bottom: none !important; }
