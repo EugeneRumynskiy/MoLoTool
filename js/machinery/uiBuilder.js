@@ -144,39 +144,7 @@ var uiBuilder = (function () {
 
 
     var buildExternalTabComponent = function () {
-  /*      $(".tab-link .add").on("click", function (event) {
-            event.preventDefault();
-
-            var $target = $(event.target);
-            $target.siblings(".tab-name").click();
-            $target.siblings(".close").css("display", "inherit");
-            $target.css("display", "none");
-
-            var currentTabId = $(".current-tab").attr("data-tab");
-            resultTabs.addIdToResult(currentTabId);
-        });
-
-
-        $(".tab-link .close").on("click", function (event) {
-            event.preventDefault();
-
-            var $target = $(event.target),
-                tabId = $target.parent(".tab-link").attr("data-tab");
-            resultTabs.closeTab($(".tab-result[data-tab=" + tabId + "]"));
-
-            $target.siblings(".tab-name").click();
-            $target.css("display", "none");
-            $target.siblings(".add").css("display", "inherit");
-        });*/
-
-
-        $('#sequence-input').on('input', function (event) {
-            var newSequence = $(event.target).val();
-            sequenceLibrary.updateCurrentTabSequence(newSequence);
-            handleEvent();
-        });
     };
-
 
 
     var buildExternalTableComponent = function (table) {

@@ -70,6 +70,7 @@ body {
 
 //toggled classes
 .full-screen {
+  line-height: $resultTab-height * 0.4 !important;
   height: 400px !important;
   word-break: break-all;
   border-bottom: none !important;
