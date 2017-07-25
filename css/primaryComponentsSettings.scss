@@ -21,7 +21,7 @@ body {
 
 .interface-area {
   margin-left: $sideNav-initialWidth;
-  margin-top: 2 * $topNav-navLineHeight + 10px;
+  margin-top: 2 * $topNav-navLineHeight;
 }
 
 #sequence-input, #title-input{
@@ -30,7 +30,6 @@ body {
 
 .interface-button {
   color: $icon-default-color;
-  //background-color:#e9e9e9;
   position: relative;
 
   line-height: 20px;
@@ -38,7 +37,7 @@ body {
   padding: 0.5em 1em;
 
   cursor: pointer;
-  font-size: 0.77em;
+  font-size: 0.82em;
   white-space: nowrap;
   overflow: hidden;
 
@@ -54,7 +53,7 @@ body {
 }
 
 .interface-component {
-  padding: 10px 10px 10px 10px;
+  padding: 5px 5px 5px 5px;
   margin-bottom: 15px;
 }
 
@@ -71,17 +70,22 @@ body {
 //toggled classes
 .full-screen {
   line-height: $resultTab-height * 0.4 !important;
-  height: 400px !important;
+  min-height: 12 + 80 * 4px !important;
   word-break: break-all;
   border-bottom: none !important;
 }
 
-.flattened {
-  line-height: $resultTab-height !important;
-  height: $resultTab-height !important;
-/*  overflow-x: scroll;
-  overflow-y: hidden;*/
-  word-wrap: normal;
+#result-sequences {
+  .flattened {
+    line-height: $resultTab-height !important;
+    height: $resultTab-height !important;
+    word-wrap: normal;
+  }
+
+  :first-child .flattened {
+    margin-top: 0px !important;
+    height: 68px !important;
+  }
 }
 
 .hidden {
@@ -94,7 +98,7 @@ body {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
-    margin-top: $topNav-navLineHeight + 10px;
+    margin-top: $topNav-navLineHeight;
   }
 }
 

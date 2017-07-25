@@ -1,6 +1,7 @@
-$primaryColor: #ededf2;
-$secondaryColor: #dadada;
+$primaryColor: #dadada;
+$secondaryColor: #ededf2;
 $accentColor: #a3a3a3;
+$boxBackground: white;
 $textColor: black; //#797979;
 
 //nav-bar
@@ -13,7 +14,7 @@ $topNav-secondaryMenuBackground: #ff8358;
 $topNav-primaryMenuText: $textColor;
 $topNav-secondaryMenuText: $textColor;
 
-$topNav-primaryBoxShadow: white;
+$topNav-primaryBoxShadow: black;
 $topNav-secondaryBoxShadow: #ff8358;
 
 
@@ -24,10 +25,10 @@ $sideNav-mainColor: #2680F3;
 
 //motif titles
 //BLACK WHITE SALMON
-$motif-title-bg: $primaryColor;
+$motif-title-bg: $boxBackground;
 $motif-title-color: $textColor;
-$motif-in-result-bg: $primaryColor;
-$motif-in-result-round-bg: $primaryColor;
+$motif-in-result-bg: $boxBackground;
+$motif-in-result-round-bg: $boxBackground;
 $motif-selected-on-result-hover: salmon;
 $motif-title-matched-suggestion: salmon;
 
@@ -47,8 +48,8 @@ $slider-marker-bg: $textColor;
 $icon-default-color: $textColor;
 $icon-hover-color: $textColor;
 $icon-active-color: $accentColor;
-$button-bg: $primaryColor;
-$sequence-input-borders: $accentColor;
+$button-bg: white;
+$sequence-input-borders: black;
 
 
 //sequenceInput
@@ -58,3 +59,5 @@ $resultTab-height: 70px;
 //global features
 $border-radius: 5px;
 
+//tabs
+$current-tab-bg: white;

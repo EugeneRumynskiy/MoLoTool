@@ -194,6 +194,8 @@ var resultTabs = (function () {
             }
 
             makeOpened(tabId);
+
+            $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
         }
     };
 
@@ -272,6 +274,7 @@ var resultTabs = (function () {
 
         $tab.remove();
         $(".tab-result-sequence[data-tab=" + tabId + "]").remove();
+        $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
 
         if (
             getCurrentMode() === "Single" &&

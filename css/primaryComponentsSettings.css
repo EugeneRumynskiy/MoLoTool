@@ -10,11 +10,11 @@ html {
 body {
   height: 100%;
   margin: 0;
-  background-color: #dadada; }
+  background-color: #ededf2; }
 
 .interface-area {
   margin-left: 0;
-  margin-top: 90px; }
+  margin-top: 80px; }
 
 #sequence-input, #title-input {
   border: 2px solid black; }
@@ -26,7 +26,7 @@ body {
   margin-right: 0.333em;
   padding: 0.5em 1em;
   cursor: pointer;
-  font-size: 0.77em;
+  font-size: 0.82em;
   white-space: nowrap;
   overflow: hidden;
   text-decoration: none;
@@ -39,7 +39,7 @@ body {
   color: #a3a3a3; }
 
 .interface-component {
-  padding: 10px 10px 10px 10px;
+  padding: 5px 5px 5px 5px;
   margin-bottom: 15px; }
 
 .round {
@@ -50,16 +50,17 @@ body {
 
 .full-screen {
   line-height: 28px !important;
-  height: 400px !important;
+  min-height: 332px !important;
   word-break: break-all;
   border-bottom: none !important; }
 
-.flattened {
+#result-sequences .flattened {
   line-height: 70px !important;
   height: 70px !important;
-  /*  overflow-x: scroll;
-    overflow-y: hidden;*/
   word-wrap: normal; }
+#result-sequences :first-child .flattened {
+  margin-top: 0px !important;
+  height: 68px !important; }
 
 .hidden {
   display: none !important; }
@@ -69,6 +70,6 @@ body {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
-    margin-top: 50px; } }
+    margin-top: 40px; } }
 
 /*# sourceMappingURL=primaryComponentsSettings.css.map */

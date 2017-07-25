@@ -1,18 +1,18 @@
 @import "utilities/variables";
 
+
 .suggestions {
   margin-top: 10px;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   //box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
   border: 1px solid $sequence-input-borders;
-  border-top: none;
 
   min-width: 500px;
 
   .suggestion {
     min-height: 46px;
-    border-top: 1px solid white;
+    border-top: 1px solid black;
     border-radius: 0;
     padding: 2px;
     margin: 2px;
@@ -75,7 +75,7 @@
       margin: 0 5px 5px 5px;
       padding: 2px 8px 2px 2px;
       border-radius: 10px;
-      border: 1px solid black;
+      border: 2px solid black;
       background-color: $motif-in-result-bg;
 
       .motif-title {
@@ -85,7 +85,7 @@
         vertical-align: middle;
 
         background-color: $motif-in-result-round-bg;
-        border: 2px transparent solid;
+        border: 3px transparent solid;
         border-radius: 5px;
 
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
@@ -156,21 +156,24 @@
   }*/
 
   .controls {
-    border: 2px solid $sequence-input-borders;//#999;
     border-radius: 2px;
     background-color: $main-bg-color;
-    padding: 15px;
+    padding: 5px;
+    margin-bottom: 10px;
 
     .button-container{
       display: inline-block;
-      border: 2px solid $sequence-input-borders;//#999;
-      border-radius: 5px;
       background-color: $main-bg-color;
 
 
       .interface-button {
         outline: none;
-        border-right: 2px solid $sequence-input-borders;//#999;
+        border: 1px solid $sequence-input-borders;
+        border-left: none;
+        border-radius: 5px;
+
+        background-color: $button-bg;
+
         margin: 0;
         text-align: center;
 
@@ -180,8 +183,8 @@
         }
       }
 
-      .interface-button:last-child {
-        border-right: none;
+      .interface-button:first-child {
+        border-left: 1px solid $sequence-input-borders;
       }
     }
   }
@@ -223,7 +226,7 @@
     }
 
     .current-tab {
-      background-color: $topNav-primaryMenuBackground;
+      background-color: $current-tab-bg;
     }
   }
 
@@ -234,10 +237,12 @@
     left: 0;
 
     overflow-x: scroll;
+
     background-color: white;
     border-radius: 5px;
-    border-left: solid white 5px;
-    border-right: solid white 5px;
+    border: solid 2px $sequence-input-borders;
+    border-left: none;
+    border-bottom: none;
 
     .tab-result-sequence {
       display: inline-block;
@@ -249,10 +254,6 @@
       background-color: #ffffff;
       height: $resultTab-height;
       line-height: $resultTab-height;
-    }
-
-    .tab-result-sequence:last-child {
-      margin-bottom: 10px;
     }
   }
 

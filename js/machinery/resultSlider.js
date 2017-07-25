@@ -4,7 +4,8 @@ var resultSlider = (function () {
 
 
     var create = function () {
-        setSlider();
+        var $target = $("#sequence-input");
+
     };
 
 

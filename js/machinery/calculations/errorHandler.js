@@ -4,8 +4,10 @@
 
 var errorHandler = (function () {
     var logError = function(error) {
-        var errText = "fileName: " + error["fileName"] + "   err: " + error["message"] + "   line: " + error.lineNumber + "\n";
-        throw new Error(errText);
+        var errText = "fileName: " + error["fileName"] + "   err: " + error["message"] + "   line: " + error.lineNumber + "\n",
+            err = new Error(errText);
+        console.log(errText);
+        return err;
     };
 
 

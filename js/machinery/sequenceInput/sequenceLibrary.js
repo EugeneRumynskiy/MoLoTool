@@ -65,7 +65,10 @@ var sequenceLibrary = (function () {
                 return tabId;
             }
         }
-        errorHandler.logError({"fileName": _fileName, "message": "maximum sequenceInput count exceeded, delete one of current sequenceInput"});
+
+        var message = "maximum sequenceInput count exceeded, delete one of current sequenceInput";
+        alert(message);
+        errorHandler.logError({"fileName": _fileName, "message": message});
         return -1;
     };
 

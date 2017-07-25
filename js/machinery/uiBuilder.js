@@ -40,7 +40,6 @@ var uiBuilder = (function () {
             sequenceLibrary.isRecorded,
             sequenceLibrary.deleteTabContentById
         );
-        buildExternalTabComponent();
         buildSwitchComparisonModeButton();
 
         resultSlider.create();
@@ -71,9 +70,11 @@ var uiBuilder = (function () {
 
 
     var buildSwitchComparisonModeButton = function () {
-        $("#cmp-mode-button").on('click', function(event){
+        $("#cmp-mode-button").on('click', function(){
             var newMode = resultTabs.switchComparisonMode();
-            $(this).html("Comparison mode - " + newMode);
+            console.log(newMode);
+            $(this).empty();
+            $(this).html('<span class="icon icon-medium">Comparison ' + newMode + '</span>\n');
         });
     };
 
@@ -127,7 +128,8 @@ var uiBuilder = (function () {
         });
 
 
-        motifPickerButtons.create();
+        // not used
+        // motifPickerButtons.create();
 
 
         //search bar usability
@@ -140,10 +142,6 @@ var uiBuilder = (function () {
                 $(".suggestions").hide();
             }
         });
-    };
-
-
-    var buildExternalTabComponent = function () {
     };
 
 
