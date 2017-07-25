@@ -245,7 +245,7 @@ var resultTabs = (function () {
             $target.html("lock_open");
             $seqToLock.find(".sequence").css({
                 "position": "static",
-                //"left": "unset",
+                "left": "unset",
                 "clip": "unset"
             });
         } else {
