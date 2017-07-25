@@ -2,7 +2,8 @@
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  outline: none; }
 
 html {
   height: 100%; }
@@ -49,7 +50,7 @@ body {
   display: none; }
 
 .full-screen {
-  line-height: 28px !important;
+  line-height: 31.5px !important;
   min-height: 332px !important;
   word-break: break-all;
   border-bottom: none !important; }
@@ -58,8 +59,9 @@ body {
   line-height: 70px !important;
   height: 70px !important;
   word-wrap: normal; }
-#result-sequences :first-child .flattened {
+#result-sequences .flattened:first-of-type {
   margin-top: 0px !important;
+  line-height: 68px !important;
   height: 68px !important; }
 
 .hidden {

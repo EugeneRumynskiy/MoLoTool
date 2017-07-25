@@ -5,6 +5,7 @@ var resultTabs = (function () {
     var _fileName = "resultTabs",
 
         _tabStates,  //isOpened?
+
         _resultTabsObjects,
 
         _tabIdRange,
@@ -63,6 +64,8 @@ var resultTabs = (function () {
         $(".tab-result-sequence").removeClass("flattened");
         $(".tab-result-sequence").addClass("hidden full-screen");
         $(".tab-result-sequence").first().removeClass("hidden");
+
+        $(".lock").addClass("hidden");
     };
 
     
@@ -74,7 +77,7 @@ var resultTabs = (function () {
         $(".tab-result-sequence").removeClass("hidden full-screen");
         $(".tab-result-sequence").addClass("flattened");
 
-        $
+        $(".lock").removeClass("hidden");
     };
     ////Comparison Mode End
 
@@ -201,20 +204,24 @@ var resultTabs = (function () {
 
 
     var createResultTab = function (tabId) {
-        var $resultTab = $(
+        var lockMode = (getCurrentMode() === "Single") ? "hidden" : "",
+            $resultTab = $(
                 '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>#' + tabId + '</a>' +
                 '<a href="#" class="close"></a>' +
-                '</div>' +
+                '<a href="#" class="lock '+ lockMode + '">' + '<i class="material-icons md-dark">lock_open</i>' + '</a>' +
                 '</div>'
             );
 
         $resultTab.on("click", function(event) {
             event.preventDefault();
+            var $target = $(event.target);
 
-            if (event.target.className === "close") {
+            if ($target.hasClass("close")) {
                 closeTab(this);
                 motifHandler.handleMotifs();
+            } else if ($target.hasClass("material-icons")) {
+                lockTab($target);
             } else {
                 if (getCurrentMode() === "Single") {
                     var tabId = $(this).attr('data-tab');
@@ -228,8 +235,37 @@ var resultTabs = (function () {
     };
 
 
+    var lockTab = function ($target) {
+        var currentState = $target.html(),
+            tabId = $target.parents(".tab-result").attr("data-tab"),
+            $seqToLock = $(".tab-result-sequence[data-tab="+ tabId + "]");
+
+
+        if (currentState === "lock") {
+            $target.html("lock_open");
+            $seqToLock.find(".sequence").css({
+                "position": "static",
+                //"left": "unset",
+                "clip": "unset"
+            });
+        } else {
+            console.log($("#result-sequences").width());
+            $target.html("lock");
+            $seqToLock.find(".sequence").css({
+                "position": "absolute",
+                "left": $seqToLock.position().left + "px",
+                "clip": "rect(0px," + (1815 - $seqToLock.position().left + 88)
+                + "px," + "70px," + ($seqToLock.position().left - 90) + "px)",
+                //$seqToLock.width() + "px"
+            });
+        }
+    };
+
+
     var createResultSequence = function (tabId) {
-        return  $('<div class="tab-result-sequence round flattened" data-tab=' + tabId + '></div>');
+        return  $('<div class="tab-result-sequence round flattened" data-tab=' + tabId + '>'
+            + '<div class="sequence"></div>'
+            + '</div>');
     };
 
 
@@ -245,8 +281,7 @@ var resultTabs = (function () {
 
     var updateTab = function (tabId, content) {
         if (isOpened(tabId)) {
-            //_resultTabsObjects[tabId].empty().html(content);
-            $(".tab-result-sequence[data-tab=" + tabId + "]").empty().html(content);
+            $(".tab-result-sequence[data-tab=" + tabId + "]").find(".sequence").empty().html(content);
         } else {
             console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});

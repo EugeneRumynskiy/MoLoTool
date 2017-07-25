@@ -136,8 +136,12 @@
 #result-cmp {
   position: relative; }
   #result-cmp #result-tabs {
-    width: 75px;
-    position: absolute; }
+    min-width: 90px;
+    position: absolute;
+    left: 0px;
+    padding: 0 0 0 5px;
+    z-index: 2;
+    background-color: #ededf2; }
     #result-cmp #result-tabs .tab-result {
       height: 70px;
       line-height: 70px;
@@ -162,7 +166,7 @@
     #result-cmp #result-tabs .current-tab {
       background-color: white; }
   #result-cmp #result-sequences {
-    margin-left: 80px;
+    margin-left: 85px;
     margin-top: 5px;
     top: 0;
     left: 0;
@@ -173,9 +177,9 @@
     border-left: none;
     border-bottom: none; }
     #result-cmp #result-sequences .tab-result-sequence {
-      display: inline-block;
       border-bottom: dashed lightgrey 2px;
-      margin: 5px 0 5px 0;
+      margin: 10px 0 5px 0;
+      width: 4000px;
       font-family: "Courier New", "monospace";
       font-size: 23px;
       background-color: #ffffff;

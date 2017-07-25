@@ -35,10 +35,10 @@ Example: <a href="#" class="close">
 }
 .tab-result .close {
   position: absolute;
+  right: 6px;
 }
 .tab-link .close {
-  display: none
-;
+  display: none;
   right: 0.5em;
   position: absolute;
 }
@@ -80,4 +80,20 @@ Example: <a href="#" class="add">
 .tab-link .add {
   right: 0.5em;
   position: absolute;
+}
+
+/*Lock element
+Example: <a href="#" class="lock">
+*/
+.tab-result .lock {
+  position: absolute;
+  right: 4px;
+  
+  display: inline-block;
+  margin-top: 35px;
+
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+
 }

@@ -192,9 +192,16 @@
 
 #result-cmp {
   position: relative;
+
   #result-tabs{
-    width: $resultTab-width;
+    min-width: $resultTab-width;
     position: absolute;
+
+    left: 0px;
+    padding:0 0 0 5px;
+    z-index: 2;
+
+    background-color: $secondaryColor;
 
     .tab-result {
       height: $resultTab-height;
@@ -231,7 +238,7 @@
   }
 
   #result-sequences {
-    margin-left: $resultTab-width + 5px;
+    margin-left: $resultTab-width - 5px;
     margin-top: 5px;
     top: 0;
     left: 0;
@@ -245,9 +252,9 @@
     border-bottom: none;
 
     .tab-result-sequence {
-      display: inline-block;
       border-bottom: dashed lightgrey 2px;
-      margin: 5px 0 5px 0;
+      margin: 10px 0 5px 0;
+      width: 4000px;
 
       font-family: "Courier New", "monospace";
       font-size: 23px;
