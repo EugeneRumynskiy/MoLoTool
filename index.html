@@ -142,6 +142,7 @@
                 </ul>
                 <ul class="nav pull-left top-first">
                     <li class="search-container">
+                        <!--<i class="icon material-icons md-18">search</i>-->
                         <span class="icon octicon octicon-search"></span>
                         <input id="search" placeholder="Select motif..." autofocus>
                         <div class="suggestions">
@@ -173,15 +174,14 @@
                         <span class="icon icon-medium">Add tab</span>
                     </a>-->
                     <a class="interface-button upload-button" data-applyToId="sequence-input" href="#">
-                        <span class="icon icon-medium">Select a text file:</span>
-                        <input type="file" id="fileInput">
+                        <label class="custom-file-upload">
+                            <input type="file" id="fileInput">
+                            Upload file
+                            <i class="material-icons md-dark">add_box</i>
+                        </label>
                     </a>
-                    <a id="cmp-mode-button" class="interface-button" data-applyToId="motif-table-cmp" href="#">
-                        <span class="icon icon-medium">Comparison Single</span>
-                    </a>
-                    <a class="interface-button to-hidden-button" data-applyToId="motif-table-cmp" data-state="hidden" href="#">
-                        <span class="icon icon-medium">Hide table</span>
-                    </a>
+                    <a id="cmp-mode-button" class="interface-button" href="#"></a>
+                    <a class="to-hidden-button interface-button" data-applyToId="motif-table-cmp" href="#"></a>
                 </div>
 
                 <div class="sliderBox">

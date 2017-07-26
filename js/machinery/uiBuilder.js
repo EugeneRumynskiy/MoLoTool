@@ -40,9 +40,9 @@ var uiBuilder = (function () {
             sequenceLibrary.isRecorded,
             sequenceLibrary.deleteTabContentById
         );
-        buildSwitchComparisonModeButton();
 
-        resultSlider.create();
+        buildSwitchComparisonModeButton();
+        buildHideButtons();
 
         inputParsing.create();
         //debug
@@ -64,17 +64,64 @@ var uiBuilder = (function () {
             libraryIds = $.map(sequences, sequenceLibrary.addTab);
 
         $.map(libraryIds, resultTabs.addIdToResult);
-        console.log(libraryIds);
         handleEvent("fileUpload");
+        if (resultTabs.getCurrentMode() === "Multiply") {
+            resultTabs.updateWidth();
+        }
     };
 
 
     var buildSwitchComparisonModeButton = function () {
-        $("#cmp-mode-button").on('click', function(){
+        var getModeIcon = {
+            "Single": "<i class=\"material-icons md-dark\">select_all</i>",
+            "Multiply": "<i class=\"material-icons md-dark\">format_list_bulleted</i>"
+        },
+            $button = $("#cmp-mode-button");
+
+        $button.empty();
+        $button.html('<span class="icon icon-medium">Comparison ' + getModeIcon[resultTabs.getCurrentMode()] + '</span>\n');
+
+        $button.on('click', function(){
             var newMode = resultTabs.switchComparisonMode();
-            console.log(newMode);
-            $(this).empty();
-            $(this).html('<span class="icon icon-medium">Comparison ' + newMode + '</span>\n');
+            console.log(newMode, "MODE\n");
+
+            $button.empty();
+            $button.html('<span class="icon icon-medium">Comparison ' + getModeIcon[newMode] + '</span>\n');
+        });
+    };
+
+
+    var buildHideButtons = function () {
+        var getIconForMode = {
+                "hidden": "<i class=\"material-icons md-dark\">visibility_off</i>",
+                "visible": "<i class=\"material-icons md-dark\">visibility</i>"
+            },
+            $button = $(".to-hidden-button"),
+            targetId = $button.attr("data-applyToId");
+
+        $button.empty();
+        $button.html('<span class="icon icon-medium">Table ' + getIconForMode["visible"] + '</span>\n');
+
+        var switchMode = function (targetId) {
+            var $target = $("#" + targetId),
+                newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+
+            if (newMode === "hidden") {
+                $target.addClass("hidden");
+            } else {
+                $target.removeClass("hidden");
+            }
+
+            console.log(newMode, "id\n");
+            $button.empty();
+            $button.html('<span class="icon icon-medium">Table ' + getIconForMode[newMode] + '</span>\n');
+
+            return newMode;
+        };
+
+        $button.on('click', function(){
+            console.log("hee\n");
+            switchMode(targetId);
         });
     };
 

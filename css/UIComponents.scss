@@ -181,6 +181,16 @@
           display: inline-block;
           width: 150px;
         }
+
+        .custom-file-upload{
+          display: inline-block;
+          padding: 6px 12px;
+          cursor: pointer;
+
+          input[type="file"] {
+            display: none;
+          }
+        }
       }
 
       .interface-button:first-child {
@@ -254,7 +264,6 @@
     .tab-result-sequence {
       border-bottom: dashed lightgrey 2px;
       margin: 10px 0 5px 0;
-      width: 4000px;
 
       font-family: "Courier New", "monospace";
       font-size: 23px;

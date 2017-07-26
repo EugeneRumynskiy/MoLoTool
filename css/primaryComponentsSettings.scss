@@ -35,10 +35,10 @@ body {
 
   line-height: 20px;
   margin-right: 0.333em;
-  padding: 0.5em 1em;
+  padding: 10px 10px;
 
   cursor: pointer;
-  font-size: 0.82em;
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
 
@@ -48,9 +48,15 @@ body {
 
 .interface-button:hover {
   color: $icon-hover-color;
+  background-color: $icon-hover-color;
 }
 .interface-button:active {
   color: $icon-active-color;
+  background-color: $icon-active-color;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 .interface-component {

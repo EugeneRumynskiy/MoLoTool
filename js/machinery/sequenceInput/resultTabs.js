@@ -66,6 +66,8 @@ var resultTabs = (function () {
         $(".tab-result-sequence").first().removeClass("hidden");
 
         $(".lock").addClass("hidden");
+
+        updateWidth("reset");
     };
 
     
@@ -78,6 +80,8 @@ var resultTabs = (function () {
         $(".tab-result-sequence").addClass("flattened");
 
         $(".lock").removeClass("hidden");
+
+        updateWidth();
     };
     ////Comparison Mode End
 
@@ -179,6 +183,7 @@ var resultTabs = (function () {
 
                 insertBeforeId = getNextHighestResultTabId(tabId);
 
+
             if (insertBeforeId === tabId) {
                 $targetTab.append($resultTab);
                 $targetSequence.append($resultSequence);
@@ -190,15 +195,44 @@ var resultTabs = (function () {
             if (getCurrentMode() === "Single") {
                 $resultSequence.addClass("hidden full-screen");
                 $resultSequence.removeClass("flattened");
-            }
 
-            if (getCurrentMode() === "Single" && $.isEmptyObject(getOpenedIds())) {
-                setToCurrent(tabId);
+                if ($.isEmptyObject(getOpenedIds())) {
+                    setToCurrent(tabId);
+                }
+            } else if (getCurrentMode() === "Multiply") {
             }
 
             makeOpened(tabId);
+            updateHeight();
+        }
+    };
 
-            $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
+
+    var updateHeight = function () {
+        // $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
+    };
+
+
+    var updateWidth = function (event) {
+        var $tabs = $(".tab-result-sequence"),
+            $sequences = $tabs.find(".sequence");
+
+        if (event === "reset") {
+            $tabs.css({
+                "width": "unset"
+            })
+        } else {
+            var max = -1;
+
+            for (var i = 0; i < $sequences.length; i++) {
+                if (max < $sequences[i].scrollWidth) {
+                    max = $sequences[i].scrollWidth;
+                }
+            }
+
+            $tabs.css({
+                "width": max + 5 + "px"
+            })
         }
     };
 
@@ -255,8 +289,7 @@ var resultTabs = (function () {
                 "position": "absolute",
                 "left": $seqToLock.position().left + "px",
                 "clip": "rect(0px," + (1815 - $seqToLock.position().left + 88)
-                + "px," + "70px," + ($seqToLock.position().left - 90) + "px)",
-                //$seqToLock.width() + "px"
+                + "px," + "70px," + ($seqToLock.position().left - 90) + "px)"
             });
         }
     };
@@ -289,17 +322,6 @@ var resultTabs = (function () {
     };
 
 
-    var startErrorAnimation = function (source) {
-        var $source = $(source);
-        console.log($source.css("backgroundColor"));
-
-
-        $source.animate({backgroundColor: '#FA8072'}, "fast");
-        $source.animate({backgroundColor: '#EDEDF2'}, "fast");
-    };
-
-
-
     var closeTab = function (source) {
         var $tab = $(source),
             tabId = $tab.attr('data-tab');
@@ -309,7 +331,7 @@ var resultTabs = (function () {
 
         $tab.remove();
         $(".tab-result-sequence[data-tab=" + tabId + "]").remove();
-        $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
+        updateHeight();
 
         if (
             getCurrentMode() === "Single" &&
@@ -344,8 +366,10 @@ var resultTabs = (function () {
         addIdToResult: addIdToResult,
         getOpenedIds: getOpenedIds,
         getIdsToHandle: getIdsToHandle,
+        getCurrentMode: getCurrentMode,
 
         updateTab: updateTab,
+        updateWidth: updateWidth,
         //debug
         show: show
     };

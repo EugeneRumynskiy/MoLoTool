@@ -25,19 +25,24 @@ body {
   position: relative;
   line-height: 20px;
   margin-right: 0.333em;
-  padding: 0.5em 1em;
+  padding: 10px 10px;
   cursor: pointer;
-  font-size: 0.82em;
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-decoration: none;
   outline: none; }
 
 .interface-button:hover {
-  color: black; }
+  color: black;
+  background-color: black; }
 
 .interface-button:active {
-  color: #a3a3a3; }
+  color: #a3a3a3;
+  background-color: #a3a3a3; }
+
+input[type="file"] {
+  display: none; }
 
 .interface-component {
   padding: 5px 5px 5px 5px;
