@@ -79,14 +79,14 @@ var uiBuilder = (function () {
             $button = $("#cmp-mode-button");
 
         $button.empty();
-        $button.html('<span class="icon icon-medium">Comparison ' + getModeIcon[resultTabs.getCurrentMode()] + '</span>\n');
+        $button.html('<span class="icon icon-medium">Mode ' + getModeIcon[resultTabs.getCurrentMode()] + '</span>\n');
 
         $button.on('click', function(){
             var newMode = resultTabs.switchComparisonMode();
             console.log(newMode, "MODE\n");
 
             $button.empty();
-            $button.html('<span class="icon icon-medium">Comparison ' + getModeIcon[newMode] + '</span>\n');
+            $button.html('<span class="icon icon-medium">Mode ' + getModeIcon[newMode] + '</span>\n');
         });
     };
 

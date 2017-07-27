@@ -29,7 +29,7 @@ var resultTabs = (function () {
 
     ////Comparison Mode
     var getDefaultComparisonMode = function () {
-        return "Single";
+        return "Multiply";
     };
 
 
