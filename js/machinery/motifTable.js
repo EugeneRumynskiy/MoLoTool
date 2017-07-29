@@ -188,15 +188,14 @@ var motifTable = (function () {
 
 var features = (function () {
     var _moduleName = "features",
-        _logoUrl = "http://hocomoco.autosome.ru",
         _rowFeatures = null;
-    //["direct_logo_url", "uniprot_id", "motif_families", "motif_subfamilies"];
+
 
 
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
         _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
-        _rowFeatures.toShow = ["Motif ID", "Score", "Start", "End", "Sequence"];
+        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
     };
 
 
@@ -229,9 +228,13 @@ var features = (function () {
 
 
     var siteFeatures = function (site) {
+        var  hocomocoRef = "http://hocomoco.autosome.ru/motif/" + site.motifName,
+            motifNameWithUrl = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +
+                site.motifName + '</a>';
+
         return {
-            "Motif ID": site.motifName,
-            "Score": site.strength,
+            "Motif ID": motifNameWithUrl,
+            "-log10(P-value)": site.strength,
             "Start": site.scorePosition,
             "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,

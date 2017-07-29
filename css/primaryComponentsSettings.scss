@@ -20,6 +20,18 @@ body {
   background-color: $main-bg-color;
 }
 
+td a:link,
+.motif-title a:link {
+  color: #0645AD;
+  text-decoration: none;
+}
+
+td a:visited,
+.motif-title a:visited {
+  color: #0645AD;
+  text-decoration: none;
+}
+
 .interface-area {
   margin-left: $sideNav-initialWidth;
   margin-top: 2 * $topNav-navLineHeight;

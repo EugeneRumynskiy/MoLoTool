@@ -144,8 +144,9 @@ var uiBuilder = (function () {
 
 
             var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName,
-                $hocomocoInfo = $('<a href=' + hocomocoRef + ' "class=hocomoco-info target=_blank">HOCOMOCO</a>');
-            $hocomocoInfo.insertAfter($motifContainer.children(".full-spectrum"));
+                titleWithRef = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +
+                    motifName + '</a>';
+            $motifTitle.html(titleWithRef);
 
             motifPicker.addChosenMotifToSet(motifName);
             motifLibrary.addUnit(motifName);

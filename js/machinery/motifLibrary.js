@@ -16,8 +16,10 @@ var motifLibrary = (function () {
         _displayedFeatures = {
             "direct_logo_url": "Logo",
             "uniprot_id": "Uniprot ID",
-            "motif_families": "Families",
-            "motif_subfamilies": "Subfamilies"};
+            "motif_families": "Family",
+            "motif_subfamilies": "Subfamily",
+            "gene_names": "Gene name"
+        };
 
         _library = {};
 

@@ -13,6 +13,16 @@ body {
   margin: 0;
   background-color: #ededf2; }
 
+td a:link,
+.motif-title a:link {
+  color: #0645AD;
+  text-decoration: none; }
+
+td a:visited,
+.motif-title a:visited {
+  color: #0645AD;
+  text-decoration: none; }
+
 .interface-area {
   margin-left: 0;
   margin-top: 80px; }
