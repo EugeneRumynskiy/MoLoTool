@@ -16,7 +16,7 @@ var motifTable = (function () {
 
         //temporary
 
-        new $.fn.dataTable.Buttons( _dtTable, {
+    /*    new $.fn.dataTable.Buttons( _dtTable, {
             name: 'commands',
             buttons: [{
                 text: '<i class="fa fa-lg fa-clipboard"></i>',
@@ -25,7 +25,7 @@ var motifTable = (function () {
                 name: "myB"
             }]
         } );
-        _dtTable.buttons(1, null).container().appendTo( "#dtTest" );
+        _dtTable.buttons(1, null).container().appendTo( "#dtTest" );*/
 
         return _dtTable;
     };
