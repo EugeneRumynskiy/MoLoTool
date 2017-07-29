@@ -34,6 +34,7 @@ var motifTable = (function () {
     var createTable = function () {
         var tableObject = function () {
             return {
+                "pageLength": 15,
                 columnDefs: [
                     {targets: [2, 3, 4], width: "7%"}
                 ],
