@@ -81,7 +81,7 @@ var resultTabs = (function () {
 
         $(".lock").removeClass("hidden");
 
-        updateWidth();
+        updateWidth("setToMaximum");
     };
     ////Comparison Mode End
 
@@ -221,7 +221,7 @@ var resultTabs = (function () {
             $tabs.css({
                 "width": "unset"
             })
-        } else {
+        } else if (event === "setToMaximum")  {
             var max = -1;
 
             for (var i = 0; i < $sequences.length; i++) {
@@ -233,6 +233,8 @@ var resultTabs = (function () {
             $tabs.css({
                 "width": max + 5 + "px"
             })
+        } else {
+            errorHandler.logError({"fileName": _fileName, "message": "can't update with"});
         }
     };
 
@@ -277,18 +279,22 @@ var resultTabs = (function () {
 
         if (currentState === "lock") {
             $target.html("lock_open");
+
             $seqToLock.find(".sequence").css({
                 "position": "static",
                 "left": "unset",
                 "clip": "unset"
             });
         } else {
-            console.log($("#result-sequences").width());
+            var shift = $("#result-sequences").width();
+            console.log(shift);
+
             $target.html("lock");
+
             $seqToLock.find(".sequence").css({
                 "position": "absolute",
                 "left": $seqToLock.position().left + "px",
-                "clip": "rect(0px," + (1815 - $seqToLock.position().left + 88)
+                "clip": "rect(0px," + (shift - $seqToLock.position().left + 88)
                 + "px," + "70px," + ($seqToLock.position().left - 90) + "px)"
             });
         }
@@ -333,10 +339,12 @@ var resultTabs = (function () {
         $(".tab-result-sequence[data-tab=" + tabId + "]").remove();
         updateHeight();
 
-        if (
-            getCurrentMode() === "Single" &&
-            !$.isEmptyObject(getOpenedIds())
-        ) {
+        if (getCurrentMode() === "Multiply" ) {
+            updateWidth("reset");
+            updateWidth("setToMaximum");
+        } else if (getCurrentMode() === "Single" &&
+            !$.isEmptyObject(getOpenedIds()) ) {
+
             var newCurrentTabId = $(".tab-result").first().attr("data-tab");
             setToCurrent(newCurrentTabId);
         }

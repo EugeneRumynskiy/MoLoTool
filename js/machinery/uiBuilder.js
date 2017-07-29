@@ -42,7 +42,7 @@ var uiBuilder = (function () {
         );
 
         buildSwitchComparisonModeButton();
-        buildHideButtons();
+        buildGenerateTableButton();
 
         inputParsing.create();
         //debug
@@ -65,8 +65,9 @@ var uiBuilder = (function () {
 
         $.map(libraryIds, resultTabs.addIdToResult);
         handleEvent("fileUpload");
+
         if (resultTabs.getCurrentMode() === "Multiply") {
-            resultTabs.updateWidth();
+            resultTabs.updateWidth("setToMaximum");
         }
     };
 
@@ -91,7 +92,7 @@ var uiBuilder = (function () {
     };
 
 
-    var buildHideButtons = function () {
+    var buildGenerateTableButton = function () {
         var getIconForMode = {
                 "hidden": "<i class=\"material-icons md-dark\">visibility_off</i>",
                 "visible": "<i class=\"material-icons md-dark\">visibility</i>"
@@ -112,7 +113,6 @@ var uiBuilder = (function () {
                 $target.removeClass("hidden");
             }
 
-            console.log(newMode, "id\n");
             $button.empty();
             $button.html('<span class="icon icon-medium">Table ' + getIconForMode[newMode] + '</span>\n');
 
@@ -120,7 +120,6 @@ var uiBuilder = (function () {
         };
 
         $button.on('click', function(){
-            console.log("hee\n");
             switchMode(targetId);
         });
     };
