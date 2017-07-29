@@ -196,7 +196,7 @@ var features = (function () {
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
         _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
-        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
+        _rowFeatures.toShow = ["Motif ID", "Score", "Start", "End", "Sequence"];
     };
 
 
@@ -231,7 +231,7 @@ var features = (function () {
     var siteFeatures = function (site) {
         return {
             "Motif ID": site.motifName,
-            "-log10(P-value)": site.strength,
+            "Score": site.strength,
             "Start": site.scorePosition,
             "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,
