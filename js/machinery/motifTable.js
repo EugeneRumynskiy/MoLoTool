@@ -45,18 +45,28 @@ var motifTable = (function () {
 
         var createColumns = function () {
             var unitDetails = [{
-                    "title": 'Additional info',
-                    "width": '9%',
+                    "title": 'Info',
+                    "width": '7%',
                     "className":      'details-control',
                     "orderable":      false,
                     "data":           null,
                     "defaultContent": ''
                 }],
+
                 featuresToShow = $.map(features.getFeatures(false), function (feature) {
-                    return {"data": feature, "title": feature};}),
+                    if (feature === "Motif ID" || feature === "Sequence") {
+                        return {"data": feature, "title": feature, "width": "30%"};
+                    } else {
+                        return {"data": feature, "title": feature, "width": "13%"};
+                    }
+                }),
+
                 featuresToHide = $.map(features.getFeatures(true), function (feature) {
-                    return {"data": feature, "title": feature, "visible": false };}),
+                    return {"data": feature, "title": feature, "visible": false };
+                }),
+
                 columns = [].concat(unitDetails, featuresToShow, featuresToHide);
+
             return columns;
         };
 
@@ -186,7 +196,7 @@ var features = (function () {
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
         _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
-        _rowFeatures.toShow = ["Motif ID", "Strength", "Start Position", "Finish Position", "Sequence"];
+        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
     };
 
 
@@ -221,9 +231,9 @@ var features = (function () {
     var siteFeatures = function (site) {
         return {
             "Motif ID": site.motifName,
-            "Strength": site.strength,
-            "Start Position": site.scorePosition,
-            "Finish Position": site.scorePosition + site.siteLength - 1,
+            "-log10(P-value)": site.strength,
+            "Start": site.scorePosition,
+            "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,
             "Strand": site.strand
         };
