@@ -137,19 +137,19 @@ var uiBuilder = (function () {
         $('#motif-list').on('click', '.motif-title', function(event){
             event.preventDefault();
 
-            var $motifTitle = $(event.target), motifName = $motifTitle.text(),
+            var $motifTitle = $(event.target),
+                motifName = $motifTitle.text(),
                 $motifContainer = $motifTitle.parent();
 
             if (motifPicker.getChosenMotifSet().size === 0) {
                 $('#motif-list-selected-cmp').removeClass("empty");
             }
 
-            var $closeButton = $('<a href="#" class="close"></a>');
-            $closeButton.insertAfter($motifContainer.children(".motif-title"));
-
             $motifContainer.addClass('chosen-motif');
             colorPicker.addTo($motifContainer);
 
+            var $closeButton = $('<a href="#" class="close"></a>');
+            $closeButton.insertAfter($motifContainer.children(".motif-title"));
 
             var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName,
                 titleWithRef = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +

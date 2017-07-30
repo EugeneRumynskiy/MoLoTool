@@ -3,7 +3,16 @@
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid black;
-  min-width: 500px; }
+  min-width: 600px; }
+  .suggestions #legend-container {
+    border-top: none;
+    border-bottom: 1px solid black;
+    min-height: 26px; }
+    .suggestions #legend-container .absolute {
+      position: absolute; }
+    .suggestions #legend-container .feature {
+      margin: 0 4px 0 4px;
+      padding: 0 4px 0 4px; }
   .suggestions .suggestion {
     min-height: 46px;
     border-top: 1px solid black;
@@ -12,12 +21,16 @@
     margin: 2px; }
     .suggestions .suggestion .feature {
       display: inline;
-      vertical-align: middle; }
+      vertical-align: middle;
+      padding: 4px;
+      margin: 4px; }
     .suggestions .suggestion .second {
       position: absolute;
       left: 250px;
-      padding: 4px;
-      margin: 4px;
+      max-width: 240px; }
+    .suggestions .suggestion .third {
+      position: absolute;
+      left: 500px;
       max-width: 240px; }
   .suggestions #motif-list .motif-container .motif-title {
     display: inline-block;

@@ -9,6 +9,10 @@ Example: <a href="#" class="close">
   height: 20px;
   outline: none; }
 
+.chosen-motif > .close {
+  margin-top: 8px;
+  margin-right: 2px; }
+
 .close:hover {
   opacity: 1; }
 

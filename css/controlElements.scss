@@ -11,6 +11,12 @@ Example: <a href="#" class="close">
 
   outline: none;
 }
+
+.chosen-motif > .close {
+  margin-top: 8px;
+  margin-right: 2px;
+}
+
 .close:hover {
   opacity: 1;
 }

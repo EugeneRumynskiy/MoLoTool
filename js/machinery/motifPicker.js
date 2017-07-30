@@ -44,9 +44,11 @@ var motifPicker = (function () {
         var topMotifs = suggestedMotifs.slice(0, _maxResultCount),
             ifMoreValue = ifMore(suggestedMotifs),
 
+            legendContainer = wrapLegendContainer(),
             motifContainers = $.map(topMotifs, wrapMotifInContainer).join(''),
             ifMoreContainer = wrapIfMoreValueInContainer(ifMoreValue);
 
+        $('#legend-container').html(legendContainer);
         $('#motif-list').html(motifContainers);
         $('#ifMore-container').html(ifMoreContainer);
     };
@@ -54,6 +56,16 @@ var motifPicker = (function () {
 
     var ifMore = function (suggestedMotifs) {
         return (suggestedMotifs.length > _maxResultCount) ? (suggestedMotifs.length - _maxResultCount) : 0;
+    };
+
+
+    var wrapLegendContainer = function () {
+
+        return '<div class="motif-title feature absolute">Motif ID</div>' +
+        '<div class="motif-family feature second">Family</div>' +
+        '<div class="feature third">Gene Name</div>';
+
+
     };
 
 
@@ -70,11 +82,14 @@ var motifPicker = (function () {
 
 
     var wrapSummaryPrimaryInformation = function (motifSummary) {
-        var name = motifSummary["full_name"], family = motifSummary["motif_families"];
+        var name = motifSummary["full_name"],
+            family = motifSummary["motif_families"],
+            geneName = motifSummary["gene_names"];
 
         return '<div class="suggestion"' + ' id="' + name + '">' +
             '<div class="motif-title feature">'+ name +'</div>' +
             '<div class="motif-family feature second">'+ family +'</div>' +
+            '<div class="feature third">'+ geneName +'</div>' +
             '</div>';
     };
 

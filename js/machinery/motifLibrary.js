@@ -65,6 +65,7 @@ var motifLibrary = (function () {
 
 
     var promiseMotif = function (motifName) {
+        console.log("http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true");
         return $.ajax({
             dataType: "json",
             url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"

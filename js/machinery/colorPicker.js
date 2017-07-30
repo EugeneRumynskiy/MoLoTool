@@ -33,11 +33,11 @@ var colorPicker = (function () {
 
 
     //add next default colorPicker to chosen motif
-    var addTo = function (motifContainer) {
-        var colorPicker = document.createElement('input');
-        colorPicker.className = "motif-color-picker";
-        motifContainer.append(colorPicker);
-        set(motifContainer.children(".motif-color-picker"));
+    var addTo = function ($motifContainer) {
+        var $colorPicker = $("<input class=\"motif-color-picker\">");
+
+        $colorPicker.insertAfter($motifContainer.children(".motif-title"));
+        set($motifContainer.children(".motif-color-picker"));
     };
 
 
