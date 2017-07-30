@@ -50,7 +50,7 @@ var resultTabs = (function () {
             errorHandler.logError({"fileName": _fileName, "message": "comparisonMode is undefined"});
         }
 
-        motifHandler.handleMotifs();
+        motifHandler.handleMotifs(); //needed to update table for single sequence
         return newMode;
     };
     
@@ -87,12 +87,19 @@ var resultTabs = (function () {
 
 
     var getIdsToHandle = function (event) {
-        if ((getCurrentMode() !== "Single") || event === "fileUpload") {
+        if (getCurrentMode() === "Single") {
+            return getCurrentTabId();
+        } else {
+            return getOpenedIds();
+        }
+
+        /*if ((getCurrentMode() !== "Single") || event === "fileUpload") {
             return getOpenedIds();
         } else {
             return getCurrentTabId();
-        }
+        }*/
     };
+
 
 
     var getCurrentTabId = function () {
@@ -209,7 +216,7 @@ var resultTabs = (function () {
 
 
     var updateHeight = function () {
-        // $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
+        $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
     };
 
 

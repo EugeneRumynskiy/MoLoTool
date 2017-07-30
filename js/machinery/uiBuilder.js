@@ -97,20 +97,20 @@ var uiBuilder = (function () {
                 "hidden": "<i class=\"material-icons md-dark\">visibility_off</i>",
                 "visible": "<i class=\"material-icons md-dark\">visibility</i>"
             },
+            defaultMode = "hidden",
+
             $button = $(".to-hidden-button"),
-            targetId = $button.attr("data-applyToId");
+            $target = $("#motif-table-cmp");
 
-        $button.empty();
-        $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode["visible"] + '</span>\n');
 
-        var switchMode = function (targetId) {
-            var $target = $("#" + targetId),
-                newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+        var switchMode = function () {
+            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
 
             if (newMode === "hidden") {
                 $target.addClass("hidden");
             } else {
                 $target.removeClass("hidden");
+                handleEvent();
             }
 
             $button.empty();
@@ -119,8 +119,16 @@ var uiBuilder = (function () {
             return newMode;
         };
 
+
+        if (defaultMode === "hidden") {
+            $target.addClass("hidden");
+        } else {
+            $target.removeClass("hidden");
+        }
+        $button.empty();
+        $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode[defaultMode] + '</span>\n');
         $button.on('click', function(){
-            switchMode(targetId);
+            switchMode();
         });
     };
 

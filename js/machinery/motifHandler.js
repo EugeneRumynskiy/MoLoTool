@@ -6,7 +6,9 @@ var motifHandler = (function () {
 
         //debug
         _timeStamp = 0,
-        _timeString = "";
+        _timeString = "",
+
+        _tableIsActive = false;
 
 
     var create = function (motifNameList) {
@@ -22,6 +24,7 @@ var motifHandler = (function () {
         return result;
     };
     //
+
     var updatePvalue = function () {
         _pValue = pValue = pSlider.getPValue();
     };
@@ -61,6 +64,8 @@ var motifHandler = (function () {
     var updateAllResultTabs = function (event) {
         var openedTabsIds = resultTabs.getIdsToHandle(event),
             sites = $.map(openedTabsIds, updateResultTab);
+
+        console.log(openedTabsIds, "updated id's\n");
         return sites;
     };
 
@@ -68,8 +73,13 @@ var motifHandler = (function () {
     var handleMotifs = function (event) {
         updatePvalue();
         updateMotifs();
-        var sites = updateAllResultTabs(event);
-        updateTable(sites);
+
+        var sites = updateAllResultTabs(event),
+            tableState = ($("#motif-table-cmp").hasClass("hidden")) ? "hidden" : "visible";
+
+        if (tableState === "visible") {
+            updateTable(sites);
+        }
     };
 
 
