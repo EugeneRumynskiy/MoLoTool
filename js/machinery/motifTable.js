@@ -86,16 +86,47 @@ var motifTable = (function () {
 
 
         var createButtons = function () {
+
+
             return [
-                { extend: 'colvis', text: 'Select Columns', columns: ':gt(0)'},
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
+                { extend: 'colvis',
+                    text: 'Select Columns',
+                    columns: ':gt(0)'
+                },
+
+                {
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        columns: 'th:not(:first-child)'
+                    }
+                },
+
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: 'th:not(:first-child)'
+                    }
+                },
+
                 {
                     extend: 'pdfHtml5',
                     orientation: 'landscape',
-                    pageSize: 'LEGAL'
+                    pageSize: 'LEGAL',
+                    exportOptions: {
+                        columns: 'th:not(:first-child)'
+                    }
                 },
+
+                {
+                    text: 'TSV',
+                    extend: 'csvHtml5',
+                    fieldSeparator: '\t',
+                    extension: '.tsv',
+                    exportOptions: {
+                        columns: 'th:not(:first-child)'
+                    }
+                },
+
                 {
                     text: 'My button',
                     action: function ( e, dt, node, config ) {
@@ -108,6 +139,10 @@ var motifTable = (function () {
         return tableObject();
     };
 
+  /*  exportOptions: {
+        columns: [ 0, 1, 2, 5 ]
+    }
+*/
 
     var buildUIComponent = function () {
         $('#motif-table').find('tbody')
