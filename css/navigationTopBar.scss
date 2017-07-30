@@ -86,7 +86,7 @@ ul {
     padding: 10px 24px 10px 10px;
     margin-left: $sideNav-initialWidth * 0.90;
 
-    > #search {
+    > #motif-search {
       display: inline-block;
       width: 320px;
       padding-left: 5px;
@@ -98,7 +98,7 @@ ul {
       border-radius: 5px;
       outline: none;
 
-      background: $topNav-primaryMenuBackground;  //url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+      background: $topNav-primaryMenuBackground;
       color: $topNav-secondaryMenuText;
       font-size: 15px;
     }
@@ -190,8 +190,7 @@ ul {
 
         > .search-container {
           margin-left: 10px;
-          > #search {
-          }
+
         }
       }
 

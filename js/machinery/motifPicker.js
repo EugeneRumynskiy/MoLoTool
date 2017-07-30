@@ -14,7 +14,7 @@ var motifPicker = (function () {
             motifSearch.create();
 
             //ToDo initial state
-            $("#search").val("g");
+            $("#motif-search").val("g");
             motifSearch.applySearch();
             $("#motif-list").children().first().children().first().children().first().click();
             $('body').click();
@@ -159,7 +159,7 @@ var motifPicker = (function () {
 
 
     var testedAgainstSearch = function (motifName) {
-        var val = $.trim($("#search").val()),
+        var val = $.trim($("#motif-search").val()),
             reg = new RegExp( RegExpEscape(val), 'i');
         return reg.test(motifName);
     };
@@ -192,7 +192,7 @@ var motifSearch = (function () {
     var create = function() {
         _keysToTest = ["full_name", "motif_families"];
 
-        $search = $('#search');
+        $search = $('#motif-search');
         $search.val("");
 
         $search.on('input', applySearch);
@@ -214,7 +214,7 @@ var motifSearch = (function () {
 
     var applySearch = function () {
         //ToDo binary search
-        $('#search').focus();
+        $('#motif-search').focus();
 
         var motifSummaries = motifPicker.getMotifSummaries(), //probably must be in picker
             regExpsToCheck = getRegExpsToCheck(),
@@ -252,7 +252,7 @@ var motifSearch = (function () {
 
 
     var getSearchInput = function () {
-        return $("#search").val();
+        return $("#motif-search").val();
     };
 
 
