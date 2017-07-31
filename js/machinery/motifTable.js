@@ -36,11 +36,12 @@ var motifTable = (function () {
     var createTable = function () {
         var tableObject = function () {
             return {
+                "lengthMenu": [[10, 15, 50, -1], [10, 15, 50, "All"]],
                 "pageLength": 15,
                 columnDefs: [
                     {targets: [2, 3, 4], width: "7%"}
                 ],
-                dom: 'Bfrtip',
+                dom: 'Bftlip<"clear">',
                 columns: createColumns(),
                 buttons: createButtons()
             };
