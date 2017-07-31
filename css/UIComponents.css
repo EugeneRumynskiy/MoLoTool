@@ -131,7 +131,8 @@
     margin-bottom: 10px; }
     #sequence-input-cmp .controls .button-container {
       display: inline-block;
-      background-color: #ededf2; }
+      background-color: #ededf2;
+      float: right; }
       #sequence-input-cmp .controls .button-container .interface-button {
         outline: none;
         border: 1px solid black;

@@ -41,16 +41,23 @@ var motifPicker = (function () {
 
 
     var setSuggestedMotifList = function (suggestedMotifs) {
-        var topMotifs = suggestedMotifs.slice(0, _maxResultCount),
-            ifMoreValue = ifMore(suggestedMotifs),
-
-            legendContainer = wrapLegendContainer(),
-            motifContainers = $.map(topMotifs, wrapMotifInContainer).join(''),
-            ifMoreContainer = wrapIfMoreValueInContainer(ifMoreValue);
-
+        var legendContainer = wrapLegendContainer();
         $('#legend-container').html(legendContainer);
+
+
+        var topMotifs = suggestedMotifs.slice(0, _maxResultCount),
+            motifContainers = $.map(topMotifs, wrapMotifInContainer).join('');
         $('#motif-list').html(motifContainers);
-        $('#ifMore-container').html(ifMoreContainer);
+
+
+        var ifMoreValue = ifMore(suggestedMotifs);
+        if (ifMoreValue !== 0) {
+            var ifMoreString = wrapIfMoreValueInContainer(ifMoreValue);
+            $('#ifMore-container').find(".ifMore-value").html(ifMoreString);
+            $('#ifMore-container').removeClass("hidden");
+        } else {
+            $('#ifMore-container').addClass("hidden");
+        }
     };
 
 
@@ -60,20 +67,15 @@ var motifPicker = (function () {
 
 
     var wrapLegendContainer = function () {
-
         return '<div class="motif-title feature absolute">Motif ID</div>' +
         '<div class="motif-family feature second">Family</div>' +
         '<div class="feature third">Gene Name</div>';
-
-
     };
 
 
     var wrapMotifInContainer = function (suggestedMotif) {
         var summary = suggestedMotif[0],
-            primaryInfo = wrapSummaryPrimaryInformation(summary),
-            additionalInfo = wrapSummaryAdditionalInformation(summary);
-
+            primaryInfo = wrapSummaryPrimaryInformation(summary);
 
         return '<div class="motif-container">' +
             primaryInfo +
@@ -94,18 +96,11 @@ var motifPicker = (function () {
     };
 
 
-    var wrapSummaryAdditionalInformation = function (motifSummary) {
-        return motifSummary["motif_subfamilies"];
-    };
-
-
     var wrapIfMoreValueInContainer = function (ifMoreValue) {
         var ifMoreContainer = "";
 
         if (ifMoreValue != 0) {
-            ifMoreContainer = '<div class="ifMore-value suggestion">'
-                + 'And ' + ifMoreValue + ' more motifs.' +
-                '</div>';
+            ifMoreContainer = 'And ' + ifMoreValue + ' more motifs.';
         }
         return ifMoreContainer;
     };
