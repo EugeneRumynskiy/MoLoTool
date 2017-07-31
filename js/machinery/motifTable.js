@@ -5,8 +5,10 @@
 
 var motifTable = (function () {
     var _moduleName = "motifTable",
-        _dtTable = undefined, _rows = [],
+        _dtTable = undefined,
+
         _sitesList = [],
+
         _tableID = "#motif-table";
 
     var create = function() {
@@ -189,34 +191,31 @@ var motifTable = (function () {
     };
 
 
-    var redrawTableWithSites = function(sites, primarySequence, userRequestedNames) {
-        _sitesList = sites;
-        _rows = getRows();
-
+    var redrawTableWithUpdates = function(tabsUpdate) {
         _dtTable.clear();
-        _dtTable
-            .rows.add(_rows)
-            .draw();
-    };
+        for(var i = 0; i < tabsUpdate.length; i++) {
 
 
-    var getRows = function() {
-        var rows = new Array(_sitesList.length); //that IS optimal
-        for (var siteID = 0; siteID < _sitesList.length; siteID++) {
-            rows[siteID] = getFeaturesBySiteID(siteID);
+            _dtTable
+                .rows.add(getRows(tabsUpdate[i]))
+                .draw();
         }
-        return rows;
     };
 
 
-    var getFeaturesBySiteID = function(siteID) {
-        var site =  _sitesList[siteID];
-        return features.getFrom(site);
+    var getRows = function(tabUpdate) {
+        var sites = tabUpdate.sites,
+            tabId = tabUpdate.tabId;
+
+
+        return $.map(sites, function(site) {
+            return features.getFrom(site, tabId);
+        });
     };
 
 
     return {
-        redrawTableWithSites: redrawTableWithSites,
+        redrawTableWithUpdates: redrawTableWithUpdates,
         create: create
     };
 }());
@@ -230,13 +229,13 @@ var features = (function () {
 
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
+        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand", "Title"]);
         _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
     };
 
 
     var getFeatures = function (isHidden) {
-        if (_rowFeatures == null){
+        if (_rowFeatures === null){
             errorHandler.logError({"fileName": _moduleName, "message": "features haven't been set"});
             return null;
         } else {
@@ -252,9 +251,10 @@ var features = (function () {
     };
 
 
-    var getFrom = function (site) {
+    var getFrom = function (site, tabId) {
         var motifName = site.motifName;
-        return $.extend({}, motifFeatures(motifName), siteFeatures(site));
+
+        return $.extend({}, motifFeatures(motifName), siteFeatures(site, tabId));
     };
 
 
@@ -263,19 +263,23 @@ var features = (function () {
     };
 
 
-    var siteFeatures = function (site) {
-        var  hocomocoRef = "http://hocomoco.autosome.ru/motif/" + site.motifName,
-            motifNameWithUrl = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +
-                site.motifName + '</a>';
-
+    var siteFeatures = function (site, tabId) {
         return {
-            "Motif ID": motifNameWithUrl,
+            "Motif ID": getMotifNameWithUrl(site.motifName),
             "-log10(P-value)": site.strength,
             "Start": site.scorePosition,
             "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,
+            "Title": sequenceLibrary.getItemById(tabId).seqValues.title,
             "Strand": site.strand
         };
+    };
+
+
+    var getMotifNameWithUrl = function (motifName) {
+        var  hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName;
+        return "<a href=\"" + hocomocoRef + "\" class=\"hocomoco-info\" target=\"_blank\">" +
+            motifName + "</a>";
     };
 
 

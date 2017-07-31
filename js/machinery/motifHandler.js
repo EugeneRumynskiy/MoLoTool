@@ -6,9 +6,7 @@ var motifHandler = (function () {
 
         //debug
         _timeStamp = 0,
-        _timeString = "",
-
-        _tableIsActive = false;
+        _timeString = "";
 
 
     var create = function (motifNameList) {
@@ -38,35 +36,46 @@ var motifHandler = (function () {
 
     var updateResultTab = function(tabId) {
         var sequence = sequenceLibrary.getItemById(tabId).seqValues.sequence,
-            sites = [];
-
-        for(var i = 0; i < _requestedMotifs.length; i++) {
-            motif.setMotifValues(_requestedMotifs[i]);
-
-            if (sequence.length >= motif.getLength()) {
-                sites = sites.concat(motif.findSites(sequence, _pValue));
-            }
-        }
+            sites = getSitesForAllMotifs(sequence);
 
         resultTabs.updateTab(tabId,
-            sequenceConstructor.markupSegmentation(sequence, sites, tabId)
-        );
+            sequenceConstructor.markupSegmentation(sequence, sites, tabId));
+
+        var tabUpdate = {
+            "sites": sites,
+            "tabId": tabId
+        };
+
+        return tabUpdate;
+    };
+
+
+    var getSitesForAllMotifs = function (sequence) {
+        var sites = [],
+            motifs = _requestedMotifs, pValue = _pValue;
+
+        for(var i = 0; i < motifs.length; i++) {
+            motif.setMotifValues(motifs[i]);
+
+            if (sequence.length >= motif.getLength()) {
+                sites = sites.concat(motif.findSites(sequence, pValue));
+            }
+        }
 
         return sites;
     };
 
 
-    var updateTable = function (sites) {
-        motifTable.redrawTableWithSites(sites);
+    var updateTable = function (tabsUpdate) {
+        motifTable.redrawTableWithUpdates(tabsUpdate);
     };
 
 
     var updateAllResultTabs = function (event) {
         var openedTabsIds = resultTabs.getIdsToHandle(event),
-            sites = $.map(openedTabsIds, updateResultTab);
+            tabsUpdate = $.map(openedTabsIds, updateResultTab);
 
-        console.log(openedTabsIds, "updated id's\n");
-        return sites;
+        return tabsUpdate;
     };
 
 
@@ -74,11 +83,11 @@ var motifHandler = (function () {
         updatePvalue();
         updateMotifs();
 
-        var sites = updateAllResultTabs(event),
+        var tabsUpdate = updateAllResultTabs(event),
             tableState = ($("#motif-table-cmp").hasClass("hidden")) ? "hidden" : "visible";
 
         if (tableState === "visible") {
-            updateTable(sites);
+            updateTable(tabsUpdate);
         }
     };
 
