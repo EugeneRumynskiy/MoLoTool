@@ -57,10 +57,8 @@ var uiBuilder = (function () {
     };
 
 
-    var inputCallback = function (inputString, rewrite) {
-        var rewrite = false;
-
-        if (rewrite === true) {
+    var inputCallback = function (inputString, replaceCurrent) {
+        if (replaceCurrent === true) {
             clearSequenceLibrary();
         }
 

@@ -1,7 +1,8 @@
 var uiButtons = (function () {
     var _fileName = "uiButtons",
 
-        _eventHandler = function() {};
+        _eventHandler = function() {},
+        _inputMethod = "";
 
 
     var create = function (eventHandler, inputCallback) {
@@ -18,6 +19,16 @@ var uiButtons = (function () {
 
     var handleEvent = function () {
         _eventHandler();
+    };
+
+
+    var setInputMethodTo = function (newInputMethod) {
+        _inputMethod = newInputMethod
+    };
+
+
+    var getInputMethod = function () {
+        return _inputMethod;
     };
 
 
@@ -160,7 +171,9 @@ var uiButtons = (function () {
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
-                    inputCallback($target.val());
+
+                    var replaceCurrent = (getInputMethod() === "rewrite") ? true: false;
+                    inputCallback($target.val(), replaceCurrent);
                 });
         };
 
@@ -173,15 +186,14 @@ var uiButtons = (function () {
                 "rewrite": {"title":"Mode:rewrite", "icon": "autorenew"},
                 "stack":   {"title":"Mode:stack", "icon": "add"}
             },
-            defaultMode = "stack",
-            currentMode,
+            defaultMode = "stack";
 
             $button = $("#manual-seq-input").find(".input-method");
 
 
         var switchMode = function () {
-            var newMode = (currentMode === "rewrite") ? "stack" : "rewrite";
-            currentMode = newMode;
+            var newMode = (getInputMethod() === "rewrite") ? "stack" : "rewrite";
+            setInputMethodTo(newMode);
 
             $button
                 .empty()
@@ -190,7 +202,7 @@ var uiButtons = (function () {
 
 
         var init = function () {
-            currentMode = defaultMode;
+            setInputMethodTo(defaultMode);
 
             $button
                 .empty()
