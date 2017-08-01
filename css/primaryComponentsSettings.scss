@@ -37,8 +37,47 @@ td a:visited,
   margin-top: 2 * $topNav-navLineHeight;
 }
 
-#sequence-input, #title-input{
-  border: 2px solid black;
+#manual-seq-input {
+  background-color: #ffffff;
+
+  border: 2px solid $sequence-input-borders;
+  border-top: none;
+
+  border-radius: 5px;
+  margin-left: 5px;
+
+  textarea {
+    border:solid 2px white;
+
+    font-family: "Courier New", "Times New Roman";
+    font-size: 23px;
+
+    width: 100%;
+    line-height: 25px;
+    height: 200px;
+  }
+
+  .input-controls {
+    //margin: 4px 0 2px 0;
+    padding: 20px 0 10px 0;
+    border-top: solid $sequence-input-borders 2px;
+
+    .interface-button{
+      border-radius: 5px;
+      border: solid $sequence-input-borders 1px;
+      padding: 5px 5px;
+      margin-left: 5px;
+
+      span {
+        display: inline-block;
+        min-width: 100px;
+
+        .material-icons {
+          float:right;
+        }
+      }
+    }
+  }
 }
 
 .interface-button {
@@ -60,11 +99,9 @@ td a:visited,
 
 .interface-button:hover {
   color: $icon-hover-color;
-  background-color: $icon-hover-color;
 }
 .interface-button:active {
   color: $icon-active-color;
-  background-color: $icon-active-color;
 }
 
 input[type="file"] {
@@ -73,7 +110,7 @@ input[type="file"] {
 
 .interface-component {
   padding: 5px 5px 5px 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .round {

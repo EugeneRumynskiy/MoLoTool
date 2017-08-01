@@ -153,10 +153,17 @@
 
 
     <div class="interface-area">
-        <div class="interface-component" id="sequence-input-cmp">
-            <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" spellcheck=false
-                      placeholder="Put a sequence here..."></textarea>
+        <div class="interface-component" id="manual-seq-input">
+            <textarea spellcheck=false
+                          placeholder="Put a sequence here..."></textarea>
 
+            <div class="input-controls">
+                <a class="interface-button add-sequence" href="#"></a>
+                <a class="interface-button input-method" href="#"></a>
+            </div>
+        </div>
+
+        <div class="interface-component" id="sequence-input-cmp">
             <div class="controls">
                 <div class="button-container">
                     <!--<a class="interface-button" id="show-title-button" href="#">
@@ -168,18 +175,15 @@
                     <a class="interface-button add-to-result-button" data-applyToId="motif-table-cmp" href="#">
                         <span class="icon icon-medium">Add tab</span>
                     </a>-->
-                    <a class="interface-button upload-button" data-applyToId="sequence-input" href="#">
+                    <a class="interface-button upload-button" href="#">
                         <label class="custom-file-upload">
                             <input type="file" id="fileInput">
                             Upload file
                             <i class="material-icons md-dark">add_box</i>
                         </label>
                     </a>
-                    <a class="interface-button upload-button" data-applyToId="sequence-input" href="#">
-                        Add sequence
-                        <i class="material-icons md-dark">add_box</i>
-                    </a>
-                    <a id="cmp-mode-button" class="interface-button" href="#"></a>
+                    <a class="interface-button open-input" href="#"></a>
+                    <a class="interface-button" id="cmp-mode-button" href="#"></a>
                     <a class="to-hidden-button interface-button" href="#"></a>
                 </div>
 

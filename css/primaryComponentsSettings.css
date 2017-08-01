@@ -27,8 +27,32 @@ td a:visited,
   margin-left: 0;
   margin-top: 80px; }
 
-#sequence-input, #title-input {
-  border: 2px solid black; }
+#manual-seq-input {
+  background-color: #ffffff;
+  border: 2px solid black;
+  border-top: none;
+  border-radius: 5px;
+  margin-left: 5px; }
+  #manual-seq-input textarea {
+    border: solid 2px white;
+    font-family: "Courier New", "Times New Roman";
+    font-size: 23px;
+    width: 100%;
+    line-height: 25px;
+    height: 200px; }
+  #manual-seq-input .input-controls {
+    padding: 20px 0 10px 0;
+    border-top: solid black 2px; }
+    #manual-seq-input .input-controls .interface-button {
+      border-radius: 5px;
+      border: solid black 1px;
+      padding: 5px 5px;
+      margin-left: 5px; }
+      #manual-seq-input .input-controls .interface-button span {
+        display: inline-block;
+        min-width: 100px; }
+        #manual-seq-input .input-controls .interface-button span .material-icons {
+          float: right; }
 
 .interface-button {
   color: black;
@@ -44,19 +68,17 @@ td a:visited,
   outline: none; }
 
 .interface-button:hover {
-  color: black;
-  background-color: black; }
+  color: black; }
 
 .interface-button:active {
-  color: #a3a3a3;
-  background-color: #a3a3a3; }
+  color: #a3a3a3; }
 
 input[type="file"] {
   display: none; }
 
 .interface-component {
   padding: 5px 5px 5px 5px;
-  margin-bottom: 15px; }
+  margin-bottom: 10px; }
 
 .round {
   border-radius: 5px; }

@@ -191,7 +191,7 @@ var resultTabs = (function () {
                 insertBeforeId = getNextHighestResultTabId(tabId);
 
 
-            if (insertBeforeId === tabId) {
+            if (true) { //insertBeforeId === tabId) {
                 $targetTab.append($resultTab);
                 $targetSequence.append($resultSequence);
             } else {

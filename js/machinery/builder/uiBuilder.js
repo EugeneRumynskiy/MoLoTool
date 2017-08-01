@@ -30,7 +30,7 @@ var uiBuilder = (function () {
         resultContainer.create();
         buildExternalResultContainerComponent();
 
-        fileUploader.create(fileUploadCallback);
+        fileUploader.create(inputCallback);
 
         var tabIdRange = {"min": 1, "max": 10};
         sequenceLibrary.create(tabIdRange);
@@ -40,14 +40,14 @@ var uiBuilder = (function () {
             sequenceLibrary.deleteTabContentById
         );
 
-        uiButtons.create(handleEvent);
+        uiButtons.create(handleEvent, inputCallback);
 
         inputParsing.create();
 
         //debug
         window.setTimeout(function () {
             var test = inputParsing.inputTest();
-            fileUploadCallback(test);
+            inputCallback(test);
         }, 800);
     };
 
@@ -57,8 +57,13 @@ var uiBuilder = (function () {
     };
 
 
-    var fileUploadCallback = function (inputString) {
-        clearSequenceLibrary();
+    var inputCallback = function (inputString, rewrite) {
+        var rewrite = false;
+
+        if (rewrite === true) {
+            clearSequenceLibrary();
+        }
+
         var sequences = inputParsing.parseInput(inputString),
             libraryIds = $.map(sequences, sequenceLibrary.addTab);
 
