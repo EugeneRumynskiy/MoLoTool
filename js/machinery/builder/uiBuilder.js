@@ -17,8 +17,7 @@ var uiBuilder = (function () {
         setUIEventHandlerTo(motifHandler.handleMotifs);
 
         motifLibrary.create(handleEvent);
-
-        colorPicker.init(handleEvent);
+        colorPicker.create(handleEvent);
 
         motifPicker.create();
         buildExternalMotifPickerComponent();
@@ -41,8 +40,7 @@ var uiBuilder = (function () {
             sequenceLibrary.deleteTabContentById
         );
 
-        buildSwitchComparisonModeButton();
-        buildGenerateTableButton();
+        uiButtons.create(handleEvent);
 
         inputParsing.create();
         //debug
@@ -64,72 +62,11 @@ var uiBuilder = (function () {
             libraryIds = $.map(sequences, sequenceLibrary.addTab);
 
         $.map(libraryIds, resultTabs.addIdToResult);
-        handleEvent("fileUpload");
+        handleEvent();
 
         if (resultTabs.getCurrentMode() === "Multiply") {
             resultTabs.updateWidth("setToMaximum");
         }
-    };
-
-
-    var buildSwitchComparisonModeButton = function () {
-        var getModeIcon = {
-            "Single": "<i class=\"material-icons md-dark\">select_all</i>",
-            "Multiply": "<i class=\"material-icons md-dark\">format_list_bulleted</i>"
-        },
-            $button = $("#cmp-mode-button");
-
-        $button.empty();
-        $button.html('<span class="icon icon-medium">Change Mode ' + getModeIcon[resultTabs.getCurrentMode()] + '</span>\n');
-
-        $button.on('click', function(){
-            var newMode = resultTabs.switchComparisonMode();
-            console.log(newMode, "MODE\n");
-
-            $button.empty();
-            $button.html('<span class="icon icon-medium">Change Mode ' + getModeIcon[newMode] + '</span>\n');
-        });
-    };
-
-
-    var buildGenerateTableButton = function () {
-        var getIconForMode = {
-                "hidden": "<i class=\"material-icons md-dark\">visibility_off</i>",
-                "visible": "<i class=\"material-icons md-dark\">visibility</i>"
-            },
-            defaultMode = "hidden",
-
-            $button = $(".to-hidden-button"),
-            $target = $("#motif-table-cmp");
-
-
-        var switchMode = function () {
-            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-
-            if (newMode === "hidden") {
-                $target.addClass("hidden");
-            } else {
-                $target.removeClass("hidden");
-                handleEvent();
-            }
-
-            $button.empty();
-            $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode[newMode] + '</span>\n');
-
-            return newMode;
-        };
-
-
-        if (defaultMode === "hidden") {
-            $target.addClass("hidden");
-        } else {
-            $target.removeClass("hidden");
-        }
-        $button.empty();
-        $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode[defaultMode] + '</span>\n');
-        $button.on('click', function(){
-            switchMode();
-        });
     };
 
 
@@ -181,10 +118,6 @@ var uiBuilder = (function () {
 
             handleEvent();
         });
-
-
-        // not used
-        // motifPickerButtons.create();
 
 
         //search bar usability
@@ -270,7 +203,3 @@ var uiBuilder = (function () {
         buildUI: buildUI
     };
 }());
-
-/**
- * Created by HOME on 12.02.2017.
- */

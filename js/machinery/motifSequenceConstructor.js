@@ -2,7 +2,6 @@
  * Created by Sing on 23.11.2016.
  */
 
-//NOT DONE YET
 var sequenceConstructor = (function () {
     var _fileName = "sequenceConstructor",
         _sequence, _sortedSites,

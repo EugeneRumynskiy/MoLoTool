@@ -19,6 +19,8 @@ var motifPicker = (function () {
             $("#motif-list").children().first().children().first().children().first().click();
             $('body').click();
         });
+
+
     };
 
 
@@ -100,7 +102,10 @@ var motifPicker = (function () {
         var ifMoreContainer = "";
 
         if (ifMoreValue != 0) {
-            ifMoreContainer = 'And ' + ifMoreValue + ' more motifs.';
+            ifMoreContainer = 'And ' + ifMoreValue + ' more motifs.' +
+                '<a class="show-more-icon" class="interface-button" href="#">' +
+                    '<i class="material-icons">keyboard_arrow_down</i>' +
+                '</a>';
         }
         return ifMoreContainer;
     };

@@ -87,21 +87,23 @@
 
 
     <!--Project Modules -->
-    <script src="js/machinery/AppContainer.js"></script>
+    <script src="js/machinery/supportComponents/AppContainer.js"></script>
+    <script src="js/machinery/supportComponents/pSlider.js"></script>
+    <script src="js/machinery/supportComponents/colorPicker.js"></script>
+
 
     <script src="js/machinery/motifTable.js"></script>
     <script src="js/machinery/motif.js"></script>
-    <script src="js/machinery/sequenceConstructor.js"></script>
-
-    <script src="js/machinery/pSlider.js"></script>
+    <script src="js/machinery/motifSequenceConstructor.js"></script>
     <script src="js/machinery/motifHandler.js"></script>
-    <script src="js/machinery/colorPicker.js"></script>
     <script src="js/machinery/motifPicker.js"></script>
     <script src="js/machinery/motifLibrary.js"></script>
-    <script src="js/machinery/uiBuilder.js"></script>
-    <script src="js/machinery/resultContainer.js"></script>
-    <script src="js/machinery/resultSlider.js"></script>
-    <script src="js/machinery/motifPickerButtons.js"></script>
+    <script src="js/machinery/motifResultContainer.js"></script>
+
+
+    <script src="js/machinery/builder/uiBuilder.js"></script>
+    <script src="js/machinery/builder/uiButtons.js"></script>
+
 
     <script src="js/machinery/calculations/motifMath.js"></script>
     <script src="js/machinery/calculations/errorHandler.js"></script>
@@ -120,7 +122,6 @@
     <link rel="stylesheet" href="css/UIComponents.css">
     <link rel="stylesheet" href="css/resultContainer.css">
     <link rel="stylesheet" href="css/navigationTopBar.css">
-    <!-- <link rel="stylesheet" href="css/navigationSideBar.css"> -->
     <link rel="stylesheet" href="css/controlElements.css">
 </head>
 <body>
@@ -153,6 +154,9 @@
 
     <div class="interface-area">
         <div class="interface-component" id="sequence-input-cmp">
+            <textarea name="sequenceInput" id="sequence-input" class="round" rows="3" spellcheck=false
+                      placeholder="Put a sequence here..."></textarea>
+
             <div class="controls">
                 <div class="button-container">
                     <!--<a class="interface-button" id="show-title-button" href="#">
@@ -170,6 +174,10 @@
                             Upload file
                             <i class="material-icons md-dark">add_box</i>
                         </label>
+                    </a>
+                    <a class="interface-button upload-button" data-applyToId="sequence-input" href="#">
+                        Add sequence
+                        <i class="material-icons md-dark">add_box</i>
                     </a>
                     <a id="cmp-mode-button" class="interface-button" href="#"></a>
                     <a class="to-hidden-button interface-button" href="#"></a>

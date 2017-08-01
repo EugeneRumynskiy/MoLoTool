@@ -78,8 +78,18 @@
     }
   }
 
-  .ifMore-value {
-    min-height: unset;
+  #ifMore-container{
+    .ifMore-value {
+      min-height: unset;
+
+      .show-more-icon {
+        color: $textColor;
+
+        .material-icons {
+          vertical-align: middle;
+        }
+      }
+    }
   }
 }
 

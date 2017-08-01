@@ -47,8 +47,12 @@
     cursor: hand; }
   .suggestions #motif-list div:first-child {
     border-top: none; }
-  .suggestions .ifMore-value {
+  .suggestions #ifMore-container .ifMore-value {
     min-height: unset; }
+    .suggestions #ifMore-container .ifMore-value .show-more-icon {
+      color: black; }
+      .suggestions #ifMore-container .ifMore-value .show-more-icon .material-icons {
+        vertical-align: middle; }
 
 #motif-list-selected-cmp {
   min-height: 75px; }

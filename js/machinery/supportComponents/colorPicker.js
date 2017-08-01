@@ -12,7 +12,7 @@ var colorPicker = (function () {
         };
 
 
-    var init = function (eventHandler) {
+    var create = function (eventHandler) {
         setEventHandlerTo(eventHandler);
     };
 
@@ -83,7 +83,7 @@ var colorPicker = (function () {
 
 
     return {
-        init: init,
+        create: create,
         addTo: addTo,
         removeFrom: removeFrom,
         getColorFromContainer: getColorFromContainer
