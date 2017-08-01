@@ -31,19 +31,31 @@ var uiButtons = (function () {
                 "Single": "<i class=\"material-icons md-dark\">select_all</i>",
                 "Multiply": "<i class=\"material-icons md-dark\">format_list_bulleted</i>"
             },
+            defaultMode = resultTabs.getDefaultComparisonMode(),
 
             $button = $("#cmp-mode-button");
 
-        $button.empty();
-        $button.html('<span class="icon icon-medium">Change Mode ' + getModeIcon[resultTabs.getCurrentMode()] + '</span>\n');
 
-        $button.on('click', function(){
+        var switchMode = function () {
             var newMode = resultTabs.switchComparisonMode();
-            console.log(newMode, "MODE\n");
 
-            $button.empty();
-            $button.html('<span class="icon icon-medium">Change Mode ' + getModeIcon[newMode] + '</span>\n');
-        });
+            $button
+                .empty()
+                .html('<span class="icon icon-medium">Change Mode ' + getModeIcon[newMode] + '</span>\n');
+        };
+
+
+        var init = function () {
+            $button
+                .empty()
+                .html('<span class="icon icon-medium">Change Mode ' + getModeIcon[defaultMode] + '</span>\n')
+                .on('click', function() {
+                    console.log(this);
+                    switchMode();
+                });
+        };
+
+        init();
     };
 
 
@@ -68,23 +80,30 @@ var uiButtons = (function () {
                 handleEvent();
             }
 
-            $button.empty();
-            $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode[newMode] + '</span>\n');
+            $button
+                .empty()
+                .html('<span class="icon icon-medium">Generate table ' + getIconForMode[newMode] + '</span>\n');
 
             return newMode;
         };
 
 
-        if (defaultMode === "hidden") {
-            $target.addClass("hidden");
-        } else {
-            $target.removeClass("hidden");
-        }
-        $button.empty();
-        $button.html('<span class="icon icon-medium">Generate table ' + getIconForMode[defaultMode] + '</span>\n');
-        $button.on('click', function(){
-            switchMode();
-        });
+        var init = function () {
+            if (defaultMode === "hidden") {
+                $target.addClass("hidden");
+            } else {
+                $target.removeClass("hidden");
+            }
+
+            $button
+                .empty()
+                .html('<span class="icon icon-medium">Generate table ' + getIconForMode[defaultMode] + '</span>\n')
+                .on('click', function() {
+                    switchMode();
+                });
+        };
+
+        init();
     };
 
 

@@ -382,6 +382,7 @@ var resultTabs = (function () {
         getOpenedIds: getOpenedIds,
         getIdsToHandle: getIdsToHandle,
         getCurrentMode: getCurrentMode,
+        getDefaultComparisonMode: getDefaultComparisonMode,
 
         updateTab: updateTab,
         updateWidth: updateWidth,

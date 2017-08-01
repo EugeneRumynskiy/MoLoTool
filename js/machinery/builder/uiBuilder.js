@@ -43,6 +43,7 @@ var uiBuilder = (function () {
         uiButtons.create(handleEvent);
 
         inputParsing.create();
+
         //debug
         window.setTimeout(function () {
             var test = inputParsing.inputTest();
