@@ -13,7 +13,8 @@ var resultTabs = (function () {
         _libraryIdCheck,
         _libraryIdDelete,
 
-        _comparisonMode;
+
+        _digitsString;
 
 
     var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
@@ -23,81 +24,25 @@ var resultTabs = (function () {
 
         _tabStates = initTabStates();
         _resultTabsObjects = {};
-        _comparisonMode = getDefaultComparisonMode();
-    };
 
-
-    ////Comparison Mode
-    var getDefaultComparisonMode = function () {
-        return "Multiply";
+        comparisonMode.create("Multiply");
+        digitGuidance.create(1000);
     };
 
 
     var getCurrentMode = function () {
-        return _comparisonMode;
+        return comparisonMode.getCurrentMode();
     };
 
 
-    var switchComparisonMode = function () {
-        var newMode = "";
-        if (_comparisonMode === "Single"){
-            switchToMultiplyMode();
-            newMode = "Multiply";
-        } else if (_comparisonMode === "Multiply") {
-            switchToSingleMode();
-            newMode = "Single";
-        } else {
-            errorHandler.logError({"fileName": _fileName, "message": "comparisonMode is undefined"});
-        }
-
-        motifHandler.handleMotifs(); //needed to update table for single sequence
-        return newMode;
-    };
-    
-    
-    var switchToSingleMode = function () {
-        _comparisonMode = "Single";
-
-        $(".tab-result").removeClass("current-tab");
-        $(".tab-result").first().addClass("current-tab");
-
-        $(".tab-result-sequence").removeClass("flattened");
-        $(".tab-result-sequence").addClass("hidden full-screen");
-        $(".tab-result-sequence").first().removeClass("hidden");
-
-        $(".lock").addClass("hidden");
-
-        updateWidth("reset");
-    };
-
-    
-    var switchToMultiplyMode = function () {
-        _comparisonMode = "Multiply";
-
-        $(".tab-result").removeClass("current-tab");
-
-        $(".tab-result-sequence").removeClass("hidden full-screen");
-        $(".tab-result-sequence").addClass("flattened");
-
-        $(".lock").removeClass("hidden");
-
-        updateWidth("setToMaximum");
-    };
-    ////Comparison Mode End
 
 
-    var getIdsToHandle = function (event) {
+    var getIdsToHandle = function () {
         if (getCurrentMode() === "Single") {
             return getCurrentTabId();
         } else {
             return getOpenedIds();
         }
-
-        /*if ((getCurrentMode() !== "Single") || event === "fileUpload") {
-            return getOpenedIds();
-        } else {
-            return getCurrentTabId();
-        }*/
     };
 
 
@@ -186,18 +131,14 @@ var resultTabs = (function () {
                 $resultTab = createResultTab(tabId),
 
                 $targetSequence = $("#result-sequences"),
-                $resultSequence = createResultSequence(tabId),
+                $resultSequence = createResultSequence(tabId);
 
-                insertBeforeId = getNextHighestResultTabId(tabId);
+            $targetTab.append($resultTab);
+            $targetSequence.append($resultSequence);
 
-
-            if (true) { //insertBeforeId === tabId) {
-                $targetTab.append($resultTab);
-                $targetSequence.append($resultSequence);
-            } else {
-                $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"));
-                $resultSequence.insertBefore($(".tab-result-sequence[data-tab=" + insertBeforeId + "]"));
-            }
+            /*var insertBeforeId = getNextHighestResultTabId(tabId);
+            $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"));
+            $resultSequence.insertBefore($(".tab-result-sequence[data-tab=" + insertBeforeId + "]"));*/
 
             if (getCurrentMode() === "Single") {
                 $resultSequence.addClass("hidden full-screen");
@@ -275,7 +216,7 @@ var resultTabs = (function () {
             }
         });
 
-        $resultTab.find("")
+        $resultTab.find("");
 
         return $resultTab;
     };
@@ -313,6 +254,7 @@ var resultTabs = (function () {
 
     var createResultSequence = function (tabId) {
         return  $('<div class="tab-result-sequence round flattened" data-tab=' + tabId + '>'
+            + '<div class="digits"></div>'
             + '<div class="sequence"></div>'
             + '</div>');
     };
@@ -330,7 +272,11 @@ var resultTabs = (function () {
 
     var updateTab = function (tabId, content) {
         if (isOpened(tabId)) {
+            var seqLength = sequenceLibrary.getItemById(tabId).seqValues.sequence.length,
+                digits = digitGuidance.getDigitsFor(seqLength);
+
             $(".tab-result-sequence[data-tab=" + tabId + "]").find(".sequence").empty().html(content);
+            $(".tab-result-sequence[data-tab=" + tabId + "]").find(".digits").empty().html(digits);
         } else {
             console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});
@@ -379,16 +325,15 @@ var resultTabs = (function () {
 
     return {
         create: create,
-        switchComparisonMode: switchComparisonMode,
-
         addIdToResult: addIdToResult,
+
         getOpenedIds: getOpenedIds,
         getIdsToHandle: getIdsToHandle,
         getCurrentMode: getCurrentMode,
-        getDefaultComparisonMode: getDefaultComparisonMode,
 
         updateTab: updateTab,
         updateWidth: updateWidth,
+
         //debug
         show: show
     };

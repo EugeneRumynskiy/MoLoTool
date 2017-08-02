@@ -208,6 +208,17 @@
       background-color: #ffffff;
       height: 70px;
       line-height: 70px; }
+      #result-cmp #result-sequences .tab-result-sequence .sequence {
+        height: 50px;
+        line-height: 50px; }
+      #result-cmp #result-sequences .tab-result-sequence .digits {
+        opacity: 0.3;
+        height: 20px;
+        line-height: 20px; }
+    #result-cmp #result-sequences .full-screen .digits {
+      position: absolute;
+      top: 6px;
+      line-height: 50px; }
   #result-cmp #result-sequences:empty {
     display: none; }
   #result-cmp #result-slider {

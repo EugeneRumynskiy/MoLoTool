@@ -60,7 +60,7 @@ var fileUploader = (function () {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    _uploadCallback(reader.result);
+                    _uploadCallback(reader.result, false);
                 };
 
                 reader.readAsText(file);

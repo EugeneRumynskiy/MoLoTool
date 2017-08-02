@@ -302,6 +302,25 @@
       background-color: #ffffff;
       height: $resultTab-height;
       line-height: $resultTab-height;
+
+      .sequence {
+        height: $resultTab-height - 20px;
+        line-height: $resultTab-height - 20px;
+      }
+
+      .digits {
+        opacity: 0.3;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+
+    .full-screen {
+      .digits {
+        position: absolute;
+        top: 6px;
+        line-height: $resultTab-height - 20px;
+      }
     }
   }
 

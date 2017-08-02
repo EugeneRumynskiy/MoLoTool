@@ -113,7 +113,11 @@
     <script src="js/machinery/sequenceInput/inputParsing.js"></script>
     <script src="js/machinery/sequenceInput/fileUploader.js"></script>
     <script src="js/machinery/sequenceInput/sequenceLibrary.js"></script>
-    <script src="js/machinery/sequenceInput/resultTabs.js"></script>
+
+
+    <script src="js/machinery/resultTabs/resultTabs.js"></script>
+    <script src="js/machinery/resultTabs/comparisonMode.js"></script>
+    <script src="js/machinery/resultTabs/digitGuidance.js"></script>
 
 
     <link rel="stylesheet" href="css/primaryComponentsSettings.css">
@@ -146,6 +150,7 @@
                 <ul class="nav pull-right top-second">
                     <li><a href="#">Help </a></li>
                     <li><a href="#">About </a></li>
+                    <li><a href="#">Demo </a></li>
                 </ul>
             </nav>
         </div>
@@ -153,6 +158,10 @@
 
 
     <div class="interface-area">
+        <div id='motif-list-selected-cmp' class="interface-component empty">
+            <div id='motif-list-selected'></div>
+        </div>
+
         <div class="interface-component" id="manual-seq-input">
             <textarea spellcheck=false
                           placeholder="Put a sequence here..."></textarea>
@@ -208,9 +217,7 @@
             <textarea name="sequenceInput" id="sequence-input" class="round flattened" rows="3" spellcheck=false
                       placeholder="Put a sequence here..."></textarea>-->
 
-            <div id='motif-list-selected-cmp' class="interface-component empty">
-                <div id='motif-list-selected'></div>
-            </div>
+
         </div>
 
 

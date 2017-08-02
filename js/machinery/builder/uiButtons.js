@@ -47,13 +47,13 @@ var uiButtons = (function () {
                 "Single":   {"title":"Change Mode ", "icon": "select_all"},
                 "Multiply":   {"title":"Change Mode ", "icon": "format_list_bulleted"}
             },
-            defaultMode = resultTabs.getDefaultComparisonMode(),
+            defaultMode = comparisonMode.getDefaultComparisonMode(),
 
             $button = $("#cmp-mode-button");
 
 
         var switchMode = function () {
-            var newMode = resultTabs.switchComparisonMode();
+            var newMode = comparisonMode.switchComparisonMode();
 
             $button
                 .empty()
@@ -147,6 +147,7 @@ var uiButtons = (function () {
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
+                    event.preventDefault();
                     switchMode();
                 });
         };
@@ -172,7 +173,7 @@ var uiButtons = (function () {
                 .on('click', function(event) {
                     event.preventDefault();
 
-                    var replaceCurrent = (getInputMethod() === "rewrite") ? true: false;
+                    var replaceCurrent = (getInputMethod() === "rewrite");
                     inputCallback($target.val(), replaceCurrent);
                 });
         };

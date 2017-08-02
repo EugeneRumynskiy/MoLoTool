@@ -30,7 +30,6 @@ td a:visited,
 #manual-seq-input {
   background-color: #ffffff;
   border: 2px solid black;
-  border-top: none;
   border-radius: 5px;
   margin-left: 5px; }
   #manual-seq-input textarea {
@@ -46,7 +45,7 @@ td a:visited,
     #manual-seq-input .input-controls .interface-button {
       border-radius: 5px;
       border: solid black 1px;
-      padding: 5px 5px;
+      padding: 7px;
       margin-left: 5px; }
       #manual-seq-input .input-controls .interface-button span {
         display: inline-block;

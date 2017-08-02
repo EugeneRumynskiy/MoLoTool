@@ -68,7 +68,7 @@ var uiBuilder = (function () {
         $.map(libraryIds, resultTabs.addIdToResult);
         handleEvent();
 
-        if (resultTabs.getCurrentMode() === "Multiply") {
+        if (comparisonMode.getCurrentMode() === "Multiply") {
             resultTabs.updateWidth("setToMaximum");
         }
     };

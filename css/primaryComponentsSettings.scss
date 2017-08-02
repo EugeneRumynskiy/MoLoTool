@@ -39,15 +39,12 @@ td a:visited,
 
 #manual-seq-input {
   background-color: #ffffff;
-
   border: 2px solid $sequence-input-borders;
-  border-top: none;
-
   border-radius: 5px;
   margin-left: 5px;
 
   textarea {
-    border:solid 2px white;
+    border: solid 2px white;
 
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
@@ -58,14 +55,13 @@ td a:visited,
   }
 
   .input-controls {
-    //margin: 4px 0 2px 0;
     padding: 20px 0 10px 0;
     border-top: solid $sequence-input-borders 2px;
 
     .interface-button{
       border-radius: 5px;
       border: solid $sequence-input-borders 1px;
-      padding: 5px 5px;
+      padding: 7px;
       margin-left: 5px;
 
       span {
