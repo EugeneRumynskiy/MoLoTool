@@ -121,7 +121,7 @@ input[type="file"] {
 
 //toggled classes
 .full-screen {
-  line-height: $resultTab-height * 0.45 !important;
+  //line-height: $resultTab-height * 0.45 !important;
   min-height: 12 + 80 * 4px !important;
   word-break: break-all;
   border-bottom: none !important;
@@ -134,11 +134,11 @@ input[type="file"] {
     word-wrap: normal;
   }
 
-  .flattened:first-of-type {
+ /* .flattened:first-of-type {
     margin-top: 0px !important;
     line-height: $resultTab-height - 2px !important;
     height: $resultTab-height - 2px !important
-  }
+  }*/
 }
 
 .hidden {

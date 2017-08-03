@@ -294,32 +294,61 @@
     border-bottom: none;
 
     .tab-result-sequence {
-      border-bottom: dashed lightgrey 2px;
+      //border-bottom: dashed lightgrey 2px;
       margin: 10px 0 5px 0;
 
       font-family: "Courier New", "monospace";
       font-size: 23px;
       background-color: #ffffff;
-      height: $resultTab-height;
-      line-height: $resultTab-height;
+      //height: $resultTab-height;
+      //line-height: $resultTab-height;
+
+      .digits {
+        opacity: 0.3;
+      }
 
       .sequence {
+      }
+    }
+
+    .flattened {
+      .digits {
+        position: static;
+
+        height: 20px;
+        line-height: 20px;
+      }
+
+      .sequence {
+        position: static;
+
+        margin-top: 0 !important;
         height: $resultTab-height - 20px;
         line-height: $resultTab-height - 20px;
       }
 
-      .digits {
-        opacity: 0.3;
-        height: 20px;
-        line-height: 20px;
+      .locked.digits {
+        position: absolute;
+      }
+
+      .locked.sequence {
+        position: absolute;
+        padding-top: 20px;
       }
     }
 
     .full-screen {
       .digits {
-        position: absolute;
-        top: 6px;
-        line-height: $resultTab-height - 20px;
+        position: static;
+        margin-top: -50px;
+        line-height: $resultTab-height * 1.5;
+
+      }
+
+      .sequence {
+        position: static;
+        padding-top: 50px;
+        line-height: $resultTab-height * 1.5 - 4px;
       }
     }
   }

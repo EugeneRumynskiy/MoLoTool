@@ -201,24 +201,34 @@
     border-left: none;
     border-bottom: none; }
     #result-cmp #result-sequences .tab-result-sequence {
-      border-bottom: dashed lightgrey 2px;
       margin: 10px 0 5px 0;
       font-family: "Courier New", "monospace";
       font-size: 23px;
-      background-color: #ffffff;
-      height: 70px;
-      line-height: 70px; }
-      #result-cmp #result-sequences .tab-result-sequence .sequence {
-        height: 50px;
-        line-height: 50px; }
+      background-color: #ffffff; }
       #result-cmp #result-sequences .tab-result-sequence .digits {
-        opacity: 0.3;
-        height: 20px;
-        line-height: 20px; }
-    #result-cmp #result-sequences .full-screen .digits {
-      position: absolute;
-      top: 6px;
+        opacity: 0.3; }
+    #result-cmp #result-sequences .flattened .digits {
+      position: static;
+      height: 20px;
+      line-height: 20px; }
+    #result-cmp #result-sequences .flattened .sequence {
+      position: static;
+      margin-top: 0 !important;
+      height: 50px;
       line-height: 50px; }
+    #result-cmp #result-sequences .flattened .locked.digits {
+      position: absolute; }
+    #result-cmp #result-sequences .flattened .locked.sequence {
+      position: absolute;
+      padding-top: 20px; }
+    #result-cmp #result-sequences .full-screen .digits {
+      position: static;
+      margin-top: -50px;
+      line-height: 105px; }
+    #result-cmp #result-sequences .full-screen .sequence {
+      position: static;
+      padding-top: 50px;
+      line-height: 101px; }
   #result-cmp #result-sequences:empty {
     display: none; }
   #result-cmp #result-slider {

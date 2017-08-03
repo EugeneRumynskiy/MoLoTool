@@ -11,10 +11,7 @@ var resultTabs = (function () {
         _tabIdRange,
 
         _libraryIdCheck,
-        _libraryIdDelete,
-
-
-        _digitsString;
+        _libraryIdDelete;
 
 
     var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
@@ -25,16 +22,14 @@ var resultTabs = (function () {
         _tabStates = initTabStates();
         _resultTabsObjects = {};
 
-        comparisonMode.create("Multiply");
-        digitGuidance.create(1000);
+        comparisonMode.create("Single");
+        digitGuidance.create(10000);
     };
 
 
     var getCurrentMode = function () {
         return comparisonMode.getCurrentMode();
     };
-
-
 
 
     var getIdsToHandle = function () {
@@ -44,7 +39,6 @@ var resultTabs = (function () {
             return getOpenedIds();
         }
     };
-
 
 
     var getCurrentTabId = function () {
@@ -148,6 +142,7 @@ var resultTabs = (function () {
                     setToCurrent(tabId);
                 }
             } else if (getCurrentMode() === "Multiply") {
+                $resultSequence.addClass("flattened");
             }
 
             makeOpened(tabId);
@@ -166,13 +161,16 @@ var resultTabs = (function () {
             $sequences = $tabs.find(".sequence");
 
         if (event === "reset") {
-            $tabs.css({
-                "width": "unset"
-            })
-        } else if (event === "setToMaximum")  {
-            var max = -1;
+            $tabs.css({"width": "unset"});
 
-            for (var i = 0; i < $sequences.length; i++) {
+         /*   var widthForDigits = $(".tab-result-sequence").find(".sequence").css("width");
+            $(".tab-result-sequence").find(".digits").css({
+                "max-width": widthForDigits + "px"
+            });*/
+
+            //$tabs.find(".digits").css({"width": "unset"});
+        } else if (event === "setToMaximum")  {
+            for (var i = 0, max = -1; i < $sequences.length; i++) {
                 if (max < $sequences[i].scrollWidth) {
                     max = $sequences[i].scrollWidth;
                 }
@@ -180,7 +178,11 @@ var resultTabs = (function () {
 
             $tabs.css({
                 "width": max + 5 + "px"
-            })
+            });
+
+            /*$tabs.find(".digits").css({
+                "width": max + 5 + "px"
+            });*/
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "can't update with"});
         }
@@ -189,6 +191,7 @@ var resultTabs = (function () {
 
     var createResultTab = function (tabId) {
         var lockMode = (getCurrentMode() === "Single") ? "hidden" : "",
+
             tabName = sequenceLibrary.getItemById(tabId).seqValues.title.slice(0, 3) + "..",
             $resultTab = $(
                 '<div class="tab-result" data-tab=' + tabId + '>' +
@@ -206,7 +209,7 @@ var resultTabs = (function () {
                 closeTab(this);
                 motifHandler.handleMotifs();
             } else if ($target.hasClass("material-icons")) {
-                lockTab($target);
+                comparisonMode.switchLock($target);
             } else {
                 if (getCurrentMode() === "Single") {
                     var tabId = $(this).attr('data-tab');
@@ -216,44 +219,12 @@ var resultTabs = (function () {
             }
         });
 
-        $resultTab.find("");
-
         return $resultTab;
     };
 
 
-    var lockTab = function ($target) {
-        var currentState = $target.html(),
-            tabId = $target.parents(".tab-result").attr("data-tab"),
-            $seqToLock = $(".tab-result-sequence[data-tab="+ tabId + "]");
-
-
-        if (currentState === "lock") {
-            $target.html("lock_open");
-
-            $seqToLock.find(".sequence").css({
-                "position": "static",
-                "left": "unset",
-                "clip": "unset"
-            });
-        } else {
-            var shift = $("#result-sequences").width();
-            console.log(shift);
-
-            $target.html("lock");
-
-            $seqToLock.find(".sequence").css({
-                "position": "absolute",
-                "left": $seqToLock.position().left + "px",
-                "clip": "rect(0px," + (shift - $seqToLock.position().left + 88)
-                + "px," + "70px," + ($seqToLock.position().left - 90) + "px)"
-            });
-        }
-    };
-
-
     var createResultSequence = function (tabId) {
-        return  $('<div class="tab-result-sequence round flattened" data-tab=' + tabId + '>'
+        return  $('<div class="tab-result-sequence" data-tab=' + tabId + '>'
             + '<div class="digits"></div>'
             + '<div class="sequence"></div>'
             + '</div>');
@@ -273,10 +244,21 @@ var resultTabs = (function () {
     var updateTab = function (tabId, content) {
         if (isOpened(tabId)) {
             var seqLength = sequenceLibrary.getItemById(tabId).seqValues.sequence.length,
-                digits = digitGuidance.getDigitsFor(seqLength);
+                digits = digitGuidance.getDigitsFor(seqLength),
 
-            $(".tab-result-sequence[data-tab=" + tabId + "]").find(".sequence").empty().html(content);
-            $(".tab-result-sequence[data-tab=" + tabId + "]").find(".digits").empty().html(digits);
+                $resultLine = $(".tab-result-sequence[data-tab=" + tabId + "]"),
+                $sequence = $resultLine.find(".sequence"),
+                $digits = $resultLine.find(".digits");
+
+            $sequence.empty().html(content);
+            $digits.empty().html(digits);
+
+            if (getCurrentMode() === "Single") {
+                var marginTop = $digits.css("height");
+                console.log(marginTop + "here!\n", $sequence);
+
+                $sequence.css("margin-top", "-" + marginTop);
+            }
         } else {
             console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});

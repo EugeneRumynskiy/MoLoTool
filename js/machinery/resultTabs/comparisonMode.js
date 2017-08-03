@@ -58,7 +58,24 @@ var comparisonMode = (function () {
         $(".tab-result-sequence").addClass("hidden full-screen");
         $(".tab-result-sequence").first().removeClass("hidden");
 
+
+        turnOffLocks();
+
         $(".lock").addClass("hidden");
+       /* $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
+            shift = $("#result-sequences").width();
+
+        $tabToLock.find(".sequence, .digits").css({
+            "position": "absolute",
+            "left": $tabToLock.position().left + "px",
+            "clip": "rect(" +
+            "0px," +
+            (shift - $tabToLock.position().left + 88) + "px," +
+            "100px," +
+            ($tabToLock.position().left - 90) + "px" +
+            ")"
+        });*/
+
 
         resultTabs.updateWidth("reset");
 
@@ -82,12 +99,92 @@ var comparisonMode = (function () {
     };
 
 
+    var turnOffLocks = function () {
+        var $sequencesToUnlock = $(".tab-result-sequence");
+
+        $sequencesToUnlock
+            .find(".sequence, .digits").css({
+                    "left": "unset",
+                    "clip": "unset"})
+            .removeClass(".locked");
+
+
+        $("#result-tabs").find(".lock .material-icons").html("lock_open");
+    };
+
+
+    var turnOnLocks = function () {
+        var $sequencesToUnlock = $(".tab-result-sequence");
+
+        $sequencesToUnlock.find(".sequence").css({
+            "position": "static",
+            "left": "unset",
+            "clip": "unset"
+        });
+
+        $sequencesToUnlock.find(".digits").css({
+            "position": "absolute",
+            "left": "unset",
+            "clip": "unset"
+        });
+
+        $("#result-tabs").find(".lock .material-icons").html("lock_open");
+    };
+
+
+    var switchLock = function ($target) {
+        var currentState = $target.html();
+
+        if (currentState === "lock") {
+            unlock($target);
+        } else {
+            lock($target);
+        }
+    };
+
+
+    var lock = function ($target) {
+        var tabId = $target.parents(".tab-result").attr("data-tab"),
+            $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
+            shift = $("#result-sequences").width();
+
+        $tabToLock
+            .find(".sequence, .digits").css({
+                "left": $tabToLock.position().left + "px",
+                "clip": "rect(" +
+                    "0px," +
+                    (shift - $tabToLock.position().left + 88) + "px," +
+                    "100px," +
+                    ($tabToLock.position().left - 90) + "px" +
+                ")"
+            })
+            .addClass("locked");
+
+        $target.html("lock");
+    };
+
+
+    var unlock = function ($target) {
+        var tabId = $target.parents(".tab-result").attr("data-tab"),
+            $tabToUnlock = $(".tab-result-sequence[data-tab="+ tabId + "]");
+
+        $tabToUnlock
+            .find(".sequence, .digits").css({
+               "left": "unset",
+               "clip": "unset"})
+            .removeClass("locked");
+
+        $target.html("lock_open");
+    };
+
+
     return {
         create: create,
 
         getCurrentMode: getCurrentMode,
         getDefaultComparisonMode: getDefaultComparisonMode,
 
-        switchComparisonMode: switchComparisonMode
+        switchComparisonMode: switchComparisonMode,
+        switchLock: switchLock
     };
 } ());
