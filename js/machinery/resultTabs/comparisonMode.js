@@ -58,24 +58,8 @@ var comparisonMode = (function () {
         $(".tab-result-sequence").addClass("hidden full-screen");
         $(".tab-result-sequence").first().removeClass("hidden");
 
-
         turnOffLocks();
-
         $(".lock").addClass("hidden");
-       /* $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
-            shift = $("#result-sequences").width();
-
-        $tabToLock.find(".sequence, .digits").css({
-            "position": "absolute",
-            "left": $tabToLock.position().left + "px",
-            "clip": "rect(" +
-            "0px," +
-            (shift - $tabToLock.position().left + 88) + "px," +
-            "100px," +
-            ($tabToLock.position().left - 90) + "px" +
-            ")"
-        });*/
-
 
         resultTabs.updateWidth("reset");
 
@@ -109,7 +93,6 @@ var comparisonMode = (function () {
 
     var switchLock = function ($target) {
         var currentState = $target.html();
-        console.log($target);
         if (currentState === "lock") {
             unlockLine($target);
         } else {
@@ -121,16 +104,18 @@ var comparisonMode = (function () {
     var lockLine = function ($target) {
         var tabId = $target.parents(".tab-result").attr("data-tab"),
             $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
-            shift = $("#result-sequences").width();
+            seqShift = $("#result-sequences").width(),
+            tabShift = parseFloat($("#result-tabs").css("width")),
+            tabHeight = $(".tab-result").css("height");
 
         $tabToLock
             .find(".sequence, .digits").css({
                 "left": $tabToLock.position().left + "px",
                 "clip": "rect(" +
                     "0px," +
-                    (shift - $tabToLock.position().left + 88) + "px," +
-                    "100px," +
-                    ($tabToLock.position().left - 90) + "px" +
+                    (seqShift - $tabToLock.position().left + tabShift) + "px," +
+                    tabHeight+ "," +
+                    ($tabToLock.position().left - tabShift) + "px" +
                 ")"
             })
             .addClass("locked");
