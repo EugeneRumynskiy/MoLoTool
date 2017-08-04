@@ -93,8 +93,24 @@ Example: <a href="#" class="lock">
 */
 .tab-result .lock {
   position: absolute;
-  right: 4px;
+  right: 4px + 24px + 4px;
   
+  display: inline-block;
+  margin-top: $resultTab-height - 24px - 8px;
+
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+
+}
+
+/*Copy element
+Example: <a href="#" class="copy-button">
+*/
+.tab-result .copy-tab {
+  position: absolute;
+  right: 4px;
+
   display: inline-block;
   margin-top: $resultTab-height - 24px - 8px;
 

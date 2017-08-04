@@ -24,6 +24,8 @@ var resultTabs = (function () {
 
         comparisonMode.create("Multiply");
         digitGuidance.create(10000);
+
+        new Clipboard('.copy-tab');
     };
 
 
@@ -200,6 +202,8 @@ var resultTabs = (function () {
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>' + tabName + '</a>' +
                 '<a href="#" class="close"></a>' +
                 '<a href="#" class="lock '+ lockMode + '">' + '<i class="material-icons md-dark">lock_open</i>' + '</a>' +
+                '<a href="#" class="copy-tab" data-clipboard-target="#result-sequences">'
+                + '<i class="material-icons md-dark">content_copy</i>' + '</a>' +
                 '</div>'
             );
 
@@ -211,7 +215,11 @@ var resultTabs = (function () {
                 closeTab(this);
                 motifHandler.handleMotifs();
             } else if ($target.hasClass("material-icons")) {
-                comparisonMode.switchLock($target);
+                if ($target.html() === "content_copy") {
+                    console.log("SAVED\n");
+                } else {
+                    comparisonMode.switchLock($target);
+                }
             } else {
                 if (getCurrentMode() === "Single") {
                     var tabId = $(this).attr('data-tab');

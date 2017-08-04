@@ -147,7 +147,7 @@
 #result-cmp {
   position: relative; }
   #result-cmp #result-tabs {
-    min-width: 150px;
+    min-width: 90px;
     position: absolute;
     left: 0px;
     padding: 0 0 0 5px;
@@ -178,7 +178,7 @@
     #result-cmp #result-tabs .current-tab {
       background-color: white; }
   #result-cmp #result-sequences {
-    margin-left: 145px;
+    margin-left: 85px;
     margin-top: 5px;
     top: 0;
     left: 0;
