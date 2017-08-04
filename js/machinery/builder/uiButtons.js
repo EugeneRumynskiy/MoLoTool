@@ -40,6 +40,7 @@ var uiButtons = (function () {
         buildAddSequenceButton(inputCallback);
         buildInputMethodButton();
 
+        buildClearButton();
         buildDemoButton(inputCallback);
         buildAboutButton();
     };
@@ -223,29 +224,20 @@ var uiButtons = (function () {
 
     var buildClearButton = function () {
         var getSettingsFor = {
-                "showDemo":   {"title":"Show demo ", "icon": "insert_emoticon"}
+                "default":   {"title":"Clear ", "icon": "delete_sweep"}
             },
-            defaultMode = "showDemo",
-            $button = $(".nav-area").find("#demo-button");
-
-
-        var clearChosenMotifList = function () {
-            $(".chosen-motif").find(".close").trigger("click");
-        };
-
-
-        var clearTabsList = function () {
-            $("#result-tabs").find(".close").trigger("click");
-        };
-
+            defaultMode = "default",
+            $button = $(".nav-area").find("#clear-button");
 
         var init = function () {
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
-                    clearChosenMotifList();
+                    event.preventDefault();
                     clearTabsList();
+                    clearChosenMotifList();
+                    clearSearchInput();
                 });
         };
 
@@ -261,17 +253,14 @@ var uiButtons = (function () {
             $button = $(".nav-area").find("#demo-button");
 
 
-        var clearChosenMotifList = function () {
-            $(".chosen-motif").find(".close").trigger("click");
-        };
-
         var showDemo = function () {
             clearChosenMotifList();
 
             $("#motif-search").val("a");
             motifSearch.applySearch();
             $("#motif-list").children().first().children().first().children().first().click();
-            $('body').click();
+
+            clearSearchInput();
 
             var test = inputParsing.inputTest();
             inputCallback(test, true);
@@ -325,6 +314,21 @@ var uiButtons = (function () {
         } else {
             $target.removeClass("hidden");
         }
+    };
+
+
+    var clearChosenMotifList = function () {
+        $(".chosen-motif").find(".close").trigger("click");
+    };
+
+
+    var clearTabsList = function () {
+        $("#result-tabs").find(".close").trigger("click");
+    };
+
+
+    var clearSearchInput = function () {
+        $("#motif-search").val("");
     };
 
 

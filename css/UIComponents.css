@@ -87,47 +87,34 @@
   #motif-list-selected-cmp #motif-list-selected:empty {
     display: none; }
 
-#sequence-input-cmp {
-  background-color: #ededf2;
-  /*#sequence-tabs {
-    ul.tabs {
-      margin: 0px;
-      padding: 0px;
-      list-style: none;
-
-      .tab-link {
-        border: 2px solid $sequence-input-borders;//#999;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom: none;
-
-        background: none;
-        color: black;;
+#manual-seq-input {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 5px; }
+  #manual-seq-input textarea {
+    border: solid 2px white;
+    font-family: "Courier New", "Times New Roman";
+    font-size: 23px;
+    width: 100%;
+    line-height: 25px;
+    height: 200px; }
+  #manual-seq-input .input-controls {
+    padding: 20px 0 10px 0;
+    border-top: solid black 2px; }
+    #manual-seq-input .input-controls .interface-button {
+      border-radius: 5px;
+      border: solid black 1px;
+      padding: 7px;
+      margin-left: 5px; }
+      #manual-seq-input .input-controls .interface-button span {
         display: inline-block;
-        cursor: pointer;
+        min-width: 100px; }
+        #manual-seq-input .input-controls .interface-button span .material-icons {
+          float: right; }
 
-        .close:before, .close:after {
-          position: absolute;
-          left: 8px;
-          height: 20px;
-        }
-
-        .tab-name {
-          text-decoration: none;
-          color: inherit;
-          padding: 0.1em 1.4em 0.1em 1em;
-        }
-      }
-
-      .current-tab {
-        border-bottom-color: $topNav-primaryMenuBackground;
-        background-color: $topNav-primaryMenuBackground;
-
-        top: 6px;
-        padding-bottom: 10px;
-      }
-    }
-  }*/ }
+#sequence-input-cmp {
+  background-color: #ededf2; }
   #sequence-input-cmp .controls {
     border-radius: 2px;
     background-color: #ededf2;
@@ -199,11 +186,11 @@
     border-top-right-radius: 5px;
     border: solid 2px black;
     border-left: none;
-    border-bottom: none; }
+    border-bottom: none;
+    font-family: "Courier New", "monospace";
+    font-size: 23px; }
     #result-cmp #result-sequences .tab-result-sequence {
       margin: 10px 0 5px 0;
-      font-family: "Courier New", "monospace";
-      font-size: 23px;
       background-color: #ffffff; }
       #result-cmp #result-sequences .tab-result-sequence .digits {
         opacity: 0.3; }

@@ -26,31 +26,9 @@ td a:visited,
 .interface-area {
   margin-top: 80px; }
 
-#manual-seq-input {
-  background-color: white;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-left: 5px; }
-  #manual-seq-input textarea {
-    border: solid 2px white;
-    font-family: "Courier New", "Times New Roman";
-    font-size: 23px;
-    width: 100%;
-    line-height: 25px;
-    height: 200px; }
-  #manual-seq-input .input-controls {
-    padding: 20px 0 10px 0;
-    border-top: solid black 2px; }
-    #manual-seq-input .input-controls .interface-button {
-      border-radius: 5px;
-      border: solid black 1px;
-      padding: 7px;
-      margin-left: 5px; }
-      #manual-seq-input .input-controls .interface-button span {
-        display: inline-block;
-        min-width: 100px; }
-        #manual-seq-input .input-controls .interface-button span .material-icons {
-          float: right; }
+.interface-component {
+  padding: 5px 5px 5px 5px;
+  margin-bottom: 10px; }
 
 .interface-button {
   color: black;
@@ -74,13 +52,6 @@ td a:visited,
 input[type="file"] {
   display: none; }
 
-.interface-component {
-  padding: 5px 5px 5px 5px;
-  margin-bottom: 10px; }
-
-.round {
-  border-radius: 5px; }
-
 .empty {
   display: none; }
 
@@ -89,16 +60,10 @@ input[type="file"] {
   word-break: break-all;
   border-bottom: none !important; }
 
-#result-sequences {
-  /* .flattened:first-of-type {
-     margin-top: 0px !important;
-     line-height: $resultTab-height - 2px !important;
-     height: $resultTab-height - 2px !important
-   }*/ }
-  #result-sequences .flattened {
-    line-height: 70px !important;
-    height: 70px !important;
-    word-wrap: normal; }
+#result-sequences .flattened {
+  line-height: 70px !important;
+  height: 70px !important;
+  word-wrap: normal; }
 
 .hidden {
   display: none !important; }

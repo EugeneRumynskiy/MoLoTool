@@ -9,71 +9,36 @@
   box-sizing: border-box;
   outline: none;
 }
-
 html {
   height: 100%;
 }
-
 body {
   height: 100%;
   margin: 0;
   background-color: $main-bg-color;
 }
 
+
 td a:link,
 .motif-title a:link {
   color: #0645AD;
   text-decoration: none;
 }
-
 td a:visited,
 .motif-title a:visited {
   color: #0645AD;
   text-decoration: none;
 }
 
+
 .interface-area {
   margin-top: 2 * $topNav-navLineHeight;
 }
-
-#manual-seq-input {
-  background-color: $boxBackground;
-  border: 2px solid $sequence-input-borders;
-  border-radius: 5px;
-  margin-left: 5px;
-
-  textarea {
-    border: solid 2px $boxBackground;
-
-    font-family: "Courier New", "Times New Roman";
-    font-size: 23px;
-
-    width: 100%;
-    line-height: 25px;
-    height: 200px;
-  }
-
-  .input-controls {
-    padding: 20px 0 10px 0;
-    border-top: solid $sequence-input-borders 2px;
-
-    .interface-button{
-      border-radius: 5px;
-      border: solid $sequence-input-borders 1px;
-      padding: 7px;
-      margin-left: 5px;
-
-      span {
-        display: inline-block;
-        min-width: 100px;
-
-        .material-icons {
-          float:right;
-        }
-      }
-    }
-  }
+.interface-component {
+  padding: 5px 5px 5px 5px;
+  margin-bottom: 10px;
 }
+
 
 .interface-button {
   color: $icon-default-color;
@@ -91,7 +56,6 @@ td a:visited,
   text-decoration: none;
   outline: none;
 }
-
 .interface-button:hover, .material-icons{
   color: $icon-hover-color;
 }
@@ -99,23 +63,15 @@ td a:visited,
   color: $icon-active-color;
 }
 
+
 input[type="file"] {
   display: none;
 }
 
-.interface-component {
-  padding: 5px 5px 5px 5px;
-  margin-bottom: 10px;
-}
-
-.round {
-  border-radius: 5px;
-}
 
 .empty {
   display: none;
 }
-
 
 
 //toggled classes
@@ -132,12 +88,6 @@ input[type="file"] {
     height: $resultTab-height !important;
     word-wrap: normal;
   }
-
- /* .flattened:first-of-type {
-    margin-top: 0px !important;
-    line-height: $resultTab-height - 2px !important;
-    height: $resultTab-height - 2px !important
-  }*/
 }
 
 .hidden {
@@ -153,10 +103,3 @@ input[type="file"] {
     margin-top: $topNav-navLineHeight;
   }
 }
-
-
-
-
-
-
-
