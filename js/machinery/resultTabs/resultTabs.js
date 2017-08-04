@@ -22,7 +22,7 @@ var resultTabs = (function () {
         _tabStates = initTabStates();
         _resultTabsObjects = {};
 
-        comparisonMode.create("Single");
+        comparisonMode.create("Multiply");
         digitGuidance.create(10000);
     };
 
@@ -255,8 +255,6 @@ var resultTabs = (function () {
 
             if (getCurrentMode() === "Single") {
                 var marginTop = $digits.css("height");
-                console.log(marginTop + "here!\n", $sequence);
-
                 $sequence.css("margin-top", "-" + marginTop);
             }
         } else {

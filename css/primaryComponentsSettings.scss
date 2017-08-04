@@ -33,18 +33,17 @@ td a:visited,
 }
 
 .interface-area {
-  margin-left: $sideNav-initialWidth;
   margin-top: 2 * $topNav-navLineHeight;
 }
 
 #manual-seq-input {
-  background-color: #ffffff;
+  background-color: $boxBackground;
   border: 2px solid $sequence-input-borders;
   border-radius: 5px;
   margin-left: 5px;
 
   textarea {
-    border: solid 2px white;
+    border: solid 2px $boxBackground;
 
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
@@ -93,10 +92,10 @@ td a:visited,
   outline: none;
 }
 
-.interface-button:hover {
+.interface-button:hover, .material-icons{
   color: $icon-hover-color;
 }
-.interface-button:active {
+.interface-button:active, .material-icons {
   color: $icon-active-color;
 }
 

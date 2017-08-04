@@ -100,50 +100,25 @@ var comparisonMode = (function () {
 
 
     var turnOffLocks = function () {
-        var $sequencesToUnlock = $(".tab-result-sequence");
-
-        $sequencesToUnlock
-            .find(".sequence, .digits").css({
-                    "left": "unset",
-                    "clip": "unset"})
-            .removeClass(".locked");
-
-
-        $("#result-tabs").find(".lock .material-icons").html("lock_open");
-    };
-
-
-    var turnOnLocks = function () {
-        var $sequencesToUnlock = $(".tab-result-sequence");
-
-        $sequencesToUnlock.find(".sequence").css({
-            "position": "static",
-            "left": "unset",
-            "clip": "unset"
-        });
-
-        $sequencesToUnlock.find(".digits").css({
-            "position": "absolute",
-            "left": "unset",
-            "clip": "unset"
-        });
-
-        $("#result-tabs").find(".lock .material-icons").html("lock_open");
+        var $locks = $(".lock .material-icons");
+            $locks.each(function () {
+                unlockLine($(this));
+            });
     };
 
 
     var switchLock = function ($target) {
         var currentState = $target.html();
-
+        console.log($target);
         if (currentState === "lock") {
-            unlock($target);
+            unlockLine($target);
         } else {
-            lock($target);
+            lockLine($target);
         }
     };
 
 
-    var lock = function ($target) {
+    var lockLine = function ($target) {
         var tabId = $target.parents(".tab-result").attr("data-tab"),
             $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
             shift = $("#result-sequences").width();
@@ -164,7 +139,7 @@ var comparisonMode = (function () {
     };
 
 
-    var unlock = function ($target) {
+    var unlockLine = function ($target) {
         var tabId = $target.parents(".tab-result").attr("data-tab"),
             $tabToUnlock = $(".tab-result-sequence[data-tab="+ tabId + "]");
 
@@ -185,6 +160,8 @@ var comparisonMode = (function () {
         getDefaultComparisonMode: getDefaultComparisonMode,
 
         switchComparisonMode: switchComparisonMode,
-        switchLock: switchLock
+        switchLock: switchLock,
+
+        turnOffLocks: turnOffLocks
     };
 } ());

@@ -44,10 +44,8 @@ var uiBuilder = (function () {
 
         inputParsing.create();
 
-        //debug
         window.setTimeout(function () {
-            var test = inputParsing.inputTest();
-            inputCallback(test);
+            $("#demo-button").trigger("click");
         }, 800);
     };
 

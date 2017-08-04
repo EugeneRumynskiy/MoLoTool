@@ -96,9 +96,12 @@
     <script src="js/machinery/motif.js"></script>
     <script src="js/machinery/motifSequenceConstructor.js"></script>
     <script src="js/machinery/motifHandler.js"></script>
-    <script src="js/machinery/motifPicker.js"></script>
     <script src="js/machinery/motifLibrary.js"></script>
     <script src="js/machinery/motifResultContainer.js"></script>
+
+    <script src="js/machinery/motifPicker/motifPicker.js"></script>
+    <script src="js/machinery/motifPicker/motifSearch.js"></script>
+
 
 
     <script src="js/machinery/builder/uiBuilder.js"></script>
@@ -138,7 +141,7 @@
                     <li class="search-container">
                         <!--<i class="icon material-icons md-18">search</i>-->
                         <span class="icon octicon octicon-search"></span>
-                        <input id="motif-search" placeholder="Select motif..." autofocus autocomplete="off" autocorrect="off" autocapitalize="off">
+                        <input id="motif-search" placeholder="Select motif..." autocomplete="off" autocorrect="off" autocapitalize="off">
                         <div class="suggestions">
                             <div id='legend-container' class="suggestion"></div>
                             <div id='motif-list'></div>
@@ -149,9 +152,8 @@
                     </li>
                 </ul>
                 <ul class="nav pull-right top-second">
-                    <li><a href="#">Help </a></li>
-                    <li><a href="#">About </a></li>
-                    <li><a href="#">Demo </a></li>
+                    <a id="demo-button" class="interface-button demo" href="#"></a>
+                    <a id="about-button" class="interface-button demo" href="#"></a>
                 </ul>
             </nav>
         </div>

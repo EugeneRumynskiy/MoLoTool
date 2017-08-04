@@ -39,6 +39,9 @@ var uiButtons = (function () {
 
         buildAddSequenceButton(inputCallback);
         buildInputMethodButton();
+
+        buildDemoButton(inputCallback);
+        buildAboutButton();
     };
 
 
@@ -211,6 +214,98 @@ var uiButtons = (function () {
                 .on('click', function(event) {
                     event.preventDefault();
                     switchMode();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildClearButton = function () {
+        var getSettingsFor = {
+                "showDemo":   {"title":"Show demo ", "icon": "insert_emoticon"}
+            },
+            defaultMode = "showDemo",
+            $button = $(".nav-area").find("#demo-button");
+
+
+        var clearChosenMotifList = function () {
+            $(".chosen-motif").find(".close").trigger("click");
+        };
+
+
+        var clearTabsList = function () {
+            $("#result-tabs").find(".close").trigger("click");
+        };
+
+
+        var init = function () {
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    clearChosenMotifList();
+                    clearTabsList();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildDemoButton = function (inputCallback) {
+        var getSettingsFor = {
+                "showDemo":   {"title":"Show demo ", "icon": "insert_emoticon"}
+            },
+            defaultMode = "showDemo",
+            $button = $(".nav-area").find("#demo-button");
+
+
+        var clearChosenMotifList = function () {
+            $(".chosen-motif").find(".close").trigger("click");
+        };
+
+        var showDemo = function () {
+            clearChosenMotifList();
+
+            $("#motif-search").val("a");
+            motifSearch.applySearch();
+            $("#motif-list").children().first().children().first().children().first().click();
+            $('body').click();
+
+            var test = inputParsing.inputTest();
+            inputCallback(test, true);
+        };
+
+
+        var init = function () {
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    showDemo();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildAboutButton = function () {
+        var getSettingsFor = {
+                "default":   {"title":"About ", "icon": "info_outline"}
+            },
+            defaultMode = "default",
+            $button = $(".nav-area").find("#about-button");
+
+        var init = function () {
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    console.log("about\n");
                 });
         };
 
