@@ -56,13 +56,12 @@ input[type="file"] {
   display: none; }
 
 .full-screen {
-  min-height: 332px !important;
+  min-height: 372pxpx !important;
   word-break: break-all;
   border-bottom: none !important; }
 
 #result-sequences .flattened {
-  line-height: 70px !important;
-  height: 70px !important;
+  height: 90px !important;
   word-wrap: normal; }
 
 .hidden {

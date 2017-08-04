@@ -77,14 +77,14 @@ input[type="file"] {
 //toggled classes
 .full-screen {
   //line-height: $resultTab-height * 0.45 !important;
-  min-height: 12 + 80 * 4px !important;
+  min-height: 12 + $resultTab-height * 4 + px !important;
   word-break: break-all;
   border-bottom: none !important;
 }
 
 #result-sequences {
   .flattened {
-    line-height: $resultTab-height !important;
+    //line-height: $resultTab-height !important;
     height: $resultTab-height !important;
     word-wrap: normal;
   }

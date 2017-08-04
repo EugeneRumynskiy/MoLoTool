@@ -152,7 +152,9 @@ var resultTabs = (function () {
 
 
     var updateHeight = function () {
-        $(".tab-result-sequence").height(getOpenedIds().length * 80 + 12 + "px");
+        var tabHeight = parseFloat($("#result-tabs").css("height")),
+            sliderShift = 35;
+        $(".tab-result-sequence").height(tabHeight + sliderShift + "px");
     };
 
 
@@ -254,8 +256,10 @@ var resultTabs = (function () {
             $digits.empty().html(digits);
 
             if (getCurrentMode() === "Single") {
-                var marginTop = $digits.css("height");
-                $sequence.css("margin-top", "-" + marginTop);
+                var digitsHeight = parseFloat($digits.css("height")),
+                    shift = parseFloat($digits.css("line-height")) / 2,
+                    marginTop = digitsHeight - shift;
+                $sequence.css("margin-top", "-" + marginTop + "px");
             }
         } else {
             console.log(tabId);

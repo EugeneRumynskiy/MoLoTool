@@ -53,7 +53,7 @@ var uiButtons = (function () {
             },
             defaultMode = comparisonMode.getDefaultComparisonMode(),
 
-            $button = $("#cmp-mode-button");
+            $button = $("#change-mode-button");
 
 
         var switchMode = function () {
@@ -86,7 +86,7 @@ var uiButtons = (function () {
             },
             defaultMode = "hidden",
 
-            $button = $(".controls").find(".to-hidden-button"),
+            $button = $("#open-table-button"),
             $target = $("#motif-table-cmp");
 
 
@@ -131,7 +131,7 @@ var uiButtons = (function () {
             },
             defaultMode = "hidden",
 
-            $button = $(".controls").find(".open-input"),
+            $button = $("#open-input-button"),
             $target = $("#manual-seq-input");
 
 
@@ -227,7 +227,7 @@ var uiButtons = (function () {
                 "default":   {"title":"Clear ", "icon": "delete_sweep"}
             },
             defaultMode = "default",
-            $button = $(".nav-area").find("#clear-button");
+            $button = $("#clear-button");
 
         var init = function () {
             $button
@@ -250,7 +250,7 @@ var uiButtons = (function () {
                 "showDemo":   {"title":"Show demo ", "icon": "insert_emoticon"}
             },
             defaultMode = "showDemo",
-            $button = $(".nav-area").find("#demo-button");
+            $button = $("#demo-button");
 
 
         var showDemo = function () {
@@ -286,7 +286,7 @@ var uiButtons = (function () {
                 "default":   {"title":"About ", "icon": "info_outline"}
             },
             defaultMode = "default",
-            $button = $(".nav-area").find("#about-button");
+            $button = $("#about-button");
 
         var init = function () {
             $button

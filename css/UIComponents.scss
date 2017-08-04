@@ -244,6 +244,7 @@
     background-color: $secondaryColor;
 
     .tab-result {
+      background-color: $tab-bg;
       height: $resultTab-height;
       line-height: $resultTab-height;
       margin: 5px 0 10px 0;
@@ -295,7 +296,6 @@
     font-size: 23px;
 
     .tab-result-sequence {
-      //border-bottom: dashed lightgrey 2px;
       margin: 10px 0 5px 0;
 
       background-color: #ffffff;
@@ -304,6 +304,14 @@
 
       .digits {
         opacity: 0.3;
+
+        span {
+          border-radius: 2px;
+
+          vertical-align: -4px;
+          text-align: center;
+          overflow: hidden;
+        }
       }
 
       .sequence {
@@ -339,15 +347,14 @@
     .full-screen {
       .digits {
         position: static;
-        margin-top: -50px;
-        line-height: $resultTab-height * 1.5;
+        margin-top: -$resultTab-height * 0.25;
+        line-height: $resultTab-height * 0.75;
 
       }
 
       .sequence {
         position: static;
-        padding-top: 50px;
-        line-height: $resultTab-height * 1.5 - 4px;
+        line-height: $resultTab-height * 0.75;
       }
     }
   }
