@@ -159,7 +159,9 @@ var uiButtons = (function () {
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
-                    event.preventDefault();
+                    if ($(event.target).html() === "Open input ") {
+                        window.scrollTo(0, 0);
+                    }
                     switchMode();
                 });
         };
