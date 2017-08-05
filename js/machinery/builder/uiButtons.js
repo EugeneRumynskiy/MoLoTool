@@ -48,8 +48,8 @@ var uiButtons = (function () {
 
     var buildSwitchComparisonModeButton = function () {
         var getSettingsFor = {
-                "Single":   {"title":"Change Mode ", "icon": "select_all"},
-                "Multiply":   {"title":"Change Mode ", "icon": "format_list_bulleted"}
+                "Single":   {"title":"Change mode ", "icon": "select_all"},
+                "Multiply":   {"title":"Change mode ", "icon": "format_list_bulleted"}
             },
             defaultMode = comparisonMode.getDefaultComparisonMode(),
 
@@ -188,8 +188,8 @@ var uiButtons = (function () {
 
     var buildInputMethodButton = function () {
         var getSettingsFor = {
-                "rewrite": {"title":"Mode:rewrite", "icon": "autorenew"},
-                "stack":   {"title":"Mode:stack", "icon": "add"}
+                "rewrite": {"title":"Mode:overwrite", "icon": "autorenew"},
+                "stack":   {"title":"Mode:add", "icon": "add"}
             },
             defaultMode = "stack";
 

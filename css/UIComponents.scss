@@ -5,13 +5,13 @@
   margin-top: 10px;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
-  border: 1px solid $sequence-input-borders;
+  border: $thin solid $borderColor;
 
   min-width: 600px;
 
   #legend-container {
     border-top: none;
-    border-bottom: 1px solid $sequence-input-borders;
+    border-bottom: $thin solid $borderColor;
     min-height: 26px;
 
     .absolute {
@@ -59,7 +59,7 @@
         margin: 4px;
 
         background-color: $motif-title-bg;
-        border: 1px solid black;
+        border: $thin solid $borderColor;
         border-radius: 10px;
 
         font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
@@ -105,7 +105,7 @@
       margin: 0 5px 5px 5px;
       padding: 2px 8px 2px 2px;
       border-radius: 10px;
-      border: 2px solid black;
+      border: $thick solid $borderColor;
       background-color: $motif-in-result-bg;
 
       .motif-title {
@@ -145,15 +145,16 @@
 
 #manual-seq-input {
   background-color: $boxBackground;
-  border: 2px solid $sequence-input-borders;
+  border: $thick solid $borderColor;
   border-radius: 5px;
-  margin-left: 5px;
+  margin: 5px;
 
   textarea {
-    border: solid 2px $boxBackground;
+    border: solid $thick $boxBackground;
 
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
+    resize: none;
 
     width: 100%;
     line-height: 25px;
@@ -162,17 +163,17 @@
 
   .input-controls {
     padding: 20px 0 10px 0;
-    border-top: solid $sequence-input-borders 2px;
+    border-top: solid $borderColor $thick;
 
     .interface-button{
       border-radius: 5px;
-      border: solid $sequence-input-borders 1px;
+      border: solid $borderColor $thin;
       padding: 7px;
       margin-left: 5px;
 
       span {
         display: inline-block;
-        min-width: 100px;
+        min-width: 120px;
 
         .material-icons {
           float:right;
@@ -199,7 +200,7 @@
 
       .interface-button {
         outline: none;
-        border: 1px solid $sequence-input-borders;
+        border: $thin solid $borderColor;
         border-left: none;
         border-radius: 5px;
         background-color: $button-bg;
@@ -223,7 +224,7 @@
       }
 
       .interface-button:first-child {
-        border-left: 1px solid $sequence-input-borders;
+        border-left: $thin solid $borderColor;
       }
     }
   }
@@ -249,7 +250,7 @@
       line-height: $resultTab-height;
       margin: 5px 0 10px 0;
 
-      border: 2px solid $sequence-input-borders; //#999;
+      border: $thick solid $borderColor;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
       border-right: none;
@@ -288,7 +289,7 @@
 
     background-color: white;
     border-top-right-radius: 5px;
-    border: solid 2px $sequence-input-borders;
+    border: solid $thick $borderColor;
     border-left: none;
     border-bottom: none;
 

@@ -41,7 +41,7 @@ td a:visited,
   white-space: nowrap;
   overflow: hidden;
   text-decoration: none;
-  outline: none; }
+  text-align: center; }
 
 .interface-button:hover, .material-icons {
   color: black; }

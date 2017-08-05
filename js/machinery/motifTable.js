@@ -93,7 +93,7 @@ var motifTable = (function () {
 
             return [
                 { extend: 'colvis',
-                    text: 'Select Columns',
+                    text: 'Select columns',
                     columns: ':gt(0)'
                 },
 
