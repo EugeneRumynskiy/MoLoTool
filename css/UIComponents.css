@@ -85,7 +85,7 @@
         border: none;
         background-color: white; }
     #motif-list-selected-cmp #motif-list-selected .motif-result-hover .motif-title {
-      border-color: salmon; }
+      border-color: #a3a3a3; }
   #motif-list-selected-cmp #motif-list-selected:empty {
     display: none; }
 

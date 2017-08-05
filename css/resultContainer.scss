@@ -9,21 +9,21 @@
 }
 
 .segment:hover {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px;
+  border-top: solid $motif-selected-on-result-hover 4px;
+  border-bottom: solid $motif-selected-on-result-hover 4px;
 }
 
 .highlighted {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px;
+  border-top: solid $motif-selected-on-result-hover 4px;
+  border-bottom: solid $motif-selected-on-result-hover 4px;
 }
 
 .last {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px;
+  border-top: solid $motif-selected-on-result-hover 4px;
+  border-bottom: solid $motif-selected-on-result-hover 4px;
 }
 
 .first {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px;
+  border-top: solid $motif-selected-on-result-hover 4px;
+  border-bottom: solid $motif-selected-on-result-hover 4px;
 }

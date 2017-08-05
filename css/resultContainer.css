@@ -5,19 +5,19 @@
   overflow: hidden; }
 
 .segment:hover {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px; }
+  border-top: solid #a3a3a3 4px;
+  border-bottom: solid #a3a3a3 4px; }
 
 .highlighted {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px; }
+  border-top: solid #a3a3a3 4px;
+  border-bottom: solid #a3a3a3 4px; }
 
 .last {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px; }
+  border-top: solid #a3a3a3 4px;
+  border-bottom: solid #a3a3a3 4px; }
 
 .first {
-  border-top: solid salmon 4px;
-  border-bottom: solid salmon 4px; }
+  border-top: solid #a3a3a3 4px;
+  border-bottom: solid #a3a3a3 4px; }
 
 /*# sourceMappingURL=resultContainer.css.map */
