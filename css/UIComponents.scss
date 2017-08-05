@@ -112,7 +112,6 @@
         display: inline-block;
         padding: 4px;
         margin: 4px;
-        vertical-align: middle;
 
         background-color: $motif-in-result-round-bg;
         border: 3px transparent solid;
@@ -121,6 +120,11 @@
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
         font-size: 16px;
         color: $motif-title-color;
+      }
+
+      .description{
+        margin: 0px 2px 8px 8px;
+        vertical-align: middle;
       }
 
       .sp-replacer {

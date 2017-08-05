@@ -46,7 +46,7 @@ var uiBuilder = (function () {
 
         window.setTimeout(function () {
             $("#demo-button").trigger("click");
-        }, 800);
+        }, 1000);
     };
 
 
@@ -99,7 +99,17 @@ var uiBuilder = (function () {
             motifLibrary.addUnit(motifName);
 
             $motifContainer.appendTo('#motif-list-selected');
+            var geneName = $motifContainer.find(".third").html(),
+                family = $motifContainer.find(".second").html(),
+                description = geneName + " - " + family,
+                $description = $("<div class='description'>" + description + "</div>");
+
+            $motifContainer.find(".third, .second").remove();
+            $motifContainer.append($description);
+
             motifSearch.applySearch();
+
+            console.log(description);
         });
 
 

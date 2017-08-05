@@ -2,11 +2,11 @@
   margin-top: 10px;
   background-color: #dadada;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid grey;
   min-width: 600px; }
   .suggestions #legend-container {
     border-top: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid grey;
     min-height: 26px; }
     .suggestions #legend-container .absolute {
       position: absolute; }
@@ -37,7 +37,7 @@
     padding: 4px;
     margin: 4px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid grey;
     border-radius: 10px;
     font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
     font-size: 16px;
@@ -65,19 +65,21 @@
       margin: 0 5px 5px 5px;
       padding: 2px 8px 2px 2px;
       border-radius: 10px;
-      border: 2px solid black;
+      border: 1.5px solid grey;
       background-color: white; }
       #motif-list-selected-cmp #motif-list-selected .chosen-motif .motif-title {
         display: inline-block;
         padding: 4px;
         margin: 4px;
-        vertical-align: middle;
         background-color: white;
         border: 3px transparent solid;
         border-radius: 5px;
         font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
         font-size: 16px;
         color: black; }
+      #motif-list-selected-cmp #motif-list-selected .chosen-motif .description {
+        margin: 0px 2px 8px 8px;
+        vertical-align: middle; }
       #motif-list-selected-cmp #motif-list-selected .chosen-motif .sp-replacer {
         border-radius: inherit;
         border: none;
@@ -89,12 +91,12 @@
 
 #manual-seq-input {
   background-color: white;
-  border: 2px solid black;
+  border: 1.5px solid grey;
   border-radius: 5px;
   margin: 5px; }
   #manual-seq-input textarea {
-    border: solid 2px white;
-    border-bottom: solid black 2px;
+    border: solid 1.5px white;
+    border-bottom: solid grey 1.5px;
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
     resize: none;
@@ -107,7 +109,7 @@
     padding: 10px 0 10px 5px; }
     #manual-seq-input .input-controls .interface-button {
       border-radius: 5px;
-      border: solid black 1px;
+      border: solid grey 1px;
       padding: 7px; }
       #manual-seq-input .input-controls .interface-button span {
         display: inline-block;
@@ -128,7 +130,7 @@
       float: right; }
       #sequence-input-cmp .controls .button-container .interface-button {
         outline: none;
-        border: 1px solid black;
+        border: 1px solid grey;
         border-left: none;
         border-radius: 5px;
         background-color: white;
@@ -144,7 +146,7 @@
           #sequence-input-cmp .controls .button-container .interface-button .custom-file-upload input[type="file"] {
             display: none; }
       #sequence-input-cmp .controls .button-container .interface-button:first-child {
-        border-left: 1px solid black; }
+        border-left: 1px solid grey; }
 
 #result-cmp {
   position: relative; }
@@ -160,7 +162,7 @@
       height: 90px;
       line-height: 90px;
       margin: 5px 0 10px 0;
-      border: 2px solid black;
+      border: 1.5px solid grey;
       border-top-left-radius: 5px;
       border-bottom-left-radius: 5px;
       border-right: none; }
@@ -187,7 +189,7 @@
     overflow-x: scroll;
     background-color: white;
     border-top-right-radius: 5px;
-    border: solid 2px black;
+    border: solid 1.5px grey;
     border-left: none;
     border-bottom: none;
     font-family: "Courier New", "monospace";

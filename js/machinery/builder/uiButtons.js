@@ -309,6 +309,7 @@ var uiButtons = (function () {
             $("#motif-list").children().first().children().first().children().first().click();
 
             clearSearchInput();
+            motifSearch.applySearch();
 
             var test = inputParsing.inputTest();
             inputCallback(test, true);
