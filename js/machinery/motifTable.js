@@ -193,14 +193,13 @@ var motifTable = (function () {
 
 
     var redrawTableWithUpdates = function(tabsUpdate) {
-        _dtTable.clear();
+        clearTable();
+
         for(var i = 0; i < tabsUpdate.length; i++) {
-
-
-            _dtTable
-                .rows.add(getRows(tabsUpdate[i]))
-                .draw();
+            _dtTable.rows.add(getRows(tabsUpdate[i]));
         }
+
+        _dtTable.draw();
     };
 
 
@@ -208,14 +207,19 @@ var motifTable = (function () {
         var sites = tabUpdate.sites,
             tabId = tabUpdate.tabId;
 
-
         return $.map(sites, function(site) {
             return features.getFrom(site, tabId);
         });
     };
 
 
+    var clearTable = function () {
+        _dtTable.clear().draw();
+    };
+
+
     return {
+        clearTable: clearTable,
         redrawTableWithUpdates: redrawTableWithUpdates,
         create: create
     };

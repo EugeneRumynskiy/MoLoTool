@@ -154,9 +154,12 @@
                     </li>
                 </ul>
                 <ul class="nav pull-right top-second">
+                    <a id= "open-input-button" class="interface-button" href="#"></a>
+                    <a id="change-mode-button" class="interface-button" href="#"></a>
+                    <a id="open-table-button" class="interface-button" href="#"></a>
                     <a id="clear-button" class="interface-button" href="#"></a>
                     <a id="demo-button" class="interface-button" href="#"></a>
-                    <a id="about-button" class="interface-button" href="#"></a>
+                    <a id="help-button" class="interface-button" href="#"></a>
                 </ul>
             </nav>
         </div>
@@ -164,15 +167,12 @@
 
 
     <div class="interface-area">
-        <div id='motif-list-selected-cmp' class="interface-component empty">
-            <div id='motif-list-selected'></div>
-        </div>
-
         <div class="interface-component" id="manual-seq-input">
             <textarea spellcheck=false
                           placeholder="Put a sequence here..."></textarea>
 
             <div class="input-controls">
+                <a class="interface-button input-method" href="#"></a>
                 <a class="interface-button upload-button" href="#">
                     <label class="custom-file-upload">
                         <input type="file" id="fileInput">
@@ -181,16 +181,19 @@
                     </label>
                 </a>
                 <a class="interface-button add-sequence" href="#"></a>
-                <a class="interface-button input-method" href="#"></a>
+                <a class="interface-button open-sequence" href="#"></a>
             </div>
         </div>
+
+        <div id='motif-list-selected-cmp' class="interface-component empty">
+            <div id='motif-list-selected'></div>
+        </div>
+
 
         <div class="interface-component" id="sequence-input-cmp">
             <div class="controls">
                 <div class="button-container">
-                    <a id= "open-input-button" class="interface-button" href="#"></a>
-                    <a id="change-mode-button" class="interface-button" href="#"></a>
-                    <a id="open-table-button" class="interface-button" href="#"></a>
+
                 </div>
 
                 <div class="sliderBox">

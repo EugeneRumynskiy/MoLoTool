@@ -94,20 +94,21 @@
   margin: 5px; }
   #manual-seq-input textarea {
     border: solid 2px white;
+    border-bottom: solid black 2px;
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
     resize: none;
     width: 100%;
     line-height: 25px;
-    height: 200px; }
+    height: 205px;
+    padding-bottom: 5px;
+    margin-bottom: 5px; }
   #manual-seq-input .input-controls {
-    padding: 20px 0 10px 0;
-    border-top: solid black 2px; }
+    padding: 10px 0 10px 5px; }
     #manual-seq-input .input-controls .interface-button {
       border-radius: 5px;
       border: solid black 1px;
-      padding: 7px;
-      margin-left: 5px; }
+      padding: 7px; }
       #manual-seq-input .input-controls .interface-button span {
         display: inline-block;
         min-width: 120px; }

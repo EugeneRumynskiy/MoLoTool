@@ -2,26 +2,30 @@ var motifHandler = (function () {
     var _fileName = "motifHandler",
 
         _pValue,
-        _requestedMotifs,
-
-        //debug
-        _timeStamp = 0,
-        _timeString = "";
+        _requestedMotifs;
 
 
-    var create = function (motifNameList) {
-        //Todo
+    var handleMotifs = function (event) {
+        console.log(event);
+        if (event === "clearTable" ) {
+            motifTable.clearTable();
+        } else {
+            makeFullUpdate();
+        }
     };
 
 
-    //debug
-    var getThenSetTime = function () {
-        var result = performance.now() - _timeStamp;
-        _timeStamp = performance.now();
-        _timeString += result + " ";
-        return result;
+    var makeFullUpdate = function () {
+        updatePvalue();
+        updateMotifs();
+
+        var tabsUpdate = updateAllResultTabs();
+
+        if (getTableState() === "active") {
+            updateTable(tabsUpdate);
+        }
     };
-    //
+
 
     var updatePvalue = function () {
         _pValue = pValue = pSlider.getPValue();
@@ -31,6 +35,14 @@ var motifHandler = (function () {
     var updateMotifs = function () {
         var userRequestedNames = motifPicker.getRequestedMotifNames();
         _requestedMotifs = motifLibrary.getUserRequestedMotifUnits(userRequestedNames);
+    };
+
+
+    var updateAllResultTabs = function () {
+        var openedTabsIds = resultTabs.getIdsToHandle(),
+            tabsUpdate = $.map(openedTabsIds, updateResultTab);
+
+        return tabsUpdate;
     };
 
 
@@ -71,29 +83,12 @@ var motifHandler = (function () {
     };
 
 
-    var updateAllResultTabs = function (event) {
-        var openedTabsIds = resultTabs.getIdsToHandle(event),
-            tabsUpdate = $.map(openedTabsIds, updateResultTab);
-
-        return tabsUpdate;
-    };
-
-
-    var handleMotifs = function (event) {
-        updatePvalue();
-        updateMotifs();
-
-        var tabsUpdate = updateAllResultTabs(event),
-            tableState = ($("#motif-table-cmp").hasClass("hidden")) ? "hidden" : "visible";
-
-        if (tableState === "visible") {
-            updateTable(tabsUpdate);
-        }
+    var getTableState = function () {
+        return ($("#motif-table-cmp").hasClass("disabled")) ? "disabled" : "active";
     };
 
 
     return {
         handleMotifs: handleMotifs
     };
-
 }());

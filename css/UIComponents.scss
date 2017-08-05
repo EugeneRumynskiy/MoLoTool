@@ -151,6 +151,7 @@
 
   textarea {
     border: solid $thick $boxBackground;
+    border-bottom: solid $borderColor $thick;
 
     font-family: "Courier New", "Times New Roman";
     font-size: 23px;
@@ -158,18 +159,18 @@
 
     width: 100%;
     line-height: 25px;
-    height: 200px;
+    height: 205px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
   }
 
   .input-controls {
-    padding: 20px 0 10px 0;
-    border-top: solid $borderColor $thick;
+    padding: 10px 0 10px 5px;
 
     .interface-button{
       border-radius: 5px;
       border: solid $borderColor $thin;
       padding: 7px;
-      margin-left: 5px;
 
       span {
         display: inline-block;

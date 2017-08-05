@@ -7,7 +7,6 @@ var uiButtons = (function () {
 
     var create = function (eventHandler, inputCallback) {
         setEventHandlerTo(eventHandler);
-        setEventHandlerTo(eventHandler);
         setupButtons(inputCallback);
     };
 
@@ -17,8 +16,8 @@ var uiButtons = (function () {
     };
 
 
-    var handleEvent = function () {
-        _eventHandler();
+    var handleEvent = function (event) {
+        _eventHandler(event);
     };
 
 
@@ -39,12 +38,15 @@ var uiButtons = (function () {
 
         buildAddSequenceButton(inputCallback);
         buildInputMethodButton();
+        buildOpenSequenceButton();
 
         buildClearButton();
         buildDemoButton(inputCallback);
-        buildAboutButton();
+        buildHelpButton();
     };
 
+
+    ///Controls Buttons
 
     var buildSwitchComparisonModeButton = function () {
         var getSettingsFor = {
@@ -81,22 +83,22 @@ var uiButtons = (function () {
 
     var buildShowTableButton = function () {
         var getSettingsFor = {
-                "hidden":   {"title":"Open table ", "icon": "visibility_off"},
-                "visible":   {"title":"Close table ", "icon": "visibility"}
+                "disabled":   {"title":"Open table ", "icon": "visibility_off"},
+                "active":   {"title":"Hide table ", "icon": "visibility"}
             },
-            defaultMode = "hidden",
+            defaultMode = "disabled",
 
             $button = $("#open-table-button"),
             $target = $("#motif-table-cmp");
 
 
         var switchMode = function () {
-            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-
-            if (newMode === "hidden") {
-                $target.addClass("hidden");
+            var newMode = ($target.hasClass("disabled")) ? "active" : "disabled";
+            if (newMode === "disabled") {
+                $target.addClass("disabled");
+                handleEvent("clearTable");
             } else {
-                $target.removeClass("hidden");
+                $target.removeClass("disabled");
                 handleEvent();
             }
 
@@ -109,7 +111,11 @@ var uiButtons = (function () {
 
 
         var init = function () {
-            setVisibility(defaultMode, $target);
+            if (defaultMode === "disabled") {
+                $target.addClass("disabled");
+            } else {
+                $target.removeClass("disabled");
+            }
 
             $button
                 .empty()
@@ -124,10 +130,12 @@ var uiButtons = (function () {
     };
 
 
+    ///Sequence-Input Buttons
+
     var buildOpenInputButton = function () {
         var getSettingsFor = {
                 "hidden":   {"title":"Open input ", "icon": "visibility_off"},
-                "visible":   {"title":"Close input ", "icon": "visibility"}
+                "visible":   {"title":"Hide input ", "icon": "visibility"}
             },
             defaultMode = "hidden",
 
@@ -188,10 +196,10 @@ var uiButtons = (function () {
 
     var buildInputMethodButton = function () {
         var getSettingsFor = {
-                "rewrite": {"title":"Mode:overwrite", "icon": "autorenew"},
-                "stack":   {"title":"Mode:add", "icon": "add"}
+                "rewrite": {"title":"Mode:overwrite ", "icon": "autorenew"},
+                "stack":   {"title":"Mode:add ", "icon": "add"}
             },
-            defaultMode = "stack";
+            defaultMode = "stack",
 
             $button = $("#manual-seq-input").find(".input-method");
 
@@ -222,9 +230,48 @@ var uiButtons = (function () {
     };
 
 
+    var buildOpenSequenceButton = function () {
+        var getSettingsFor = {
+                "hidden":   {"title":"Show sequences ", "icon": "visibility_off"},
+                "visible":   {"title":"Hide sequences ", "icon": "visibility"}
+            },
+            defaultMode = "visible",
+
+            $button = $("#manual-seq-input").find(".open-sequence"),
+            $target = $("#manual-seq-input").find("textarea");
+
+
+        var switchMode = function () {
+            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+            setVisibility(newMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[newMode]));
+        };
+
+
+        var init = function () {
+            setVisibility(defaultMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    switchMode();
+                });
+        };
+
+        init();
+    };
+
+
+    ///Top-Nav Buttons
+
     var buildClearButton = function () {
         var getSettingsFor = {
-                "default":   {"title":"Clear ", "icon": "delete_sweep"}
+                "default":   {"title":"Reset ", "icon": "delete_sweep"}
             },
             defaultMode = "default",
             $button = $("#clear-button");
@@ -238,6 +285,7 @@ var uiButtons = (function () {
                     clearTabsList();
                     clearChosenMotifList();
                     clearSearchInput();
+                    clearSequenceInput();
                 });
         };
 
@@ -247,7 +295,7 @@ var uiButtons = (function () {
 
     var buildDemoButton = function (inputCallback) {
         var getSettingsFor = {
-                "showDemo":   {"title":"Show demo ", "icon": "insert_emoticon"}
+                "showDemo":   {"title":"Demo ", "icon": "insert_emoticon"}
             },
             defaultMode = "showDemo",
             $button = $("#demo-button");
@@ -281,12 +329,12 @@ var uiButtons = (function () {
     };
 
 
-    var buildAboutButton = function () {
+    var buildHelpButton = function () {
         var getSettingsFor = {
-                "default":   {"title":"About ", "icon": "info_outline"}
+                "default":   {"title":"Help ", "icon": "info_outline"}
             },
             defaultMode = "default",
-            $button = $("#about-button");
+            $button = $("#help-button");
 
         var init = function () {
             $button
@@ -294,13 +342,15 @@ var uiButtons = (function () {
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
-                    console.log("about\n");
+                    console.log("Help\n");
                 });
         };
 
         init();
     };
 
+
+    ///Support Functions
 
     var generateContent = function (mode) {
         return "<span class=\"icon icon-medium\">"+ mode.title + "</span>" +
@@ -329,6 +379,11 @@ var uiButtons = (function () {
 
     var clearSearchInput = function () {
         $("#motif-search").val("");
+    };
+
+
+    var clearSequenceInput = function () {
+        $("#manual-seq-input").find("textarea").val("");
     };
 
 

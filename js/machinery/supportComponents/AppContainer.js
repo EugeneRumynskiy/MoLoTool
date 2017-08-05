@@ -33,7 +33,7 @@
 // http://paletton.com/#uid=52Q0p1ki6rV87JXdgxQmgnFqvj3ki6rV87JXdgxQmgnFqvj3kdLmDeBKZcjw8bCe2ce5+
 $(function() {
     uiBuilder.buildUI();
-    motifHandler.handleMotifs("full_update");
+    motifHandler.handleMotifs();
     //$('#motif-list').delay(8000).children().first().children().trigger("click");
 
    // $("#BCL6B_HUMAN.H10MO.D").click();

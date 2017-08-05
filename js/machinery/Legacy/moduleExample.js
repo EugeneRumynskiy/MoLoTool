@@ -17,6 +17,21 @@ var moduleName = (function () {
     };
 }());
 
+
+//debug
+var _timeStamp = 0,
+    _timeString = "";
+
+
+//debug
+var getThenSetTime = function () {
+    var result = performance.now() - _timeStamp;
+    _timeStamp = performance.now();
+    _timeString += result + " ";
+    return result;
+};
+//
+
 /*
     INLINE IF
 
