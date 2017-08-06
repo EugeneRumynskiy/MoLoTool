@@ -25,7 +25,7 @@ var resultTabs = (function () {
         comparisonMode.create("Multiply");
         digitGuidance.create(10000);
 
-        new Clipboard('.copy-tab');
+        clipboardCopy.create();
     };
 
 
@@ -204,8 +204,8 @@ var resultTabs = (function () {
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>' + tabName + '</a>' +
                 '<a href="#" class="close"></a>' +
                 '<a href="#" class="lock '+ lockMode + '">' + '<i class="material-icons md-dark">lock_open</i>' + '</a>' +
-                '<a href="#" class="copy-tab" data-clipboard-target="#result-sequences">'
-                + '<i class="material-icons md-dark">content_copy</i>' + '</a>' +
+                '<a href="#" class="copy-tab" data-tab=' + tabId + '>' +
+                '<i class="material-icons md-dark">content_copy</i>' + '</a>' +
                 '</div>'
             );
 
@@ -216,15 +216,9 @@ var resultTabs = (function () {
             if ($target.hasClass("close")) {
                 closeTab(this);
                 motifHandler.handleMotifs();
-            } else if ($target.hasClass("material-icons")) {
-                if ($target.html() === "content_copy") {
-                    console.log("SAVED\n");
-                } else {
-                    comparisonMode.switchLock($target);
-                }
-            } else {
-                if (getCurrentMode() === "Single") {
-                    var tabId = $(this).attr('data-tab');
+            } else if (getCurrentMode() === "Single") {
+                var tabId = $(this).attr('data-tab');
+                if (getCurrentTabId()[0] !== tabId) {
                     setToCurrent(tabId);
                     motifHandler.handleMotifs();
                 }
