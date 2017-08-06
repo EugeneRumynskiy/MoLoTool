@@ -216,6 +216,8 @@ var resultTabs = (function () {
             if ($target.hasClass("close")) {
                 closeTab(this);
                 motifHandler.handleMotifs();
+            } else if ($target.parent().hasClass("lock")) {
+                comparisonMode.switchLock($target);
             } else if (getCurrentMode() === "Single") {
                 var tabId = $(this).attr('data-tab');
                 if (getCurrentTabId()[0] !== tabId) {

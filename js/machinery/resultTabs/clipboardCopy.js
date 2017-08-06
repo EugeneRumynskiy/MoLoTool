@@ -2,7 +2,6 @@ var clipboardCopy = (function () {
     var _fileName = "clipboardCopy",
         clipboard;
 
-
     var create = function () {
         clipboard = new Clipboard('.copy-tab', {
             target: function(trigger) {
@@ -21,7 +20,6 @@ var clipboardCopy = (function () {
             }, 150);
         });
     };
-
 
     return {
         create: create
