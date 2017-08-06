@@ -340,7 +340,7 @@
       .digits {
         position: static;
 
-        //height: 20px;
+        height: 20px;
         line-height: 20px;
 
         width: inherit;
@@ -350,7 +350,7 @@
         position: static;
 
         margin-top: 0 !important;
-        //height: $resultTab-height - 20px;
+        height: $resultTab-height - 20px;
         line-height: $resultTab-height - 20px;
 
         width: inherit;
@@ -362,7 +362,7 @@
 
       .locked.sequence {
         position: absolute;
-        padding-top: 24px;
+        padding-top: 20px;
       }
     }
 
