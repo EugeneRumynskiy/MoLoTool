@@ -228,7 +228,7 @@ var features = (function () {
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
         _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand", "Seq name"]);
-        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
+        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "P-value", "Start", "End", "Sequence"];
     };
 
 
@@ -265,6 +265,7 @@ var features = (function () {
         return {
             "Motif ID": getMotifNameWithUrl(site.motifName),
             "-log10(P-value)": site.strength,
+            "P-value": getPvalueFromLogPvalue(site.strength),
             "Start": site.scorePosition,
             "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,
@@ -278,6 +279,12 @@ var features = (function () {
         var  hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName;
         return "<a href=\"" + hocomocoRef + "\" class=\"hocomoco-info\" target=\"_blank\">" +
             motifName + "</a>";
+    };
+
+
+    var getPvalueFromLogPvalue = function (log10Pvalue) {
+        var pValue = Math.pow(10, -log10Pvalue);
+        return pValue.toExponential(3);
     };
 
 

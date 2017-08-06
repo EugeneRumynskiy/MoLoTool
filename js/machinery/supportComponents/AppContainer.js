@@ -36,6 +36,5 @@ $(function() {
     motifHandler.handleMotifs();
     window.addEventListener("resize", comparisonMode.turnOffLocks);
     //$('#motif-list').delay(8000).children().first().children().trigger("click");
-
    // $("#BCL6B_HUMAN.H10MO.D").click();
 });

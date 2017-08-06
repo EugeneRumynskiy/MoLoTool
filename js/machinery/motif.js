@@ -127,7 +127,7 @@ var motif = (function () {
                     siteLength: _pwmMatrix.length,
                     strength: round(-Math.log10(pValue), _nDigits),
                     strand: direction,
-                    pValue: round(pValue, _nDigits),
+                    pValue: round(pValue, _nDigits + 2),
                     motifSequence: flipSequence(motifSequence, direction == "-")
                 });
             }
