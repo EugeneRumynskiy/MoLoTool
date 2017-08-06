@@ -22,7 +22,7 @@ var digitGuidance = (function () {
 
     var getDigitsFor = function (length) {
         var digits = _digitsString.substring(0, length);
-        return "<span class=\"\">" + digits + "</span>";
+        return "<span>" + digits + "</span>";
     };
 
 

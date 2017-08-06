@@ -185,13 +185,24 @@
     top: 0;
     left: 0;
     overflow-x: scroll;
+    overflow-y: hidden;
     background-color: white;
+    border-top: solid 1.5px grey;
     border-top-right-radius: 5px;
-    border: solid 1.5px grey;
-    border-left: none;
-    border-bottom: none;
     font-family: "Courier New", "monospace";
     font-size: 23px; }
+    #result-cmp #result-sequences .patch {
+      position: absolute;
+      width: 5px;
+      height: inherit;
+      z-index: 2; }
+    #result-cmp #result-sequences .border-patch {
+      border-right: solid grey 1.5px;
+      border-radius: 5px;
+      right: 5px; }
+    #result-cmp #result-sequences .area-patch {
+      background-color: #ededf2;
+      right: 0; }
     #result-cmp #result-sequences .tab-result-sequence {
       margin: 10px 0 5px 0;
       background-color: #ffffff; }
@@ -204,18 +215,18 @@
           overflow: hidden; }
     #result-cmp #result-sequences .flattened .digits {
       position: static;
-      height: 20px;
-      line-height: 20px; }
+      line-height: 20px;
+      width: inherit; }
     #result-cmp #result-sequences .flattened .sequence {
       position: static;
       margin-top: 0 !important;
-      height: 70px;
-      line-height: 70px; }
+      line-height: 70px;
+      width: inherit; }
     #result-cmp #result-sequences .flattened .locked.digits {
       position: absolute; }
     #result-cmp #result-sequences .flattened .locked.sequence {
       position: absolute;
-      padding-top: 20px; }
+      padding-top: 24px; }
     #result-cmp #result-sequences .full-screen .digits {
       position: static;
       margin-top: -22.5px;

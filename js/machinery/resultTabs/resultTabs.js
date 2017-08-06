@@ -154,15 +154,16 @@ var resultTabs = (function () {
 
 
     var updateHeight = function () {
-        var tabHeight = parseFloat($("#result-tabs").css("height")),
-            sliderShift = 35;
-        $(".tab-result-sequence").height(tabHeight + sliderShift + "px");
+        var resultHeight = parseFloat($("#result-tabs").css("height")),
+            sliderShift = 5;
+        $("#result-sequences").height(resultHeight + sliderShift + "px");
     };
 
 
     var updateWidth = function (event) {
         var $tabs = $(".tab-result-sequence"),
-            $sequences = $tabs.find(".sequence");
+            $sequences = $tabs.find(".sequence"),
+            $digits = $tabs.find(".digits");
 
         if (event === "reset") {
             $tabs.css({"width": "unset"});

@@ -106,31 +106,25 @@ var comparisonMode = (function () {
             $tabToLock = $(".tab-result-sequence[data-tab="+ tabId + "]"),
             seqShift = $("#result-sequences").width(),
             tabShift = parseFloat($("#result-tabs").css("width")),
-            tabHeight = $(".tab-result").css("height");
+            width = $("#result-sequences").css("width");
 
         $tabToLock
-            .find(".sequence").css({
-                "left": $tabToLock.position().left + "px",
-                "clip": "rect(" +
-                    "0px," +
-                    (seqShift - $tabToLock.position().left + tabShift - 2) + "px," +
-                    tabHeight + "," +
-                    ($tabToLock.position().left - tabShift) + "px" +
-                ")"
+            .find(".sequence, .digits").css({
+                "left": $tabToLock.position().left + "px"
             })
             .addClass("locked");
 
-        $tabToLock
+    /*    $tabToLock
             .find(".digits").css({
                 "left": $tabToLock.position().left + "px",
-                "clip": "rect(" +
+                /!*"clip": "rect(" +
                     "0px," +
                     (seqShift - $tabToLock.position().left + tabShift - 2) + "px," +
                     "23px" + "," +
                     ($tabToLock.position().left - tabShift) + "px" +
-                ")"
+                ")"*!/
             })
-            .addClass("locked");
+            .addClass("locked");*/
 
         $target.html("lock");
     };
@@ -142,8 +136,8 @@ var comparisonMode = (function () {
 
         $tabToUnlock
             .find(".sequence, .digits").css({
-               "left": "unset",
-               "clip": "unset"})
+               "left": "unset"
+            })
             .removeClass("locked");
 
         $target.html("lock_open");

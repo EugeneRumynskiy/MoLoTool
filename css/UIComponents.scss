@@ -288,15 +288,30 @@
     left: 0;
 
     overflow-x: scroll;
+    overflow-y: hidden;
 
     background-color: white;
+    border-top: solid $thick $borderColor;
     border-top-right-radius: 5px;
-    border: solid $thick $borderColor;
-    border-left: none;
-    border-bottom: none;
 
     font-family: "Courier New", "monospace";
     font-size: 23px;
+
+    .patch {
+      position: absolute;
+      width: 5px;
+      height: inherit;
+      z-index: 2;
+    }
+    .border-patch {
+      border-right: solid $borderColor $thick;
+      border-radius: 5px;
+      right: 5px;
+    }
+    .area-patch{
+      background-color: $secondaryColor;
+      right: 0;
+    }
 
     .tab-result-sequence {
       margin: 10px 0 5px 0;
@@ -325,16 +340,20 @@
       .digits {
         position: static;
 
-        height: 20px;
+        //height: 20px;
         line-height: 20px;
+
+        width: inherit;
       }
 
       .sequence {
         position: static;
 
         margin-top: 0 !important;
-        height: $resultTab-height - 20px;
+        //height: $resultTab-height - 20px;
         line-height: $resultTab-height - 20px;
+
+        width: inherit;
       }
 
       .locked.digits {
@@ -343,7 +362,7 @@
 
       .locked.sequence {
         position: absolute;
-        padding-top: 20px;
+        padding-top: 24px;
       }
     }
 
