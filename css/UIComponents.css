@@ -151,16 +151,17 @@
 #result-cmp {
   position: relative; }
   #result-cmp #result-tabs {
-    min-width: 120px;
+    min-width: 180px;
     position: absolute;
     left: 0px;
     padding: 0 0 0 5px;
     z-index: 2;
+    cursor: pointer;
     background-color: #ededf2; }
     #result-cmp #result-tabs .tab-result {
       background-color: #ededf2;
-      height: 100px;
-      line-height: 100px;
+      height: 90px;
+      line-height: 90px;
       margin: 5px 0 10px 0;
       border: 1.5px solid grey;
       border-top-left-radius: 5px;
@@ -170,19 +171,16 @@
         font-size: 15px;
         float: left;
         height: inherit;
-        width: 3em;
         background: none;
         color: #222;
         display: inline-block;
-        cursor: pointer;
         text-align: left;
         text-decoration: none;
-        outline: none;
-        padding-left: 0.3em; }
+        padding-left: 5px; }
     #result-cmp #result-tabs .current-tab {
       background-color: white; }
   #result-cmp #result-sequences {
-    margin-left: 115px;
+    margin-left: 175px;
     margin-top: 5px;
     top: 0;
     left: 0;
@@ -211,8 +209,8 @@
     #result-cmp #result-sequences .flattened .sequence {
       position: static;
       margin-top: 0 !important;
-      height: 80px;
-      line-height: 80px; }
+      height: 70px;
+      line-height: 70px; }
     #result-cmp #result-sequences .flattened .locked.digits {
       position: absolute; }
     #result-cmp #result-sequences .flattened .locked.sequence {
@@ -220,11 +218,11 @@
       padding-top: 20px; }
     #result-cmp #result-sequences .full-screen .digits {
       position: static;
-      margin-top: -25px;
-      line-height: 75px; }
+      margin-top: -22.5px;
+      line-height: 67.5px; }
     #result-cmp #result-sequences .full-screen .sequence {
       position: static;
-      line-height: 75px; }
+      line-height: 67.5px; }
   #result-cmp #result-sequences:empty {
     display: none; }
   #result-cmp #result-slider {

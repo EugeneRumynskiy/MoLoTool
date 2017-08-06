@@ -246,7 +246,7 @@
     left: 0px;
     padding:0 0 0 5px;
     z-index: 2;
-
+    cursor: pointer;
     background-color: $secondaryColor;
 
     .tab-result {
@@ -264,17 +264,14 @@
         font-size: 15px;
         float: left;
         height: inherit;
-        width: 3em;
 
         background: none;
         color: #222;
         display: inline-block;
-        cursor: pointer;
 
         text-align: left;
         text-decoration: none;
-        outline: none;
-        padding-left: 0.3em;
+        padding-left: 5px;
 
       }
     }

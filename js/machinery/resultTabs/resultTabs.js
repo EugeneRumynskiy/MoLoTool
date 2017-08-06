@@ -196,7 +196,7 @@ var resultTabs = (function () {
     var createResultTab = function (tabId) {
         var lockMode = (getCurrentMode() === "Single") ? "hidden" : "",
 
-            tabName = sequenceLibrary.getItemById(tabId).seqValues.title.slice(0, 9) + "..",
+            tabName = sequenceLibrary.getItemById(tabId).seqValues.title.slice(0, 10) + "..",
             $resultTab = $(
                 '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>' + tabName + '</a>' +

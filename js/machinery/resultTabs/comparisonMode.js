@@ -109,12 +109,24 @@ var comparisonMode = (function () {
             tabHeight = $(".tab-result").css("height");
 
         $tabToLock
-            .find(".sequence, .digits").css({
+            .find(".sequence").css({
                 "left": $tabToLock.position().left + "px",
                 "clip": "rect(" +
                     "0px," +
-                    (seqShift - $tabToLock.position().left + tabShift) + "px," +
-                    tabHeight+ "," +
+                    (seqShift - $tabToLock.position().left + tabShift - 2) + "px," +
+                    tabHeight + "," +
+                    ($tabToLock.position().left - tabShift) + "px" +
+                ")"
+            })
+            .addClass("locked");
+
+        $tabToLock
+            .find(".digits").css({
+                "left": $tabToLock.position().left + "px",
+                "clip": "rect(" +
+                    "0px," +
+                    (seqShift - $tabToLock.position().left + tabShift - 2) + "px," +
+                    "23px" + "," +
                     ($tabToLock.position().left - tabShift) + "px" +
                 ")"
             })

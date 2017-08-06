@@ -306,7 +306,7 @@ var uiButtons = (function () {
         var showDemo = function () {
             clearChosenMotifList();
 
-            $("#motif-search").val("a");
+            $("#motif-search").val("coe1");
             motifSearch.applySearch();
             $("#motif-list").children().first().children().first().children().first().click();
 

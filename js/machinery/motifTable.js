@@ -128,13 +128,6 @@ var motifTable = (function () {
                     exportOptions: {
                         columns: 'th:not(:first-child)'
                     }
-                },
-
-                {
-                    text: 'My button',
-                    action: function ( e, dt, node, config ) {
-                        alert( 'Button activated' );
-                    }
                 }
             ]
         };
@@ -234,7 +227,7 @@ var features = (function () {
 
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand", "Title"]);
+        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand", "Seq name"]);
         _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "Start", "End", "Sequence"];
     };
 
@@ -275,7 +268,7 @@ var features = (function () {
             "Start": site.scorePosition,
             "End": site.scorePosition + site.siteLength - 1,
             "Sequence": site.motifSequence,
-            "Title": sequenceLibrary.getItemById(tabId).seqValues.title,
+            "Seq name": sequenceLibrary.getItemById(tabId).seqValues.title,
             "Strand": site.strand
         };
     };
