@@ -30,10 +30,10 @@ var uiBuilder = (function () {
         resultContainer.create();
         buildExternalResultContainerComponent();
 
-        fileUploader.create(inputCallback);
+        fileUploader.create(inputCallback); //input
 
         var tabIdRange = {"min": 1, "max": 10};
-        sequenceLibrary.create(tabIdRange);
+        sequenceLibrary.create(tabIdRange); //input
         resultTabs.create(
             tabIdRange,
             sequenceLibrary.isRecorded,
@@ -42,7 +42,7 @@ var uiBuilder = (function () {
 
         uiButtons.create(handleEvent, inputCallback);
 
-        inputParsing.create();
+        inputParsing.create();//input
 
         window.setTimeout(function () {
             $("#demo-button").trigger("click");
@@ -108,8 +108,6 @@ var uiBuilder = (function () {
             $motifContainer.append($description);
 
             motifSearch.applySearch();
-
-            console.log(description);
         });
 
 

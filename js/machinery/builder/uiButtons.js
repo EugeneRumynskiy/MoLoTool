@@ -177,7 +177,14 @@ var uiButtons = (function () {
             defaultMode = "default",
 
             $button = $("#manual-seq-input").find(".add-sequence"),
-            $target = $("#manual-seq-input").find("textarea");
+            $textarea = $("#manual-seq-input").find("textarea");
+
+
+        var showTextarea = function () {
+            if ($textarea.hasClass("hidden")) {
+                $textarea.removeClass("hidden")
+            }
+        };
 
 
         var init = function () {
@@ -187,8 +194,10 @@ var uiButtons = (function () {
                 .on('click', function(event) {
                     event.preventDefault();
 
-                    var replaceCurrent = (getInputMethod() === "rewrite");
-                    inputCallback($target.val(), replaceCurrent);
+                    showTextarea();
+
+                    var rewriteFlag = (getInputMethod() === "rewrite");
+                    inputCallback($textarea.val(), rewriteFlag);
                 });
         };
 

@@ -18,9 +18,7 @@ var sequenceLibrary = (function () {
         var newTab = createTab(seqValues),
             newItemId = undefined;
 
-        if ($.isEmptyObject(newTab)) {
-            errorHandler.logError({"fileName": _fileName, "message": "can't create add new newTab"});
-        } else {
+        if (! $.isEmptyObject(newTab)) {
             newItemId = addTabToLibrary(newTab);
         }
 
@@ -29,21 +27,30 @@ var sequenceLibrary = (function () {
 
 
     var createTab = function (seqValues) {
-        var title = "None", sequence = "None";
+        var newSequence = {};
 
-        if (seqValues === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab"});
-        } else {
-            title = seqValues["title"];
-            sequence = seqValues["sequence"];
+        if (seqValuesNotEmpty(seqValues)) {
+            newSequence = {
+                "seqValues": {
+                    "title": seqValues["title"],
+                    "sequence": seqValues["sequence"]
+                }
+            };
         }
 
-        return {
-            "seqValues": {
-                "title": title,
-                "sequence": sequence
-            }
-        };
+        return newSequence;
+    };
+
+
+    var seqValuesNotEmpty = function (seqValues) {
+        if ($.isEmptyObject(seqValues) || $.isEmptyObject(seqValues["sequence"]))  {
+            errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab: SeqValues undefined"});
+            return false;
+        } else if  (seqValues["sequence"] === "None") {
+            errorHandler.logError({"fileName": _fileName, "message": "can't create new newTab: SeqValues are None"});
+            return false;
+        }
+        return true
     };
 
 
@@ -124,7 +131,6 @@ var sequenceLibrary = (function () {
     };
 
 
-
     //debug
     var show = function () {
         console.log(_tabLibrary);
@@ -136,7 +142,6 @@ var sequenceLibrary = (function () {
         addTab: addTab,
 
         getItemById: getItemById,
-        //getAllItems: getAllItems,
         isRecorded: isRecorded,
 
         updateCurrentTabSequence: updateCurrentTabSequence,

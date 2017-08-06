@@ -6,7 +6,6 @@ var motifHandler = (function () {
 
 
     var handleMotifs = function (event) {
-        console.log(event);
         if (event === "clearTable" ) {
             motifTable.clearTable();
         } else {
