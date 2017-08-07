@@ -82,6 +82,9 @@ ul {
       background: #dadada;
       color: black;
       font-size: 15px; }
+  .nav > .title-container {
+    color: black;
+    padding: 10px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -134,14 +137,16 @@ ul {
 .the-nav {
   min-width: 600px; }
   .the-nav .top-first {
-    position: absolute; }
+    position: absolute;
+    overflow-x: hidden; }
     .the-nav .top-first > .search-container {
       min-width: 320px; }
   .the-nav .top-second {
+    padding-top: 3px;
     position: relative; }
 
 /* Media for larger devices */
-@media screen and (min-width: 970px) {
+@media screen and (min-width: 1340px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

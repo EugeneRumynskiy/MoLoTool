@@ -85,10 +85,10 @@ var uiButtons = (function () {
 
     var buildShowTableButton = function () {
         var getSettingsFor = {
-                "disabled":   {"title":"Open table ", "icon": "visibility_off"},
+                "disabled":   {"title":"Show table ", "icon": "visibility_off"},
                 "active":   {"title":"Hide table ", "icon": "visibility"}
             },
-            defaultMode = "disabled",
+            defaultMode = "active",
 
             $button = $("#open-table-button"),
             $target = $("#motif-table-cmp");

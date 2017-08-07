@@ -108,6 +108,11 @@ ul {
       font-size: 15px;
     }
   }
+
+  > .title-container{
+    color: $textColor;
+    padding: 10px;
+  }
 }
 
 /* Active State */
@@ -170,11 +175,13 @@ ul {
   min-width: 600px;
   .top-first{
     position: absolute;
+    overflow-x: hidden;
     > .search-container {
       min-width: 320px;
     }
   }
   .top-second {
+    padding-top: 3px;
     position: relative;
   }
 }

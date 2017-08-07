@@ -6,8 +6,7 @@
   outline: none; }
 
 html {
-  overflow-x: hidden;
-  height: 100%; }
+  overflow-x: hidden; }
 
 body {
   height: 100%;
@@ -26,6 +25,8 @@ td a:visited,
 
 .interface-area {
   margin-top: 80px; }
+  .interface-area .disabled {
+    display: none; }
 
 .interface-component {
   padding: 5px 5px 5px 5px;
@@ -69,7 +70,7 @@ input[type="file"] {
   display: none !important; }
 
 /* Media for larger devices */
-@media screen and (min-width: 970px) {
+@media screen and (min-width: 1340px) {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
