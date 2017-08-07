@@ -51,8 +51,8 @@ var motifPicker = (function () {
         }
 
         var ifMoreValue = ifMore(suggestedMotifs);
-        if (ifMoreValue !== 0) {
-            var ifMoreString = wrapIfMoreValueInContainer(ifMoreValue);
+        if (suggestedMotifs.length >= _defaultMaxResultCount) {
+            var ifMoreString = wrapIfMoreValueInContainer(ifMoreValue, suggestedMotifs.length);
             $('#ifMore-container').find("#show-more-button span").html(ifMoreString);
             $('#ifMore-container').removeClass("hidden");
         } else {
@@ -96,12 +96,9 @@ var motifPicker = (function () {
     };
 
 
-    var wrapIfMoreValueInContainer = function (ifMoreValue) {
-        var ifMoreContainer = "";
-
-        if (ifMoreValue != 0) {
-            ifMoreContainer = 'Shown ' + getMaxResultCount() + " out of " + (getMaxResultCount() + ifMoreValue) + ' motifs.';
-        }
+    var wrapIfMoreValueInContainer = function (ifMoreValue, length) {
+        var itemsShown = (length >= _maxResultCount) ? _maxResultCount : length,
+            ifMoreContainer = 'Shown ' + itemsShown + " out of " + (length) + ' motifs.';
         return ifMoreContainer;
     };
 
