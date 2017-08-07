@@ -15,7 +15,7 @@
       padding: 0 4px 0 4px; }
   .suggestions .suggestion {
     min-height: 46px;
-    border-top: 1px solid black;
+    border-top: 1px solid grey;
     border-radius: 0;
     padding: 2px;
     margin: 2px; }
@@ -32,27 +32,31 @@
       position: absolute;
       left: 500px;
       max-width: 240px; }
-  .suggestions #motif-list .motif-container .motif-title {
-    display: inline-block;
-    padding: 4px;
-    margin: 4px;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 10px;
-    font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
-    font-size: 16px;
-    color: black; }
-  .suggestions #motif-list .motif-container .motif-title:hover {
-    cursor: pointer;
-    cursor: hand; }
-  .suggestions #motif-list div:first-child {
-    border-top: none; }
-  .suggestions #ifMore-container .ifMore-value {
-    min-height: unset; }
-    .suggestions #ifMore-container .ifMore-value .show-more-icon {
+  .suggestions #motif-list {
+    max-height: 240px;
+    position: relative;
+    overflow-y: scroll; }
+    .suggestions #motif-list .motif-container .motif-title {
+      display: inline-block;
+      padding: 4px;
+      margin: 4px;
+      background-color: white;
+      border: 1px solid grey;
+      border-radius: 10px;
+      font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
+      font-size: 16px;
       color: black; }
-      .suggestions #ifMore-container .ifMore-value .show-more-icon .material-icons {
-        vertical-align: middle; }
+    .suggestions #motif-list .motif-container .motif-title:hover {
+      cursor: pointer;
+      cursor: hand; }
+    .suggestions #motif-list div:first-child {
+      border-top: none; }
+  .suggestions #ifMore-container .ifMore-value {
+    min-height: 35px; }
+    .suggestions #ifMore-container .ifMore-value .interface-button {
+      display: block;
+      top: 0px;
+      padding: 5px; }
 
 #motif-list-selected-cmp {
   min-height: 75px; }

@@ -40,7 +40,6 @@ var motifSearch = (function () {
 
     var getMotifsToSuggest = function (motifSummaries, regExpsToCheck) {
         var suggestedMotifs = [];
-
         if (regExpsToCheck.length > 0) {
             var i, testResult = 0, currentSummary;
 
@@ -132,4 +131,4 @@ var motifSearch = (function () {
         create: create,
         applySearch: applySearch
     };
-}())
+}());

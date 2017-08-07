@@ -34,7 +34,7 @@ var uiButtons = (function () {
     var setupButtons = function (inputCallback) {
         buildSwitchComparisonModeButton();
         buildShowTableButton();
-        buildOpenInputButton();
+        //buildOpenInputButton();
 
         buildAddSequenceButton(inputCallback);
         buildInputMethodButton();
@@ -43,6 +43,8 @@ var uiButtons = (function () {
         buildClearButton();
         buildDemoButton(inputCallback);
         buildHelpButton();
+
+        buildShowMoreButton();
     };
 
 
@@ -134,7 +136,7 @@ var uiButtons = (function () {
 
     var buildOpenInputButton = function () {
         var getSettingsFor = {
-                "hidden":   {"title":"Open input ", "icon": "visibility_off"},
+                "hidden":   {"title":"Show input ", "icon": "visibility_off"},
                 "visible":   {"title":"Hide input ", "icon": "visibility"}
             },
             defaultMode = "hidden",
@@ -159,7 +161,7 @@ var uiButtons = (function () {
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
-                    if ($(event.target).html() === "Open input ") {
+                    if ($(event.target).html() === "Show input ") {
                         window.scrollTo(0, 0);
                     }
                     switchMode();
@@ -270,6 +272,9 @@ var uiButtons = (function () {
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
+                    if ($(event.target).html() === "Show sequences ") {
+                        window.scrollTo(0, 0);
+                    }
                     switchMode();
                 });
         };
@@ -361,6 +366,43 @@ var uiButtons = (function () {
         init();
     };
 
+
+    //Search Buttons
+
+    var buildShowMoreButton = function () {
+        var getSettingsFor = {
+                "default":   {"title":"", "icon": "keyboard_arrow_left", "size": motifPicker.getDefaultMaxResultCount()},
+                "spread":   {"title":"", "icon": "keyboard_arrow_down", "size": 100}
+            },
+            defaultMode = "default",
+
+            $button = $("#show-more-button");
+
+        var switchMode = function () {
+            var newMode = (motifPicker.getMaxResultCount() === motifPicker.getDefaultMaxResultCount())
+                ? "spread" : "default";
+            motifPicker.setMaxResultCount(getSettingsFor[newMode].size);
+
+            $button
+                .find("i")
+                .empty()
+                .html(getSettingsFor[newMode].icon);
+
+            motifSearch.applySearch();
+        };
+
+        var init = function () {
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    switchMode();
+                });
+        };
+
+        init();
+    };
 
     ///Support Functions
 

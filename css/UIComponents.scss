@@ -26,7 +26,7 @@
 
   .suggestion {
     min-height: 46px;
-    border-top: 1px solid black;
+    border-top: $thin solid $borderColor;
     border-radius: 0;
     padding: 2px;
     margin: 2px;
@@ -52,6 +52,10 @@
   }
 
   #motif-list {
+    max-height: 240px;
+    position: relative;
+    overflow-y: scroll;
+
     .motif-container {
       .motif-title {
         display: inline-block;
@@ -78,15 +82,14 @@
   }
 
   #ifMore-container{
+
     .ifMore-value {
-      min-height: unset;
+      min-height: 35px;
 
-      .show-more-icon {
-        color: $textColor;
-
-        .material-icons {
-          vertical-align: middle;
-        }
+      .interface-button {
+        display: block;
+        top: 0px;
+        padding: 5px;
       }
     }
   }

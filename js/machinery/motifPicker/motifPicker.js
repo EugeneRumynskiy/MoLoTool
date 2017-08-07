@@ -3,11 +3,13 @@ var motifPicker = (function () {
         _motifSummaries = [],
         _chosenMotifsSet = new Set(), //ToDo Change Set To Dictionary o(1)
 
+        _defaultMaxResultCount,
         _maxResultCount;
 
 
     var create = function () {
-        _maxResultCount = 5;
+        _defaultMaxResultCount = 5;
+        _maxResultCount = _defaultMaxResultCount;
 
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
@@ -36,10 +38,8 @@ var motifPicker = (function () {
 
 
     var setSuggestedMotifList = function (suggestedMotifs) {
-        var
-            legendContainer = wrapLegendContainer();
+        var legendContainer = wrapLegendContainer();
         $('#legend-container').html(legendContainer);
-
 
         var topMotifs = suggestedMotifs.slice(0, _maxResultCount),
             motifContainers = $.map(topMotifs, wrapMotifInContainer).join('');
@@ -50,11 +50,10 @@ var motifPicker = (function () {
             $(".suggestions").removeClass("hidden");
         }
 
-
         var ifMoreValue = ifMore(suggestedMotifs);
         if (ifMoreValue !== 0) {
             var ifMoreString = wrapIfMoreValueInContainer(ifMoreValue);
-            $('#ifMore-container').find(".ifMore-value").html(ifMoreString);
+            $('#ifMore-container').find("#show-more-button span").html(ifMoreString);
             $('#ifMore-container').removeClass("hidden");
         } else {
             $('#ifMore-container').addClass("hidden");
@@ -101,10 +100,7 @@ var motifPicker = (function () {
         var ifMoreContainer = "";
 
         if (ifMoreValue != 0) {
-            ifMoreContainer = 'And ' + ifMoreValue + ' more motifs.' +
-                '<a class="show-more-icon" class="interface-button" href="#">' +
-                    '<i class="material-icons">keyboard_arrow_down</i>' +
-                '</a>';
+            ifMoreContainer = 'Shown ' + getMaxResultCount() + " out of " + (getMaxResultCount() + ifMoreValue) + ' motifs.';
         }
         return ifMoreContainer;
     };
@@ -178,6 +174,22 @@ var motifPicker = (function () {
         return reg.test(motifName);
     };
 
+
+    var getDefaultMaxResultCount = function () {
+        return _defaultMaxResultCount;
+    };
+
+
+    var setMaxResultCount = function (newMaxResultCount) {
+        _maxResultCount = parseInt(newMaxResultCount);
+    };
+
+
+    var getMaxResultCount = function () {
+        return _maxResultCount;
+    };
+
+
     return {
         create: create,
 
@@ -191,5 +203,9 @@ var motifPicker = (function () {
         getChosenMotifSet: getChosenMotifSet,
 
         setSuggestedMotifList: setSuggestedMotifList,
+
+        getDefaultMaxResultCount: getDefaultMaxResultCount,
+        getMaxResultCount: getMaxResultCount,
+        setMaxResultCount: setMaxResultCount
     };
 }());
