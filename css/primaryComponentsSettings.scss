@@ -96,7 +96,7 @@ input[type="file"] {
 
 
 /* Media for larger devices */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $widthThreshHold) {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */

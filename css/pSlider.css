@@ -2,7 +2,7 @@
   padding: 10px 10px 10px 10px; }
   .sliderBox #log-slider {
     display: inline-block;
-    width: 700px;
+    width: 70%;
     margin-top: 5px; }
   .sliderBox .inputBox {
     display: inline-block;
@@ -36,6 +36,6 @@
   background: black; }
 
 .noUi-connect {
-  background: #a3a3a3;}
+  background: #a3a3a3; }
 
 /*# sourceMappingURL=pSlider.css.map */

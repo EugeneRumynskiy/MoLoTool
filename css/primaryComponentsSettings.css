@@ -69,7 +69,7 @@ input[type="file"] {
   display: none !important; }
 
 /* Media for larger devices */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 970px) {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */

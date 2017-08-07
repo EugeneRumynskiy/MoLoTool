@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 ul {
   list-style: none;
   margin: 0;
@@ -133,16 +132,16 @@ ul {
 /*Positioning*/
 /* Default media < 800px - two line menu */
 .the-nav {
-  min-width: 500px; }
+  min-width: 600px; }
   .the-nav .top-first {
     position: absolute; }
     .the-nav .top-first > .search-container {
-      min-width: 500px; }
+      min-width: 320px; }
   .the-nav .top-second {
     position: relative; }
 
 /* Media for larger devices */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 970px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

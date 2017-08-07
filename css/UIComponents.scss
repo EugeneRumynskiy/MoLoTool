@@ -2,7 +2,7 @@
 
 
 .suggestions {
-  margin-top: 10px;
+  margin-top: 10px + $topNav-navLineHeight;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
@@ -390,5 +390,13 @@
 
   #result-slider{
     margin-top: 20px;
+  }
+}
+
+
+/* Media for larger devices */
+@media screen and (min-width: $widthThreshHold) {
+  .suggestions {
+    margin-top: 10px;
   }
 }
