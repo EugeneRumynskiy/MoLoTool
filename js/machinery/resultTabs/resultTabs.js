@@ -147,6 +147,10 @@ var resultTabs = (function () {
                 $resultSequence.addClass("flattened");
             }
 
+            if ($.isEmptyObject(getOpenedIds())) {
+                $("#result-cmp").removeClass("empty");
+            }
+
             makeOpened(tabId);
             updateHeight();
         }
@@ -294,6 +298,10 @@ var resultTabs = (function () {
 
             var newCurrentTabId = $(".tab-result").first().attr("data-tab");
             setToCurrent(newCurrentTabId);
+        }
+
+        if ($.isEmptyObject(getOpenedIds())) {
+            $("#result-cmp").addClass("empty");
         }
     };
 

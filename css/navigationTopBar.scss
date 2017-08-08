@@ -112,6 +112,9 @@ ul {
   > .title-container{
     color: $textColor;
     padding: 10px;
+    position: absolute;
+    min-width: 410px;
+    left: 400px;
   }
 }
 
@@ -175,7 +178,6 @@ ul {
   min-width: 600px;
   .top-first{
     position: absolute;
-    overflow-x: hidden;
     > .search-container {
       min-width: 320px;
     }

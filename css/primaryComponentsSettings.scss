@@ -58,13 +58,16 @@ td a:visited,
   text-decoration: none;
   text-align: center;
 }
-.interface-button:hover, .material-icons{
-  color: $icon-hover-color;
+.interface-button:not(.zoom-button):hover {
+  .material-icons {
+    color: $icon-hover-color;
+  }
 }
-.interface-button:active, .material-icons {
-  color: $icon-active-color;
+.interface-button:not(.zoom-button):active {
+  .material-icons {
+    color: $icon-active-color;
+  }
 }
-
 
 input[type="file"] {
   display: none;

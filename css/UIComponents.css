@@ -43,7 +43,7 @@
       background-color: white;
       border: 1px solid grey;
       border-radius: 10px;
-      font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
+      font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
       font-size: 16px;
       color: black; }
     .suggestions #motif-list .motif-container .motif-title:hover {
@@ -78,11 +78,11 @@
         background-color: white;
         border: 3px transparent solid;
         border-radius: 5px;
-        font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B";
+        font-family: "Gotham Rounded SSm A","Gotham Rounded SSm B", "Times New Roman";
         font-size: 16px;
         color: black; }
       #motif-list-selected-cmp #motif-list-selected .chosen-motif .description {
-        margin: 0px 2px 8px 8px;
+        margin: 0 2px 8px 8px;
         vertical-align: middle; }
       #motif-list-selected-cmp #motif-list-selected .chosen-motif .sp-replacer {
         border-radius: inherit;
@@ -101,17 +101,18 @@
   #manual-seq-input textarea {
     border: solid 1.5px white;
     border-bottom: solid grey 1.5px;
-    font-family: "Courier New", "Times New Roman";
+    font-family: "Courier New", "Monospaced", Times;
     font-size: 23px;
     resize: none;
     width: 100%;
     line-height: 25px;
     height: 205px;
-    padding: 5px 0px;
+    padding: 5px 0;
     margin-bottom: 5px; }
   #manual-seq-input .input-controls {
     padding: 10px 0 10px 5px; }
     #manual-seq-input .input-controls .interface-button {
+      background-color: #ededf2;
       border-radius: 5px;
       border: solid grey 1px;
       padding: 7px; }
@@ -120,6 +121,16 @@
         min-width: 120px; }
         #manual-seq-input .input-controls .interface-button span .material-icons {
           float: right; }
+      #manual-seq-input .input-controls .interface-button label {
+        cursor: pointer; }
+    #manual-seq-input .input-controls .zoom-button {
+      cursor: default; }
+      #manual-seq-input .input-controls .zoom-button i {
+        cursor: pointer; }
+      #manual-seq-input .input-controls .zoom-button .material-icons:hover {
+        color: black; }
+      #manual-seq-input .input-controls .zoom-button .material-icons:active {
+        color: #a3a3a3; }
 
 #sequence-input-cmp {
   background-color: #ededf2; }
@@ -157,7 +168,7 @@
   #result-cmp #result-tabs {
     min-width: 180px;
     position: absolute;
-    left: 0px;
+    left: 0;
     padding: 0 0 0 5px;
     z-index: 2;
     cursor: pointer;

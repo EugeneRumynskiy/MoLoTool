@@ -45,10 +45,10 @@ td a:visited,
   text-decoration: none;
   text-align: center; }
 
-.interface-button:hover, .material-icons {
+.interface-button:not(.zoom-button):hover .material-icons {
   color: black; }
 
-.interface-button:active, .material-icons {
+.interface-button:not(.zoom-button):active .material-icons {
   color: #a3a3a3; }
 
 input[type="file"] {

@@ -39,6 +39,7 @@ var uiButtons = (function () {
         buildAddSequenceButton(inputCallback);
         buildInputMethodButton();
         buildOpenSequenceButton();
+        buildZoomButton("23px", {"top": 50, "bottom": 10});
 
         buildClearButton();
         buildDemoButton(inputCallback);
@@ -48,7 +49,230 @@ var uiButtons = (function () {
     };
 
 
-    ///Controls Buttons
+    var resetButtons = function () {
+        buildZoomButton("23px", {"top": 50, "bottom": 10});
+    };
+
+
+    ///Sequence-Input Buttons
+
+    var buildOpenInputButton = function () {
+        var getSettingsFor = {
+                "hidden":   {"title":"Show input ", "icon": "visibility_off"},
+                "visible":   {"title":"Hide input ", "icon": "visibility"}
+            },
+            defaultMode = "hidden",
+
+            $button = $("#open-input-button"),
+            $target = $("#manual-seq-input");
+
+
+        var switchMode = function () {
+            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+            setVisibility(newMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[newMode]));
+        };
+
+        var init = function () {
+            setVisibility(defaultMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    if ($(event.target).html() === "Show input ") {
+                        window.scrollTo(0, 0);
+                    }
+                    switchMode();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildAddSequenceButton = function (inputCallback) {
+        var getSettingsFor = {
+                "default":   {"title":"Add sequences ", "icon": "add"}
+            },
+            defaultMode = "default",
+
+            $button = $("#manual-seq-input").find(".add-sequence"),
+            $textarea = $("#manual-seq-input").find("textarea");
+
+
+        var showTextarea = function () {
+            if ($textarea.hasClass("hidden")) {
+                $textarea.removeClass("hidden")
+            }
+        };
+
+
+        var init = function () {
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+
+                    showTextarea();
+
+                    var rewriteFlag = (getInputMethod() === "rewrite");
+                    inputCallback($textarea.val(), rewriteFlag);
+                });
+        };
+
+        init();
+    };
+
+
+    var buildInputMethodButton = function () {
+        var getSettingsFor = {
+                "rewrite": {"title":"Mode: overwrite ", "icon": "autorenew"},
+                "stack":   {"title":"Mode: stack ", "icon": "add"}
+            },
+            defaultMode = "stack",
+
+            $button = $("#manual-seq-input").find(".input-method");
+
+
+        var switchMode = function () {
+            var newMode = (getInputMethod() === "rewrite") ? "stack" : "rewrite";
+            setInputMethodTo(newMode);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[newMode]));
+        };
+
+
+        var init = function () {
+            setInputMethodTo(defaultMode);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    switchMode();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildOpenSequenceButton = function () {
+        var getSettingsFor = {
+                "hidden":   {"title":"Show sequences ", "icon": "visibility_off"},
+                "visible":   {"title":"Hide sequences ", "icon": "visibility"}
+            },
+            defaultMode = "visible",
+
+            $button = $("#manual-seq-input").find(".open-sequence"),
+            $target = $("#manual-seq-input").find("textarea");
+
+
+        var switchMode = function () {
+            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+            setVisibility(newMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[newMode]));
+        };
+
+
+        var init = function () {
+            setVisibility(defaultMode, $target);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]))
+                .on('click', function(event) {
+                    event.preventDefault();
+                    if ($(event.target).html() === "Show sequences ") {
+                        window.scrollTo(0, 0);
+                    }
+                    switchMode();
+                });
+        };
+
+        init();
+    };
+
+
+    var buildZoomButton = function (defaultFontSizeToSet, thresholds) {
+        var $button = $("#manual-seq-input").find(".zoom-button"),
+            $target = $("#result-sequences").add($("#manual-seq-input").find("textarea")),
+
+            getSettingsFor = {
+                "default":   {"title":"Font size: ", "zoomIn": "zoom_in", "zoomOut": "zoom_out"},
+                "threshold": thresholds
+            },
+            defaultFontSize = defaultFontSizeToSet;
+
+
+        var zoom = function (eventType) {
+            var newFontSize = (eventType === "zoom_in") ? getNewFontSize("1px") : getNewFontSize("-1px");
+            $target.css("font-size", newFontSize);
+            $button
+                .find("span")
+                .empty()
+                .html(getSettingsFor.default.title + newFontSize);
+        };
+
+        var getNewFontSize = function (deltaSize) {
+            var newFontSize = calculateNewFontSize(deltaSize);
+            return cutWithThresholds(newFontSize);
+        };
+
+        var calculateNewFontSize = function (deltaSize) {
+            return parseFloat($target.css("font-size")) + parseFloat(deltaSize) + "px";
+        };
+
+        var cutWithThresholds = function (fontSize) {
+            var value = parseFloat(fontSize),
+                top = getSettingsFor.threshold.top,
+                bottom = getSettingsFor.threshold.bottom;
+
+            if (value > top)
+                value =  top;
+            else if (value < bottom)
+                value = bottom;
+
+            return value + "px";
+        };
+
+        var init = function () {
+            defaultFontSize = cutWithThresholds(defaultFontSizeToSet);
+            $target.css("font-size", defaultFontSize);
+
+            var content =  "<span class=\"icon icon-medium\">"+ getSettingsFor.default.title + defaultFontSize + "</span>" +
+                "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomIn + "</i>\n" +
+                "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomOut + "</i>\n";
+
+            $button
+                .empty()
+                .html(content)
+                .on('click', function(event) {
+                    event.preventDefault();
+
+                    var eventType = $(event.target).html();
+                    if (eventType === "zoom_in" || eventType === "zoom_out") {
+                        zoom(eventType);
+                    }
+                });
+        };
+
+        init();
+    };
+
+
+    ///Top-Nav Buttons
 
     var buildSwitchComparisonModeButton = function () {
         var getSettingsFor = {
@@ -132,159 +356,6 @@ var uiButtons = (function () {
     };
 
 
-    ///Sequence-Input Buttons
-
-    var buildOpenInputButton = function () {
-        var getSettingsFor = {
-                "hidden":   {"title":"Show input ", "icon": "visibility_off"},
-                "visible":   {"title":"Hide input ", "icon": "visibility"}
-            },
-            defaultMode = "hidden",
-
-            $button = $("#open-input-button"),
-            $target = $("#manual-seq-input");
-
-
-        var switchMode = function () {
-            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-            setVisibility(newMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[newMode]));
-        };
-
-        var init = function () {
-            setVisibility(defaultMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]))
-                .on('click', function(event) {
-                    if ($(event.target).html() === "Show input ") {
-                        window.scrollTo(0, 0);
-                    }
-                    switchMode();
-                });
-        };
-
-        init();
-    };
-
-
-    var buildAddSequenceButton = function (inputCallback) {
-        var getSettingsFor = {
-                "default":   {"title":"Add sequences ", "icon": "add"}
-            },
-            defaultMode = "default",
-
-            $button = $("#manual-seq-input").find(".add-sequence"),
-            $textarea = $("#manual-seq-input").find("textarea");
-
-
-        var showTextarea = function () {
-            if ($textarea.hasClass("hidden")) {
-                $textarea.removeClass("hidden")
-            }
-        };
-
-
-        var init = function () {
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]))
-                .on('click', function(event) {
-                    event.preventDefault();
-
-                    showTextarea();
-
-                    var rewriteFlag = (getInputMethod() === "rewrite");
-                    inputCallback($textarea.val(), rewriteFlag);
-                });
-        };
-
-        init();
-    };
-
-
-    var buildInputMethodButton = function () {
-        var getSettingsFor = {
-                "rewrite": {"title":"Mode:overwrite ", "icon": "autorenew"},
-                "stack":   {"title":"Mode:add ", "icon": "add"}
-            },
-            defaultMode = "stack",
-
-            $button = $("#manual-seq-input").find(".input-method");
-
-
-        var switchMode = function () {
-            var newMode = (getInputMethod() === "rewrite") ? "stack" : "rewrite";
-            setInputMethodTo(newMode);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[newMode]));
-        };
-
-
-        var init = function () {
-            setInputMethodTo(defaultMode);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]))
-                .on('click', function(event) {
-                    event.preventDefault();
-                    switchMode();
-                });
-        };
-
-        init();
-    };
-
-
-    var buildOpenSequenceButton = function () {
-        var getSettingsFor = {
-                "hidden":   {"title":"Show sequences ", "icon": "visibility_off"},
-                "visible":   {"title":"Hide sequences ", "icon": "visibility"}
-            },
-            defaultMode = "visible",
-
-            $button = $("#manual-seq-input").find(".open-sequence"),
-            $target = $("#manual-seq-input").find("textarea");
-
-
-        var switchMode = function () {
-            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-            setVisibility(newMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[newMode]));
-        };
-
-
-        var init = function () {
-            setVisibility(defaultMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]))
-                .on('click', function(event) {
-                    event.preventDefault();
-                    if ($(event.target).html() === "Show sequences ") {
-                        window.scrollTo(0, 0);
-                    }
-                    switchMode();
-                });
-        };
-
-        init();
-    };
-
-
-    ///Top-Nav Buttons
-
     var buildClearButton = function () {
         var getSettingsFor = {
                 "default":   {"title":"Reset ", "icon": "delete_sweep"}
@@ -302,6 +373,8 @@ var uiButtons = (function () {
                     clearChosenMotifList();
                     clearSearchInput();
                     clearSequenceInput();
+
+                    resetButtons();
                 });
         };
 
@@ -365,6 +438,8 @@ var uiButtons = (function () {
 
         init();
     };
+
+
 
 
     //Search Buttons
