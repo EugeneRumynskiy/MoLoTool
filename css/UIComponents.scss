@@ -172,13 +172,13 @@
   }
 
   .input-controls {
-    padding: 10px 0 10px 5px;
+    margin: 10px 0 10px 5px;
 
     .interface-button {
       background-color: $secondaryColor;
       border-radius: 5px;
       border: solid $borderColor $thin;
-      padding: 7px;
+      display: inline-block;
 
       span {
         display: inline-block;

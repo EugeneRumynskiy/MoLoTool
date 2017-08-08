@@ -110,12 +110,12 @@
     padding: 5px 0;
     margin-bottom: 5px; }
   #manual-seq-input .input-controls {
-    padding: 10px 0 10px 5px; }
+    margin: 10px 0 10px 5px; }
     #manual-seq-input .input-controls .interface-button {
       background-color: #ededf2;
       border-radius: 5px;
       border: solid grey 1px;
-      padding: 7px; }
+      display: inline-block; }
       #manual-seq-input .input-controls .interface-button span {
         display: inline-block;
         min-width: 120px; }
