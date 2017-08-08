@@ -98,4 +98,20 @@ Example: <a href="#" class="copy-button">
   height: 24px;
   line-height: 24px; }
 
+/*Show title element
+Example: <a href="#" class="copy-button">
+*/
+.tab-result .show-title {
+  position: absolute;
+  right: 84px;
+  display: inline-block;
+  margin-top: 58px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.54); }
+.tab-result .title-shown {
+  color: black; }
+
 /*# sourceMappingURL=controlElements.css.map */

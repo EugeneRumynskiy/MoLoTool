@@ -355,9 +355,6 @@
           overflow: hidden;
         }
       }
-
-      .sequence {
-      }
     }
 
     .flattened {
@@ -370,7 +367,7 @@
         width: inherit;
       }
 
-      .sequence {
+      .sequence, .title {
         position: static;
 
         margin-top: 0 !important;
@@ -384,7 +381,7 @@
         position: absolute;
       }
 
-      .locked.sequence {
+      .locked.sequence, .locked.title {
         position: absolute;
         padding-top: 20px;
       }
@@ -398,7 +395,7 @@
 
       }
 
-      .sequence {
+      .sequence, .title {
         position: static;
         line-height: $resultTab-height * 0.75;
       }

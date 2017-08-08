@@ -166,8 +166,7 @@ var resultTabs = (function () {
 
     var updateWidth = function (event) {
         var $tabs = $(".tab-result-sequence"),
-            $sequences = $tabs.find(".sequence"),
-            $digits = $tabs.find(".digits");
+            $sequences = $tabs.find(".sequence");
 
         if (event === "reset") {
             $tabs.css({"width": "unset"});
@@ -210,7 +209,9 @@ var resultTabs = (function () {
                 '<a href="#" class="close"></a>' +
                 '<a href="#" class="lock '+ lockMode + '">' + '<i class="material-icons md-dark">lock_open</i>' + '</a>' +
                 '<a href="#" class="copy-tab" data-tab=' + tabId + '>' +
-                '<i class="material-icons md-dark">content_copy</i>' + '</a>' +
+                    '<i class="material-icons md-dark">content_copy</i>' +
+                '</a>' +
+                '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Name" + '</a>' +
                 '</div>'
             );
 
@@ -223,6 +224,8 @@ var resultTabs = (function () {
                 motifHandler.handleMotifs();
             } else if ($target.parent().hasClass("lock")) {
                 comparisonMode.switchLock($target);
+            } else if ($target.hasClass("show-title")) {
+                showTitle($target);
             } else if (getCurrentMode() === "Single") {
                 var tabId = $(this).attr('data-tab');
                 if (getCurrentTabId()[0] !== tabId) {
@@ -236,10 +239,21 @@ var resultTabs = (function () {
     };
 
 
+    var showTitle = function ($target) {
+        console.log($target);
+        var tabId = $target.parent().attr("data-tab"),
+            $tab = $(".tab-result-sequence[data-tab=" + tabId + "]");
+
+        $target.toggleClass("title-shown");
+        $tab.find(".sequence, .title").toggleClass("hidden");
+    };
+
+
     var createResultSequence = function (tabId) {
         return  $('<div class="tab-result-sequence" data-tab=' + tabId + '>'
             + '<div class="digits"></div>'
             + '<div class="sequence"></div>'
+            + '<div class="title hidden"></div>'
             + '</div>');
     };
 
@@ -258,19 +272,25 @@ var resultTabs = (function () {
         if (isOpened(tabId)) {
             var seqLength = sequenceLibrary.getItemById(tabId).seqValues.sequence.length,
                 digits = digitGuidance.getDigitsFor(seqLength),
+                title = "<span class=\"segment\">" +
+                    sequenceLibrary.getItemById(tabId).seqValues.title +
+                    "</span>",
 
                 $resultLine = $(".tab-result-sequence[data-tab=" + tabId + "]"),
                 $sequence = $resultLine.find(".sequence"),
-                $digits = $resultLine.find(".digits");
+                $digits = $resultLine.find(".digits"),
+                $title = $resultLine.find(".title");
 
             $sequence.empty().html(content);
             $digits.empty().html(digits);
+            $title.empty().html(title);
 
             if (getCurrentMode() === "Single") {
                 var digitsHeight = parseFloat($digits.css("height")),
                     shift = parseFloat($digits.css("line-height")) / 2,
                     marginTop = digitsHeight - shift;
                 $sequence.css("margin-top", "-" + marginTop + "px");
+                $title.css("margin-top", "-" + marginTop + "px");
             }
         } else {
             console.log(tabId);

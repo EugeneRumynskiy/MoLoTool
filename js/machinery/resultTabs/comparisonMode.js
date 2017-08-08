@@ -109,22 +109,10 @@ var comparisonMode = (function () {
             width = $("#result-sequences").css("width");
 
         $tabToLock
-            .find(".sequence, .digits").css({
+            .find(".sequence, .digits, .title").css({
                 "left": $tabToLock.position().left + "px"
             })
             .addClass("locked");
-
-    /*    $tabToLock
-            .find(".digits").css({
-                "left": $tabToLock.position().left + "px",
-                /!*"clip": "rect(" +
-                    "0px," +
-                    (seqShift - $tabToLock.position().left + tabShift - 2) + "px," +
-                    "23px" + "," +
-                    ($tabToLock.position().left - tabShift) + "px" +
-                ")"*!/
-            })
-            .addClass("locked");*/
 
         $target.html("lock");
     };
@@ -135,7 +123,7 @@ var comparisonMode = (function () {
             $tabToUnlock = $(".tab-result-sequence[data-tab="+ tabId + "]");
 
         $tabToUnlock
-            .find(".sequence, .digits").css({
+            .find(".sequence, .digits, .title").css({
                "left": "unset"
             })
             .removeClass("locked");

@@ -233,7 +233,7 @@
       height: 20px;
       line-height: 20px;
       width: inherit; }
-    #result-cmp #result-sequences .flattened .sequence {
+    #result-cmp #result-sequences .flattened .sequence, #result-cmp #result-sequences .flattened .title {
       position: static;
       margin-top: 0 !important;
       height: 70px;
@@ -241,14 +241,14 @@
       width: inherit; }
     #result-cmp #result-sequences .flattened .locked.digits {
       position: absolute; }
-    #result-cmp #result-sequences .flattened .locked.sequence {
+    #result-cmp #result-sequences .flattened .locked.sequence, #result-cmp #result-sequences .flattened .locked.title {
       position: absolute;
       padding-top: 20px; }
     #result-cmp #result-sequences .full-screen .digits {
       position: static;
       margin-top: -22.5px;
       line-height: 67.5px; }
-    #result-cmp #result-sequences .full-screen .sequence {
+    #result-cmp #result-sequences .full-screen .sequence, #result-cmp #result-sequences .full-screen .title {
       position: static;
       line-height: 67.5px; }
   #result-cmp #result-sequences:empty {

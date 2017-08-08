@@ -120,3 +120,27 @@ Example: <a href="#" class="copy-button">
   line-height: 24px;
 
 }
+
+/*Show title element
+Example: <a href="#" class="copy-button">
+*/
+.tab-result {
+  .show-title {
+    position: absolute;
+    right: 84px;
+
+    display: inline-block;
+    margin-top: $resultTab-height - 24px - 8px;
+
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+
+    text-decoration: none;
+    color: $icon-inactive;
+  }
+
+  .title-shown {
+    color:$icon-hover-color;
+  }
+}
