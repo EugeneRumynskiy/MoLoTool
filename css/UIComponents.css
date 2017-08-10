@@ -53,7 +53,8 @@
     .suggestions #motif-list div:first-child {
       border-top: none; }
   .suggestions #motif-list.spread {
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    max-height: 360px; }
   .suggestions #ifMore-container .ifMore-value {
     min-height: 35px; }
     .suggestions #ifMore-container .ifMore-value .interface-button {

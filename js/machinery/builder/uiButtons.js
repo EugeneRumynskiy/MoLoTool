@@ -535,8 +535,8 @@ var uiButtons = (function () {
 
     var buildShowMoreButton = (function () {
         var getSettingsFor = {
-                "default":   {"title":"", "icon": "keyboard_arrow_left", "size": 0},
-                "spread":   {"title":"", "icon": "keyboard_arrow_down", "size": 100}
+                "default":   {"title":"", "icon": "expand_more", "size": 0},
+                "spread":   {"title":"", "icon": "expand_less", "size": 100}
             },
             defaultMode = "default",
 
