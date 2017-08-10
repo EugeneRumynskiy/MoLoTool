@@ -10,14 +10,13 @@
   outline: none;
 }
 html {
-  overflow-x: hidden;
 }
 body {
   height: 100%;
   margin: 0;
   background-color: $main-bg-color;
+  overflow-y: scroll;
 }
-
 
 td a:link,
 .motif-title a:link {
@@ -30,12 +29,12 @@ td a:visited,
   text-decoration: none;
 }
 
-
-.interface-area {
+.interface-area, #help-cmp {
   margin-top: 2 * $topNav-navLineHeight;
   .disabled {
     display: none;
   }
+  overflow-x: hidden;
 }
 .interface-component {
   padding: 5px 5px 5px 5px;
@@ -73,11 +72,9 @@ input[type="file"] {
   display: none;
 }
 
-
 .empty {
   display: none;
 }
-
 
 //toggled classes
 .full-screen {
@@ -102,7 +99,7 @@ input[type="file"] {
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
-  .interface-area {
+  .interface-area, #help-cmp {
     /*Positioning*/
     /* Default media > 800px - one line menu */
     margin-top: $topNav-navLineHeight;

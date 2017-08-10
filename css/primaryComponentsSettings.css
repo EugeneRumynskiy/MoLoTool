@@ -5,13 +5,11 @@
   box-sizing: border-box;
   outline: none; }
 
-html {
-  overflow-x: hidden; }
-
 body {
   height: 100%;
   margin: 0;
-  background-color: #ededf2; }
+  background-color: #ededf2;
+  overflow-y: scroll; }
 
 td a:link,
 .motif-title a:link {
@@ -23,9 +21,10 @@ td a:visited,
   color: #0645AD;
   text-decoration: none; }
 
-.interface-area {
-  margin-top: 80px; }
-  .interface-area .disabled {
+.interface-area, #help-cmp {
+  margin-top: 80px;
+  overflow-x: hidden; }
+  .interface-area .disabled, #help-cmp .disabled {
     display: none; }
 
 .interface-component {
@@ -71,7 +70,7 @@ input[type="file"] {
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {
-  .interface-area {
+  .interface-area, #help-cmp {
     /*Positioning*/
     /* Default media > 800px - one line menu */
     margin-top: 40px; } }

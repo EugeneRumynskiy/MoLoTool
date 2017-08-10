@@ -43,7 +43,7 @@ var uiButtons = (function () {
 
         buildClearButton();
         buildDemoButton(inputCallback);
-        buildHelpButton();
+        buildHelpButton.init();
 
         buildShowMoreButton();
     };
@@ -51,6 +51,7 @@ var uiButtons = (function () {
 
     var resetButtons = function () {
         buildZoomButton("23px", {"top": 50, "bottom": 10});
+        buildHelpButton.reset();
     };
 
 
@@ -419,25 +420,68 @@ var uiButtons = (function () {
     };
 
 
-    var buildHelpButton = function () {
+    var buildHelpButton = (function () {
         var getSettingsFor = {
-                "default":   {"title":"Help ", "icon": "info_outline"}
+                "hidden":   {"title":"Help ", "icon": "info_outline"},
+                "visible":   {"title":"Help ", "icon": "info_outline"}
             },
-            defaultMode = "default",
-            $button = $("#help-button");
+            defaultMode = "hidden",
+
+            $button,
+            $help,
+            $interface;
+
+        var setVisibilityToMode = function (newMode) {
+            if (newMode === "hidden") {
+                $help.addClass("hidden");
+                $interface.removeClass("hidden");
+            } else {
+                $help.removeClass("hidden");
+                $interface.addClass("hidden");
+            }
+        };
+
+        var switchMode = function () {
+            var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
+
+            setVisibilityToMode(newMode);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[newMode]));
+
+            return newMode;
+        };
 
         var init = function () {
+            $button = $("#help-button");
+            $help = $("#help-cmp");
+            $interface = $(".interface-area");
+
+            setVisibilityToMode(defaultMode);
+
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
-                    console.log("Help\n");
+                    switchMode();
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            setVisibilityToMode(defaultMode);
+
+            $button
+                .empty()
+                .html(generateContent(getSettingsFor[defaultMode]));
+        };
+
+        return {
+            init: init,
+            reset: reset
+        };
+    } ());
 
 
 
@@ -487,8 +531,8 @@ var uiButtons = (function () {
     };
 
 
-    var setVisibility = function (defaultMode, $target) {
-        if (defaultMode === "hidden") {
+    var setVisibility = function (newMode, $target) {
+        if (newMode === "hidden") {
             $target.addClass("hidden");
         } else {
             $target.removeClass("hidden");

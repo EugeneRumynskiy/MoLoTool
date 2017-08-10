@@ -1,9 +1,10 @@
 .sliderBox {
-  padding: 10px 10px 10px 10px; }
+  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  padding: 10px;
+  margin-bottom: 20px; }
   .sliderBox #log-slider {
-    display: inline-block;
-    width: 70%;
-    margin-top: 5px; }
+    display: block;
+    margin: -35px 0 0 410px; }
   .sliderBox .inputBox {
     display: inline-block;
     position: relative;
@@ -11,14 +12,13 @@
     margin-top: 5px; }
     .sliderBox .inputBox .inputUnit {
       display: inline-block;
-      width: 240px; }
+      margin-right: 5px; }
       .sliderBox .inputBox .inputUnit .label {
         left: 5px;
         width: 110px; }
       .sliderBox .inputBox .inputUnit .input {
         padding: 5px;
         position: relative;
-        left: 5px;
         border: 1px solid grey;
         border-radius: 5px;
         color: black;

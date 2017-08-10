@@ -17,7 +17,6 @@ ul {
   padding: 0 10px;
   position: fixed;
   background: #dadada;
-  font-family: "Lato", sans-serif;
   box-shadow: 0 1px 1px 0 black; }
   .nav-bar > .the-nav {
     height: 80px; }
@@ -125,7 +124,6 @@ ul {
   clear: both; }
 
 .container {
-  font-family: 'Lato', 'serif', "Times New Roman";
   width: 95%;
   margin: 0 auto; }
   .container.nav-bar {

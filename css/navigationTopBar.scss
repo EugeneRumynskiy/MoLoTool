@@ -22,7 +22,6 @@ ul {
   padding: 0 10px;
   position: fixed;
   background: $topNav-primaryMenuBackground;
-  font-family: "Lato", sans-serif;
   box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
   > .the-nav {
     height: $topNav-navLineHeight * 2;
@@ -158,7 +157,6 @@ ul {
 }
 
 .container {
-  font-family: 'Lato', 'serif', "Times New Roman";
   width: 95%;
   margin: 0 auto;
   &.nav-bar {
