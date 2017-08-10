@@ -32,78 +32,57 @@ var uiButtons = (function () {
 
 
     var setupButtons = function (inputCallback) {
-        buildSwitchComparisonModeButton();
-        buildShowTableButton();
-        //buildOpenInputButton();
+        buildSwitchComparisonModeButton.init();
+        buildShowTableButton.init();
 
-        buildAddSequenceButton(inputCallback);
-        buildInputMethodButton();
-        buildOpenSequenceButton();
-        buildZoomButton("23px", {"top": 50, "bottom": 10});
+        buildAddSequenceButton.init(inputCallback);
 
-        buildClearButton();
-        buildDemoButton(inputCallback);
+        buildInputMethodButton.init();
+        buildOpenSequenceButton.init();
+        buildZoomButton.init("23px", {"top": 50, "bottom": 10});
+
+        buildClearButton.init();
+        buildDemoButton.init(inputCallback);
         buildHelpButton.init();
 
-        buildShowMoreButton();
+        buildShowMoreButton.init();
     };
 
 
     var resetButtons = function () {
-        buildZoomButton("23px", {"top": 50, "bottom": 10});
+        buildShowTableButton.reset();
+        buildSwitchComparisonModeButton.reset();
+
+        buildInputMethodButton.reset();
+        buildOpenSequenceButton.reset();
+        buildZoomButton.reset();
+
         buildHelpButton.reset();
+
+        buildShowMoreButton.reset();
+    };
+
+
+    var resetInterface = function () {
+        clearTabsList();
+        clearChosenMotifList();
+        clearSearchInput();
+        clearSequenceInput();
+
+        resetButtons();
     };
 
 
     ///Sequence-Input Buttons
 
-    var buildOpenInputButton = function () {
-        var getSettingsFor = {
-                "hidden":   {"title":"Show input ", "icon": "visibility_off"},
-                "visible":   {"title":"Hide input ", "icon": "visibility"}
-            },
-            defaultMode = "hidden",
-
-            $button = $("#open-input-button"),
-            $target = $("#manual-seq-input");
-
-
-        var switchMode = function () {
-            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-            setVisibility(newMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[newMode]));
-        };
-
-        var init = function () {
-            setVisibility(defaultMode, $target);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]))
-                .on('click', function(event) {
-                    if ($(event.target).html() === "Show input ") {
-                        window.scrollTo(0, 0);
-                    }
-                    switchMode();
-                });
-        };
-
-        init();
-    };
-
-
-    var buildAddSequenceButton = function (inputCallback) {
+    var buildAddSequenceButton = (function () {
         var getSettingsFor = {
                 "default":   {"title":"Add sequences ", "icon": "add"}
             },
             defaultMode = "default",
 
-            $button = $("#manual-seq-input").find(".add-sequence"),
-            $textarea = $("#manual-seq-input").find("textarea");
-
+            $button,
+            $textarea;
 
         var showTextarea = function () {
             if ($textarea.hasClass("hidden")) {
@@ -111,8 +90,10 @@ var uiButtons = (function () {
             }
         };
 
+        var init = function (inputCallback) {
+            $button = $("#manual-seq-input").find(".add-sequence");
+            $textarea = $("#manual-seq-input").find("textarea");
 
-        var init = function () {
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
@@ -126,18 +107,20 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        return {
+            init: init
+        };
+    }());
 
 
-    var buildInputMethodButton = function () {
+    var buildInputMethodButton = (function () {
         var getSettingsFor = {
                 "rewrite": {"title":"Mode: overwrite ", "icon": "autorenew"},
                 "stack":   {"title":"Mode: stack ", "icon": "add"}
             },
             defaultMode = "stack",
 
-            $button = $("#manual-seq-input").find(".input-method");
+            $button;
 
 
         var switchMode = function () {
@@ -151,6 +134,8 @@ var uiButtons = (function () {
 
 
         var init = function () {
+            $button = $("#manual-seq-input").find(".input-method");
+
             setInputMethodTo(defaultMode);
 
             $button
@@ -162,20 +147,29 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            var newMode = (getInputMethod() === "rewrite") ? "stack" : "rewrite";
+            if (newMode === defaultMode) {
+                switchMode();
+            }
+        };
+
+        return {
+            init: init,
+            reset: reset
+        };
+    }());
 
 
-    var buildOpenSequenceButton = function () {
+    var buildOpenSequenceButton = (function () {
         var getSettingsFor = {
                 "hidden":   {"title":"Show sequences ", "icon": "visibility_off"},
                 "visible":   {"title":"Hide sequences ", "icon": "visibility"}
             },
             defaultMode = "visible",
 
-            $button = $("#manual-seq-input").find(".open-sequence"),
-            $target = $("#manual-seq-input").find("textarea");
-
+            $button,
+            $target;
 
         var switchMode = function () {
             var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
@@ -186,8 +180,10 @@ var uiButtons = (function () {
                 .html(generateContent(getSettingsFor[newMode]));
         };
 
-
         var init = function () {
+            $button = $("#manual-seq-input").find(".open-sequence");
+            $target = $("#manual-seq-input").find("textarea");
+
             setVisibility(defaultMode, $target);
 
             $button
@@ -202,19 +198,29 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
+            if (newMode === defaultMode) {
+                switchMode();
+            }
+        };
+
+        return {
+            init: init,
+            reset: reset
+        };
+    } ());
 
 
-    var buildZoomButton = function (defaultFontSizeToSet, thresholds) {
-        var $button = $("#manual-seq-input").find(".zoom-button"),
-            $target = $("#result-sequences").add($("#manual-seq-input").find("textarea")),
+    var buildZoomButton = (function () {
+        var $button,
+            $target,
 
             getSettingsFor = {
                 "default":   {"title":"Font size: ", "zoomIn": "zoom_in", "zoomOut": "zoom_out"},
-                "threshold": thresholds
+                "threshold": ""
             },
-            defaultFontSize = defaultFontSizeToSet;
+            defaultFontSize;
 
 
         var zoom = function (eventType) {
@@ -248,10 +254,13 @@ var uiButtons = (function () {
             return value + "px";
         };
 
-        var init = function () {
+        var init = function (defaultFontSizeToSet, thresholds) {
+            $button = $("#manual-seq-input").find(".zoom-button");
+            $target = $("#result-sequences").add($("#manual-seq-input").find("textarea"));
+            getSettingsFor["thresholds"] = thresholds;
             defaultFontSize = cutWithThresholds(defaultFontSizeToSet);
-            $target.css("font-size", defaultFontSize);
 
+            $target.css("font-size", defaultFontSize);
             var content =  "<span class=\"icon icon-medium\">"+ getSettingsFor.default.title + defaultFontSize + "</span>" +
                 "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomIn + "</i>\n" +
                 "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomOut + "</i>\n";
@@ -269,20 +278,30 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            $target.css("font-size", defaultFontSize);
+            $button
+                .find("span")
+                .empty()
+                .html(getSettingsFor.default.title + defaultFontSize);
+        };
+
+        return {
+            init: init,
+            reset: reset
+        }
+    }());
 
 
     ///Top-Nav Buttons
 
-    var buildSwitchComparisonModeButton = function () {
+    var buildSwitchComparisonModeButton = (function () {
         var getSettingsFor = {
                 "Single":   {"title":"Change mode ", "icon": "select_all"},
                 "Multiply":   {"title":"Change mode ", "icon": "format_list_bulleted"}
             },
-            defaultMode = comparisonMode.getDefaultComparisonMode(),
-
-            $button = $("#change-mode-button");
+            defaultMode,
+            $button;
 
 
         var switchMode = function () {
@@ -295,6 +314,9 @@ var uiButtons = (function () {
 
 
         var init = function () {
+            defaultMode = comparisonMode.getDefaultComparisonMode();
+            $button = $("#change-mode-button");
+
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
@@ -304,19 +326,28 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            if (comparisonMode.getCurrentMode() !== defaultMode) {
+                switchMode();
+            }
+        };
+
+        return {
+            init: init,
+            reset: reset
+        };
+    }());
 
 
-    var buildShowTableButton = function () {
+    var buildShowTableButton = (function () {
         var getSettingsFor = {
                 "disabled":   {"title":"Show table ", "icon": "visibility_off"},
                 "active":   {"title":"Hide table ", "icon": "visibility"}
             },
             defaultMode = "active",
 
-            $button = $("#open-table-button"),
-            $target = $("#motif-table-cmp");
+            $button,
+            $target;
 
 
         var switchMode = function () {
@@ -338,6 +369,9 @@ var uiButtons = (function () {
 
 
         var init = function () {
+            $button = $("#open-table-button");
+            $target = $("#motif-table-cmp");
+
             if (defaultMode === "disabled") {
                 $target.addClass("disabled");
             } else {
@@ -353,47 +387,54 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            var newMode = ($target.hasClass("disabled")) ? "active" : "disabled";
+            if (newMode === defaultMode) {
+                switchMode();
+            }
+        };
+
+        return {
+            init: init,
+            reset: reset
+        };
+    } ());
 
 
-    var buildClearButton = function () {
+    var buildClearButton = (function () {
         var getSettingsFor = {
                 "default":   {"title":"Reset ", "icon": "delete_sweep"}
             },
             defaultMode = "default",
-            $button = $("#clear-button");
+            $button;
 
         var init = function () {
+            $button = $("#clear-button");
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
-                    clearTabsList();
-                    clearChosenMotifList();
-                    clearSearchInput();
-                    clearSequenceInput();
-
-                    resetButtons();
+                    resetInterface();
                 });
         };
 
-        init();
-    };
+        return {
+            init: init
+        };
+    }());
 
 
-    var buildDemoButton = function (inputCallback) {
+    var buildDemoButton = (function () {
         var getSettingsFor = {
                 "showDemo":   {"title":"Demo ", "icon": "insert_emoticon"}
             },
             defaultMode = "showDemo",
-            $button = $("#demo-button");
+            $button,
+            withInputCallback;
 
 
         var showDemo = function () {
-            clearChosenMotifList();
-
             $("#motif-search").val("coe1");
             motifSearch.applySearch();
             $("#motif-list").children().first().children().first().children().first().click();
@@ -402,22 +443,29 @@ var uiButtons = (function () {
             motifSearch.applySearch();
 
             var test = inputParsing.inputTest();
-            inputCallback(test, true);
+            withInputCallback(test, true);
+
+            $("#manual-seq-input").find("textarea").val(test);
         };
 
+        var init = function (inputCallback) {
+            $button = $("#demo-button");
+            withInputCallback = inputCallback;
 
-        var init = function () {
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
+                    resetInterface();
                     showDemo();
                 });
         };
 
-        init();
-    };
+        return {
+            init:init
+        };
+    }());
 
 
     var buildHelpButton = (function () {
@@ -470,11 +518,10 @@ var uiButtons = (function () {
         };
 
         var reset = function () {
-            setVisibilityToMode(defaultMode);
-
-            $button
-                .empty()
-                .html(generateContent(getSettingsFor[defaultMode]));
+            var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
+            if (newMode === defaultMode) {
+                switchMode();
+            }
         };
 
         return {
@@ -484,33 +531,33 @@ var uiButtons = (function () {
     } ());
 
 
-
-
     //Search Buttons
 
-    var buildShowMoreButton = function () {
+    var buildShowMoreButton = (function () {
         var getSettingsFor = {
-                "default":   {"title":"", "icon": "keyboard_arrow_left", "size": motifPicker.getDefaultMaxResultCount()},
+                "default":   {"title":"", "icon": "keyboard_arrow_left", "size": 0},
                 "spread":   {"title":"", "icon": "keyboard_arrow_down", "size": 100}
             },
             defaultMode = "default",
 
-            $button = $("#show-more-button");
+            $button;
 
         var switchMode = function () {
             var newMode = (motifPicker.getMaxResultCount() === motifPicker.getDefaultMaxResultCount())
                 ? "spread" : "default";
-            motifPicker.setMaxResultCount(getSettingsFor[newMode].size);
-
             $button
                 .find("i")
                 .empty()
                 .html(getSettingsFor[newMode].icon);
 
+            motifPicker.setMaxResultCount(getSettingsFor[newMode].size);
             motifSearch.applySearch();
         };
 
         var init = function () {
+            getSettingsFor["default"].size = motifPicker.getDefaultMaxResultCount();
+            $button = $("#show-more-button");
+
             $button
                 .empty()
                 .html(generateContent(getSettingsFor[defaultMode]))
@@ -520,8 +567,19 @@ var uiButtons = (function () {
                 });
         };
 
-        init();
-    };
+        var reset = function () {
+            var newMode = (motifPicker.getMaxResultCount() === motifPicker.getDefaultMaxResultCount())
+                ? "spread" : "default";
+            if (newMode === defaultMode) {
+                switchMode()
+            }
+        };
+
+        return {
+            init: init,
+            reset: reset
+        }
+    }());
 
     ///Support Functions
 

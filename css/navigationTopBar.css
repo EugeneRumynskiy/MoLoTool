@@ -82,6 +82,7 @@ ul {
       color: black;
       font-size: 15px; }
   .nav > .title-container {
+    text-shadow: 1px 4px 6px #dadada, 0 0 0 black, 1px 4px 6px #dadada;
     color: black;
     padding: 10px;
     position: absolute;
