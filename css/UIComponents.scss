@@ -59,7 +59,6 @@
   #motif-list {
     max-height: 240px;
     position: relative;
-    overflow-y: scroll;
 
     .motif-container {
       .motif-title {
@@ -82,6 +81,9 @@
     div:first-child {
       border-top: none;
     }
+  }
+  #motif-list.spread {
+    overflow-y: scroll;
   }
 
   #ifMore-container{
@@ -412,6 +414,7 @@
 
 #motif-table-cmp {
   font-family: $defaultFontFamily;
+  word-break: break-all;
 }
 
 

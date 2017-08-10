@@ -50,7 +50,7 @@ var motifTable = (function () {
         var createColumns = function () {
             var unitDetails = [{
                     "title": 'Info',
-                    "width": '7%',
+                    "width": '3%',
                     "className":      'details-control',
                     "orderable":      false,
                     "data":           null,
@@ -58,10 +58,10 @@ var motifTable = (function () {
                 }],
 
                 featuresToShow = $.map(features.getFeatures(false), function (feature) {
-                    if (feature === "Motif ID" || feature === "Sequence") {
-                        return {"data": feature, "title": feature, "width": "30%"};
+                    if (feature === "Motif ID" || feature === "Seq name") {
+                        return {"data": feature, "title": feature, "width": "10%"};
                     } else {
-                        return {"data": feature, "title": feature, "width": "13%"};
+                        return {"data": feature, "title": feature, "width": "5%"};
                     }
                 }),
 
@@ -227,8 +227,8 @@ var features = (function () {
 
     var setFeatures = function () {
         _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand", "Seq name"]);
-        _rowFeatures.toShow = ["Motif ID", "-log10(P-value)", "P-value", "Start", "End", "Sequence"];
+        _rowFeatures.toHide = [].concat(motifLibrary.getNamesOfDisplayedFeatures(), ["Strand"]);
+        _rowFeatures.toShow = ["Motif ID", "Seq name", "-log10(P-value)", "P-value", "Start", "End", "Sequence"];
     };
 
 

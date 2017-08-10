@@ -38,8 +38,7 @@
       max-width: 240px; }
   .suggestions #motif-list {
     max-height: 240px;
-    position: relative;
-    overflow-y: scroll; }
+    position: relative; }
     .suggestions #motif-list .motif-container .motif-title {
       display: inline-block;
       padding: 4px;
@@ -53,6 +52,8 @@
       cursor: hand; }
     .suggestions #motif-list div:first-child {
       border-top: none; }
+  .suggestions #motif-list.spread {
+    overflow-y: scroll; }
   .suggestions #ifMore-container .ifMore-value {
     min-height: 35px; }
     .suggestions #ifMore-container .ifMore-value .interface-button {
@@ -260,7 +261,8 @@
     display: none; }
 
 #motif-table-cmp {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif; }
+  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  word-break: break-all; }
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {

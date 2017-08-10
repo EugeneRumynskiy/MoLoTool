@@ -540,7 +540,8 @@ var uiButtons = (function () {
             },
             defaultMode = "default",
 
-            $button;
+            $button,
+            $target;
 
         var switchMode = function () {
             var newMode = (motifPicker.getMaxResultCount() === motifPicker.getDefaultMaxResultCount())
@@ -550,6 +551,12 @@ var uiButtons = (function () {
                 .empty()
                 .html(getSettingsFor[newMode].icon);
 
+            if (newMode === "spread") {
+                $target.addClass("spread");
+            } else {
+                $target.removeClass("spread");
+            }
+
             motifPicker.setMaxResultCount(getSettingsFor[newMode].size);
             motifSearch.applySearch();
         };
@@ -557,6 +564,7 @@ var uiButtons = (function () {
         var init = function () {
             getSettingsFor["default"].size = motifPicker.getDefaultMaxResultCount();
             $button = $("#show-more-button");
+            $target = $("#motif-list");
 
             $button
                 .empty()
