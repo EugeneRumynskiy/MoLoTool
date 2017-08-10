@@ -71,7 +71,7 @@ var colorPicker = (function () {
             change: _eventHandler
             ,
             palette: [
-                ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "#F15853",
+                ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
                     "rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
 
                 ["#F15854", "#FAA43A", '#DECF3F', '#60BD68', '#5DA5DA', '#F17CB0', '#B276B2', '#B2912F', '#AAAAAA', '#4D4D4D']

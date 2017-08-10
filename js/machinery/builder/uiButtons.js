@@ -77,7 +77,7 @@ var uiButtons = (function () {
 
     var buildAddSequenceButton = (function () {
         var getSettingsFor = {
-                "default":   {"title":"Add sequences ", "icon": "add"}
+                "default":   {"title":"Submit sequences ", "icon": "add"}
             },
             defaultMode = "default",
 
@@ -115,8 +115,8 @@ var uiButtons = (function () {
 
     var buildInputMethodButton = (function () {
         var getSettingsFor = {
-                "rewrite": {"title":"Mode: overwrite ", "icon": "autorenew"},
-                "stack":   {"title":"Mode: stack ", "icon": "add"}
+                "rewrite": {"title":"Add/Rewrite ", "icon": "autorenew"},
+                "stack":   {"title":"Add/Rewrite ", "icon": "add"}
             },
             defaultMode = "stack",
 

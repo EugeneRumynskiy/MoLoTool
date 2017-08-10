@@ -180,6 +180,11 @@
 
   .input-controls {
     margin: 10px 0 10px 5px;
+    overflow: hidden;
+
+    .right {
+      float: right;
+    }
 
     .interface-button {
       background-color: $secondaryColor;
@@ -202,9 +207,16 @@
     }
 
     .zoom-button {
+      padding: 6.41px 10px 6.41px 10px;
+      background-color: $boxBackground;
       cursor: default;
+
       i {
         cursor: pointer;
+        border-radius: $border-radius;
+        background-color: $secondaryColor;
+        border: $thin solid $borderColor;
+        font-size: 30px;
       }
 
       .material-icons:hover {

@@ -115,7 +115,10 @@
     padding: 5px 0;
     margin-bottom: 5px; }
   #manual-seq-input .input-controls {
-    margin: 10px 0 10px 5px; }
+    margin: 10px 0 10px 5px;
+    overflow: hidden; }
+    #manual-seq-input .input-controls .right {
+      float: right; }
     #manual-seq-input .input-controls .interface-button {
       background-color: #ededf2;
       border-radius: 5px;
@@ -129,9 +132,15 @@
       #manual-seq-input .input-controls .interface-button label {
         cursor: pointer; }
     #manual-seq-input .input-controls .zoom-button {
+      padding: 6.41px 10px 6.41px 10px;
+      background-color: white;
       cursor: default; }
       #manual-seq-input .input-controls .zoom-button i {
-        cursor: pointer; }
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #ededf2;
+        border: 1px solid grey;
+        font-size: 30px; }
       #manual-seq-input .input-controls .zoom-button .material-icons:hover {
         color: black; }
       #manual-seq-input .input-controls .zoom-button .material-icons:active {
