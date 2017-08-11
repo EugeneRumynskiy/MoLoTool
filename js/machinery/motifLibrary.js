@@ -73,7 +73,7 @@ var motifLibrary = (function () {
 
 
     var extractDisplayedFeatures = function (motif) {
-        if (_displayedFeatures == null) {
+        if (_displayedFeatures === null) {
             errorHandler.logError({"fileName": _moduleName, "message": "motifLibrary must be created _displayedFeatures = null"});
             return {};
         } else {
@@ -82,7 +82,7 @@ var motifLibrary = (function () {
             for (var jsonFeature in _displayedFeatures) {
                 displayedFeature = _displayedFeatures[jsonFeature];
 
-                if (displayedFeature == "Logo") {
+                if (displayedFeature === "Logo") {
                     logoFullUrl = _logoBaseUrl + motif[jsonFeature];
                     valuesToDisplay[displayedFeature] = '<img src="'+logoFullUrl+'" />';
                 } else {
@@ -95,14 +95,17 @@ var motifLibrary = (function () {
 
 
     var getNamesOfDisplayedFeatures = function () {
-        if (_displayedFeatures == null) {
+        if (_displayedFeatures === null) {
             errorHandler.logError({
                 "fileName": _moduleName,
                 "message": "motifLibrary must be created _displayedFeatures = null"
             });
             return [];
         } else {
-            return Object.values(_displayedFeatures);
+            var values = Object.keys(_displayedFeatures).map(function(key) {
+                return _displayedFeatures[key];
+            });
+            return values;
         }
     };
 
