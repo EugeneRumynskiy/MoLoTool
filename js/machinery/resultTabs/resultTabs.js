@@ -26,6 +26,10 @@ var resultTabs = (function () {
         digitGuidance.create(10000);
 
         clipboardCopy.create();
+
+        if ($.isEmptyObject(getOpenedIds())) {
+            $("#result-cmp").addClass("empty");
+        }
     };
 
 
@@ -211,7 +215,7 @@ var resultTabs = (function () {
                 '<a href="#" class="copy-tab" data-tab=' + tabId + '>' +
                     '<i class="material-icons md-dark">content_copy</i>' +
                 '</a>' +
-                '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Name" + '</a>' +
+                '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Full name" + '</a>' +
                 '</div>'
             );
 
@@ -240,7 +244,6 @@ var resultTabs = (function () {
 
 
     var showTitle = function ($target) {
-        console.log($target);
         var tabId = $target.parent().attr("data-tab"),
             $tab = $(".tab-result-sequence[data-tab=" + tabId + "]");
 
@@ -285,16 +288,37 @@ var resultTabs = (function () {
             $digits.empty().html(digits);
             $title.empty().html(title);
 
-            if (getCurrentMode() === "Single") {
-                var digitsHeight = parseFloat($digits.css("height")),
-                    shift = parseFloat($digits.css("line-height")) / 2,
-                    marginTop = digitsHeight - shift;
-                $sequence.css("margin-top", "-" + marginTop + "px");
-                $title.css("margin-top", "-" + marginTop + "px");
-            }
+            updateMargin(tabId);
         } else {
             console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});
+        }
+    };
+
+
+    var updateMargin = function (tabId) {
+        if (getCurrentMode() === "Single") {
+            var $resultLine = $(".tab-result-sequence[data-tab=" + tabId + "]"),
+                $sequence = $resultLine.find(".sequence"),
+                $digits = $resultLine.find(".digits"),
+                $title = $resultLine.find(".title"),
+
+                digitsHeight = parseFloat($digits.css("height")),
+                shift = parseFloat($digits.css("line-height")) / 2,
+                marginTop = digitsHeight - shift;
+
+            $sequence.css("margin-top", "-" + marginTop + "px");
+            $title.css("margin-top", "-" + marginTop + "px");
+        }
+    };
+
+
+    var updateMarginForCurrentTab = function () {
+        if (getCurrentMode() === "Single" ) {
+            var currentId = getCurrentTabId();
+            if (!$.isEmptyObject(currentId)) {
+                updateMargin(currentId);
+            }
         }
     };
 
@@ -352,6 +376,7 @@ var resultTabs = (function () {
 
         updateTab: updateTab,
         updateWidth: updateWidth,
+        updateMarginForCurrentTab: updateMarginForCurrentTab,
 
         //debug
         show: show

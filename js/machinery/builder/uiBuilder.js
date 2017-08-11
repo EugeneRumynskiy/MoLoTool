@@ -56,19 +56,33 @@ var uiBuilder = (function () {
 
 
     var inputCallback = function (inputString, replaceCurrent) {
-        if (replaceCurrent === true) {
-            clearSequenceLibrary();
+        var sequences = inputParsing.parseInput(inputString);
+
+        if (!$.isEmptyObject(sequences)) {
+            updateTextInput(sequences);
+
+            if (replaceCurrent === true) {
+                clearSequenceLibrary();
+            }
+
+            var libraryIds = $.map(sequences, sequenceLibrary.addTab);
+            $.map(libraryIds, resultTabs.addIdToResult);
+
+            handleEvent();
+
+            if (comparisonMode.getCurrentMode() === "Multiply") {
+                resultTabs.updateWidth("setToMaximum");
+            }
+        }
+    };
+
+    var updateTextInput = function (sequences) {
+        var inputParsedInto = "";
+        for(var i = 0; i < sequences.length; i++) {
+            inputParsedInto += ">" + sequences[i].title + "\n" + sequences[i].sequence + "\n";
         }
 
-        var sequences = inputParsing.parseInput(inputString),
-            libraryIds = $.map(sequences, sequenceLibrary.addTab);
-
-        $.map(libraryIds, resultTabs.addIdToResult);
-        handleEvent();
-
-        if (comparisonMode.getCurrentMode() === "Multiply") {
-            resultTabs.updateWidth("setToMaximum");
-        }
+        $("#manual-seq-input").find("textarea").val(inputParsedInto);
     };
 
 

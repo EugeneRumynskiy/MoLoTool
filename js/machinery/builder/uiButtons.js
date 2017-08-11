@@ -39,7 +39,7 @@ var uiButtons = (function () {
 
         buildInputMethodButton.init();
         buildOpenSequenceButton.init();
-        buildZoomButton.init("23px", {"top": 50, "bottom": 10});
+        buildZoomButton.init("18px", {"top": 50, "bottom": 10});
 
         buildClearButton.init();
         buildDemoButton.init(inputCallback);
@@ -115,8 +115,8 @@ var uiButtons = (function () {
 
     var buildInputMethodButton = (function () {
         var getSettingsFor = {
-                "rewrite": {"title":"Add/Rewrite ", "icon": "autorenew"},
-                "stack":   {"title":"Add/Rewrite ", "icon": "add"}
+                "rewrite": {"title":"Rewrite: Yes ", "icon": "autorenew"},
+                "stack":   {"title":"Rewrite: No ", "icon": "add"}
             },
             defaultMode = "stack",
 
@@ -220,17 +220,8 @@ var uiButtons = (function () {
                 "default":   {"title":"Font size: ", "zoomIn": "zoom_in", "zoomOut": "zoom_out"},
                 "threshold": ""
             },
-            defaultFontSize;
-
-
-        var zoom = function (eventType) {
-            var newFontSize = (eventType === "zoom_in") ? getNewFontSize("1px") : getNewFontSize("-1px");
-            $target.css("font-size", newFontSize);
-            $button
-                .find("span")
-                .empty()
-                .html(getSettingsFor.default.title + newFontSize);
-        };
+            defaultFontSize,
+            lineHeightConst = 1.6;
 
         var getNewFontSize = function (deltaSize) {
             var newFontSize = calculateNewFontSize(deltaSize);
@@ -245,22 +236,38 @@ var uiButtons = (function () {
             var value = parseFloat(fontSize),
                 top = getSettingsFor.threshold.top,
                 bottom = getSettingsFor.threshold.bottom;
-
-            if (value > top)
-                value =  top;
-            else if (value < bottom)
+            if (value > top) {
+                value = top;
+            } else if (value < bottom) {
                 value = bottom;
+            }
 
             return value + "px";
+        };
+
+        var getLineHeight = function (fontSize) {
+            return parseFloat(fontSize) * lineHeightConst + "px";
+        };
+
+        var zoom = function (eventType) {
+            var newFontSize = (eventType === "zoom_in") ? getNewFontSize("1px") : getNewFontSize("-1px");
+            $target.css({"font-size": newFontSize, "line-height": getLineHeight(newFontSize)});
+            resultTabs.updateMarginForCurrentTab();
+            $button
+                .find("span")
+                .empty()
+                .html(getSettingsFor.default.title + newFontSize);
         };
 
         var init = function (defaultFontSizeToSet, thresholds) {
             $button = $("#manual-seq-input").find(".zoom-button");
             $target = $("#result-sequences").add($("#manual-seq-input").find("textarea"));
-            getSettingsFor["thresholds"] = thresholds;
+            getSettingsFor["threshold"] = thresholds;
             defaultFontSize = cutWithThresholds(defaultFontSizeToSet);
 
-            $target.css("font-size", defaultFontSize);
+            $target.css({"font-size": defaultFontSize, "line-height": getLineHeight(defaultFontSize)});
+            resultTabs.updateMarginForCurrentTab();
+
             var content =  "<span class=\"icon icon-medium\">"+ getSettingsFor.default.title + defaultFontSize + "</span>" +
                 "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomIn + "</i>\n" +
                 "<i class=\"material-icons md-dark\">" + getSettingsFor.default.zoomOut + "</i>\n";
@@ -279,7 +286,8 @@ var uiButtons = (function () {
         };
 
         var reset = function () {
-            $target.css("font-size", defaultFontSize);
+            $target.css({"font-size": defaultFontSize, "line-height": getLineHeight(defaultFontSize)});
+            resultTabs.updateMarginForCurrentTab();
             $button
                 .find("span")
                 .empty()
@@ -444,8 +452,6 @@ var uiButtons = (function () {
 
             var test = inputParsing.inputTest();
             withInputCallback(test, true);
-
-            $("#manual-seq-input").find("textarea").val(test);
         };
 
         var init = function (inputCallback) {

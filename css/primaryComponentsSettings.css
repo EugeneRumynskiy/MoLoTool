@@ -68,6 +68,10 @@ input[type="file"] {
 .hidden {
   display: none !important; }
 
+.sp-container {
+  border: solid 1.5px grey;
+  border-radius: 5px; }
+
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {
   .interface-area, #help-cmp {

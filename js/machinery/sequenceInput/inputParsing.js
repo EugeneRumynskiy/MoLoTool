@@ -5,9 +5,10 @@ var inputParsing = (function () {
     var _fileName = "inputParsing",
         _parsedSequences,
         _defaultParsedValues,
+        _seqRegExp,
 
         _actualTest = ">mouse SLAMF1 promoter\n" +
-            "TGATAAAGTGATTT-AAGCCTGATCATAAATGAGCAATCCTGGA\n" +
+            "TGATAAAGTGATTTAAAGCCTGATCATAAATGAGCAATCCTGGA\n" +
             ">human SLAMF1 promoter\n" +
             "CAAAAAAGTGATTTAAAGCCTCATGGGAGATGAGCAATCCTCAA\n" +
             ">myTitle_1 Second Third\n" +
@@ -17,6 +18,8 @@ var inputParsing = (function () {
 
 
     var create = function () {
+        _seqRegExp = new RegExp('[^ATGCatgc]');
+
         setDefaultParsedValues({
             "title": "None",
             "sequence": "None"
@@ -51,7 +54,7 @@ var inputParsing = (function () {
             sequences = parseAsText(inputString);
         }
 
-        return sequences;
+        return checkOutput(sequences);
     };
 
 
@@ -62,7 +65,6 @@ var inputParsing = (function () {
 
     var parseAsFasta = function (inputString) {
         var descriptionIndex = inputString.indexOf(">"),
-            inputDescription = inputString.slice(0, descriptionIndex),
             inputWithoutDescription = inputString.slice(descriptionIndex + 1),
 
             sequencesWithTitles = inputWithoutDescription.split(">");
@@ -74,7 +76,7 @@ var inputParsing = (function () {
         var parsedValues = getDefaultParsedValues(),
             splitResult = $.trim(sequenceWithTitle).split("\n");
 
-        if (splitResult.length === 2) {
+        if ((splitResult.length === 2) && (checkSequence(splitResult[1]))) {
             parsedValues["title"] = splitResult[0];
             parsedValues["sequence"] = splitResult[1];
         }
@@ -92,13 +94,31 @@ var inputParsing = (function () {
         var parsedValues = getDefaultParsedValues(),
             trimmedSequence = $.trim(sequence);
 
-        if (trimmedSequence.length !== 0) {
+        if ((trimmedSequence.length !== 0) && (checkSequence(trimmedSequence))) {
             parsedValues["sequence"] = trimmedSequence;
         }
 
         return parsedValues;
     };
 
+    var checkSequence = function (sequence) {
+        return (sequence.match(_seqRegExp) === null);
+    };
+    
+    var checkOutput = function (sequences) {
+        var isEmpty = true;
+        for (var i = 0; i < sequences.length; i++) {
+            if (sequences[i].sequence !== "None") {
+                isEmpty = false;
+            }
+        }
+
+        if (isEmpty) {
+            return [];
+        } else {
+            return sequences;
+        }
+    };
 
     ////Legacy
     var joinStrings = function (stringsList) {

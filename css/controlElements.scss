@@ -127,12 +127,12 @@ Example: <a href="#" class="copy-button">
 .tab-result {
   .show-title {
     position: absolute;
-    right: 84px;
+    left: 11px;
 
     display: inline-block;
     margin-top: $resultTab-height - 24px - 8px;
 
-    width: 24px;
+    //width: 24px;
     height: 24px;
     line-height: 24px;
 

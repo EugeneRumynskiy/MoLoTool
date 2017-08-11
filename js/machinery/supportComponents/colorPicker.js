@@ -3,9 +3,12 @@
  */
 var colorPicker = (function () {
     var _fileName = "colorPicker",
-        _defaultColors = ["#F15854",
-            "#FAA43A", '#DECF3F', '#60BD68',
-            '#5DA5DA', '#F17CB0', '#B276B2', '#B2912F', '#AAAAAA', '#4D4D4D'],
+        _defaultColors =    ["#ff0000", "#E91E63", "#9C27B0", "#4e0250",
+            "#3F51B5", "#0a2463", "#2196F3", "#00BCD4",
+            "#009688", "#4CAF50", "#FFC107",
+            "#FF9800","#795548","#607D8B", "#ef7674",
+            "#b80c09", "#0d160b", "#c490d1", "#f75c03",
+            "#b02e0c", "#9c3848", "#5c8001"],
         _freeColorIndex = 0,
         _eventHandler = function () {
             errorHandler.logError({"fileName": _fileName, "message": "_eventHandler hasn't been set"});
@@ -50,34 +53,31 @@ var colorPicker = (function () {
 
     //by default the colorPicker is "input" element
     var set = function (colorPicker) {
-        colorPicker.spectrum({
-            color: lastFreeColor(),
-            showInput: true,
-            className: "full-spectrum",
-            showInitial: true,
-            showPalette: true,
-            showSelectionPalette: true,
-            maxSelectionSize: 10,
-            preferredFormat: "hex",
-            localStorageKey: "spectrum.demo",
-            move: function (color) {
-            },
-            show: function () {
-            },
-            beforeShow: function () {
-            },
-            hide: function () {
-            },
-            change: _eventHandler
-            ,
-            palette: [
-                ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
-                    "rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
+        colorPicker.spectrum(
+            {
+                color: lastFreeColor(),
+                showInput: true,
+                className: "full-spectrum",
+                showInitial: true,
+                showPalette: true,
+                showSelectionPalette: true,
+                maxSelectionSize: 10,
+                preferredFormat: "hex",
+                //localStorageKey: "spectrum.demo",
+                move: function (color) {},
+                show: function () {},
+                beforeShow: function () {},
+                hide: function () {},
+                change: _eventHandler,
+                palette: [
+                    ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"],
 
-                ["#F15854", "#FAA43A", '#DECF3F', '#60BD68', '#5DA5DA', '#F17CB0', '#B276B2', '#B2912F', '#AAAAAA', '#4D4D4D']
+                    _defaultColors,
+                    ["#f6511d", "#ffb400", "#00a6ed", "#7fb800", "#0d2c54"],
+                    ["#4d9de0", "#e15554", "#e1bc29", "#3bb273", "#7768ae"]
             ]
 
-        });
+            });
         _freeColorIndex += 1;
     };
 

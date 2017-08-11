@@ -96,6 +96,12 @@ input[type="file"] {
   display: none !important;
 }
 
+//ColorPicker
+.sp-container{
+  border: solid $thick $borderColor;
+  border-radius: $border-radius;
+}
+
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
