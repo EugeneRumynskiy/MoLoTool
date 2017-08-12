@@ -1,8 +1,8 @@
 .nav-area {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif; }
+  font-family: Serif, Sans, "Gotham Rounded SSm B"; }
 
 .suggestions {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   margin-top: 50px;
   background-color: #dadada;
   border-radius: 10px;
@@ -49,6 +49,7 @@
       font-size: 16px;
       color: black; }
     .suggestions #motif-list .motif-container .motif-title:hover {
+      cursor: pointer;
       cursor: hand; }
     .suggestions #motif-list div:first-child {
       border-top: none; }
@@ -63,7 +64,7 @@
       padding: 5px; }
 
 #motif-list-selected-cmp {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   min-height: 75px; }
   #motif-list-selected-cmp #motif-list-selected {
     display: inline-block;
@@ -98,7 +99,7 @@
     display: none; }
 
 #manual-seq-input {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   background-color: white;
   border: 1.5px solid grey;
   border-radius: 5px;
@@ -117,6 +118,8 @@
   #manual-seq-input .input-controls {
     margin: 10px 5px 5px 5px;
     overflow: hidden; }
+    #manual-seq-input .input-controls .left {
+      display: inline-block; }
     #manual-seq-input .input-controls .right {
       float: right; }
     #manual-seq-input .input-controls .interface-button {
@@ -132,22 +135,21 @@
       #manual-seq-input .input-controls .interface-button label {
         cursor: pointer; }
     #manual-seq-input .input-controls .zoom-button {
-      padding: 6.41px 10px 6.41px 10px;
       background-color: white;
-      cursor: default; }
+      cursor: default;
+      border: none; }
       #manual-seq-input .input-controls .zoom-button i {
         cursor: pointer;
         border-radius: 5px;
         background-color: #ededf2;
-        border: 1px solid grey;
-        font-size: 30px; }
+        border: 1px solid grey; }
       #manual-seq-input .input-controls .zoom-button .material-icons:hover {
         color: black; }
       #manual-seq-input .input-controls .zoom-button .material-icons:active {
         color: #a3a3a3; }
 
 #sequence-input-cmp {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   background-color: #ededf2; }
   #sequence-input-cmp .controls {
     border-radius: 2px;
@@ -179,10 +181,11 @@
         border-left: 1px solid grey; }
 
 #result-cmp {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   position: relative; }
   #result-cmp #result-tabs {
     min-width: 180px;
+    min-height: 305px;
     position: absolute;
     left: 0;
     padding: 0 0 0 5px;
@@ -271,7 +274,7 @@
     display: none; }
 
 #motif-table-cmp {
-  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B", Times, Serif;
+  font-family: Serif, Sans, "Gotham Rounded SSm B";
   word-break: break-all; }
 
 /* Media for larger devices */

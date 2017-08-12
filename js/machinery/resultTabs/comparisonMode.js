@@ -60,6 +60,7 @@ var comparisonMode = (function () {
 
         turnOffLocks();
         $(".lock").addClass("hidden");
+        $("#result-sequences").addClass("scrollable");
 
         resultTabs.updateWidth("reset");
 
@@ -76,6 +77,7 @@ var comparisonMode = (function () {
         $(".tab-result-sequence").addClass("flattened");
 
         $(".lock").removeClass("hidden");
+        $("#result-sequences").removeClass("scrollable");
 
         resultTabs.updateWidth("setToMaximum");
 

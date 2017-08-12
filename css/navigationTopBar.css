@@ -80,7 +80,8 @@ ul {
       outline: none;
       background: #dadada;
       color: black;
-      font-size: 15px; }
+      font-size: 15px;
+      font-family: Serif, Sans, "Gotham Rounded SSm B"; }
   .nav > .title-container {
     text-shadow: 1px 4px 6px #dadada, 0 0 0 black, 1px 4px 6px #dadada;
     color: black;

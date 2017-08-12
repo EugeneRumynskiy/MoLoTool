@@ -203,15 +203,17 @@
 
             <div class="input-controls">
 
-                <a class="interface-button input-method" href="#"></a>
-                <a class="interface-button upload-button" href="#">
-                    <label class="custom-file-upload">
-                        <input type="file" id="fileInput">
-                        Upload file
-                        <i class="material-icons md-dark">file_upload</i>
-                    </label>
-                </a>
-                <a class="interface-button add-sequence" href="#"></a>
+                <div class="left">
+                    <a class="interface-button input-method" href="#"></a>
+                    <a class="interface-button upload-button" href="#">
+                        <label class="custom-file-upload">
+                            <input type="file" id="fileInput">
+                            Upload file
+                            <i class="material-icons md-dark">file_upload</i>
+                        </label>
+                    </a>
+                    <a class="interface-button add-sequence" href="#"></a>
+                </div>
 
                 <div class="right">
                     <a id="change-mode-button" class="interface-button" href="#"></a>
@@ -219,23 +221,23 @@
                     <a class="interface-button zoom-button" href="#"></a>
                 </div>
             </div>
-        </div>
+                </div>
 
 
-        <div class="interface-component" id="result-cmp">
-            <div id='result-tabs'></div>
-            <div id='result-sequences'>
-                <div class="patch border-patch"></div>
-                <div class="patch area-patch "></div>
+                <div class="interface-component" id="result-cmp">
+                    <div id='result-tabs'></div>
+                    <div id='result-sequences'>
+                        <div class="patch border-patch"></div>
+                        <div class="patch area-patch "></div>
+                    </div>
+                </div>
+
+
+                <div class="interface-component" id="motif-table-cmp">
+                    <table id='motif-table' class="display cell-border compact" width="100%">
+                    </table>
+                </div>
             </div>
-        </div>
-
-
-        <div class="interface-component" id="motif-table-cmp">
-            <table id='motif-table' class="display cell-border compact" width="100%">
-            </table>
-        </div>
-    </div>
 </div>
 </body>
 </html>

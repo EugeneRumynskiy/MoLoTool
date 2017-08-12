@@ -74,6 +74,7 @@
         color: $motif-title-color;
       }
       .motif-title:hover {
+        cursor: pointer;
         cursor: hand;
       }
     }
@@ -182,6 +183,9 @@
     margin: 10px 5px 5px 5px;
     overflow: hidden;
 
+    .left {
+      display: inline-block;
+    }
     .right {
       float: right;
     }
@@ -207,16 +211,15 @@
     }
 
     .zoom-button {
-      padding: 6.41px 10px 6.41px 10px;
       background-color: $boxBackground;
       cursor: default;
+      border: none;
 
       i {
         cursor: pointer;
         border-radius: $border-radius;
         background-color: $secondaryColor;
         border: $thin solid $borderColor;
-        font-size: 30px;
       }
 
       .material-icons:hover {
@@ -286,6 +289,8 @@
 
   #result-tabs{
     min-width: $resultTab-width;
+    min-height: 305px;
+
     position: absolute;
 
     left: 0;

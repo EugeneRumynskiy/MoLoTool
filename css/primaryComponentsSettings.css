@@ -61,6 +61,9 @@ input[type="file"] {
   word-break: break-all;
   border-bottom: none !important; }
 
+.scrollable {
+  overflow-y: scroll !important; }
+
 #result-sequences .flattened {
   height: 90px !important;
   word-wrap: normal; }

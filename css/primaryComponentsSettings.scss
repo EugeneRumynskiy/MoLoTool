@@ -72,6 +72,7 @@ input[type="file"] {
   display: none;
 }
 
+
 .empty {
   display: none;
 }
@@ -82,6 +83,10 @@ input[type="file"] {
   min-height: 12 + $resultTab-height * 4 + px !important;
   word-break: break-all;
   border-bottom: none !important;
+}
+
+.scrollable {
+  overflow-y: scroll !important;
 }
 
 #result-sequences {

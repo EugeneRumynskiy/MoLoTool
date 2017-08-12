@@ -3,12 +3,36 @@
  */
 var colorPicker = (function () {
     var _fileName = "colorPicker",
-        _defaultColors =    ["#ff0000", "#E91E63", "#9C27B0", "#4e0250",
-            "#3F51B5", "#0a2463", "#2196F3", "#00BCD4",
-            "#009688", "#4CAF50", "#FFC107",
-            "#FF9800","#795548","#607D8B", "#ef7674",
-            "#b80c09", "#0d160b", "#c490d1", "#f75c03",
-            "#b02e0c", "#9c3848", "#5c8001"],
+        _defaultColors =    [
+            "#ff0000",
+            "#4CAF50",
+            "#2196F3",
+            "#FF9800",
+            "#9C27B0",
+
+            "#E91E63",
+            "#5c8001",
+            "#3F51B5",
+            "#f75c03",
+            "#4e0250",
+
+            "#b02e0c",
+            "#009688",
+            "#0a2463",
+            "#FFC107",
+            "#0d160b",
+
+            "#9c3848",
+            "#134611",
+            "#00BCD4",
+
+            "#c490d1",
+            "#795548",
+            "#607D8B",
+            "#ef7674"
+            ],
+
+        _freeColorIndex = 0,
         _freeColorIndex = 0,
         _eventHandler = function () {
             errorHandler.logError({"fileName": _fileName, "message": "_eventHandler hasn't been set"});
@@ -73,8 +97,12 @@ var colorPicker = (function () {
                     ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"],
 
                     _defaultColors,
-                    ["#f6511d", "#ffb400", "#00a6ed", "#7fb800", "#0d2c54"],
-                    ["#4d9de0", "#e15554", "#e1bc29", "#3bb273", "#7768ae"]
+                    ["#f6511d", "#ffb400",
+                        "#00a6ed", "#7fb800",
+                        "#0d2c54"],
+                    ["#4d9de0", "#e15554",
+                        "#e1bc29", "#3bb273",
+                        "#7768ae"]
             ]
 
             });

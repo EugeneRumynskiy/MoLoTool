@@ -55,6 +55,12 @@ var uiBuilder = (function () {
     };
 
 
+    var resizeCallback = function () {
+        comparisonMode.turnOffLocks();
+        resultTabs.updateMarginForCurrentTab();
+    };
+
+
     var inputCallback = function (inputString, replaceCurrent) {
         var sequences = inputParsing.parseInput(inputString);
 
@@ -224,6 +230,7 @@ var uiBuilder = (function () {
 
 
     return {
-        buildUI: buildUI
+        buildUI: buildUI,
+        resizeCallback: resizeCallback
     };
 }());

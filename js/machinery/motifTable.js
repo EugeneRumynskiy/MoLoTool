@@ -50,23 +50,38 @@ var motifTable = (function () {
         var createColumns = function () {
             var unitDetails = [{
                     "title": 'Info',
-                    "width": '3%',
+                    "width": '1%',
                     "className":      'details-control',
                     "orderable":      false,
                     "data":           null,
                     "defaultContent": ''
                 }],
 
+                featuresWidth = {
+                    "Motif ID": "8%",
+                    "Seq name": "8%",
+
+                    "-log10(P-value)": "3%",
+                    "P-value": "3%",
+                    "Start": "2%",
+                    "End": "2%",
+                    "Sequence": "8%",
+
+                    "Strand": "2%",
+                    "Logo":"4%",
+                    "Uniprot ID":"6%",
+                    "Family":"6%",
+                    "Subfamily":"6%",
+                    "Gene name":"3%"
+                },
+
                 featuresToShow = $.map(features.getFeatures(false), function (feature) {
-                    if (feature === "Motif ID" || feature === "Seq name") {
-                        return {"data": feature, "title": feature, "width": "10%"};
-                    } else {
-                        return {"data": feature, "title": feature, "width": "5%"};
-                    }
+                    return {"data": feature, "title": feature, "width": featuresWidth[feature]};
                 }),
 
                 featuresToHide = $.map(features.getFeatures(true), function (feature) {
-                    return {"data": feature, "title": feature, "visible": false };
+                    return {"data": feature, "title": feature, "visible": false, "width": featuresWidth[feature]};
+
                 }),
 
                 columns = [].concat(unitDetails, featuresToShow, featuresToHide);
