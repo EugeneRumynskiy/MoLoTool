@@ -55,6 +55,7 @@
       border-top: none; }
   .suggestions #motif-list.spread {
     overflow-y: scroll;
+    overflow-x: hidden;
     max-height: 360px; }
   .suggestions #ifMore-container .ifMore-value {
     min-height: 35px; }
