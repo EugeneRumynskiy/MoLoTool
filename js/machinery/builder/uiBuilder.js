@@ -46,7 +46,7 @@ var uiBuilder = (function () {
 
         window.setTimeout(function () {
             $("#demo-button").trigger("click");
-        }, 1000);
+        }, 100);
     };
 
 

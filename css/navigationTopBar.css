@@ -69,6 +69,7 @@ ul {
   .nav > .search-container {
     padding: 10px 24px 10px 10px; }
     .nav > .search-container > #motif-search {
+      position: absolute;
       display: inline-block;
       width: 320px;
       padding-left: 5px;
@@ -87,7 +88,7 @@ ul {
     color: black;
     padding: 10px;
     position: absolute;
-    min-width: 410px;
+    min-width: 480px;
     left: 400px; }
 
 /* Active State */

@@ -12,19 +12,21 @@ body {
   overflow-y: scroll; }
 
 td a:link,
-.motif-title a:link {
+.motif-title a:link,
+#help-cmp a:link {
   color: #0645AD;
   text-decoration: none; }
 
 td a:visited,
-.motif-title a:visited {
+.motif-title a:visited,
+#help-cmp a:visited {
   color: #0645AD;
   text-decoration: none; }
 
-.interface-area, #help-cmp {
+.interface-area {
   margin-top: 80px;
   overflow-x: hidden; }
-  .interface-area .disabled, #help-cmp .disabled {
+  .interface-area .disabled {
     display: none; }
 
 .interface-component {
@@ -77,7 +79,7 @@ input[type="file"] {
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {
-  .interface-area, #help-cmp {
+  .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
     margin-top: 40px; } }

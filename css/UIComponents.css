@@ -1,9 +1,35 @@
+#help-cmp {
+  margin-top: 120px;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1.5px solid grey;
+  background-color: white;
+  letter-spacing: 0.75px;
+  overflow-x: hidden; }
+  #help-cmp .help-header {
+    margin: 0 auto;
+    width: 300px;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 24px;
+    line-height: 36px; }
+  #help-cmp .help-content {
+    text-indent: 32px;
+    text-align: justify;
+    font-size: 16px;
+    line-height: 24px; }
+  #help-cmp .italic {
+    font-style: italic; }
+
 .nav-area {
   font-family: Serif, Sans, "Gotham Rounded SSm B"; }
 
 .suggestions {
   font-family: Serif, Sans, "Gotham Rounded SSm B";
-  margin-top: 50px;
+  margin-top: 42px;
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid grey;
@@ -280,7 +306,10 @@
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {
+  #help-cmp {
+    margin-top: 80px; }
+
   .suggestions {
-    margin-top: 10px; } }
+    margin-top: 2px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */

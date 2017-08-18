@@ -14,7 +14,9 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
+
     <title>Sequence Motif Location Tool (MoLoTool)</title>
+
 
     <!--jQuery -->
     <script src="externalLibs/jQuery/jquery.min.js"></script>
@@ -71,22 +73,21 @@
 
 
     <!--Github icons - Octicons EXT-->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.0.0/octicons.min.css">
+    <link rel="stylesheet" href="externalLibs/octicons/octicons.min.css">
+
 
     <!--Google Web Fonts. EXT -->
     <link href="css/utilities/icon.css" rel="stylesheet">
+
 
     <!--noUIslider -->
     <script src="externalLibs/nouislider/nouislider.min.js"></script>
     <link rel="stylesheet" href="externalLibs/nouislider/nouislider.min.css">
 
 
-    <!--scrollBar -->
-    <!--<script src="externalLibs/scrollBar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <link rel="stylesheet" href="externalLibs/scrollBar/jquery.mCustomScrollbar.min.css">-->
-
     <!--clipboard copy -->
     <script src="externalLibs/clipboard_js/clipboard.min.js"></script>
+
 
     <!--Project Modules -->
     <script src="js/machinery/supportComponents/AppContainer.js"></script>
@@ -142,7 +143,8 @@
             <nav class="the-nav clearfix">
                 <ul class="nav pull-left top-first">
                     <li class="search-container">
-                        <span class="icon octicon octicon-search"></span>
+                        <i class="material-icons md-dark">search</i>
+                        <!--<span class="icon octicon octicon-search"></span>-->
                         <input id="motif-search" placeholder="Select motif" autocomplete="off" autocorrect="off" autocapitalize="off">
                         <div class="suggestions">
                             <div id='legend-container' class="suggestion"></div>
@@ -169,7 +171,42 @@
     </div>
 
     <div id='help-cmp' class="interface-component">
-
+        <div>
+            <div class="help-header">MoLoTool</div>
+            <div class="help-content">Transcription Factor Motif Location Toolbox (MoLoTool) is an interactive user-friendly web application
+                which allows user to scan one's sequences for a presence of Transcription Factor Binding Sites (TFBS).
+                Current binding models consist of Homo Sapiens Comprehensive Model Collection (HOCOMOCO).
+            </div>
+        </div>
+        <div>
+            <div class="help-header"><a target="_blank" href="http://hocomoco.autosome.ru/help">HOCOMOCO</a></div>
+            <div class="help-content">HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains Transcription Factor (TF)
+                binding models represented as classic
+                <a target="_blank" href="https://en.wikipedia.org/wiki/Position_weight_matrix">Position Weight Matrices</a>
+                (PWMs, also known as Position-Specific Scoring Matrices, PSSMs) and precalculated score thresholds (see HOCOMOCO-v10
+                <a target="_blank" href="http://nar.oxfordjournals.org/content/44/D1/D116">paper</a>
+                for details).
+            </div>
+        </div>
+        <div>
+            <div class="help-header">Manual</div>
+            <div class="help-content">
+                1. Add desired binding models from HOCOMOCO. To do that use search by
+                <a target="_blank" href="http://hocomoco.autosome.ru/human/mono">name or family</a>.
+            </div>
+            <div class="help-content">
+                2. Upload sequence file or type sequences manually. Fasta format is supported.
+            </div>
+            <div class="help-content">
+                3. Adjust P-value.
+            </div>
+            <div class="help-content">
+                4. If sequences are long enough (100bp+), please wait a moment. We are still working on performance improvements.
+            </div>
+            <div class="help-content">
+                5. Detailed information about binding sites that was found, provided with the table at the bottom of the page.
+            </div>
+        </div>
     </div>
 
     <div class="interface-area">

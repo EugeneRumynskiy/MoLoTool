@@ -19,17 +19,19 @@ body {
 }
 
 td a:link,
-.motif-title a:link {
+.motif-title a:link,
+#help-cmp a:link {
   color: #0645AD;
   text-decoration: none;
 }
 td a:visited,
-.motif-title a:visited {
+.motif-title a:visited,
+#help-cmp a:visited{
   color: #0645AD;
   text-decoration: none;
 }
 
-.interface-area, #help-cmp {
+.interface-area {
   margin-top: 2 * $topNav-navLineHeight;
   .disabled {
     display: none;
@@ -110,7 +112,7 @@ input[type="file"] {
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
-  .interface-area, #help-cmp {
+  .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
     margin-top: $topNav-navLineHeight;

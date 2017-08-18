@@ -91,6 +91,7 @@ ul {
     padding: 10px 24px 10px 10px;
 
     > #motif-search {
+      position: absolute;
       display: inline-block;
       width: 320px;
       padding-left: 5px;
@@ -114,7 +115,7 @@ ul {
     color: $textColor;
     padding: 10px;
     position: absolute;
-    min-width: 410px;
+    min-width: 480px;
     left: 400px;
   }
 }

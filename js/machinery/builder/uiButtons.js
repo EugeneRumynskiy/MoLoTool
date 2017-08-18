@@ -39,7 +39,7 @@ var uiButtons = (function () {
 
         buildInputMethodButton.init();
         buildOpenSequenceButton.init();
-        buildZoomButton.init("18px", {"top": 50, "bottom": 10});
+        buildZoomButton.init("18px", {"top": 40, "bottom": 10});
 
         buildClearButton.init();
         buildDemoButton.init(inputCallback);

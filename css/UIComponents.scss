@@ -1,5 +1,41 @@
 @import "utilities/variables";
 
+#help-cmp{
+  margin-top: 3 * $topNav-navLineHeight;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+
+  padding: 10px;
+  border-radius: $border-radius;
+  border: $thick solid $borderColor;
+  background-color: $boxBackground;
+  letter-spacing: 0.75px;
+
+  overflow-x: hidden;
+
+  .help-header {
+    margin: 0 auto;
+    width: 300px;
+
+    text-transform: capitalize;
+    text-align: center;
+    font-size: $defaultFontSize * 1.5;
+    line-height: $defaultFontSize * 1.5 * 1.5;
+  }
+
+  .help-content {
+    text-indent: $defaultFontSize * 2;
+    text-align: justify;
+    font-size: $defaultFontSize;
+    line-height: $defaultFontSize * 1.5;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+}
+
 .nav-area {
   font-family: $defaultFontFamily;
 }
@@ -7,7 +43,7 @@
 .suggestions {
   font-family: $defaultFontFamily;
 
-  margin-top: 10px + $topNav-navLineHeight;
+  margin-top: 2px + $topNav-navLineHeight;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
@@ -439,7 +475,11 @@
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
+  #help-cmp {
+    margin-top: 2 * $topNav-navLineHeight;
+  }
+
   .suggestions {
-    margin-top: 10px;
+    margin-top: 2px;
   }
 }
