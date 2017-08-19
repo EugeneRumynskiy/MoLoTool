@@ -4,6 +4,14 @@
 var colorPicker = (function () {
     var _fileName = "colorPicker",
         _defaultColors =    [
+            "#F15854",
+            "#FAA43A",
+            '#DECF3F',
+            '#60BD68',
+            '#5DA5DA',
+            '#F17CB0',
+            '#B276B2',
+
             "#ff0000",
             "#4CAF50",
             "#2196F3",
@@ -31,6 +39,7 @@ var colorPicker = (function () {
             "#607D8B",
             "#ef7674"
             ],
+
 
         _freeColorIndex = 0,
         _freeColorIndex = 0,
