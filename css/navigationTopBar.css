@@ -82,7 +82,7 @@ ul {
       background: #dadada;
       color: black;
       font-size: 15px;
-      font-family: Serif, Sans, "Gotham Rounded SSm B"; }
+      font-family: Sans serif; }
   .nav > .title-container {
     text-shadow: 1px 4px 6px #dadada, 0 0 0 black, 1px 4px 6px #dadada;
     color: black;
@@ -143,7 +143,7 @@ ul {
   .the-nav .top-first {
     position: absolute; }
     .the-nav .top-first > .search-container {
-      min-width: 320px; }
+      min-width: 380px; }
   .the-nav .top-second {
     padding-top: 3px;
     position: relative; }
