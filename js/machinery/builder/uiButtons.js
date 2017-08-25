@@ -305,8 +305,8 @@ var uiButtons = (function () {
 
     var buildSwitchComparisonModeButton = (function () {
         var getSettingsFor = {
-                "Single":   {"title":"Change mode ", "icon": "select_all"},
-                "Multiply":   {"title":"Change mode ", "icon": "format_list_bulleted"}
+                "Single":   {"title":"Mode ", "icon": "vertical_align_center"}, //select_all
+                "Multiply":   {"title":"Mode ", "icon": "view_headline"} //format_list_bulleted
             },
             defaultMode,
             $button;
