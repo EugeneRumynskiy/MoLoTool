@@ -110,7 +110,7 @@ Example: <a href="#" class="copy-button">
   line-height: 24px;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.54); }
-.tab-result .title-shown {
+.tab-result .show-title:hover {
   color: black; }
 
 /*# sourceMappingURL=controlElements.css.map */

@@ -215,7 +215,7 @@ var resultTabs = (function () {
                 '<a href="#" class="copy-tab" data-tab=' + tabId + '>' +
                     '<i class="material-icons md-dark">content_copy</i>' +
                 '</a>' +
-                '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Full name" + '</a>' +
+                '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Show name" + '</a>' +
                 '</div>'
             );
 
@@ -248,6 +248,12 @@ var resultTabs = (function () {
             $tab = $(".tab-result-sequence[data-tab=" + tabId + "]");
 
         $target.toggleClass("title-shown");
+        if ($target.hasClass("title-shown")) {
+            $target.html("Show seq.");
+        } else {
+            $target.html("Show name");
+        }
+
         $tab.find(".sequence, .title").toggleClass("hidden");
     };
 
