@@ -46,6 +46,8 @@ var inputParsing = (function () {
 
         if (ifFasta(inputString)) {
             sequences = parseAsFasta(inputString);
+            console.log(sequences, "sequences\n");
+
         } else {
             sequences = parseAsText(inputString);
         }
@@ -65,6 +67,7 @@ var inputParsing = (function () {
 
             sequencesWithTitles = inputWithoutDescription.split(">");
 
+        console.log(sequencesWithTitles);
         return $.map(sequencesWithTitles, parseSequenceWithTitle);
     };
 

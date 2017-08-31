@@ -25,10 +25,15 @@
   }
 
   .help-content {
-    text-indent: $defaultFontSize * 2;
+    //text-indent: $defaultFontSize * 2;
+    margin: 16px;
     text-align: justify;
     font-size: $defaultFontSize;
     line-height: $defaultFontSize * 1.5;
+
+    ol {
+      margin: 8px;
+    }
   }
 
   .italic {

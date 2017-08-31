@@ -79,6 +79,8 @@ var uiBuilder = (function () {
             if (comparisonMode.getCurrentMode() === "Multiply") {
                 resultTabs.updateWidth("setToMaximum");
             }
+        } else {
+            console.log(inputString);
         }
     };
 

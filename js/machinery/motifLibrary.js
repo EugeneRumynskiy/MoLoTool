@@ -9,7 +9,7 @@ var motifLibrary = (function () {
         _library = {},
         _featuresForTableLibrary = {}, //created to speed up requests when building table
 
-        _logoBaseUrl = "http://hocomoco.autosome.ru";
+        _logoBaseUrl = "http://hocomoco11.autosome.ru";
 
 
     var create = function (eventHandler) {
@@ -67,7 +67,7 @@ var motifLibrary = (function () {
     var promiseMotif = function (motifName) {
         return $.ajax({
             dataType: "json",
-            url: "http://hocomoco.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"
+            url: "http://hocomoco11.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"
         });
     };
 

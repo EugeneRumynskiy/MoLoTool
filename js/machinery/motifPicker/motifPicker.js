@@ -19,11 +19,17 @@ var motifPicker = (function () {
     };
 
 
+    /*http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true
+
+        http://hocomoco11.autosome.ru/human/mono.json?summary=true
+            или, если удобнее,
+        http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false*/
+
     var promiseMotifSummaries = function () {
         return $.ajax({
             dataType: "json",
-            url: "http://hocomoco.autosome.ru/human/mono.json?summary=true"
-            //"http://hocomoco.autosome.ru/human/mono.json" - Names only
+            url: "http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true"
+            //url: "http://hocomoco.autosome.ru/human/mono.json?summary=true"
         });
     };
 
