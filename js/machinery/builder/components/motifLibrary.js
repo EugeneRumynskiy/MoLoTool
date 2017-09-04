@@ -94,7 +94,7 @@ var motifLibrary = (function () {
     };
 
 
-    var getNamesOfDisplayedFeatures = function () {
+    var getTitlesForDisplayedFeatures = function () {
         if (_displayedFeatures === null) {
             errorHandler.logError({
                 "fileName": _moduleName,
@@ -102,10 +102,13 @@ var motifLibrary = (function () {
             });
             return [];
         } else {
-            var values = Object.keys(_displayedFeatures).map(function(key) {
-                return _displayedFeatures[key];
-            });
-            return values;
+            return Object
+                .keys(_displayedFeatures)
+                .map(
+                    function(key) {
+                        return _displayedFeatures[key];
+                    }
+                );
         }
     };
 
@@ -150,7 +153,8 @@ var motifLibrary = (function () {
         create: create,
         addUnit: addUnit,
         getUserRequestedMotifUnits: getUserRequestedUnits,
+
         getMotifFeaturesForTable: getMotifFeaturesForTable,
-        getNamesOfDisplayedFeatures: getNamesOfDisplayedFeatures
+        getTitlesForDisplayedFeatures: getTitlesForDisplayedFeatures
     };
 }());

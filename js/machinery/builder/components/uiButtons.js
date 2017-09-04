@@ -84,11 +84,6 @@ var uiButtons = (function () {
             $button,
             $textarea;
 
-        var showTextarea = function () {
-            if ($textarea.hasClass("hidden")) {
-                $textarea.removeClass("hidden")
-            }
-        };
 
         var init = function (inputCallback) {
             $button = $("#manual-seq-input").find(".add-sequence");
@@ -99,13 +94,24 @@ var uiButtons = (function () {
                 .html(generateContent(getSettingsFor[defaultMode]))
                 .on('click', function(event) {
                     event.preventDefault();
-
                     showTextarea();
-
-                    var rewriteFlag = (getInputMethod() === "rewrite");
-                    inputCallback($textarea.val(), rewriteFlag);
+                    addSequence(inputCallback);
                 });
         };
+
+
+        var showTextarea = function () {
+            if ($textarea.hasClass("hidden")) {
+                $textarea.removeClass("hidden");
+            }
+        };
+
+
+        var addSequence = function (inputCallback) {
+            var rewriteFlag = (getInputMethod() === "rewrite");
+            inputCallback($textarea.val(), rewriteFlag);
+        };
+
 
         return {
             init: init
@@ -146,6 +152,7 @@ var uiButtons = (function () {
                     switchMode();
                 });
         };
+
 
         var reset = function () {
             var newMode = (getInputMethod() === "rewrite") ? "stack" : "rewrite";
@@ -438,25 +445,25 @@ var uiButtons = (function () {
                 "showDemo":   {"title":"Demo ", "icon": "insert_emoticon"}
             },
             defaultMode = "showDemo",
-            $button,
-            withInputCallback;
+            searchInput = "coe1",
+
+            $button;
 
 
-        var showDemo = function () {
-            $("#motif-search").val("coe1");
+        var showDemo = function (inputCallback) {
+            $("#motif-search").val(searchInput);
             motifSearch.applySearch();
             $("#motif-list").children().first().children().first().children().first().click();
 
             clearSearchInput();
             motifSearch.applySearch();
 
-            var test = inputParsing.inputTest();
-            withInputCallback(test, true);
+            inputCallback(inputParsing.getDemoInput(), true);
         };
 
+        
         var init = function (inputCallback) {
             $button = $("#demo-button");
-            withInputCallback = inputCallback;
 
             $button
                 .empty()
@@ -464,9 +471,10 @@ var uiButtons = (function () {
                 .on('click', function(event) {
                     event.preventDefault();
                     resetInterface();
-                    showDemo();
+                    showDemo(inputCallback);
                 });
         };
+
 
         return {
             init:init

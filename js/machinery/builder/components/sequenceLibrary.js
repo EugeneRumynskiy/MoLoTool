@@ -131,6 +131,11 @@ var sequenceLibrary = (function () {
     };
 
 
+    var clear = function () {
+        $(".tab-result .close").trigger("click");
+    };
+
+
     //debug
     var show = function () {
         console.log(_tabLibrary);
@@ -143,6 +148,7 @@ var sequenceLibrary = (function () {
 
         getItemById: getItemById,
         isRecorded: isRecorded,
+        clear: clear,
 
         updateCurrentTabSequence: updateCurrentTabSequence,
 

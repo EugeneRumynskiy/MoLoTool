@@ -1,43 +1,14 @@
 /**
  * Created by HOME on 13.02.2017.
  */
-var resultContainer = (function () {
-    var _moduleName = "resultContainer",
-        _hasExternalFocusObject = function () {}; // currently focus from pSlider
+var chosenMotifHighlight = (function () {
+    var _moduleName = "chosenMotifHighlight",
+        _$hoveredMotifs = $("");
 
 
     var create = function () {
-        buildUIComponent();
+        addTo();
     };
-
-
-    var buildUIComponent = function () {
-        supportTooltip.addTo();
-    };
-
-
-    var setExternalFocusObject = function (externalFocusObject) {
-        _hasExternalFocusObject = externalFocusObject;
-    };
-
-
-    var ifHasExternalFocus = function () {
-        return _hasExternalFocusObject();
-    };
-
-
-    return {
-        create: create,
-        setExternalFocusObject: setExternalFocusObject,
-        ifHasExternalFocus: ifHasExternalFocus
-    };
-}());
-
-
-
-var supportTooltip = (function () {
-    var _moduleName = "supportTooltip",
-        _$hoveredMotifs = $("");
 
 
     //wrap string in order to make id select
@@ -62,7 +33,6 @@ var supportTooltip = (function () {
     };
 
 
-
     var addTo = function () {
         var $resultCmp = $("#result-cmp");
 
@@ -72,20 +42,16 @@ var supportTooltip = (function () {
 
 
     var mouseInHandler = function () {
-        if (resultContainer.ifHasExternalFocus() === true) {
+        var tabId = $(this).parents(".tab-result-sequence").attr("data-tab"),
+            segment = sequenceConstructor.findSegmentWith(this.getAttribute('data-start'), tabId),
+            $motifList = $("#motif-list-selected"), $motif;
 
-        } else {
-            var tabId = $(this).parents(".tab-result-sequence").attr("data-tab"),
-                segment = sequenceConstructor.findSegmentWith(this.getAttribute('data-start'), tabId),
-                $motifList = $("#motif-list-selected"), $motif;
-
-            for (var i = 0; i < segment.sites.length; i++) {
-                $motif = $motifList.find(jq(segment.sites[i].motifName));
-                addToHovered($motif);
-            }
-
-            highlightHoveredMotifs();
+        for (var i = 0; i < segment.sites.length; i++) {
+            $motif = $motifList.find(jq(segment.sites[i].motifName));
+            addToHovered($motif);
         }
+
+        highlightHoveredMotifs();
     };
 
 
@@ -95,7 +61,7 @@ var supportTooltip = (function () {
 
 
     return {
-        addTo: addTo
+        create: create
     };
 }());
 

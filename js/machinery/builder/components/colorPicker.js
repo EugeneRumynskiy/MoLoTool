@@ -42,7 +42,6 @@ var colorPicker = (function () {
 
 
         _freeColorIndex = 0,
-        _freeColorIndex = 0,
         _eventHandler = function () {
             errorHandler.logError({"fileName": _fileName, "message": "_eventHandler hasn't been set"});
         };
@@ -112,8 +111,7 @@ var colorPicker = (function () {
                     ["#4d9de0", "#e15554",
                         "#e1bc29", "#3bb273",
                         "#7768ae"]
-            ]
-
+                ]
             });
         _freeColorIndex += 1;
     };
@@ -123,6 +121,7 @@ var colorPicker = (function () {
         create: create,
         addTo: addTo,
         removeFrom: removeFrom,
+
         getColorFromContainer: getColorFromContainer
     };
 }());

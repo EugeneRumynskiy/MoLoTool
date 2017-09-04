@@ -1,7 +1,7 @@
 var motifHandler = (function () {
     var _fileName = "motifHandler",
 
-        _pValue,
+        _requestedPvalue,
         _requestedMotifs;
 
 
@@ -15,29 +15,27 @@ var motifHandler = (function () {
 
 
     var makeFullUpdate = function () {
-        updatePvalue();
-        updateMotifs();
+        setRequestedPvalue();
+        setRequestedMotifs();
 
-        var tabsUpdate = updateAllResultTabs();
+        var tabsUpdate = updateResultTabs();
 
-        if (getTableState() === "active") {
-            updateTable(tabsUpdate);
-        }
+        updateTable(tabsUpdate);
     };
 
 
-    var updatePvalue = function () {
-        _pValue = pValue = pSlider.getPValue();
+    var setRequestedPvalue = function () {
+        _requestedPvalue = pSlider.getPValue();
     };
 
 
-    var updateMotifs = function () {
-        var userRequestedNames = motifPicker.getRequestedMotifNames();
-        _requestedMotifs = motifLibrary.getUserRequestedMotifUnits(userRequestedNames);
+    var setRequestedMotifs = function () {
+        var requestedNames = motifPicker.getRequestedMotifNames();
+        _requestedMotifs = motifLibrary.getUserRequestedMotifUnits(requestedNames);
     };
 
 
-    var updateAllResultTabs = function () {
+    var updateResultTabs = function () {
         var openedTabsIds = resultTabs.getIdsToHandle(),
             tabsUpdate = $.map(openedTabsIds, updateResultTab);
 
@@ -63,7 +61,7 @@ var motifHandler = (function () {
 
     var getSitesForAllMotifs = function (sequence) {
         var sites = [],
-            motifs = _requestedMotifs, pValue = _pValue;
+            motifs = _requestedMotifs, pValue = _requestedPvalue;
 
         for(var i = 0; i < motifs.length; i++) {
             motif.setMotifValues(motifs[i]);
@@ -78,7 +76,9 @@ var motifHandler = (function () {
 
 
     var updateTable = function (tabsUpdate) {
-        motifTable.redrawTableWithUpdates(tabsUpdate);
+        if (getTableState() === "active") {
+            motifTable.redrawTableWithUpdates(tabsUpdate);
+        }
     };
 
 

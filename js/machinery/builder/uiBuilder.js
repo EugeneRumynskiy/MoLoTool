@@ -17,18 +17,20 @@ var uiBuilder = (function () {
         setUIEventHandlerTo(motifHandler.handleMotifs);
 
         motifLibrary.create(handleEvent);
+
         colorPicker.create(handleEvent);
 
         motifPicker.create();
         buildExternalMotifPickerComponent();
 
-        var table = motifTable.create();
+        var motifFeatureTitles = motifLibrary.getTitlesForDisplayedFeatures(),
+            motifFeaturesRequest = motifLibrary.getMotifFeaturesForTable,
+            table = motifTable.create(motifFeatureTitles, motifFeaturesRequest);
         buildExternalTableComponent(table);
 
         pSlider.create(handleEvent);
 
-        resultContainer.create();
-        buildExternalResultContainerComponent();
+        chosenMotifHighlight.create();
 
         fileUploader.create(inputCallback); //input
 
@@ -50,11 +52,6 @@ var uiBuilder = (function () {
     };
 
 
-    var clearSequenceLibrary = function () {
-        $(".tab-result .close").trigger("click");
-    };
-
-
     var resizeCallback = function () {
         comparisonMode.turnOffLocks();
         resultTabs.updateMarginForCurrentTab();
@@ -65,10 +62,11 @@ var uiBuilder = (function () {
         var sequences = inputParsing.parseInput(inputString);
 
         if (!$.isEmptyObject(sequences)) {
-            updateTextInput(sequences);
+            var inputParsedInto = inputParsing.assembleParsedValues(sequences);
+            $("#manual-seq-input").find("textarea").val(inputParsedInto);
 
             if (replaceCurrent === true) {
-                clearSequenceLibrary();
+                sequenceLibrary.clear();
             }
 
             var libraryIds = $.map(sequences, sequenceLibrary.addTab);
@@ -80,17 +78,8 @@ var uiBuilder = (function () {
                 resultTabs.updateWidth("setToMaximum");
             }
         } else {
-            console.log(inputString);
+            console.log(inputString, "seq are empty");
         }
-    };
-
-    var updateTextInput = function (sequences) {
-        var inputParsedInto = "";
-        for(var i = 0; i < sequences.length; i++) {
-            inputParsedInto += ">" + sequences[i].title + "\n" + sequences[i].sequence + "\n";
-        }
-
-        $("#manual-seq-input").find("textarea").val(inputParsedInto);
     };
 
 
@@ -223,11 +212,6 @@ var uiBuilder = (function () {
                     $('#' + lastID).removeClass("last");
                 }
             });
-    };
-
-
-    var buildExternalResultContainerComponent = function () {
-        resultContainer.setExternalFocusObject(pSlider.isActive);
     };
 
 

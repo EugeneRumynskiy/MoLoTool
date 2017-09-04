@@ -166,7 +166,6 @@ var sequenceConstructor = (function () {
 
     return {
         markupSegmentation: markupSegmentation,
-        show: show,
         findSegmentWith: findSegmentWith
     };
 }());
