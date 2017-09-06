@@ -5,7 +5,7 @@ $boxBackground: white;
 $textColor: black; //#797979;
 
 $defaultFontSize: 16px;
-$defaultFontFamily: Sans serif;
+$defaultFontFamily: Sans serif; //check this in jquery-ui.css
 
 //nav-bar
 $topNav-navLineHeight: 40px;
@@ -58,7 +58,7 @@ $current-tab-bg: white;
 $tab-bg: $primaryColor;
 
 //borders
-$borderColor: grey;
+$borderColor: grey; //check this in jquery-ui.css
 $thick: 1.5px;
 $thin: 1px;
 

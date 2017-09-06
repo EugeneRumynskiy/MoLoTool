@@ -73,7 +73,6 @@ var fileUploader = (function () {
 
 
     return {
-        create: create,
-        ifSupported: ifSupported
+        create: create
     };
 }());

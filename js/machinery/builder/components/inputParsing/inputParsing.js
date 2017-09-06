@@ -3,22 +3,32 @@
  */
 var inputParsing = (function () {
     var _fileName = "inputParsing",
-        _defaultParsedValues,
-        _seqRegExp,
-
-        _demoInput = ">mouse SLAMF1 promoter\n" +
-            "TGATAAAGTGATTTAAAGCCTGATCATAAATGAGCAATCCTGGA\n" +
-            ">human SLAMF1 promoter\n" +
-            "CAAAAAAGTGATTTAAAGCCTCATGGGAGATGAGCAATCCTCAA\n";
+        
+        _seqCheck,
+        _defaultParsedValues;
 
 
     var create = function () {
-        _seqRegExp = new RegExp('[^ATGCatgc]');
+        setSeqCheck(new RegExp('[^ATGCNatgcn]+'));
 
         setDefaultParsedValues({
             "title": "None",
             "sequence": "None"
         });
+
+        inputDemo.create(
+            ">mouse SLAMF1 promoter\n" +
+            "TGATAAAGTGATTTAAAGCCTGATCATAAATGAGCAATCCTGGA\n" +
+            ">human SLAMF1 promoter\n" +
+            "CAAAAAAGTGATTTAAAGCCTCATGGGAGATGAGCAATCCTCAA\n"
+        );
+
+        inputErrors.create(getSeqCheck());
+    };
+
+
+    var setSeqCheck = function (regExp) {
+        _seqCheck = regExp;
     };
 
 
@@ -27,6 +37,11 @@ var inputParsing = (function () {
     };
 
 
+    var getSeqCheck = function () {
+        return _seqCheck;
+    };
+    
+    
     var getDefaultParsedValues = function () {
         return {
             "title": _defaultParsedValues["title"],
@@ -35,21 +50,19 @@ var inputParsing = (function () {
     };
 
 
-    var getDemoInput = function () {
-        return _demoInput;
-    };
+    var parseInput = function (rawInputString) {
+        inputErrors.clearStack();
 
-
-    var parseInput = function (inputString) {
-        var sequences;
+        var inputString = $.trim(rawInputString),
+            sequences;
 
         if (ifFasta(inputString)) {
             sequences = parseAsFasta(inputString);
-            console.log(sequences, "sequences\n");
-
         } else {
             sequences = parseAsText(inputString);
         }
+
+        inputErrors.showStack();
 
         return checkOutput(sequences);
     };
@@ -61,23 +74,28 @@ var inputParsing = (function () {
 
 
     var parseAsFasta = function (inputString) {
-        var descriptionIndex = inputString.indexOf(">"),
-            inputWithoutDescription = inputString.slice(descriptionIndex + 1),
+        var startIndex = inputString.indexOf(">"),
 
-            sequencesWithTitles = inputWithoutDescription.split(">");
+            generalDescription = inputString.slice(0, startIndex),
 
-        console.log(sequencesWithTitles);
+            inputWithoutGeneralDescription = inputString.slice(startIndex + 1),
+            sequencesWithTitles = inputWithoutGeneralDescription.split(">");
+
         return $.map(sequencesWithTitles, parseSequenceWithTitle);
     };
 
 
     var parseSequenceWithTitle = function (sequenceWithTitle) {
         var parsedValues = getDefaultParsedValues(),
-            splitResult = $.trim(sequenceWithTitle).split("\n");
+            splitResult = $.trim(sequenceWithTitle).split(/\n+/).map($.trim);
 
-        if ((splitResult.length === 2) && (checkSequence(splitResult[1]))) {
+        console.log(splitResult, "splitResult");
+
+        if (splitResult.length === 2) {
             parsedValues["title"] = splitResult[0];
-            parsedValues["sequence"] = splitResult[1];
+            parsedValues["sequence"] = returnSuitableSequence(splitResult[1]);
+        } else if (splitResult.length === 1) {
+            parsedValues["sequence"] = returnSuitableSequence(splitResult[0]);
         }
 
         return parsedValues;
@@ -85,7 +103,7 @@ var inputParsing = (function () {
 
 
     var parseAsText = function (inputString) {
-        var sequences = $.trim(inputString).split("\n");
+        var sequences = $.trim(inputString).split(/\n+/);
         return $.map(sequences, parseSequence);
     };
 
@@ -94,16 +112,31 @@ var inputParsing = (function () {
         var parsedValues = getDefaultParsedValues(),
             trimmedSequence = $.trim(sequence);
 
-        if ((trimmedSequence.length !== 0) && (checkSequence(trimmedSequence))) {
-            parsedValues["sequence"] = trimmedSequence;
+        if (trimmedSequence.length !== 0) {
+            parsedValues["sequence"] = returnSuitableSequence(trimmedSequence);
         }
 
         return parsedValues;
     };
 
 
+    var returnSuitableSequence = function (sequence) {
+        if (checkSequence(sequence)) {
+            return sequence;
+        } else {
+            handleError(sequence);
+            return getDefaultParsedValues()["sequence"];
+        }
+    };
+
+
     var checkSequence = function (sequence) {
-        return (sequence.match(_seqRegExp) === null);
+        return (sequence.match(getSeqCheck()) === null);
+    };
+
+
+    var handleError = function (sequence) {
+        inputErrors.addToStack(sequence);
     };
 
 
@@ -136,7 +169,6 @@ var inputParsing = (function () {
         create: create,
         parseInput: parseInput,
 
-        assembleParsedValues: assembleParsedValues,
-        getDemoInput: getDemoInput
+        assembleParsedValues: assembleParsedValues
     };
 }());

@@ -458,7 +458,7 @@ var uiButtons = (function () {
             clearSearchInput();
             motifSearch.applySearch();
 
-            inputCallback(inputParsing.getDemoInput(), true);
+            inputCallback(inputDemo.getDemoInput(), true);
         };
 
         

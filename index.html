@@ -4,7 +4,6 @@
     <!-- favicon --->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -115,7 +114,10 @@
     <script src="js/machinery/calculations/segmentation.js"></script>
     <script src="js/machinery/calculations/combinations.js"></script>
 
-    <script src="js/machinery/builder/components/inputParsing.js"></script>
+    <script src="js/machinery/builder/components/inputParsing/inputParsing.js"></script>
+    <script src="js/machinery/builder/components/inputParsing/inputErrors.js"></script>
+    <script src="js/machinery/builder/components/inputParsing/inputDemo.js"></script>
+
     <script src="js/machinery/builder/components/fileUploader.js"></script>
     <script src="js/machinery/builder/components/sequenceLibrary.js"></script>
 
@@ -231,6 +233,8 @@
 
 
         <div class="interface-component" id="sequence-input-cmp">
+            <div id="error-dialog"></div>
+
             <div class="controls">
                 <div class="sliderBox">
                     <div class="inputBox left">
