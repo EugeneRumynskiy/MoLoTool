@@ -67,6 +67,7 @@ var motif = (function () {
      */
     var getPValueFromScoreList = function(score) {
         var n = _thresholdList.length;
+
         if (n == 0) {
             throw new Error("The array cannot be empty");
         } else if ((n == 1) || (score <= _thresholdList[0][0])) {
@@ -155,17 +156,27 @@ var motif = (function () {
      */
     var getScoreList = function(sequence, direction) {
         var pwmMatrix = choosePwmMatrix(direction),
-            seqLen = sequence.length,
             motifLen = pwmMatrix.length,
+
+            seqLen = sequence.length,
+
             scoreList = new Array(seqLen - motifLen + 1),
-            positionInMotif, positionInSequence, currentPosition;
+
+            positionInMotif, positionInSequence, currentPosition, letter;
 
         //counting sum of weights for position i
         for (positionInSequence = 0; positionInSequence < seqLen - motifLen + 1; positionInSequence++){
             scoreList[positionInSequence] = 0;
+
             for (positionInMotif = 0; positionInMotif < motifLen; positionInMotif++){
                 currentPosition = positionInSequence + positionInMotif;
-                scoreList[positionInSequence] += pwmMatrix[positionInMotif][ getNucleotideIndex(sequence[currentPosition]) ];
+
+                letter = sequence[currentPosition];
+                if (letter === "N" || letter === "n") {
+                    scoreList[positionInSequence] += 0;
+                } else {
+                    scoreList[positionInSequence] += pwmMatrix[positionInMotif][ getNucleotideIndex(letter) ];
+                }
             }
         }
         return scoreList;

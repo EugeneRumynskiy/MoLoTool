@@ -89,7 +89,6 @@ var inputParsing = (function () {
         var parsedValues = getDefaultParsedValues(),
             splitResult = $.trim(sequenceWithTitle).split(/\n+/).map($.trim);
 
-        console.log(splitResult, "splitResult");
 
         if (splitResult.length === 2) {
             parsedValues["title"] = splitResult[0];
