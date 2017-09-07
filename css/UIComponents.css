@@ -305,7 +305,11 @@
 
 #motif-table-cmp {
   font-family: Sans serif;
-  word-break: break-all; }
+  word-break: break-all;
+  white-space: nowrap;
+  overflow-x: scroll; }
+  #motif-table-cmp thead {
+    word-break: normal; }
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {

@@ -476,6 +476,12 @@
 #motif-table-cmp {
   font-family: $defaultFontFamily;
   word-break: break-all;
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  thead {
+    word-break: normal;
+  }
 }
 
 

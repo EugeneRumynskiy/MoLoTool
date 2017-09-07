@@ -62,7 +62,7 @@ var inputParsing = (function () {
             sequences = parseAsText(inputString);
         }
 
-        inputErrors.showStack();
+        inputErrors.showErrors();
 
         return checkOutput(sequences);
     };

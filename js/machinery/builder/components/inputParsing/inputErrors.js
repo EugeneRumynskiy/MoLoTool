@@ -81,12 +81,18 @@ var inputErrors = (function () {
             .dialog( "open" );
     };
 
+    var showErrors = function () {
+        if (getErrorStack().length !== 0) {
+            showStack();
+        }
+    };
+
 
     return {
         create: create,
 
         clearStack: clearStack,
         addToStack: addToStack,
-        showStack: showStack
+        showErrors: showErrors
     }
 }());

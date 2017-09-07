@@ -57,7 +57,7 @@ var motifPicker = (function () {
         }
 
         var ifMoreValue = ifMore(suggestedMotifs);
-        if (suggestedMotifs.length >= _defaultMaxResultCount) {
+        if (suggestedMotifs.length > _defaultMaxResultCount) {
             var ifMoreString = wrapIfMoreValueInContainer(ifMoreValue, suggestedMotifs.length);
             $('#ifMore-container').find("#show-more-button span").html(ifMoreString);
             $('#ifMore-container').removeClass("hidden");

@@ -27,6 +27,7 @@ var motifTable = (function () {
                     {targets: [2, 3, 4], width: "7%"}
                 ],
                 dom: 'Bftlip<"clear">',
+                scrollX: true,
                 columns: createColumns(),
                 buttons: createButtons()
             };
@@ -35,7 +36,7 @@ var motifTable = (function () {
         var createColumns = function () {
             var unitDetails = [{
                     "title": 'Info',
-                    "width": '1%',
+                    "width": '2%',
                     "className":      'details-control',
                     "orderable":      false,
                     "data":           null,
