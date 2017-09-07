@@ -287,13 +287,14 @@ var resultTabs = (function () {
 
     var updateTab = function (tabId, content) {
         if (isOpened(tabId)) {
-            var seqLength = sequenceLibrary.getItemById(tabId).seqValues.sequence.length,
-                digits = digitGuidance.getDigitsFor(seqLength),
+            var digits = digitGuidance.getDigitsFor(getDigitsLength(tabId)),
+
                 title = "<span class=\"segment\">" +
                     sequenceLibrary.getItemById(tabId).seqValues.title +
                     "</span>",
 
                 $resultLine = $(".tab-result-sequence[data-tab=" + tabId + "]"),
+
                 $sequence = $resultLine.find(".sequence"),
                 $digits = $resultLine.find(".digits"),
                 $title = $resultLine.find(".title");
@@ -307,6 +308,14 @@ var resultTabs = (function () {
             console.log(tabId);
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be updated it's not opened"});
         }
+    };
+    
+    
+    var getDigitsLength = function (tabId) {
+        var seqLength = sequenceLibrary.getItemById(tabId).seqValues.sequence.length,
+            titleLength = sequenceLibrary.getItemById(tabId).seqValues.title.length;
+
+        return Math.max(seqLength, titleLength);
     };
 
 

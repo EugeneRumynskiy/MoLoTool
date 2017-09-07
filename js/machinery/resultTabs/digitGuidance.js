@@ -9,10 +9,10 @@ var digitGuidance = (function () {
 
 
     var generateDigitsString = function (maxSequenceLength) {
-        var s = "", sep = "-", charsBetween = 10;
+        var s = "", separator = "-", charsBetween = 10;
 
         for(var i = 0, toAdd; i < maxSequenceLength; i += toAdd.length) {
-            toAdd = (s.length % charsBetween === 0) ? i.toString(): sep;
+            toAdd = (s.length % charsBetween === 0) ? i.toString(): separator;
             s += toAdd;
         }
 
