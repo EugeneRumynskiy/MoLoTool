@@ -100,7 +100,7 @@ var colorPicker = (function () {
                 show: function () {},
                 beforeShow: function () {},
                 hide: function () {},
-                change: _eventHandler,
+                change: function (){_eventHandler("COLOR")},
                 palette: [
                     ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"],
 

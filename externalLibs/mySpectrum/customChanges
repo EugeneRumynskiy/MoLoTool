@@ -1,0 +1,6 @@
+        function updateOriginalInput(fireCallback) {
+            var color = get(),
+                displayColor = '',
+                hasChanged = true; //change to fix color bug !tinycolor.equals(color, colorOnShow);
+
+        Line 858;
