@@ -46,9 +46,9 @@ var uiBuilder = (function () {
 
         inputParsing.create();//input
 
-        window.setTimeout(function () {
+     /*   window.setTimeout(function () {
             $("#demo-button").trigger("click");
-        }, 100);
+        }, 100);*/
     };
 
 
