@@ -46,6 +46,8 @@
 }
 
 .suggestions {
+  position: relative;
+
   font-family: $defaultFontFamily;
 
   margin-top: 2px + $topNav-navLineHeight;
@@ -53,7 +55,7 @@
   border-radius: 10px;
   border: $thin solid $borderColor;
 
-  min-width: 600px;
+  min-width: 630px;
 
   #legend-container {
     border-top: none;
@@ -71,7 +73,7 @@
   }
 
   .suggestion {
-    min-height: 46px;
+    min-height: 60px;
     border-top: $thin solid $borderColor;
     border-radius: 0;
     padding: 2px;
@@ -79,7 +81,7 @@
 
     .feature {
       display: inline;
-      vertical-align: middle;
+      //vertical-align: middle;
       padding: 4px;
       margin: 4px;
     }
@@ -98,7 +100,7 @@
   }
 
   #motif-list {
-    max-height: 240px;
+    max-height: 310px;
     position: relative;
 
     .motif-container {

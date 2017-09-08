@@ -72,7 +72,7 @@ var colorPicker = (function () {
         var $colorPicker = $("<input class=\"motif-color-picker\">");
 
         $colorPicker.insertAfter($motifContainer.children(".motif-title"));
-        set($motifContainer.children(".motif-color-picker"));   
+        set($motifContainer.children(".motif-color-picker"));
     };
 
 

@@ -101,7 +101,7 @@ var uiBuilder = (function () {
             var $closeButton = $('<a href="#" class="close"></a>');
             $closeButton.insertAfter($motifContainer.children(".motif-title"));
 
-            var hocomocoRef = "http://hocomoco.autosome.ru/motif/" + motifName,
+            var hocomocoRef = "http://hocomoco11.autosome.ru/motif/" + motifName,
                 titleWithRef = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +
                     motifName + '</a>';
             $motifTitle.html(titleWithRef);
