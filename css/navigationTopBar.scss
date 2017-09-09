@@ -112,7 +112,8 @@ ul {
   }
 
   > .title-container{
-    text-shadow: 1px 4px 6px $primaryColor, 0 0 0 black, 1px 4px 6px $primaryColor;
+    text-shadow: 1px 4px 6px $primaryColor, 0.3px 0.3px 0.3px grey, 1px 4px 6px $primaryColor;
+
     color: $textColor;
     padding: 10px;
     position: absolute;

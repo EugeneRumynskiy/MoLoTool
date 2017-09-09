@@ -27,11 +27,11 @@
     font-style: italic; }
 
 .nav-area {
-  font-family: Sans serif; }
+  font-family: sans-serif; }
 
 .suggestions {
   position: relative;
-  font-family: Sans serif;
+  font-family: sans-serif;
   margin-top: 42px;
   background-color: #dadada;
   border-radius: 10px;
@@ -93,7 +93,7 @@
       padding: 5px; }
 
 #motif-list-selected-cmp {
-  font-family: Sans serif;
+  font-family: sans-serif;
   min-height: 75px; }
   #motif-list-selected-cmp #motif-list-selected {
     display: inline-block;
@@ -128,7 +128,7 @@
     display: none; }
 
 #manual-seq-input {
-  font-family: Sans serif;
+  font-family: sans-serif;
   background-color: white;
   border: 1.5px solid grey;
   border-radius: 5px;
@@ -179,7 +179,7 @@
         color: #a3a3a3; }
 
 #sequence-input-cmp {
-  font-family: Sans serif;
+  font-family: sans-serif;
   background-color: #ededf2; }
   #sequence-input-cmp .controls {
     border-radius: 2px;
@@ -211,7 +211,7 @@
         border-left: 1px solid grey; }
 
 #result-cmp {
-  font-family: Sans serif;
+  font-family: sans-serif;
   position: relative; }
   #result-cmp #result-tabs {
     min-width: 180px;
@@ -304,7 +304,7 @@
     display: none; }
 
 #motif-table-cmp {
-  font-family: Sans serif;
+  font-family: sans-serif;
   word-break: break-all;
   white-space: nowrap;
   overflow-x: scroll; }

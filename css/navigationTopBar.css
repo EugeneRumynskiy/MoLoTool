@@ -82,9 +82,9 @@ ul {
       background: #dadada;
       color: black;
       font-size: 15px;
-      font-family: Sans serif; }
+      font-family: sans-serif; }
   .nav > .title-container {
-    text-shadow: 1px 4px 6px #dadada, 0 0 0 black, 1px 4px 6px #dadada;
+    text-shadow: 1px 4px 6px #dadada, 0.3px 0.3px 0.3px grey, 1px 4px 6px #dadada;
     color: black;
     padding: 10px;
     position: absolute;
