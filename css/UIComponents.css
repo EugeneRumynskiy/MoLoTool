@@ -29,10 +29,33 @@
 .nav-area {
   font-family: sans-serif; }
 
+.collection-dialog {
+  position: relative;
+  font-family: sans-serif;
+  margin-top: 45px;
+  background-color: #dadada;
+  border-radius: 10px;
+  border: 1px solid grey;
+  min-width: 630px; }
+  .collection-dialog .option {
+    margin: 0 5px 0 5px;
+    padding: 10px 0 10px 0; }
+    .collection-dialog .option div {
+      display: inline-block; }
+    .collection-dialog .option .name {
+      width: 150px;
+      padding: 0 5px 0 5px; }
+    .collection-dialog .option .cases {
+      padding: 0 5px 0 5px; }
+      .collection-dialog .option .cases div {
+        width: 100px; }
+  .collection-dialog .option:not(:last-child) {
+    border-bottom: 1px solid grey; }
+
 .suggestions {
   position: relative;
   font-family: sans-serif;
-  margin-top: 42px;
+  margin-top: 45px;
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid grey;
@@ -85,12 +108,20 @@
     overflow-y: scroll;
     overflow-x: hidden;
     max-height: 360px; }
-  .suggestions #ifMore-container .ifMore-value {
-    min-height: 35px; }
-    .suggestions #ifMore-container .ifMore-value .interface-button {
-      display: block;
-      top: 0px;
-      padding: 5px; }
+  .suggestions .support-info {
+    min-height: 36px; }
+    .suggestions .support-info #ifMore-container {
+      display: inline-block; }
+      .suggestions .support-info #ifMore-container .ifMore-value {
+        min-height: 35px; }
+        .suggestions .support-info #ifMore-container .ifMore-value .interface-button {
+          display: block;
+          top: 0px;
+          padding: 5px; }
+    .suggestions .support-info .collection-values {
+      display: inline-block; }
+      .suggestions .support-info .collection-values div {
+        display: inline-block; }
 
 #motif-list-selected-cmp {
   font-family: sans-serif;
@@ -317,7 +348,7 @@
   #help-cmp {
     margin-top: 80px; }
 
-  .suggestions {
-    margin-top: 2px; } }
+  .suggestions, .collection-dialog {
+    margin-top: 5px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */

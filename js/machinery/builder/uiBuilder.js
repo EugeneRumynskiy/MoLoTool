@@ -150,6 +150,12 @@ var uiBuilder = (function () {
                 (!$target.hasClass("feature"))) {
                 $(".suggestions").hide();
             }
+
+            if(!$target.closest('.collection-dialog, .collection-settings').length) {
+                if($('.collection-dialog').is(":visible")) {
+                    $('.collection-dialog').addClass("hidden");
+                }
+            }
         });
     };
 

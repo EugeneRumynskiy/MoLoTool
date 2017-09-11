@@ -110,14 +110,15 @@
     <script src="js/machinery/builder/components/uiButtons/uiButtons.js"></script>
     <script src="js/machinery/builder/components/uiButtons/inputWindowButtons/submitButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js"></script>
-    <script src="js/machinery/builder/components/uiButtons/topWindowButtons/showTableButton.js"></script>
-    <script src="js/machinery/builder/components/uiButtons/topWindowButtons/switchComparisonModeButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/inputWindowButtons/showInputButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/inputWindowButtons/zoomButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/topWindowButtons/clearButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/topWindowButtons/demoButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/topWindowButtons/helpButton.js"></script>
+    <script src="js/machinery/builder/components/uiButtons/topWindowButtons/showTableButton.js"></script>
+    <script src="js/machinery/builder/components/uiButtons/topWindowButtons/switchComparisonModeButton.js"></script>
     <script src="js/machinery/builder/components/uiButtons/searchWindowButtons/showMoreButton.js"></script>
+    <script src="js/machinery/builder/components/uiButtons/searchWindowButtons/collectionSettingsButton.js"></script>
 
     <script src="js/machinery/calculations/motifSearch.js"></script>
     <script src="js/machinery/calculations/motifMath.js"></script>
@@ -155,16 +156,67 @@
                 <ul class="nav pull-left top-first">
                     <li class="search-container">
                         <i class="material-icons md-dark">search</i>
-                        <!--<span class="icon octicon octicon-search"></span>-->
                         <input id="motif-search" placeholder="Select motif" autocomplete="off" autocorrect="off" autocapitalize="off">
+
                         <div class="suggestions">
                             <div id='legend-container' class="suggestion"></div>
+
                             <div id='motif-list'></div>
-                            <div id="ifMore-container" data-size="">
-                                <div class="ifMore-value suggestion">
-                                    <a id= "show-more-button" class="interface-button" href="#"></a>
+
+                            <div class="suggestion support-info">
+                                <div class="collection-values">
+                                    <div class="model-quality interface-button">Core/Full</div>
+                                    <div class="model-origin interface-button">Mouse/Human</div>
+                                </div>
+
+                                <div id="ifMore-container" data-size="">
+                                    <div class="ifMore-value">
+                                        <a id= "show-more-button" class="interface-button" href="#"></a>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="collection-dialog hidden">
+                            <div class="option model-origin">
+                                <div class="name">
+                                    Model origin:
+                                </div>
+                                <div class="cases">
+                                    <div>
+                                        <input type="radio" id="Human"
+                                        name="origin" value="human">
+                                        <label for="Human">Human</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="Mouse"
+                                        name="origin" value="mouse">
+                                        <label for="Mouse">Mouse</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option model-quality">
+                                <div class="name">
+                                    Model quality:
+                                </div>
+                                <div class="cases">
+                                    <div>
+                                        <input type="radio" id="Core"
+                                        name="quality" value="core">
+                                        <label for="Core">Core</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="Full"
+                                        name="quality" value="full">
+                                        <label for="Full">Full</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="collection-settings">
+                            <a id="collection-settings-button" class="interface-button" href="#"></a>
                         </div>
                     </li>
                     <li class="title-container">

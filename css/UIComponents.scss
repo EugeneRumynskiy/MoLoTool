@@ -45,12 +45,51 @@
   font-family: $defaultFontFamily;
 }
 
+.collection-dialog {
+  position: relative;
+
+  font-family: $defaultFontFamily;
+
+  margin-top: 5px + $topNav-navLineHeight;
+  background-color: $topNav-primaryMenuBackground;
+  border-radius: 10px;
+  border: $thin solid $borderColor;
+
+  min-width: 630px;
+
+  .option {
+    margin: 0 5px 0 5px;
+    padding: 10px 0 10px 0;
+
+    div {
+      display: inline-block;
+    }
+
+    .name {
+      width: 150px;
+      padding: 0 5px 0 5px;
+    }
+
+    .cases {
+      padding: 0 5px 0 5px;
+
+      div {
+        width: 100px;
+      }
+    }
+  }
+
+  .option:not(:last-child) {
+    border-bottom: $thin solid $borderColor;
+  }
+}
+
 .suggestions {
   position: relative;
 
   font-family: $defaultFontFamily;
 
-  margin-top: 2px + $topNav-navLineHeight;
+  margin-top: 5px + $topNav-navLineHeight;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
@@ -132,14 +171,28 @@
     max-height: 360px;
   }
 
-  #ifMore-container{
-    .ifMore-value {
-      min-height: 35px;
+  .support-info {
+    min-height: 36px;
 
-      .interface-button {
-        display: block;
-        top: 0px;
-        padding: 5px;
+    #ifMore-container {
+      display: inline-block;
+
+      .ifMore-value {
+        min-height: 35px;
+
+        .interface-button {
+          display: block;
+          top: 0px;
+          padding: 5px;
+        }
+      }
+    }
+
+    .collection-values {
+      display: inline-block;
+
+      div {
+        display: inline-block;
       }
     }
   }
@@ -494,7 +547,7 @@
     margin-top: 2 * $topNav-navLineHeight;
   }
 
-  .suggestions {
-    margin-top: 2px;
+  .suggestions, .collection-dialog{
+    margin-top: 5px;
   }
 }

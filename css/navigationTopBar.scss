@@ -90,6 +90,10 @@ ul {
   > .search-container {
     padding: 10px 24px 10px 10px;
 
+    > i {
+      margin-top: -3px;
+    }
+
     > #motif-search {
       position: absolute;
       display: inline-block;
@@ -108,6 +112,18 @@ ul {
       color: $topNav-secondaryMenuText;
       font-size: 15px;
       font-family: $defaultFontFamily;
+    }
+
+    .collection-settings {
+      .collection-dialog {
+
+      }
+
+      #collection-settings-button {
+        position: absolute;
+        left: 350px;
+        top: -3px;
+      }
     }
   }
 

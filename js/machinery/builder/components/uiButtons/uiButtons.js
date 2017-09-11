@@ -46,6 +46,7 @@ var uiButtons = (function () {
         helpButton.init();
 
         showMoreButton.init();
+        collectionSettingsButton.init();
     };
 
 
@@ -70,6 +71,7 @@ var uiButtons = (function () {
         helpButton.reset();
 
         showMoreButton.reset();
+        collectionSettingsButton.reset();
     };
 
     ///Support Functions
