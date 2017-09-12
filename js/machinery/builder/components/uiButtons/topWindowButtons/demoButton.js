@@ -23,13 +23,18 @@ var demoButton = (function () {
     var init = function (inputCallback) {
         $button = $("#demo-button");
 
+        $button.prop("disabled", false);
+
         $button
             .empty()
             .html(uiButtons.generateContent(getSettingsFor[defaultMode]))
             .on('click', function(event) {
                 event.preventDefault();
-                uiButtons.resetInterface();
-                showDemo(inputCallback);
+
+                if (!$(this).prop("disabled")) {
+                    uiButtons.resetInterface();
+                    showDemo(inputCallback);
+                }
             });
     };
 

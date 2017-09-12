@@ -73,7 +73,7 @@ ul {
     .nav > .search-container > #motif-search {
       position: absolute;
       display: inline-block;
-      width: 320px;
+      width: 270px;
       padding: 0px 0px 4px 5px;
       border: 0 solid;
       border-bottom: 1px solid black;
@@ -87,7 +87,7 @@ ul {
       font-family: sans-serif; }
     .nav > .search-container .collection-settings #collection-settings-button {
       position: absolute;
-      left: 350px;
+      left: 300px;
       top: -3px; }
   .nav > .title-container {
     text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;

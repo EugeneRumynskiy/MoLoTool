@@ -5,9 +5,9 @@ var uiButtons = (function () {
         _inputMethod = "";
 
 
-    var create = function (eventHandler, inputCallback) {
+    var create = function (eventHandler, inputCallback, collectionSwitchCallback) {
         setEventHandlerTo(eventHandler);
-        setupButtons(inputCallback);
+        setupButtons(inputCallback, collectionSwitchCallback);
     };
 
 
@@ -31,7 +31,7 @@ var uiButtons = (function () {
     };
 
 
-    var setupButtons = function (inputCallback) {
+    var setupButtons = function (inputCallback, collectionSwitchCallback) {
         switchComparisonModeButton.init();
         showTableButton.init();
 
@@ -46,7 +46,7 @@ var uiButtons = (function () {
         helpButton.init();
 
         showMoreButton.init();
-        collectionSettingsButton.init();
+        collectionSettingsButton.init(collectionSwitchCallback);
     };
 
 
@@ -114,7 +114,7 @@ var uiButtons = (function () {
     return {
         clearSearchInput: clearSearchInput,
         resetInterface: resetInterface,
-        setVisibility:setVisibility,
+        setVisibility: setVisibility,
         setInputMethod: setInputMethod,
         getInputMethod: getInputMethod,
         handleEvent: handleEvent,

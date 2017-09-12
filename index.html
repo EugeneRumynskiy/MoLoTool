@@ -103,7 +103,9 @@
 
     <script src="js/machinery/builder/components/motifLibrary.js"></script>
     <script src="js/machinery/builder/components/chosenMotifHighlight.js"></script>
-    <script src="js/machinery/builder/components/motifPicker.js"></script>
+
+    <script src="js/machinery/builder/components/motifPicker/motifPicker.js"></script>
+    <script src="js/machinery/builder/components/motifPicker/inputState.js"></script>
 
     <script src="js/machinery/builder/uiBuilder.js"></script>
 
@@ -132,9 +134,8 @@
 
     <script src="js/machinery/builder/components/fileUploader.js"></script>
     <script src="js/machinery/builder/components/sequenceLibrary.js"></script>
-
-
     <script src="js/machinery/builder/components/resultTabs.js"></script>
+
     <script src="js/machinery/resultTabs/comparisonMode.js"></script>
     <script src="js/machinery/resultTabs/digitGuidance.js"></script>
     <script src="js/machinery/resultTabs/clipboardCopy.js"></script>
@@ -164,9 +165,9 @@
                             <div id='motif-list'></div>
 
                             <div class="suggestion support-info">
-                                <div class="collection-values">
-                                    <div class="model-quality interface-button">Core/Full</div>
-                                    <div class="model-origin interface-button">Mouse/Human</div>
+                                <div class="option-values">
+                                    <div class="model-collection interface-button">Core/Full</div>
+                                    <div class="model-species interface-button">Mouse/Human</div>
                                 </div>
 
                                 <div id="ifMore-container" data-size="">
@@ -178,40 +179,40 @@
                         </div>
 
                         <div class="collection-dialog hidden">
-                            <div class="option model-origin">
+                            <div class="option model-collection" data-class=".model-collection">
                                 <div class="name">
-                                    Model origin:
-                                </div>
-                                <div class="cases">
-                                    <div>
-                                        <input type="radio" id="Human"
-                                        name="origin" value="human">
-                                        <label for="Human">Human</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" id="Mouse"
-                                        name="origin" value="mouse">
-                                        <label for="Mouse">Mouse</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="option model-quality">
-                                <div class="name">
-                                    Model quality:
+                                    Collection:
                                 </div>
                                 <div class="cases">
                                     <div>
                                         <input type="radio" id="Core"
-                                        name="quality" value="core">
+                                               name="quality" value="Core">
                                         <label for="Core">Core</label>
                                     </div>
                                     <div>
                                         <input type="radio" id="Full"
-                                        name="quality" value="full">
+                                               name="quality" value="Full">
                                         <label for="Full">Full</label>
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="option model-species" data-class=".model-species">
+                                <div class="name">
+                                    Species:
+                                </div>
+                                <div class="cases">
+                                    <div>
+                                        <input type="radio" id="Human"
+                                        name="origin" value="Human">
+                                        <label for="Human">Human</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="Mouse"
+                                        name="origin" value="Mouse">
+                                        <label for="Mouse">Mouse</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

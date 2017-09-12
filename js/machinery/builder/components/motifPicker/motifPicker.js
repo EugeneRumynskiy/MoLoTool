@@ -4,32 +4,46 @@ var motifPicker = (function () {
         _chosenMotifsSet = new Set(), //ToDo Change Set To Dictionary o(1)
 
         _defaultMaxResultCount,
-        _maxResultCount;
+        _maxResultCount,
+
+        _motifSummariesSource = function () {};
 
 
-    var create = function () {
+    var create = function (motifSummariesSource, objectsToDisable) {
+        inputStateSwitcher.create(objectsToDisable);
+
         _defaultMaxResultCount = 5;
         _maxResultCount = _defaultMaxResultCount;
 
+        _motifSummariesSource = motifSummariesSource;
+
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
+            inputStateSwitcher.enable();
+
             motifSearch.create();
             motifSearch.applySearch();
         });
     };
 
 
-    /*http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true
+    var updateMotifSummaries = function () {
+        inputStateSwitcher.disable();
 
-        http://hocomoco11.autosome.ru/human/mono.json?summary=true
-            или, если удобнее,
-        http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false*/
+        promiseMotifSummaries().then(function (promisedMotifSummaries) {
+            setMotifSummaries(promisedMotifSummaries);
+            inputStateSwitcher.enable();
+            motifSearch.applySearch();
+        });
+    };
+
 
     var promiseMotifSummaries = function () {
+        console.log(_motifSummariesSource(), "current url");
+
         return $.ajax({
             dataType: "json",
-            url: "http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true"
-            //url: "http://hocomoco.autosome.ru/human/mono.json?summary=true"
+            url: _motifSummariesSource()
         });
     };
 
@@ -37,7 +51,6 @@ var motifPicker = (function () {
     var setMotifSummaries = function (promisedMotifSummaries) {
         if (_motifSummaries.length != 0) {
             errorHandler.logError({"fileName": _fileName, "message": "warning, library is not empty"});
-            console.log(_motifSummaries);
         }
         _motifSummaries = promisedMotifSummaries;
     };
@@ -209,6 +222,8 @@ var motifPicker = (function () {
 
         getDefaultMaxResultCount: getDefaultMaxResultCount,
         getMaxResultCount: getMaxResultCount,
-        setMaxResultCount: setMaxResultCount
+        setMaxResultCount: setMaxResultCount,
+
+        updateMotifSummaries: updateMotifSummaries
     };
 }());

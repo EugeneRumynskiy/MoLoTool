@@ -55,7 +55,7 @@
   border-radius: 10px;
   border: $thin solid $borderColor;
 
-  min-width: 630px;
+  min-width: 430px;
 
   .option {
     margin: 0 5px 0 5px;
@@ -188,8 +188,9 @@
       }
     }
 
-    .collection-values {
+    .option-values {
       display: inline-block;
+      vertical-align: -1.8px;
 
       div {
         display: inline-block;

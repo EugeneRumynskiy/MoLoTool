@@ -1,6 +1,30 @@
 var uiBuilder = (function () {
+    /*http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true
+     http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false*/
+
     var _fileName = "uiBuilder",
-        _eventHandler = undefined;
+        _eventHandler = undefined,
+
+        _motifSummariesSource = "http://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false";
+
+
+    var getObjectsToDisable = function () {
+        var $objectsToDisable = $(".search-container")
+            .find("input")
+            .add("#clear-button, #demo-button");
+
+        return $objectsToDisable;
+    };
+
+
+    var getMotifSummariesSource = function () {
+        return _motifSummariesSource;
+    };
+
+
+    var setMotifSummariesSource = function (newUrl) {
+        _motifSummariesSource = newUrl;
+    };
 
 
     var setUIEventHandlerTo = function (eventHandler) {
@@ -20,7 +44,7 @@ var uiBuilder = (function () {
 
         colorPicker.create(handleEvent);
 
-        motifPicker.create();
+        motifPicker.create(getMotifSummariesSource, getObjectsToDisable());
         buildExternalMotifPickerComponent();
 
         var motifFeatureTitles = motifLibrary.getTitlesForDisplayedFeatures(),
@@ -42,13 +66,19 @@ var uiBuilder = (function () {
             sequenceLibrary.deleteTabContentById
         );
 
-        uiButtons.create(handleEvent, inputCallback);
+        uiButtons.create(handleEvent, inputCallback, collectionSwitchCallback);
 
         inputParsing.create();//input
 
      /*   window.setTimeout(function () {
             $("#demo-button").trigger("click");
         }, 100);*/
+    };
+
+
+    var collectionSwitchCallback = function (newUrl) {
+        setMotifSummariesSource(newUrl);
+        motifPicker.updateMotifSummaries();
     };
 
 

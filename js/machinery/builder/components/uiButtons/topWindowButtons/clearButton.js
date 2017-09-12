@@ -8,12 +8,18 @@ var clearButton = (function () {
 
     var init = function () {
         $button = $("#clear-button");
+
+        $button.prop("disabled", false);
+
         $button
             .empty()
             .html(uiButtons.generateContent(getSettingsFor[defaultMode]))
             .on('click', function(event) {
                 event.preventDefault();
-                uiButtons.resetInterface();
+
+                if (!$(this).prop("disabled")) {
+                    uiButtons.resetInterface();
+                }
             });
     };
 
