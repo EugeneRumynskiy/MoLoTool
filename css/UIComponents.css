@@ -11,7 +11,7 @@
   overflow-x: hidden; }
   #help-cmp .help-header {
     margin: 0 auto;
-    width: 300px;
+    max-width: 400px;
     text-transform: capitalize;
     text-align: center;
     font-size: 24px;
@@ -21,10 +21,17 @@
     text-align: justify;
     font-size: 16px;
     line-height: 24px; }
-    #help-cmp .help-content ol {
-      margin: 8px; }
+    #help-cmp .help-content .emblem {
+      height: 150px;
+      width: 150px;
+      float: left;
+      margin: 0 8px 16px 16px; }
   #help-cmp .italic {
     font-style: italic; }
+  #help-cmp .bold {
+    font-weight: bold; }
+  #help-cmp .underline {
+    text-decoration: underline; }
 
 .nav-area {
   font-family: sans-serif; }

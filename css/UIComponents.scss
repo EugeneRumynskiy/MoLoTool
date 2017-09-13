@@ -16,7 +16,7 @@
 
   .help-header {
     margin: 0 auto;
-    width: 300px;
+    max-width: 400px;
 
     text-transform: capitalize;
     text-align: center;
@@ -31,13 +31,24 @@
     font-size: $defaultFontSize;
     line-height: $defaultFontSize * 1.5;
 
-    ol {
-      margin: 8px;
+    .emblem {
+      height: 150px;
+      width: 150px;
+      float: left;
+      margin: 0 8px 16px 16px;
     }
   }
 
   .italic {
     font-style: italic;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .underline {
+    text-decoration: underline;
   }
 }
 

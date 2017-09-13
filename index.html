@@ -237,55 +237,73 @@
 
     <div id='help-cmp' class="interface-component">
         <div>
-            <div class="help-header">MoLoTool</div>
-            <div class="help-content">Transcription Factor Motif Location Toolbox (MoLoTool) is an interactive user-friendly web application
-                which allows user to scan one's sequences for a presence of Transcription Factor Binding Sites (TFBS).
-                Current binding models consist of Homo Sapiens Comprehensive Model Collection (HOCOMOCO).
+            <div class="help-header">MoLoTool: Transcription Factor
+                <span class="underline bold">Mo</span>tif
+                <span class="underline bold">Lo</span>cation
+                <span class="underline bold">Tool</span>box
+            </div>
+            <div class="help-content">
+                <img class="emblem" src="helpImages/Emblem.png" alt="Emblem.png">
+                MoLoTool is an interactive web application to scan DNA sequences for transcription factor binding sites
+                (TFBS) with position weight matrices presented in HOCOMOCO model collection.
+                The sequence markup is text-based and can be easily copied and pasted via clipboard to any MS-Word-type
+                text editor while maintaining colored motif occurrences.
             </div>
         </div>
         <div>
-            <div class="help-header"><a target="_blank" href="http://hocomoco.autosome.ru/help">HOCOMOCO</a></div>
-            <div class="help-content">HOmo sapiens COmprehensive MOdel COllection (HOCOMOCO) contains Transcription Factor (TF)
-                binding models represented as classic
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Position_weight_matrix">Position Weight Matrices</a>
-                (PWMs, also known as Position-Specific Scoring Matrices, PSSMs) and precalculated score thresholds (see HOCOMOCO-v10
-                <a target="_blank" href="http://nar.oxfordjournals.org/content/44/D1/D116">paper</a>
-                for details).
+            <div class="help-header">
+                <a target="_blank" href="http://hocomoco.autosome.ru/help">
+                    HOCOMOCO
+                </a>
+            </div>
+            <div class="help-content">
+                HOCOMOCO COmprehensive MOdel COllection (HOCOMOCO) contains Transcription Factor (TF)
+                binding models for human and mouse TFs represented as classic
+                <a target="_blank" href="https://en.wikipedia.org/wiki/Position_weight_matrix">
+                    Position Weight Matrices
+                </a>
+                (PWMs, also known as Position-Specific Scoring Matrices, PSSMs)
+                and precalculated score thresholds (see HOCOMOCO website for details).
             </div>
         </div>
         <div>
-            <div class="help-header">Manual</div>
+            <div class="help-header">Step-by-step user guide to MoLoTool</div>
             <div class="help-content">
-                To show a basic example click "Demo" button at the top right corner of the window.
+                A basic example can be visualized using
+                <span class="italic bold">Demo</span>
+                button
+                (<img src="helpImages/TopPannel/Demo.png" alt="Demo.png">)
+                at the top right corner of the window. The example is taken from
+                <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S1874939916301365">
+                    Schwartz et al. 2017
+                </a>
+                and shows EBF1 (COE1) TF binding site present in SLAMF1 human promoter but absent in the respective orthologous mouse promoter.
+                The demo visualization can be reproduced by with the step-by-step guide. To clear any changes and
+                return the page to the default state please use
+                <span class="italic bold">Reset</span>
+                (<img src="helpImages/TopPannel/Reset.png" alt="Reset.png">).
             </div>
-
-            <p></p>
+        </div>
+        <div>
+            <div class="help-header">1. Add models</div>
             <div class="help-content">
-                In order to locate Transcription Factor Binding Sites follow these steps:
-
-                <ol class="help-content">
-                    <li>
-                        Add desired binding models from HOCOMOCO. To do that use search by
-                    <a target="_blank" href="http://hocomoco.autosome.ru/human/mono">name or family</a>.
-                    <!--<img src="helpImages/search.png" alt="search.png">-->
-                    </li>
-
-                    <li>
-                        Then upload sequence file or type sequences manually. FASTA format is supported.
-                    </li>
-
-                    <li>
-                        Adjust P-value.
-                    </li>
-
-                    <li>
-                        If sequences are long enough (100bp+), please wait a moment. We are still working on performance improvements.
-                    </li>
-
-                    <li>
-                        Detailed information about binding sites that was found, provided with the table at the bottom of the page.
-                    </li>
-                </ol>
+                At the first step you need to add desired binding models from HOCOMOCO to the models list.
+                To perform this step, start browsing models by typing TF
+                <a target="_blank" href="http://hocomoco.autosome.ru/human/mono">
+                    name or family
+                </a>
+                in the search field
+                (<img src="helpImages/Search/SearchInput.png" alt="SearchInput.png">).
+                Next, click on a
+                <span class="italic bold">Motif ID</span>
+                (<img src="helpImages/Search/MotifID.png" alt="MotifID.png">)
+                in the drop-down list. A new motif will appear below
+                (<img src="helpImages/Search/Motif.png" alt="Motif.png">).
+                <span class="italic bold">Note</span>
+                that chosen Motif ID contains a
+                <span class="italic bold">Hyperlink</span>
+                to the HOCOMOCO database
+                (<img src="helpImages/Search/MotifIDSelected.png" alt="MotifIDSelected.png">).
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ var motifSearch = (function () {
 
 
     var create = function() {
-        _keysToTest = ["full_name", "motif_families"];
+        _keysToTest = ["full_name", "motif_families", "gene_names"];
 
         $search = $('#motif-search');
         $search.val("");
@@ -47,7 +47,7 @@ var motifSearch = (function () {
                 currentSummary = motifSummaries[i];
                 testResult = testMotif(currentSummary, regExpsToCheck);
 
-                if (testResult != 0) {
+                if (testResult !== 0) {
                     suggestedMotifs.push([currentSummary, testResult]);
                 }
             }
@@ -88,6 +88,7 @@ var motifSearch = (function () {
 
     var testMotif = function (motifSummary, regExpsToTest) {
         var motifName = motifSummary["full_name"];
+
         if (motifPicker.ifMotifIsChosen(motifName)) {
             return 0;
         } else {
