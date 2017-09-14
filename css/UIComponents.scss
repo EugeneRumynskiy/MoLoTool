@@ -1,6 +1,7 @@
 @import "utilities/variables";
 
 #help-cmp{
+  font-family: $defaultFontFamily;
   margin-top: 3 * $topNav-navLineHeight;
   margin-left: 20%;
   margin-right: 20%;
@@ -15,6 +16,10 @@
   overflow-x: hidden;
 
   .help-header {
+    font-weight: bold;
+
+    padding-top: 20px;
+    padding-bottom: 6px;
     margin: 0 auto;
     max-width: 400px;
 
@@ -25,11 +30,10 @@
   }
 
   .help-content {
-    //text-indent: $defaultFontSize * 2;
     margin: 16px;
     text-align: justify;
     font-size: $defaultFontSize;
-    line-height: $defaultFontSize * 1.5;
+    line-height: $defaultFontSize * 2.5;
 
     .emblem {
       height: 150px;
@@ -37,6 +41,16 @@
       float: left;
       margin: 0 8px 16px 16px;
     }
+  }
+
+  .img-example {
+    vertical-align: middle;
+  }
+
+  .img-wide {
+    display: block;
+    margin: 16px auto;
+    width: 100%;
   }
 
   .italic {
@@ -49,6 +63,10 @@
 
   .underline {
     text-decoration: underline;
+  }
+
+  .small-font {
+    font-size: $defaultFontSize;
   }
 }
 
