@@ -77,7 +77,8 @@ var motifLibrary = (function () {
             errorHandler.logError({"fileName": _moduleName, "message": "motifLibrary must be created _displayedFeatures = null"});
             return {};
         } else {
-            var valuesToDisplay = {}, displayedFeature, logoFullUrl;
+            var valuesToDisplay = {}, displayedFeature,
+                logoFullUrl, uniprotFullUrl, geneFullUrl;
 
             for (var jsonFeature in _displayedFeatures) {
                 displayedFeature = _displayedFeatures[jsonFeature];
@@ -85,7 +86,36 @@ var motifLibrary = (function () {
                 if (displayedFeature === "Logo") {
                     logoFullUrl = _logoBaseUrl + motif[jsonFeature];
                     valuesToDisplay[displayedFeature] = '<img src="'+logoFullUrl+'" />';
-                } else {
+                }
+
+                else if (displayedFeature === "Uniprot ID") {
+                    uniprotFullUrl = "http://www.uniprot.org/uniprot/" + motif[jsonFeature];
+                    valuesToDisplay[displayedFeature] = "<a href=\"" + uniprotFullUrl + "\"" +
+                        " class=\"hocomoco-info\" target=\"_blank\">" +
+                        motif[jsonFeature] + "</a>";
+                }
+
+                else if (displayedFeature === "Gene name") {
+                    if (motif["full_name"].match(/HUMAN/) !== null) {
+                        geneFullUrl = "http://www.genenames.org/cgi-bin/gene_symbol_report?match=" + motif[jsonFeature];
+                        valuesToDisplay[displayedFeature] = "<a href=\"" + geneFullUrl + "\"" +
+                            " class=\"hocomoco-info\" target=\"_blank\">" +
+                            motif[jsonFeature] + "</a>";
+                    }
+
+                    else if (motif["full_name"].match(/MOUSE/) !== null) {
+                        geneFullUrl = "http://www.informatics.jax.org/searchtool/Search.do?query=" + motif[jsonFeature];
+                        valuesToDisplay[displayedFeature] = "<a href=\"" + geneFullUrl + "\"" +
+                            " class=\"hocomoco-info\" target=\"_blank\">" +
+                            motif[jsonFeature] + "</a>";
+                    }
+
+                    else {
+                        valuesToDisplay[displayedFeature] = motif[jsonFeature];
+                    }
+                }
+
+                else {
                     valuesToDisplay[displayedFeature] = motif[jsonFeature];
                 }
             }
