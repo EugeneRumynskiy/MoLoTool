@@ -25,6 +25,20 @@ var pSlider = (function () {
 
         var logSlider = setSlider();
         buildUIComponent(logSlider);
+
+        //slider fix for chromium
+        var chromeVersion = navigator.userAgent.match(/Chrome\/\d*/),
+            versionNumber;
+        if (chromeVersion !== null) {
+            versionNumber = chromeVersion[0].match(/\d+/)[0];
+
+            if (versionNumber !== null && parseInt(versionNumber) < 60) {
+                document.getElementById("log-slider").setAttribute('disabled', true);
+                $("#log-slider, .noUi-handle, .noUi-target").css("cursor", "unset");
+            }
+        }
+        console.log(chromeVersion, versionNumber);
+
         return logSlider;
     };
 
@@ -47,13 +61,32 @@ var pSlider = (function () {
             }
         });
 
-        logSlider.noUiSlider.on('start', function(){
+        /*logSlider.noUiSlider.on('start', function(){
             _isActive = true;
+            console.log("START");
         });
 
         logSlider.noUiSlider.on('end', function(){
             _isActive = false;
+            console.log("END");
         });
+
+        logSlider.noUiSlider.on('slide', function(){
+            console.log("slide");
+        });
+
+        logSlider.noUiSlider.on('update', function(){
+            console.log("update");
+        });
+
+        logSlider.noUiSlider.on('change', function(){
+            console.log('change', this);
+
+        });
+
+        logSlider.noUiSlider.on('set', function(){
+            console.log("set");
+        });*/
 
         return logSlider;
     };
