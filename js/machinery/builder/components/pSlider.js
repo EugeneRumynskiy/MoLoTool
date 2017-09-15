@@ -32,7 +32,7 @@ var pSlider = (function () {
         if (chromeVersion !== null) {
             versionNumber = chromeVersion[0].match(/\d+/)[0];
 
-            if (versionNumber !== null && parseInt(versionNumber) < 60) {
+            if (versionNumber !== null && parseInt(versionNumber) < 52) {
                 document.getElementById("log-slider").setAttribute('disabled', true);
                 $("#log-slider, .noUi-handle, .noUi-target").css("cursor", "unset");
             }
