@@ -117,7 +117,7 @@ var motifPicker = (function () {
 
     var wrapIfMoreValueInContainer = function (ifMoreValue, length) {
         var itemsShown = (length >= _maxResultCount) ? _maxResultCount : length,
-            ifMoreContainer = 'Shown ' + itemsShown + " out of " + (length) + ' motifs.';
+            ifMoreContainer = itemsShown + " of " + (length) + ' motifs shown.';
         return ifMoreContainer;
     };
 
