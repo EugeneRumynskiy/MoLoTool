@@ -7,22 +7,30 @@ var helpButton = (function () {
 
         $button,
         $help,
-        $interface;
+        $interface,
 
-    var setVisibilityToMode = function (newMode) {
+        _scrollPosStorageKey;
+
+
+    var switchVisibility = function (newMode) {
         if (newMode === "hidden") {
+            scrollPositionStorage.save(_scrollPosStorageKey);
+
             $help.addClass("hidden");
             $interface.removeClass("hidden");
         } else {
             $help.removeClass("hidden");
             $interface.addClass("hidden");
+
+            scrollPositionStorage.restore(_scrollPosStorageKey);
         }
     };
+
 
     var switchMode = function () {
         var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
 
-        setVisibilityToMode(newMode);
+        switchVisibility(newMode);
 
         $button
             .empty()
@@ -31,12 +39,19 @@ var helpButton = (function () {
         return newMode;
     };
 
+
+
+
+
     var init = function () {
         $button = $("#help-button");
         $help = $("#help-cmp");
         $interface = $(".interface-area");
 
-        setVisibilityToMode(defaultMode);
+        _scrollPosStorageKey = 'helpScrollPos';
+        scrollPositionStorage.add(_scrollPosStorageKey, "0");
+
+        switchVisibility(defaultMode);
 
         $button
             .empty()
@@ -47,12 +62,14 @@ var helpButton = (function () {
             });
     };
 
+
     var reset = function () {
         var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
         if (newMode === defaultMode) {
             switchMode();
         }
     };
+
 
     return {
         init: init,
