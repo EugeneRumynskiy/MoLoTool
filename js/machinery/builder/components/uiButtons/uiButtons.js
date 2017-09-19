@@ -55,6 +55,7 @@ var uiButtons = (function () {
         clearChosenMotifList();
         clearSearchInput();
         clearSequenceInput();
+        pSlider.setDefaultValues();
 
         resetButtons();
     };

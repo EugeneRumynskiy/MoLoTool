@@ -4,7 +4,7 @@
  *
  **/
 var pSlider = (function () {
-    var _initialLogValue = 1.711,
+    var _initialLogValue = 4,
         _nDigits = {"log": 3, "linear": 3},
         _restrictionValue = {
             "log": {"min": 1.3010, "max": 6},
@@ -119,8 +119,7 @@ var pSlider = (function () {
             linearValue = document.getElementById('linearSlider-input');
 
         //default values
-        logValue.value = roundThenRestrict(_initialLogValue, "log", 0);
-        linearValue.value = roundThenRestrict(Math.pow(10, -_initialLogValue), "linear", Math.floor(logValue.value));
+        setDefaultValues();
 
 
         logValue.addEventListener('change', function(){
@@ -144,13 +143,29 @@ var pSlider = (function () {
         });
     };
 
+
+    var setDefaultValues = function () {
+        var logValue = document.getElementById('logSlider-input'),
+            linearValue = document.getElementById('linearSlider-input'),
+            logSlider = document.getElementById('log-slider');
+
+        logSlider.noUiSlider.set(_initialLogValue);
+        logValue.value = roundThenRestrict(_initialLogValue, "log", 0);
+        linearValue.value = roundThenRestrict(Math.pow(10, -_initialLogValue), "linear", Math.floor(logValue.value));
+    };
+
+
+
+
     var setEventHandlerTo = function (eventHandler) {
         _eventHandler = eventHandler;
     };
 
+
     var handleEvents = function () {
         _eventHandler();
     };
+
 
     var isActive = function () {
         return _isActive;
@@ -165,7 +180,8 @@ var pSlider = (function () {
     return {
         create: create,
         isActive: isActive,
-        getPValue: getPValue
+        getPValue: getPValue,
+        setDefaultValues: setDefaultValues
     };
 
 }());
