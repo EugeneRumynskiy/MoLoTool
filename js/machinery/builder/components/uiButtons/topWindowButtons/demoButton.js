@@ -31,6 +31,7 @@ var demoButton = (function () {
             .on('click', function(event) {
                 event.preventDefault();
 
+                //disabled while collection is under uploading after selecting
                 if (!$(this).prop("disabled")) {
                     uiButtons.resetInterface();
                     showDemo(inputCallback);

@@ -55,6 +55,8 @@ var uiButtons = (function () {
         clearChosenMotifList();
         clearSearchInput();
         clearSequenceInput();
+        clearScrollPosition();
+
         pSlider.setDefaultValues();
 
         resetButtons();
@@ -109,6 +111,11 @@ var uiButtons = (function () {
 
     var clearSequenceInput = function () {
         $("#manual-seq-input").find("textarea").val("");
+    };
+
+
+    var clearScrollPosition = function () {
+        $("html").scrollTop(0);
     };
 
 
