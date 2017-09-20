@@ -343,6 +343,11 @@ var resultTabs = (function () {
                 updateMargin(currentId);
             }
         }
+
+        else if (getCurrentMode() === "Multiply") {
+            updateWidth("reset");
+            updateWidth("setToMaximum");
+        }
     };
 
 
