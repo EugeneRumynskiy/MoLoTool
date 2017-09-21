@@ -156,9 +156,18 @@ var inputParsing = (function () {
 
 
     var assembleParsedValues = function (sequences) {
-        var inputParsedInto = "";
-        for(var i = 0; i < sequences.length; i++) {
-            inputParsedInto += ">" + sequences[i].title + "\n" + sequences[i].sequence + "\n";
+        var inputParsedInto = "",
+            noneReplacer = "";
+
+        for(var i = 0, sequence, title; i < sequences.length; i++) {
+            sequence = sequences[i].sequence;
+            title = sequences[i].title;
+
+            if (sequence === getDefaultParsedValues().sequence) {
+                sequence = noneReplacer;
+            }
+
+            inputParsedInto += ">" + title + "\n" + sequence + "\n";
         }
         return inputParsedInto;
     };

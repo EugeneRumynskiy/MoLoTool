@@ -21,7 +21,7 @@ var inputErrors = (function () {
                 resizable: false,
 
                 title: "Input Error.",
-                minWidth: 550,
+                minWidth: 580,
                 maxHeight: 500
             });
     };
@@ -47,7 +47,7 @@ var inputErrors = (function () {
     var getErrorString = function (errorCase, errorIndex) {
         return "<p>"
             + errorIndex + ". "
-            + "Unexpected characters: '" +  getUnexpectedCharactersToShow(errorCase[0]) + "'"
+            + "Unexpected sequence characters: '" +  getUnexpectedCharactersToShow(errorCase[0]) + "'"
             + ". At position: " + errorCase.index
             + "</p>";
     };
