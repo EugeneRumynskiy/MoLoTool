@@ -37,7 +37,8 @@ var pSlider = (function () {
                 $("#log-slider, .noUi-handle, .noUi-target").css("cursor", "unset");
             }
         }
-        console.log(chromeVersion, versionNumber);
+
+        console.log(chromeVersion, versionNumber, " - If browser is chrome, version number;");
 
         return logSlider;
     };

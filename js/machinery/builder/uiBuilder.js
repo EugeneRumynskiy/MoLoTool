@@ -95,12 +95,19 @@ var uiBuilder = (function () {
             var inputParsedInto = inputParsing.assembleParsedValues(sequences);
             $("#manual-seq-input").find("textarea").val(inputParsedInto);
 
+
             if (replaceCurrent === true) {
+                var scrollPosition = $("html").scrollTop();
                 sequenceLibrary.clear();
             }
 
             var libraryIds = $.map(sequences, sequenceLibrary.addTab);
             $.map(libraryIds, resultTabs.addIdToResult);
+
+            if (replaceCurrent === true) {
+                $("html").scrollTop(scrollPosition);
+            }
+
 
             handleEvent();
 

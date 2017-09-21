@@ -4,30 +4,23 @@
 var resultTabs = (function () {
     var _fileName = "resultTabs",
 
-        _tabStates,  //isOpened?
-
-        _resultTabsObjects,
-
-        _tabIdRange,
-
         _libraryIdCheck,
         _libraryIdDelete;
 
 
     var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
-        _tabIdRange = tabIdRange;
+        resultTabsStates.create(tabIdRange);
+
         _libraryIdCheck = libraryIdCheck;
         _libraryIdDelete= libraryIdDelete;
 
-        _tabStates = initTabStates();
-        _resultTabsObjects = {};
 
         comparisonMode.create("Multiply");
         digitGuidance.create(10000);
 
         clipboardCopy.create();
 
-        if ($.isEmptyObject(getOpenedIds())) {
+        if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
             $("#result-cmp").addClass("empty");
         }
     };
@@ -35,20 +28,20 @@ var resultTabs = (function () {
 
     var getCurrentMode = function () {
         return comparisonMode.getCurrentMode();
-    };
+    };//n
 
 
     var getIdsToHandle = function () {
         if (getCurrentMode() === "Single") {
             return getCurrentTabId();
         } else {
-            return getOpenedIds();
+            return resultTabsStates.getOpenedIds();
         }
-    };
+    };//n
 
 
     var getCurrentTabId = function () {
-        if ($.isEmptyObject(getOpenedIds())) {
+        if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
             return []
         }
 
@@ -64,67 +57,11 @@ var resultTabs = (function () {
     };
 
 
-    var initTabStates = function () {
-        var initialState = {};
-        for (var i = _tabIdRange.min; i <= _tabIdRange.max; i++) {
-            initialState[i] = false;
-        }
-        return initialState;
-    };
-
-    //
-    var isOpened = function (tabId) {
-        var tabState = _tabStates[tabId];
-
-        if ((tabState === undefined) || (!_tabStates.hasOwnProperty(tabId))) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, isOpened"});
-            tabState = false;
-        }
-
-        return tabState;
-    };
-
-    //
-    var makeOpened = function (tabId) {
-        if (_tabStates[tabId] === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeOpened"});
-        } else {
-            _tabStates[tabId] = true;
-            _resultTabsObjects[tabId] = $(".tab-result[data-tab=" + tabId + "]").children(".tab-result-sequence").children(".sequence");
-        }
-    };
-
-    //
-    var makeClosed = function (tabId) {
-        if (_tabStates[tabId] === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab state is undefined, makeClosed"});
-        } else {
-            _tabStates[tabId] = false;
-        }
-    };
-
-    //
-    var getOpenedIds = function () {
-        var openedTabsIds = [];
-
-        if (_tabStates === undefined) {
-            errorHandler.logError({"fileName": _fileName, "message": "tab _tabStates is undefined, getOpenedIds"});
-        } else {
-            for (var key in _tabStates) {
-                if (_tabStates.hasOwnProperty(key) && isOpened(key)) {
-                    openedTabsIds.push(key);
-                }
-            }
-        }
-
-        return openedTabsIds;
-    };
-
-
+    ///
     var addIdToResult = function (tabId) {
         if (!_libraryIdCheck(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, id not in sequenceLibrary"});
-        } else if (isOpened(tabId)) {
+        } else if (resultTabsStates.idIsOpened(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, it's already in result"});
         } else {
             var $targetTab = $("#result-tabs"),
@@ -133,29 +70,27 @@ var resultTabs = (function () {
                 $targetSequence = $("#result-sequences"),
                 $resultSequence = createResultSequence(tabId);
 
+
             $targetTab.append($resultTab);
             $targetSequence.append($resultSequence);
 
-            /*var insertBeforeId = getNextHighestResultTabId(tabId);
-            $resultTab.insertBefore($(".tab-result[data-tab=" + insertBeforeId + "]"));
-            $resultSequence.insertBefore($(".tab-result-sequence[data-tab=" + insertBeforeId + "]"));*/
 
             if (getCurrentMode() === "Single") {
                 $resultSequence.addClass("hidden full-screen");
                 $resultSequence.removeClass("flattened");
 
-                if ($.isEmptyObject(getOpenedIds())) {
+                if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
                     setToCurrent(tabId);
                 }
             } else if (getCurrentMode() === "Multiply") {
                 $resultSequence.addClass("flattened");
             }
 
-            if ($.isEmptyObject(getOpenedIds())) {
+            if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
                 $("#result-cmp").removeClass("empty");
             }
 
-            makeOpened(tabId);
+            resultTabsStates.openId(tabId);
             updateHeight();
         }
     };
@@ -165,7 +100,7 @@ var resultTabs = (function () {
         var resultHeight = parseFloat($("#result-tabs").css("height")),
             sliderShift = 5;
         $("#result-sequences").height(resultHeight + sliderShift + "px");
-    };
+    };//n
 
 
     var updateWidth = function (event) {
@@ -175,12 +110,7 @@ var resultTabs = (function () {
         if (event === "reset") {
             $tabs.css({"width": "unset"});
 
-         /*   var widthForDigits = $(".tab-result-sequence").find(".sequence").css("width");
-            $(".tab-result-sequence").find(".digits").css({
-                "max-width": widthForDigits + "px"
-            });*/
 
-            //$tabs.find(".digits").css({"width": "unset"});
         } else if (event === "setToMaximum")  {
             for (var i = 0, max = -1; i < $sequences.length; i++) {
                 if (max < $sequences[i].scrollWidth) {
@@ -192,13 +122,11 @@ var resultTabs = (function () {
                 "width": max + 5 + "px"
             });
 
-            /*$tabs.find(".digits").css({
-                "width": max + 5 + "px"
-            });*/
+
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "can't update with"});
         }
-    };
+    };//n
 
 
     var createResultTab = function (tabId) {
@@ -275,18 +203,8 @@ var resultTabs = (function () {
     };
 
 
-    var getNextHighestResultTabId = function (tabId) {
-        for (var i = _tabIdRange.min; i <= _tabIdRange.max; i++) {
-            if (_tabStates[i] && (tabId < i)) {
-                return i;
-            }
-        }
-        return tabId;
-    };
-
-
     var updateTab = function (tabId, content) {
-        if (isOpened(tabId)) {
+        if (resultTabsStates.idIsOpened(tabId)) {
             var digits = digitGuidance.getDigitsFor(getDigitsLength(tabId)),
 
                 title = "<span class=\"segment\">" +
@@ -355,7 +273,8 @@ var resultTabs = (function () {
         var $tab = $(source),
             tabId = $tab.attr('data-tab');
 
-        makeClosed(tabId);
+        resultTabsStates.closeId(tabId);
+
         _libraryIdDelete(tabId);
 
         $tab.remove();
@@ -366,13 +285,13 @@ var resultTabs = (function () {
             updateWidth("reset");
             updateWidth("setToMaximum");
         } else if (getCurrentMode() === "Single" &&
-            !$.isEmptyObject(getOpenedIds()) ) {
+            !$.isEmptyObject(resultTabsStates.getOpenedIds()) ) {
 
             var newCurrentTabId = $(".tab-result").first().attr("data-tab");
             setToCurrent(newCurrentTabId);
         }
 
-        if ($.isEmptyObject(getOpenedIds())) {
+        if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
             $("#result-cmp").addClass("empty");
         }
     };
@@ -387,26 +306,15 @@ var resultTabs = (function () {
     };
 
 
-    var show = function () {
-        console.log(_tabStates);
-        console.log(_resultTabsObjects);
-        return _tabStates;
-    };
-
-
     return {
         create: create,
         addIdToResult: addIdToResult,
 
-        getOpenedIds: getOpenedIds,
         getIdsToHandle: getIdsToHandle,
         getCurrentMode: getCurrentMode,
 
         updateTab: updateTab,
         updateWidth: updateWidth,
-        updateMarginForCurrentTab: updateMarginForCurrentTab,
-
-        //debug
-        show: show
+        updateMarginForCurrentTab: updateMarginForCurrentTab
     };
 }());

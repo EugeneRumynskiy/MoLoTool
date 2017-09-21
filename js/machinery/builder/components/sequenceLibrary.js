@@ -150,8 +150,6 @@ var sequenceLibrary = (function () {
         isRecorded: isRecorded,
         clear: clear,
 
-        updateCurrentTabSequence: updateCurrentTabSequence,
-
         deleteTabContentById:deleteTabContentById,
         //debug
         show: show

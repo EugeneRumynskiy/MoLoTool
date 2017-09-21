@@ -39,8 +39,6 @@ var motifPicker = (function () {
 
 
     var promiseMotifSummaries = function () {
-        console.log(_motifSummariesSource(), "current url");
-
         return $.ajax({
             dataType: "json",
             url: _motifSummariesSource()
