@@ -19,7 +19,7 @@ var motifPicker = (function () {
 
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
-            inputStateSwitcher.enable();
+            inputStateSwitcher.enableInput();
 
             motifSearch.create();
             motifSearch.applySearch();
@@ -28,11 +28,11 @@ var motifPicker = (function () {
 
 
     var updateMotifSummaries = function () {
-        inputStateSwitcher.disable();
+        inputStateSwitcher.disableInput();
 
         promiseMotifSummaries().then(function (promisedMotifSummaries) {
             setMotifSummaries(promisedMotifSummaries);
-            inputStateSwitcher.enable();
+            inputStateSwitcher.enableInput();
             motifSearch.applySearch();
         });
     };

@@ -5,23 +5,23 @@ var inputStateSwitcher = (function () {
 
     var create = function (objectsToDisable) {
         $inputsToControl = objectsToDisable;
-        disable();
+        disableInput();
     };
 
 
-    var disable = function () {
+    var disableInput = function () {
         $inputsToControl.prop("disabled", true);
     };
 
 
-    var enable = function () {
+    var enableInput = function () {
         $inputsToControl.prop("disabled", false);
     };
 
 
     return {
         create: create,
-        disable: disable,
-        enable: enable
+        disableInput: disableInput,
+        enableInput: enableInput
     }
 }());
