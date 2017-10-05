@@ -115,7 +115,7 @@ var uiBuilder = (function () {
                 resultTabs.updateWidth("setToMaximum");
             }
         } else {
-            console.log(inputString, "seq are empty");
+            console.log(inputString, "$.isEmptyObject(sequences) is true");
         }
     };
 

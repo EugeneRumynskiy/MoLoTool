@@ -17,6 +17,7 @@ var demoButton = (function () {
         motifSearch.applySearch();
 
         inputCallback(inputDemo.getDemoInput(), true);
+
     };
 
 
@@ -35,6 +36,7 @@ var demoButton = (function () {
                 if (!$(this).prop("disabled")) {
                     uiButtons.resetInterface();
                     showDemo(inputCallback);
+                    uiButtons.setScrollPosition("bottom");
                 }
             });
     };

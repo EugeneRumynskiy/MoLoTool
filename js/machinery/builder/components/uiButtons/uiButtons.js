@@ -55,7 +55,8 @@ var uiButtons = (function () {
         clearChosenMotifList();
         clearSearchInput();
         clearSequenceInput();
-        clearScrollPosition();
+
+        setScrollPosition("top");
 
         pSlider.setDefaultValues();
 
@@ -114,12 +115,32 @@ var uiButtons = (function () {
     };
 
 
-    var clearScrollPosition = function () {
-        $("html").scrollTop(0);
+    var setScrollPosition = function (scrollTo) {
+        if (scrollTo === "top") {
+            scrollTop();
+        } else if (scrollTo === "bottom") {
+            scrollBottom();
+        }
     };
 
 
+    var scrollTop = function () {
+        var $window = $("html");
+        $window.scrollTop(0);
+    };
+
+
+    var scrollBottom = function () {
+        var $window = $("html"),
+            height = $window.scrollTop() + $window.height();
+        $window.scrollTop(height);
+    };
+
+
+
+
     return {
+        setScrollPosition: setScrollPosition,
         clearSearchInput: clearSearchInput,
         resetInterface: resetInterface,
         setVisibility: setVisibility,

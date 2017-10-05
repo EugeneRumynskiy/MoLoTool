@@ -20,8 +20,9 @@ var inputErrors = (function () {
                 closeOnEscape: true,
                 resizable: false,
 
-                title: "Input Error.",
+                title: "Input warning",
                 minWidth: 580,
+                minHeight: 200,
                 maxHeight: 500
             });
     };
@@ -73,18 +74,26 @@ var inputErrors = (function () {
     };
 
 
+    var showErrors = function (event) {
+        if (event === "motifListIsEmpty") {
+            _dialog
+                .html("The model list is empty. Please select TFBS models" +
+                    " using the search field in the top left corner.")
+                .dialog( "open" );
+        } else {
+            if (getErrorStack().length !== 0) {
+                showStack();
+            }
+        }
+    };
+
+
     var showStack = function () {
         var errorString = getErrorOutput();
 
         _dialog
             .html(errorString)
             .dialog( "open" );
-    };
-
-    var showErrors = function () {
-        if (getErrorStack().length !== 0) {
-            showStack();
-        }
     };
 
 
