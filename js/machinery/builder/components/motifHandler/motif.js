@@ -49,6 +49,8 @@ var motif = (function () {
 
 
     var findSites = function(sequence, pValueMax) {
+        console.log(_pwmMatrix);
+        console.log(_pwmMatrixReversed);
         var direct = "+", inverse = "-",   //direction cases
             sitesList = [].concat(
                 findSitesInStrand(sequence, direct, pValueMax),
@@ -129,7 +131,7 @@ var motif = (function () {
                     strength: round(-Math.log10(pValue), _nDigits),
                     strand: direction,
                     pValue: round(pValue, _nDigits + 2),
-                    motifSequence: flipSequence(motifSequence, direction == "-")
+                    motifSequence: flipSequence(motifSequence, direction === "-")
                 });
             }
         }
@@ -138,9 +140,9 @@ var motif = (function () {
 
 
     var choosePwmMatrix = function (direction) {
-        if (direction == "-") {
+        if (direction === "-") {
             return _pwmMatrixReversed;
-        } else if (direction == "+") {
+        } else if (direction === "+") {
             return _pwmMatrix;
         } else {
             errorHandler.logError({"fileName": _fileName, "message": "incorrectDirection"});

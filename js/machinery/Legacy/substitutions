@@ -1,0 +1,34 @@
+jquery-ui.css:
+
+Substitution:
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	float: right;
+}
+
+to:
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+	text-align: center;
+}
+---------
+spectrum.js:
+
+Substitution:
+        function updateOriginalInput(fireCallback) {
+            var color = get(),
+                displayColor = '',
+                hasChanged = !tinycolor.equals(color, colorOnShow);
+
+        Line 858;
+
+to:
+        function updateOriginalInput(fireCallback) {
+            var color = get(),
+                displayColor = '',
+                hasChanged = true; //change to fix color bug !tinycolor.equals(color, colorOnShow);
+
+        Line 858;
+
+        hasChanged = !tinycolor.equals(color, colorOnShow);
+---------
