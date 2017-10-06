@@ -97,7 +97,7 @@ var motif = (function () {
     //Flip [A, C, G, T] into [T, G, C, A] if condition is true and Return
     var flipSequence = function(sequence, condition) {
         if (condition) {
-            var flippedSequence = "",
+            var flippedReversedSequence = "",
                 nucleotideFlipsInto = {
                     "A" : "T", 'a': "t",
                     "C" : "G", 'c': "g",
@@ -105,10 +105,10 @@ var motif = (function () {
                     "T" : "A", 't': "a"
                 };
 
-            for (var i = 0; i < sequence.length; i++) {
-                flippedSequence += nucleotideFlipsInto[sequence[i]];
+            for (var i = sequence.length - 1; i >= 0; i--) {
+                flippedReversedSequence += nucleotideFlipsInto[sequence[i]];
             }
-            return flippedSequence;
+            return flippedReversedSequence;
         } else {
             return sequence;
         }
