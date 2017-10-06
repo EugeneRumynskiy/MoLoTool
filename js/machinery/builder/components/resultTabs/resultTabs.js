@@ -139,8 +139,12 @@ var resultTabs = (function () {
                 '<div class="tab-result" data-tab=' + tabId + '>' +
                 '<a href="#" class="tab-result-name" data-tab=' + tabId + '>' + tabName + '</a>' +
                 '<a href="#" class="close"></a>' +
-                '<a href="#" class="lock '+ lockMode + '">' + '<i class="material-icons md-dark">lock_open</i>' + '</a>' +
-                '<a href="#" class="copy-tab" data-tab=' + tabId + '>' +
+                '<a href="#" class="lock tooltip '+ lockMode + '">' +
+                    '<span class="tooltiptext">Lock the tab</span>' +
+                    '<i class="material-icons md-dark">lock_open</i>' +
+                '</a>' +
+                '<a href="#" class="copy-tab tooltip" data-tab=' + tabId + '>' +
+                    '<span class="tooltiptext">Copy markup</span>' +
                     '<i class="material-icons md-dark">content_copy</i>' +
                 '</a>' +
                 '<a href="#" class="show-title" data-tab=' + tabId + '>' + "Show name" + '</a>' +

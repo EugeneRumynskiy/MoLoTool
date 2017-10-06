@@ -54,7 +54,7 @@ var inputParsing = (function () {
         var sequences;
         inputErrors.clearStack();
 
-        if ($.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
+        if (false && $.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
             sequences = [];
             inputErrors.showErrors("motifListIsEmpty");
         } else {
@@ -86,21 +86,35 @@ var inputParsing = (function () {
             inputWithoutGeneralDescription = inputString.slice(startIndex + 1),
             sequencesWithTitles = inputWithoutGeneralDescription.split(">");
 
+        console.log(sequencesWithTitles, "sequencesWithTitles");
+
         return $.map(sequencesWithTitles, parseSequenceWithTitle);
     };
 
 
     var parseSequenceWithTitle = function (sequenceWithTitle) {
-        var parsedValues = getDefaultParsedValues(),
-            splitResult = $.trim(sequenceWithTitle).split(/\n+/).map($.trim);
+        var parsedValues = {},
 
+            //if fasta, there MUST be at least ONE \n else it's error;
+            titleIndex = sequenceWithTitle.indexOf("\n"),
 
-        if (splitResult.length === 2) {
-            parsedValues["title"] = splitResult[0];
-            parsedValues["sequence"] = returnSuitableSequence(splitResult[1]);
-        } else if (splitResult.length === 1) {
-            parsedValues["sequence"] = returnSuitableSequence(splitResult[0]);
+            title = "",
+            sequence = "";
+
+        if (titleIndex === -1) {
+            title = sequenceWithTitle;
+            sequence = "";
+        } else {
+            title = $.trim(sequenceWithTitle.slice(0, titleIndex));
+            sequence = $.trim(sequenceWithTitle.slice(titleIndex + 1))
+                .split(/\n+/)
+                .map($.trim)
+                .join("");
         }
+
+        parsedValues["title"] = ($.isEmptyObject(title)) ? getDefaultParsedValues().title : title;
+        parsedValues["sequence"] = ($.isEmptyObject(sequence)) ?
+            getDefaultParsedValues().sequence : returnSuitableSequence(sequence);
 
         return parsedValues;
     };
@@ -108,7 +122,6 @@ var inputParsing = (function () {
 
     var parseAsText = function (inputString) {
         var sequence = $.trim(inputString).split(/\n+/).join("");
-        //return $.map(sequences, parseSequence);
         return [parseSequence(sequence)];
     };
 
