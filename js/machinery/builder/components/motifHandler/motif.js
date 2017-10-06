@@ -49,8 +49,6 @@ var motif = (function () {
 
 
     var findSites = function(sequence, pValueMax) {
-        console.log(_pwmMatrix);
-        console.log(_pwmMatrixReversed);
         var direct = "+", inverse = "-",   //direction cases
             sitesList = [].concat(
                 findSitesInStrand(sequence, direct, pValueMax),

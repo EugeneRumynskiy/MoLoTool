@@ -73,9 +73,8 @@ var sequenceLibrary = (function () {
             }
         }
 
-        var message = "maximum sequenceInput count exceeded, delete one of current sequenceInput";
-        alert(message);
-        errorHandler.logError({"fileName": _fileName, "message": message});
+        inputErrors.showErrors("sequenceCountExceeded");
+        errorHandler.logError({"fileName": _fileName, "message": "sequenceCountExceeded"});
         return -1;
     };
 

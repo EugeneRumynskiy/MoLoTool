@@ -1,6 +1,8 @@
 var inputErrors = (function () {
     var _fileName = "inputErrors",
-        _errorStack,
+        _parsingErrorsStack,
+        _commonErrors,
+
         _seqRegExp,
 
         _maxUnexpectedCharToShow,
@@ -8,7 +10,12 @@ var inputErrors = (function () {
 
 
     var create = function (regExp) {
-        _errorStack = [];
+        _parsingErrorsStack = [];
+        _commonErrors = {
+            "motifListIsEmpty": "The model list is empty. Please select TFBS models" +
+                " using the search field in the top left corner.",
+            "sequenceCountExceeded": "sequenceCountExceeded!"
+        };
 
         _seqRegExp = regExp;
 
@@ -41,7 +48,12 @@ var inputErrors = (function () {
 
 
     var getErrorStack = function () {
-        return _errorStack;
+        return _parsingErrorsStack;
+    };
+
+
+    var getCommonErrors = function () {
+        return _commonErrors;
     };
 
 
@@ -66,6 +78,17 @@ var inputErrors = (function () {
     };
 
 
+    var getMessageToShow = function (event) {
+        var commonErrors = getCommonErrors();
+
+        if (commonErrors.hasOwnProperty(event)) {
+            return commonErrors[event];
+        }   else {
+            return "Undefined error";
+        }
+    };
+
+
     var getUnexpectedCharactersToShow = function (rawUnexpectedCharacters) {
         if (rawUnexpectedCharacters.length > _maxUnexpectedCharToShow) {
             return rawUnexpectedCharacters.slice(0, _maxUnexpectedCharToShow) + "...";
@@ -76,21 +99,21 @@ var inputErrors = (function () {
 
 
     var clearStack = function () {
-        _errorStack.length = 0;
+        _parsingErrorsStack.length = 0;
     };
 
 
     var addToStack = function (sequence) {
         console.log(sequence.match(_seqRegExp));
-        _errorStack.push(sequence.match(_seqRegExp));
+        _parsingErrorsStack.push(sequence.match(_seqRegExp));
     };
 
 
     var showErrors = function (event) {
-        if (event === "motifListIsEmpty") {
+        if (event !== undefined) {
+            var messageToShow = getMessageToShow(event);
             _dialog
-                .html("The model list is empty. Please select TFBS models" +
-                    " using the search field in the top left corner.")
+                .html(messageToShow)
                 .dialog( "open" );
         } else {
             if (getErrorStack().length !== 0) {

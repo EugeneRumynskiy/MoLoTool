@@ -107,8 +107,9 @@ var inputParsing = (function () {
 
 
     var parseAsText = function (inputString) {
-        var sequences = $.trim(inputString).split(/\n+/);
-        return $.map(sequences, parseSequence);
+        var sequence = $.trim(inputString).split(/\n+/).join("");
+        //return $.map(sequences, parseSequence);
+        return [parseSequence(sequence)];
     };
 
 
