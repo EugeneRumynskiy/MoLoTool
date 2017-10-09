@@ -5,10 +5,13 @@ var inputParsing = (function () {
     var _fileName = "inputParsing",
         
         _seqCheck,
-        _defaultParsedValues;
+        _defaultParsedValues,
+        _generalDescription;
 
 
     var create = function () {
+        setGeneralDescription("");
+
         setSeqCheck(new RegExp('[^ATGCNatgcn]+'));
 
         setDefaultParsedValues({
@@ -24,6 +27,16 @@ var inputParsing = (function () {
         );
 
         inputErrors.create(getSeqCheck());
+    };
+
+
+    var setGeneralDescription = function (generalDescription) {
+        _generalDescription = generalDescription.trim();
+    };
+
+
+    var getGeneralDescription = function () {
+        return _generalDescription;
     };
 
 
@@ -88,6 +101,7 @@ var inputParsing = (function () {
             sequencesWithTitles = inputWithoutGeneralDescription.split(">");
 
         console.log(sequencesWithTitles, "sequencesWithTitles");
+        setGeneralDescription(generalDescription);
 
         return $.map(sequencesWithTitles, parseSequenceWithTitle);
     };
@@ -176,7 +190,7 @@ var inputParsing = (function () {
 
 
     var assembleParsedValues = function (sequences) {
-        var inputParsedInto = "",
+        var inputParsedInto = (getGeneralDescription() === "") ? "" : getGeneralDescription() + "\n",
             noneReplacer = "";
 
         for(var i = 0, sequence, title; i < sequences.length; i++) {
