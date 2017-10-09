@@ -50,8 +50,8 @@ var pSlider = (function () {
         noUiSlider.create(logSlider, {
             start: _initialLogValue,
             orientation: "horizontal",
-            direction: 'rtl', //left to right
-            connect: [false, true],
+            direction: 'ltr', //left to right
+            connect: [true, false],
             behaviour: 'snap',
             range: _sliderRange,
             pips: {

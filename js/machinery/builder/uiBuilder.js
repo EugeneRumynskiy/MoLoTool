@@ -70,9 +70,11 @@ var uiBuilder = (function () {
 
         inputParsing.create();//input
 
-     /*   window.setTimeout(function () {
+        /*window.setTimeout(function () {
             $("#demo-button").trigger("click");
         }, 100);*/
+
+        tooltips.create();
     };
 
 
@@ -121,7 +123,7 @@ var uiBuilder = (function () {
 
 
     var buildExternalMotifPickerComponent = function () {
-        $('#motif-list').on('click', '.motif-title', function(event){
+        $('#motif-list').on('click', '.motif-title', function (event) {
             event.preventDefault();
 
             var $motifTitle = $(event.target),
@@ -159,7 +161,7 @@ var uiBuilder = (function () {
         });
 
 
-        $('#motif-list-selected').on('click', '.close', function(event){
+        $('#motif-list-selected').on('click', '.close', function (event) {
             var $motifContainer = $(event.target).parent(),
                 $motifTitle = $(event.target).siblings(".motif-title"), motifName = $motifTitle.text();
 
@@ -180,7 +182,7 @@ var uiBuilder = (function () {
 
         //search bar usability
         //ToDo bad-bad-bad code
-        $('body').click(function(event) {
+        $('body').click(function (event) {
             var $target = $(event.target);
 
             if (($target.parents(".search-container").length === 0) &&
@@ -188,12 +190,22 @@ var uiBuilder = (function () {
                 $(".suggestions").hide();
             }
 
-            if(!$target.closest('.collection-dialog, .collection-settings').length) {
-                if($('.collection-dialog').is(":visible")) {
+            if (!$target.closest('.collection-dialog, .collection-settings').length) {
+                if ($('.collection-dialog').is(":visible")) {
                     $('.collection-dialog').addClass("hidden");
                 }
             }
+
+            // if(!$target.hasClass("close") && $target.closest('.add-sequence, .tooltiptext').length === 0) {
+            //     if($('.search-container .tooltiptext').is(":visible")) {
+            //         $('.search-container .tooltiptext')
+            //             .animate({opacity: 0}, 800, function () {
+            //                 $(this).addClass("hidden");
+            //             });
+            //     }
+            // }
         });
+
     };
 
 

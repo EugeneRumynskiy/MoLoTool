@@ -1,5 +1,5 @@
-@import "variables";
-
+@import "../../../css/utilities/variables";
+//not used anymore
 //Example from - https://www.w3schools.com/css/css_tooltip.asp
 
 /* Tooltip container */
@@ -11,7 +11,6 @@
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-  visibility: hidden;
   width: 90px;
   background-color: black;
   color: #fff;
@@ -24,12 +23,16 @@
   position: absolute;
   z-index: 2;
 
-  //bottom: 135%; - set further
+  //bottom: 135%; - it's set further
   left: 50%;
   margin-left: -45px;
 
   /* Transition */
   opacity: 0;
+
+  bottom: 135%;
+  visibility: hidden;
+
 
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
@@ -44,31 +47,19 @@
   transition-delay: 0.5s;
 }
 
-/*.nav-area {
-  .tooltip .tooltiptext {
-    top: 100%; // bottom tooltip for nav
-  }
-}*/
-.interface-component {
-  .tooltip .tooltiptext {
-    bottom: 135%; // top tooltip for interface
-  }
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
-  top: 100%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
+
+  top: 100%;
   border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

@@ -208,7 +208,8 @@
   height: 10px;
 }
 .noUi-marker-horizontal.noUi-marker-large {
-  height: 15px;
+  height: 10px;
+  /*height: 15px;*/
 }
 /* Vertical layout;
  *

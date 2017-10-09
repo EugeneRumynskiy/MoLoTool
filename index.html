@@ -81,7 +81,11 @@
 
     <!--noUIslider -->
     <script src="externalLibs/nouislider/nouislider.min.js"></script>
-    <link rel="stylesheet" href="externalLibs/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="externalLibs/nouislider/nouislider.css">
+
+    <!--tooltips qtip2 -->
+    <script src="externalLibs/qtip2/jquery.qtip.min.js"></script>
+    <link rel="stylesheet" href="externalLibs/qtip2/jquery.qtip.min.css">
 
 
     <!--clipboard copy -->
@@ -132,6 +136,8 @@
 
     <script src="js/machinery/builder/components/fileUploader.js"></script>
     <script src="js/machinery/builder/components/sequenceLibrary.js"></script>
+    <script src="js/machinery/builder/components/tooltips.js"></script>
+
 
     <script src="js/machinery/builder/components/resultTabs/resultTabs.js"></script>
     <script src="js/machinery/builder/components/resultTabs/comparisonMode.js"></script>
@@ -144,7 +150,6 @@
 
     <script src="js/machinery/AppContainer.js"></script>
 
-    <link rel="stylesheet" href="css/utilities/tooltips.css">
     <link rel="stylesheet" href="css/primaryComponentsSettings.css">
     <link rel="stylesheet" href="css/dataTable.css">
     <link rel="stylesheet" href="css/pSlider.css">
@@ -189,7 +194,7 @@
         <div class='nav-bar container'>
             <nav class="the-nav clearfix">
                 <ul class="nav pull-left top-first">
-                    <li class="search-container">
+                    <li class="search-container tooltip">
                         <i class="material-icons md-dark">search</i>
                         <input id="motif-search" placeholder="Start typing motif name here ..." autocomplete="off" autocorrect="off" autocapitalize="off">
 

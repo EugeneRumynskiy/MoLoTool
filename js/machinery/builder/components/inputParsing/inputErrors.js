@@ -13,8 +13,8 @@ var inputErrors = (function () {
         _parsingErrorsStack = [];
         _commonErrors = {
             "motifListIsEmpty": "The model list is empty. Please select TFBS models" +
-                " using the search field in the top left corner.",
-            "sequenceCountExceeded": "sequenceCountExceeded!"
+                " using the search field.",
+            "sequenceCountExceeded": "Maximum sequence count (10) exceeded."
         };
 
         _seqRegExp = regExp;
@@ -111,10 +111,39 @@ var inputErrors = (function () {
 
     var showErrors = function (event) {
         if (event !== undefined) {
-            var messageToShow = getMessageToShow(event);
-            _dialog
-                .html(messageToShow)
-                .dialog( "open" );
+            var content = getMessageToShow(event);
+
+            console.log(event);
+            $(".nav #motif-search").qtip({
+                //overwrite: false, // Make sure the tooltip won't be overridden once created
+                content: {
+                    text: content,
+                    title: {
+                        text: 'Warning.'
+                    }
+                },
+                style: {
+                    tip: {
+                      corner: true
+                    },
+                    classes: 'qtip-tipsy qtip-shadow'
+                },
+                position: {
+                    my: 'top left',  // Position my top left...
+                    at: 'bottom left', // at the bottom right of...
+                    adjust: {
+                        y: 5,
+                        x: -25
+                    }
+                },
+                show: {
+                    event: false,
+                    delay: 100,
+                    //event: event.type, // Use the same show event as the one that triggered the event handler
+                    ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
+                },
+                hide: 'unfocus'
+            });
         } else {
             if (getErrorStack().length !== 0) {
                 showStack();

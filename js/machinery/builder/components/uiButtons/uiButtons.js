@@ -84,7 +84,7 @@ var uiButtons = (function () {
         var content = "<span class=\"icon icon-medium\">"+ mode.title + "</span>" +
             "<i class=\"material-icons md-dark\">" + mode.icon + "</i>\n";
 
-        /*if (mode.hasOwnProperty("tooltip") && mode["tooltip"] !== undefined) {
+      /*  if (mode.hasOwnProperty("tooltip") && mode["tooltip"] !== undefined) {
             content = '<span class="tooltiptext">' + mode["tooltip"] + '</span>' + content;
         }*/
 

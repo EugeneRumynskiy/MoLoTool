@@ -32,3 +32,17 @@ to:
 
         hasChanged = !tinycolor.equals(color, colorOnShow);
 ---------
+nouislider.css:
+
+Substitution:
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 15px;
+}
+
+to:
+.noUi-marker-horizontal.noUi-marker-large {
+  height: 10px;
+}
+---------
+---------
+

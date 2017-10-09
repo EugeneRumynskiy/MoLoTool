@@ -54,20 +54,21 @@ var inputParsing = (function () {
         var sequences;
         inputErrors.clearStack();
 
-        if (false && $.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
+        if ($.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
             sequences = [];
             inputErrors.showErrors("motifListIsEmpty");
-        } else {
-            var inputString = $.trim(rawInputString);
-
-            if (ifFasta(inputString)) {
-                sequences = parseAsFasta(inputString);
-            } else {
-                sequences = parseAsText(inputString);
-            }
-
-            inputErrors.showErrors();
         }
+
+        var inputString = $.trim(rawInputString);
+
+        if (ifFasta(inputString)) {
+            sequences = parseAsFasta(inputString);
+        } else {
+            sequences = parseAsText(inputString);
+        }
+
+        inputErrors.showErrors();
+
 
         return checkOutput(sequences);
     };
