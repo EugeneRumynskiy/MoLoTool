@@ -15,7 +15,7 @@ var inputParsing = (function () {
         setSeqCheck(new RegExp('[^ATGCNatgcn]+'));
 
         setDefaultParsedValues({
-            "title": "None",
+            "title": "No title",
             "sequence": "None"
         });
 
