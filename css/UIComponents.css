@@ -135,7 +135,7 @@
         min-height: 35px; }
         .suggestions .support-info #ifMore-container .ifMore-value .interface-button {
           display: block;
-          top: 0px;
+          top: 2px;
           padding: 5px; }
     .suggestions .support-info .option-values {
       display: inline-block;
