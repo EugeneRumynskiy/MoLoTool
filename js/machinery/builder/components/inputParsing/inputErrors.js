@@ -1,65 +1,39 @@
 var inputErrors = (function () {
     var _fileName = "inputErrors",
-        _parsingErrorsStack,
+
+        _errorLog,
         _commonErrors,
 
         _seqRegExp,
 
-        _maxUnexpectedCharToShow,
-        _dialog;
+        _maxUnexpectedCharToShow;
 
 
     var create = function (regExp) {
-        _parsingErrorsStack = [];
+        _errorLog = {
+            "sequenceCountExceeded": 0,
+            "motifListIsEmpty": false,
+            "checkSequenceIsFalse": false
+        };
+
         _commonErrors = {
-            "motifListIsEmpty": "The model list is empty. Please select TFBS models" +
-                " using the search field.",
-            "sequenceCountExceeded": "Maximum sequence count (10) exceeded."
+            "motifListIsEmpty": "The TFBS model list is empty. Please pre-select a desired set" +
+                " of TFBS models by searching the interactive catalogue.<br><br>",
+            "sequenceCountExceeded": "Too many sequences (" +
+                getRedundantSequenceCount() + ") submitted, please input " +
+                resultTabsStates.getTabIdRange().max + " or less.<br><br>",
+            "checkSequenceIsFalse": "Invalid characters.<br><br>"
         };
 
         _seqRegExp = regExp;
 
         _maxUnexpectedCharToShow = 5;
-
-        _dialog = $( "#error-dialog" );
-        _dialog.dialog({
-                autoOpen: false,
-                closeOnEscape: true,
-                resizable: false,
-
-                title: "Input warning",
-                minWidth: 580,
-                minHeight: 200,
-                maxHeight: 500,
-            buttons: [
-                {
-                    text: "ok",
-                    click: function() {
-                        $( this ).dialog( "close" );
-                    }
-
-                    // Uncommenting the following line would hide the text,
-                    // resulting in the label being used as a tooltip
-                    //showText: false
-                }
-            ]
-            });
-    };
-
-
-    var getErrorStack = function () {
-        return _parsingErrorsStack;
-    };
-
-
-    var getCommonErrors = function () {
-        return _commonErrors;
     };
 
 
     var getErrorOutput = function () {
         var errorOutput = "",
-            errorStack = getErrorStack();
+            errorStack = getStack();
 
         for(var i = 0; i < errorStack.length; i++) {
             errorOutput += getErrorString(errorStack[i], i);
@@ -78,7 +52,89 @@ var inputErrors = (function () {
     };
 
 
+    var getUnexpectedCharactersToShow = function (rawUnexpectedCharacters) {
+        if (rawUnexpectedCharacters.length > _maxUnexpectedCharToShow) {
+            return rawUnexpectedCharacters.slice(0, _maxUnexpectedCharToShow) + "...";
+        } else {
+            return rawUnexpectedCharacters;
+        }
+    };
+
+
+    var getCommonErrors = function () {
+        return _commonErrors;
+    };
+
+
+    var clearLog = function () {
+        _errorLog["sequenceCountExceeded"] = 0;
+        _errorLog["motifListIsEmpty"] = false;
+        _errorLog["checkSequenceIsFalse"] = false;
+    };
+
+
+    var addToLog = function (event) {
+        if (event === "sequenceCountExceeded") {
+            increaseRedundantSequenceCount();
+        } else if (event === "motifListIsEmpty") {
+            setMotifListError();
+        } else if (event.title === "checkSequenceIsFalse") {
+            setCheckSequenceError(event);
+        }
+    };
+
+
+    var increaseRedundantSequenceCount = function () {
+        _errorLog["sequenceCountExceeded"] += 1;
+    };
+
+
+    var getRedundantSequenceCount = function () {
+        return _errorLog["sequenceCountExceeded"];
+    };
+
+
+    var setMotifListError = function () {
+        _errorLog["motifListIsEmpty"] = true;
+    };
+
+
+    var getMotifListError = function () {
+        return _errorLog["motifListIsEmpty"];
+    };
+
+
+    var setCheckSequenceError = function (event) {
+        if (_errorLog["checkSequenceIsFalse"] === false) {
+            _errorLog["checkSequenceIsFalse"] = event.sequence;
+        }
+    };
+
+
+    var getCheckSequenceError = function () {
+        return _errorLog["checkSequenceIsFalse"];
+    };
+
+
+    var getErrorState = function (errorName) {
+        if (errorName === "sequenceCountExceeded") {
+            return (getRedundantSequenceCount() !== 0) ? getMessageToShow(errorName) : "";
+        } else if (errorName === "motifListIsEmpty") {
+            return (getMotifListError() !== false) ? getMessageToShow(errorName) : "";
+        } else if (errorName === "checkSequenceIsFalse") {
+            return (getCheckSequenceError() !== false) ? "getMessageToShow(errorName)" : "";
+        }
+
+    };
+
+
     var getMessageToShow = function (event) {
+        if (event === "sequenceCountExceeded") {
+            _commonErrors["sequenceCountExceeded"] = "Too many sequences (" +
+                (getRedundantSequenceCount() + resultTabsStates.getTabIdRange().max) + ") submitted, please input " +
+                resultTabsStates.getTabIdRange().max + " or less.<br><br>";
+        }
+
         var commonErrors = getCommonErrors();
 
         if (commonErrors.hasOwnProperty(event)) {
@@ -89,31 +145,20 @@ var inputErrors = (function () {
     };
 
 
-    var getUnexpectedCharactersToShow = function (rawUnexpectedCharacters) {
-        if (rawUnexpectedCharacters.length > _maxUnexpectedCharToShow) {
-            return rawUnexpectedCharacters.slice(0, _maxUnexpectedCharToShow) + "...";
-        } else {
-            return rawUnexpectedCharacters;
-        }
+    var checkErrors = function () {
+        return getErrorState("sequenceCountExceeded") +
+            getErrorState("motifListIsEmpty") +
+            getErrorState("checkSequenceIsFalse");
     };
 
 
-    var clearStack = function () {
-        _parsingErrorsStack.length = 0;
-    };
 
+    var showErrors = function () {
+        console.log(_errorLog);
 
-    var addToStack = function (sequence) {
-        console.log(sequence.match(_seqRegExp));
-        _parsingErrorsStack.push(sequence.match(_seqRegExp));
-    };
+        var content = checkErrors().trim();
+        if (content !== "") {
 
-
-    var showErrors = function (event) {
-        if (event !== undefined) {
-            var content = getMessageToShow(event);
-
-            console.log(event);
             $(".nav #motif-search").qtip({
                 //overwrite: false, // Make sure the tooltip won't be overridden once created
                 content: {
@@ -124,7 +169,7 @@ var inputErrors = (function () {
                 },
                 style: {
                     tip: {
-                      corner: true
+                        corner: true
                     },
                     classes: 'qtip-tipsy qtip-shadow'
                 },
@@ -146,28 +191,15 @@ var inputErrors = (function () {
                     event: "click unfocus"
                 }
             });
-        } else {
-            if (getErrorStack().length !== 0) {
-                showStack();
-            }
         }
-    };
-
-
-    var showStack = function () {
-        var errorString = getErrorOutput();
-
-        _dialog
-            .html(errorString)
-            .dialog( "open" );
     };
 
 
     return {
         create: create,
 
-        clearStack: clearStack,
-        addToStack: addToStack,
+        clearLog: clearLog,
+        addToLog: addToLog,
         showErrors: showErrors
     }
 }());

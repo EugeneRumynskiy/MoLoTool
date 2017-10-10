@@ -10,7 +10,7 @@ var tooltips = (function () {
 
     var setContent = function () {
         _content = {
-            "lock": "Lock the tab",
+            "lock": "Lock scrolling of this tab",
             "copy-tab": "Copy markup"
         }
     };

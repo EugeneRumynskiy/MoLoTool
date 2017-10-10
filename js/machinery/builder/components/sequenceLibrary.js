@@ -73,7 +73,7 @@ var sequenceLibrary = (function () {
             }
         }
 
-        inputErrors.showErrors("sequenceCountExceeded");
+        inputErrors.addToLog("sequenceCountExceeded");
         errorHandler.logError({"fileName": _fileName, "message": "sequenceCountExceeded"});
         return -1;
     };

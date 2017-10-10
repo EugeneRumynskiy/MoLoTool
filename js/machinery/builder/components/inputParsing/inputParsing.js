@@ -65,11 +65,11 @@ var inputParsing = (function () {
 
     var parseInput = function (rawInputString) {
         var sequences;
-        inputErrors.clearStack();
+        //inputErrors.clearStack();
 
         if ($.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
             sequences = [];
-            inputErrors.showErrors("motifListIsEmpty");
+            inputErrors.addToLog("motifListIsEmpty");
         }
 
         var inputString = $.trim(rawInputString);
@@ -79,9 +79,6 @@ var inputParsing = (function () {
         } else {
             sequences = parseAsText(inputString);
         }
-
-        inputErrors.showErrors();
-
 
         return checkOutput(sequences);
     };
@@ -100,7 +97,6 @@ var inputParsing = (function () {
             inputWithoutGeneralDescription = inputString.slice(startIndex + 1),
             sequencesWithTitles = inputWithoutGeneralDescription.split(">");
 
-        console.log(sequencesWithTitles, "sequencesWithTitles");
         setGeneralDescription(generalDescription);
 
         return $.map(sequencesWithTitles, parseSequenceWithTitle);
@@ -169,7 +165,10 @@ var inputParsing = (function () {
 
 
     var handleError = function (sequence) {
-        inputErrors.addToStack(sequence);
+        inputErrors.addToLog({
+            title:"checkSequenceIsFalse",
+            sequence: sequence
+        });
     };
 
 

@@ -30,6 +30,31 @@ var getThenSetTime = function () {
     _timeString += result + " ";
     return result;
 };
+
+_dialog = $( "#error-dialog" );
+_dialog.dialog({
+    autoOpen: false,
+    closeOnEscape: true,
+    resizable: false,
+
+    title: "Input warning",
+    minWidth: 580,
+    minHeight: 200,
+    maxHeight: 500,
+    buttons: [
+        {
+            text: "ok",
+            click: function() {
+                $( this ).dialog( "close" );
+            }
+
+            // Uncommenting the following line would hide the text,
+            // resulting in the label being used as a tooltip
+            //showText: false
+        }
+    ]
+});
+
 //
 
 /*

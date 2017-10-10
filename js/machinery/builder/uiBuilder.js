@@ -58,7 +58,7 @@ var uiBuilder = (function () {
 
         fileUploader.create(inputCallback); //input
 
-        var tabIdRange = {"min": 1, "max": 10};
+        var tabIdRange = {"min": 1, "max": 15};
         sequenceLibrary.create(tabIdRange); //input
         resultTabs.create(
             tabIdRange,
@@ -91,6 +91,8 @@ var uiBuilder = (function () {
 
 
     var inputCallback = function (inputString, replaceCurrent) {
+        inputErrors.clearLog();
+
         var sequences = inputParsing.parseInput(inputString);
 
         if (!$.isEmptyObject(sequences)) {
@@ -106,10 +108,12 @@ var uiBuilder = (function () {
             var libraryIds = $.map(sequences, sequenceLibrary.addTab);
             $.map(libraryIds, resultTabs.addIdToResult);
 
+
+            inputErrors.showErrors();
+
             if (replaceCurrent === true) {
                 $("html").scrollTop(scrollPosition);
             }
-
 
             handleEvent();
 

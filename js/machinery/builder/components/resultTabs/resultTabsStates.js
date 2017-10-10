@@ -135,6 +135,7 @@ var resultTabsStates = (function () {
         openId: openId,
         closeId: closeId,
         getOpenedIds: getOpenedIds,
+        getTabIdRange: getTabIdRange,
 
         //debug
         show: show
