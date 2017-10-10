@@ -189,8 +189,11 @@ var uiBuilder = (function () {
         $('body').click(function (event) {
             var $target = $(event.target);
 
-            if (($target.parents(".search-container").length === 0) &&
-                (!$target.hasClass("feature"))) {
+            if (
+                (($target.parents(".search-container").length === 0) && (!$target.hasClass("feature")))
+                || ($target.parents(".collection-dialog, .collection-dialog").length !== 0)
+            )
+            {
                 $(".suggestions").hide();
             }
 
