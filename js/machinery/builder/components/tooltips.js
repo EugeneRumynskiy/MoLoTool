@@ -12,7 +12,8 @@ var tooltips = (function () {
         _content = {
             "lock": "Lock scrolling of this tab",
             "copy-tab": "Copy markup",
-            "close": "Remove"
+            "close": "Remove",
+            "input-method": "Shows if current sequences will be replaced with input"
         }
     };
 
@@ -49,7 +50,7 @@ var tooltips = (function () {
 
 
     var setEventListener = function () {
-        $(document).on('mouseover', '.tab-result .tooltip, .close', function (event) {
+        $(document).on('mouseover', '.tab-result .tooltip, .close, .input-method', function (event) {
             // Bind the qTip within the event handler
             console.log($(event.target));
             var content = getContentFor($(event.target));
