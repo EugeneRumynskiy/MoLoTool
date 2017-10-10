@@ -11,7 +11,8 @@ var tooltips = (function () {
     var setContent = function () {
         _content = {
             "lock": "Lock scrolling of this tab",
-            "copy-tab": "Copy markup"
+            "copy-tab": "Copy markup",
+            "close": "Remove"
         }
     };
 
@@ -38,7 +39,8 @@ var tooltips = (function () {
         //event.currentTarget must be used but it is not compatible with Safari
         // younger than 10.0 (current version is 11.0)
         for (var i = 0; i < keys.length; i++) {
-            if ($target.parents("." + keys[i]).length !== 0) {
+            if (($target.parents("." + keys[i]).length !== 0) ||
+                ($target.hasClass(keys[i]))) {
                 return keys[i];
             }
         }
@@ -47,8 +49,9 @@ var tooltips = (function () {
 
 
     var setEventListener = function () {
-        $(document).on('mouseover', '.tab-result .tooltip', function (event) {
+        $(document).on('mouseover', '.tab-result .tooltip, .close', function (event) {
             // Bind the qTip within the event handler
+            console.log($(event.target));
             var content = getContentFor($(event.target));
 
             $(this).qtip({
@@ -56,7 +59,7 @@ var tooltips = (function () {
                 content: content,
                 position: {
                     my: 'top left',  // Position my top left...
-                    at: 'bottom center', // at the bottom right of...
+                    at: 'bottom center' // at the bottom right of...
                 },
                 style: {
                     classes: 'qtip-tipsy'
