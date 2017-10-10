@@ -133,7 +133,7 @@ var resultTabs = (function () {
         var lockMode = (getCurrentMode() === "Single") ? "hidden" : "",
 
             fullName = sequenceLibrary.getItemById(tabId).seqValues.title,
-            tabName = (fullName.length <= 12) ? fullName : fullName.slice(0, 10) + "..",
+            tabName = (fullName.length <= 14) ? fullName : fullName.slice(0, 12) + "..",
 
             $resultTab = $(
                 '<div class="tab-result" data-tab=' + tabId + '>' +

@@ -1,7 +1,7 @@
 var showTableButton = (function () {
     var getSettingsFor = {
-            "disabled":   {"title":"Show table ", "icon": "visibility_off"},
-            "active":   {"title":"Hide table ", "icon": "visibility"}
+            "disabled":   {"title":"Show table ", "icon": "visibility"},
+            "active":   {"title":"Hide table ", "icon": "visibility_off"}
         },
         defaultMode = "active",
 
