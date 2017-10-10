@@ -40,6 +40,11 @@ var collectionSettingsButton = (function () {
 var collectionSettingsSwitcher = (function () {
     var optionsNames = [".model-species", ".model-collection"],
 
+        optionPrefix = {
+            ".model-collection":"Collection: ",
+            ".model-species": "Species: "
+        },
+
         defaultOptionsActiveInputID = {
             ".model-species":"#Human",
             ".model-collection":"#Core"
@@ -86,7 +91,7 @@ var collectionSettingsSwitcher = (function () {
 
     var setSupportInfo = function (optionName) {
         var optionActiveInputValue = getOptionValue(optionName);
-        $optionsSupportInfoBox.find(optionName).html(optionActiveInputValue);
+        $optionsSupportInfoBox.find(optionName).html(optionPrefix[optionName] + optionActiveInputValue);
     };
 
 
