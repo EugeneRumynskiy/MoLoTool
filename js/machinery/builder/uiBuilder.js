@@ -202,15 +202,6 @@ var uiBuilder = (function () {
                     $('.collection-dialog').addClass("hidden");
                 }
             }
-
-            // if(!$target.hasClass("close") && $target.closest('.add-sequence, .tooltiptext').length === 0) {
-            //     if($('.search-container .tooltiptext').is(":visible")) {
-            //         $('.search-container .tooltiptext')
-            //             .animate({opacity: 0}, 800, function () {
-            //                 $(this).addClass("hidden");
-            //             });
-            //     }
-            // }
         });
 
     };
