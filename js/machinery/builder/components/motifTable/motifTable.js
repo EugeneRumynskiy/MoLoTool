@@ -78,9 +78,11 @@ var motifTable = (function () {
 
         var createButtons = function () {
             return [
-                { extend: 'colvis',
+                {
+                    extend: 'colvis',
                     text: 'Select columns',
-                    columns: ':gt(0)'
+                    columns: ':gt(0)',
+                    collectionLayout: "fixed three-column"
                 },
 
                 {
