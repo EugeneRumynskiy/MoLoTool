@@ -5,39 +5,37 @@ var colorPicker = (function () {
     var _fileName = "colorPicker",
         _defaultColors =    [
             "#F15854",
-            "#FAA43A",
             '#DECF3F',
             '#60BD68',
             '#5DA5DA',
-            '#F17CB0',
-            '#B276B2',
+            '#B276B2',//5
+            //"#FAA43A",
+            //'#F17CB0',
 
             "#ff0000",
+            "#FF9800",
             "#4CAF50",
             "#2196F3",
-            "#FF9800",
-            "#9C27B0",
+            "#9C27B0",//5
 
             "#E91E63",
+            "#f75c03",
             "#5c8001",
             "#3F51B5",
-            "#f75c03",
-            "#4e0250",
+            "#4e0250",//5
 
             "#b02e0c",
-            "#009688",
-            "#0a2463",
             "#FFC107",
-            "#0d160b",
-
-            "#9c3848",
             "#134611",
-            "#00BCD4",
+            "#0a2463",
+            "#9c3848",//5
 
-            "#c490d1",
-            "#795548",
+            //"#00BCD4",
+            "#ef7674",
             "#607D8B",
-            "#ef7674"
+            "#0d160b",
+            "#795548",
+            "#c490d1"//5
         ],
 
 
@@ -145,22 +143,28 @@ var colorPicker = (function () {
                 hide: function () {},
                 change: function (){_eventHandler("COLOR")},
                 palette: [
-                    _groupedColors_red,
-                    _groupedColors_orange,
-                    _groupedColors_green,
-                    _groupedColors_blue,
-                    _groupedColors_purple,
-                    _groupedColors_pink,
-
-                    ["#f6511d", "#ffb400",
-                        "#00a6ed", "#7fb800",
-                        "#0d2c54"],
-
-                    ["#4d9de0", "#e15554",
-                        "#e1bc29", "#3bb273",
+                    // _groupedColors_red,
+                    // _groupedColors_orange,
+                    // _groupedColors_green,
+                    // _groupedColors_blue,
+                    // _groupedColors_purple,
+                    // _groupedColors_pink,
+                    _defaultColors.slice(0, 5),
+                    _defaultColors.slice(5, 10),
+                    _defaultColors.slice(10, 15),
+                    _defaultColors.slice(15, 20),
+                    ["#e15554","#e1bc29",
+                        "#3bb273", "#4d9de0",
                         "#7768ae"],
 
-                    ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"]
+
+                    ["#f6511d", "#ffb400",
+                        "#7fb800", "#00a6ed",
+                        "#0d2c54"],
+
+                    _defaultColors.slice(20),
+
+                    ["#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"]
                 ]
             });
         _freeColorIndex += 1;

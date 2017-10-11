@@ -8,9 +8,25 @@ var motifHandler = (function () {
     var handleMotifs = function (event) {
         if (event === "clearTable" ) {
             motifTable.clearTable();
+            return false;
         } else {
-            makeFullUpdate();
+            var tabsUpdate = makeFullUpdate();
+            return countSitesForUpdate(tabsUpdate);
         }
+    };
+
+
+    var countSitesForUpdate = function (tabsUpdate) {
+        var sites = $.map(tabsUpdate, function (tab) {
+                return tab.sites.length;
+            }),
+            sum = 0;
+
+        for(var i = 0; i < sites.length; i++) {
+            sum += sites[i];
+        }
+
+        return sum;
     };
 
 
@@ -19,8 +35,9 @@ var motifHandler = (function () {
         setRequestedMotifs();
 
         var tabsUpdate = updateResultTabs();
-
         updateTable(tabsUpdate);
+
+        return tabsUpdate;
     };
 
 

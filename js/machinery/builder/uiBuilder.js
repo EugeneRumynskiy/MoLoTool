@@ -33,7 +33,8 @@ var uiBuilder = (function () {
 
 
     var handleEvent = function (event) {
-        _eventHandler(event);
+        var sitesCount = _eventHandler(event);
+        return sitesCount;
     };
 
 
@@ -116,6 +117,7 @@ var uiBuilder = (function () {
                 $("html").scrollTop(scrollPosition);
             }
 
+            //console.log(handleEvent());
             handleEvent();
 
             if (comparisonMode.getCurrentMode() === "Multiply") {
