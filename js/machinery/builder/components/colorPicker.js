@@ -136,7 +136,14 @@ var colorPicker = (function () {
 
 
     //by default the colorPicker is "input" element
+
     var set = function (colorPicker) {
+        var firstLine = _defaultColors.slice(0, 4),
+            secondLine = _defaultColors.slice(4, 8);
+
+        firstLine.push("#AAAAAA");
+        secondLine.push("#4D4D4D");
+
         colorPicker.spectrum(
             {
                 color: lastFreeColor(),
@@ -160,8 +167,8 @@ var colorPicker = (function () {
                     // _groupedColors_blue,
                     // _groupedColors_purple,
                     // _groupedColors_pink,
-                    _defaultColors.slice(0, 4),
-                    _defaultColors.slice(4, 8),
+                    firstLine,
+                    secondLine,
 
                     _defaultColors.slice(8, 13),
                     _defaultColors.slice(13, 18),
