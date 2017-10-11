@@ -17,22 +17,32 @@ var submitButton = (function () {
             .html(uiButtons.generateContent(getSettingsFor[defaultMode]))
             .on('click', function(event) {
                 event.preventDefault();
-                showTextarea();
-                addSequence(inputCallback);
+
+                if (textareaIsHidden()) {
+                    triggerOpenSequenceButton();
+                } else {
+                    var noSequenceErrors = addSequence(inputCallback);
+                    if (noSequenceErrors === true) {
+                        triggerOpenSequenceButton();
+                    }
+                }
             });
     };
 
 
-    var showTextarea = function () {
-        if ($textarea.hasClass("hidden")) {
-            $textarea.removeClass("hidden");
-        }
+    var textareaIsHidden = function () {
+        return $textarea.hasClass("hidden");
+    };
+
+
+    var triggerOpenSequenceButton = function () {
+        $(".open-sequence").trigger("click");
     };
 
 
     var addSequence = function (inputCallback) {
         var rewriteFlag = (uiButtons.getInputMethod() === "rewrite");
-        inputCallback($textarea.val(), rewriteFlag);
+        return inputCallback($textarea.val(), rewriteFlag);
     };
 
 

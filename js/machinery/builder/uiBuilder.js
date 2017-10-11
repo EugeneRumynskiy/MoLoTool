@@ -93,7 +93,8 @@ var uiBuilder = (function () {
     var inputCallback = function (inputString, replaceCurrent) {
         inputErrors.clearLog();
 
-        var sequences = inputParsing.parseInput(inputString);
+        var sequences = inputParsing.parseInput(inputString),
+            noSequenceErrors = false;
 
         if (!$.isEmptyObject(sequences)) {
             var inputParsedInto = inputParsing.assembleParsedValues(sequences);
@@ -108,8 +109,8 @@ var uiBuilder = (function () {
             var libraryIds = $.map(sequences, sequenceLibrary.addTab);
             $.map(libraryIds, resultTabs.addIdToResult);
 
-
-            inputErrors.showErrors();
+            noSequenceErrors = inputErrors.showErrors();
+            console.log(noSequenceErrors, "noSequenceErrors");
 
             if (replaceCurrent === true) {
                 $("html").scrollTop(scrollPosition);
@@ -123,6 +124,8 @@ var uiBuilder = (function () {
         } else {
             console.log(inputString, "$.isEmptyObject(sequences) is true");
         }
+
+        return noSequenceErrors;
     };
 
 

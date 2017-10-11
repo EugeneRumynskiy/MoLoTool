@@ -83,9 +83,9 @@
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
+  box-shadow: 5px 5px 10px grey;
 
   min-width: 430px;
-
   .option {
     margin: 0 5px 0 5px;
     padding: 10px 0 10px 0;

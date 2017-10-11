@@ -55,6 +55,7 @@
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid grey;
+  box-shadow: 5px 5px 10px grey;
   min-width: 430px; }
   .collection-dialog .option {
     margin: 0 5px 0 5px;

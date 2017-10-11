@@ -157,8 +157,8 @@ var inputErrors = (function () {
         console.log(_errorLog);
 
         var content = checkErrors().trim();
-        if (content !== "") {
 
+        if (content !== "") {
             $(".nav #motif-search").qtip({
                 //overwrite: false, // Make sure the tooltip won't be overridden once created
                 content: {
@@ -192,6 +192,8 @@ var inputErrors = (function () {
                 }
             });
         }
+
+        return ((getErrorState("sequenceCountExceeded") + getErrorState("checkSequenceIsFalse")) === "");
     };
 
 
