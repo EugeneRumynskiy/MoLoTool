@@ -66,7 +66,7 @@ var tooltips = (function () {
                     classes: 'qtip-tipsy'
                 },
                 show: {
-                    delay: 1000,
+                    delay: 700,
                     event: event.type, // Use the same show event as the one that triggered the event handler
                     ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
                 },
