@@ -20,10 +20,10 @@ var inputParsing = (function () {
         });
 
         inputDemo.create(
-            ">mouse SLAMF1 promoter\n" +
-            "TGATAAAGTGATTTAAAGCCTGATCATAAATGAGCAATCCTGGA\n" +
             ">human SLAMF1 promoter\n" +
-            "CAAAAAAGTGATTTAAAGCCTCATGGGAGATGAGCAATCCTCAA\n"
+            "CAAAAAAGTGATTTAAAGCCTCATGGGAGATGAGCAATCCTCAA\n" +
+            ">mouse SLAMF1 promoter\n" +
+            "TGATAAAGTGATTTAAAGCCTGATCATAAATGAGCAATCCTGGA\n"
         );
 
         inputErrors.create(getSeqCheck());

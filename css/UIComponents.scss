@@ -233,10 +233,12 @@
 #motif-list-selected-cmp {
   font-family: $defaultFontFamily;
   min-height: 75px;
+  margin-bottom: 0px; //shrinking
+  padding-bottom: 0px; //shrinking
 
   #motif-list-selected {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
 
     .chosen-motif {
@@ -291,6 +293,8 @@
   border: $thick solid $borderColor;
   border-radius: 5px;
   margin: 5px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 
   textarea {
     border: solid $thick $boxBackground;
@@ -369,6 +373,7 @@
 #sequence-input-cmp {
   font-family: $defaultFontFamily;
   background-color: $main-bg-color;
+  padding-top: 0; //shrinking
 
   .controls {
     border-radius: 2px;

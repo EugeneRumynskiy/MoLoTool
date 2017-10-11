@@ -171,7 +171,9 @@ var inputErrors = (function () {
                     tip: {
                         corner: true
                     },
-                    classes: 'qtip-tipsy qtip-shadow'
+                    classes: 'qtip-dark qtip-rounded'
+
+//                    classes: 'qtip-tipsy qtip-shadow'
                 },
                 position: {
                     my: 'top left',  // Position my top left...

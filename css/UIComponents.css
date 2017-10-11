@@ -147,10 +147,12 @@
 
 #motif-list-selected-cmp {
   font-family: sans-serif;
-  min-height: 75px; }
+  min-height: 75px;
+  margin-bottom: 0px;
+  padding-bottom: 0px; }
   #motif-list-selected-cmp #motif-list-selected {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%; }
     #motif-list-selected-cmp #motif-list-selected .chosen-motif {
       display: inline-block;
@@ -185,7 +187,9 @@
   background-color: white;
   border: 1.5px solid grey;
   border-radius: 5px;
-  margin: 5px; }
+  margin: 5px;
+  margin-bottom: 0;
+  padding-bottom: 0; }
   #manual-seq-input textarea {
     border: solid 1.5px white;
     border-bottom: solid 1.5px grey;
@@ -235,7 +239,8 @@
 
 #sequence-input-cmp {
   font-family: sans-serif;
-  background-color: #ededf2; }
+  background-color: #ededf2;
+  padding-top: 0; }
   #sequence-input-cmp .controls {
     border-radius: 2px;
     background-color: #ededf2;

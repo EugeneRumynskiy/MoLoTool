@@ -62,7 +62,8 @@ var tooltips = (function () {
                     at: 'bottom center' // at the bottom right of...
                 },
                 style: {
-                    classes: 'qtip-tipsy'
+                    classes: 'qtip-dark qtip-rounded'
+                    //classes: 'qtip-tipsy'
                 },
                 show: {
                     delay: 700,
