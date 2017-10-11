@@ -44,5 +44,12 @@ to:
   height: 10px;
 }
 ---------
+spectrum.css
+
+/*added by Erumynskiy*/
+.sp-palette-row-5 {
+    margin-bottom: 5px;
+}
+/*added by Erumynskiy*/
 ---------
 

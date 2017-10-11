@@ -38,7 +38,50 @@ var colorPicker = (function () {
             "#795548",
             "#607D8B",
             "#ef7674"
-            ],
+        ],
+
+
+        _groupedColors_red = [
+            "#ef7674",
+            "#F15854",
+            "#ff0000",
+            "#b02e0c",
+            "#795548"],
+
+        _groupedColors_orange = [
+            "#f75c03",
+            "#FAA43A",
+            "#FF9800",
+            "#FFC107",
+            "#DECF3F"],
+
+        _groupedColors_green = [
+            "#4CAF50",
+            "#60BD68",
+            "#5c8001",
+            "#134611",
+            "#0d160b"],
+
+        _groupedColors_blue = [
+            "#009688",
+            "#607D8B",
+            "#5DA5DA",
+            "#00BCD4",
+            "#2196F3",
+            "#3F51B5",
+            "#0a2463"],
+
+        _groupedColors_purple = [
+            "#c490d1",
+            "#B276B2",
+            "#9C27B0",
+            "#4e0250"],
+
+        _groupedColors_pink = [
+            "#F17CB0",
+            "#E91E63",
+            "#9c3848"
+        ],
 
 
         _freeColorIndex = 0,
@@ -102,15 +145,22 @@ var colorPicker = (function () {
                 hide: function () {},
                 change: function (){_eventHandler("COLOR")},
                 palette: [
-                    ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"],
+                    _groupedColors_red,
+                    _groupedColors_orange,
+                    _groupedColors_green,
+                    _groupedColors_blue,
+                    _groupedColors_purple,
+                    _groupedColors_pink,
 
-                    _defaultColors,
                     ["#f6511d", "#ffb400",
                         "#00a6ed", "#7fb800",
                         "#0d2c54"],
+
                     ["#4d9de0", "#e15554",
                         "#e1bc29", "#3bb273",
-                        "#7768ae"]
+                        "#7768ae"],
+
+                    ["#000000", "#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"]
                 ]
             });
         _freeColorIndex += 1;
