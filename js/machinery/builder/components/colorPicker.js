@@ -5,10 +5,22 @@ var colorPicker = (function () {
     var _fileName = "colorPicker",
         _defaultColors =    [
             "#F15854",
+            "#FAA43A",
             '#DECF3F',
-            '#60BD68',
-            '#5DA5DA',
-            '#B276B2',//5
+            "#60BD68",//4
+
+            "#5DA5DA",
+            "#F17CB0",
+            "#B276B2",
+            "#B2912F",//4
+
+
+
+            //"#F15854",
+            //'#DECF3F',
+            //'#60BD68',
+           // '#5DA5DA',
+            //'#B276B2',//5
             //"#FAA43A",
             //'#F17CB0',
 
@@ -30,11 +42,10 @@ var colorPicker = (function () {
             "#0a2463",
             "#9c3848",//5
 
-            //"#00BCD4",
             "#ef7674",
-            "#607D8B",
-            "#0d160b",
             "#795548",
+            "#0d160b",
+            "#607D8B",
             "#c490d1"//5
         ],
 
@@ -149,10 +160,12 @@ var colorPicker = (function () {
                     // _groupedColors_blue,
                     // _groupedColors_purple,
                     // _groupedColors_pink,
-                    _defaultColors.slice(0, 5),
-                    _defaultColors.slice(5, 10),
-                    _defaultColors.slice(10, 15),
-                    _defaultColors.slice(15, 20),
+                    _defaultColors.slice(0, 4),
+                    _defaultColors.slice(4, 8),
+
+                    _defaultColors.slice(8, 13),
+                    _defaultColors.slice(13, 18),
+
                     ["#e15554","#e1bc29",
                         "#3bb273", "#4d9de0",
                         "#7768ae"],
@@ -162,7 +175,8 @@ var colorPicker = (function () {
                         "#7fb800", "#00a6ed",
                         "#0d2c54"],
 
-                    _defaultColors.slice(20),
+                    _defaultColors.slice(18, 23),
+                    _defaultColors.slice(23),
 
                     ["#434343", "#666666", "#00ff00", "#0000ff", "#ff00ff"]
                 ]
