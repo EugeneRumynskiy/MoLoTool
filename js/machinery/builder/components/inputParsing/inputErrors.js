@@ -182,7 +182,7 @@ var inputErrors = (function () {
                     tip: {
                         corner: true
                     },
-                    classes: 'qtip-dark qtip-rounded'
+                    classes: 'qtip-dark qtip-rounded qtip-shadow'
 
                 //classes: 'qtip-tipsy qtip-shadow'
                 },
