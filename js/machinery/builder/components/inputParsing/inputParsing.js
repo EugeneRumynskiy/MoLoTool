@@ -125,7 +125,7 @@ var inputParsing = (function () {
 
         parsedValues["title"] = ($.isEmptyObject(title)) ? getDefaultParsedValues().title : title;
         parsedValues["sequence"] = ($.isEmptyObject(sequence)) ?
-            getDefaultParsedValues().sequence : returnSuitableSequence(sequence, sequenceNo);
+            getDefaultParsedValues().sequence : returnSuitableSequence(sequence, sequenceNo + 1);
 
         return parsedValues;
     };
