@@ -13,16 +13,21 @@ var inputErrors = (function () {
         _errorLog = {
             "sequenceCountExceeded": 0,
             "motifListIsEmpty": false,
-            "checkSequenceIsFalse": false
+            "checkSequenceIsFalse": false,
+            "sequenceListIsEmpty": false
         };
 
         _commonErrors = {
             "motifListIsEmpty": "The TFBS model list is empty. Please pre-select a desired set" +
                 " of TFBS models by searching the interactive catalogue.<br><br>",
+
             "sequenceCountExceeded": "Too many sequences (" +
                 getRedundantSequenceCount() + ") submitted, please input " +
                 resultTabsStates.getTabIdRange().max + " or less.<br><br>",
-            "checkSequenceIsFalse": "Invalid characters.<br><br>"
+
+            "checkSequenceIsFalse": "Invalid characters.<br><br>",
+
+            "sequenceListIsEmpty": "No sequences found.<br><br>"
         };
 
         _seqRegExp = regExp;
@@ -30,7 +35,7 @@ var inputErrors = (function () {
         _maxUnexpectedCharToShow = 5;
     };
 
-
+/////////
     var getErrorOutput = function () {
         var errorOutput = "",
             errorStack = getStack();
@@ -60,7 +65,7 @@ var inputErrors = (function () {
         }
     };
 
-
+//////////
     var getCommonErrors = function () {
         return _commonErrors;
     };
@@ -70,6 +75,7 @@ var inputErrors = (function () {
         _errorLog["sequenceCountExceeded"] = 0;
         _errorLog["motifListIsEmpty"] = false;
         _errorLog["checkSequenceIsFalse"] = false;
+        _errorLog["sequenceListIsEmpty"] = false;
     };
 
 
@@ -80,6 +86,8 @@ var inputErrors = (function () {
             setMotifListError();
         } else if (event.title === "checkSequenceIsFalse") {
             setCheckSequenceError(event);
+        } else if (event === "sequenceListIsEmpty") {
+            _errorLog["sequenceListIsEmpty"] = true;
         }
     };
 
@@ -123,6 +131,8 @@ var inputErrors = (function () {
             return (getMotifListError() !== false) ? getMessageToShow(errorName) : "";
         } else if (errorName === "checkSequenceIsFalse") {
             return (getCheckSequenceError() !== false) ? "getMessageToShow(errorName)" : "";
+        } else if (errorName === "sequenceListIsEmpty") {
+            return (_errorLog["sequenceListIsEmpty"]  !== false) ? getMessageToShow(errorName) : "";
         }
 
     };
@@ -146,7 +156,8 @@ var inputErrors = (function () {
 
 
     var checkErrors = function () {
-        return getErrorState("sequenceCountExceeded") +
+        return getErrorState("sequenceListIsEmpty") +
+            getErrorState("sequenceCountExceeded") +
             getErrorState("motifListIsEmpty") +
             getErrorState("checkSequenceIsFalse");
     };
@@ -173,7 +184,7 @@ var inputErrors = (function () {
                     },
                     classes: 'qtip-dark qtip-rounded'
 
-//                    classes: 'qtip-tipsy qtip-shadow'
+                //classes: 'qtip-tipsy qtip-shadow'
                 },
                 position: {
                     my: 'top left',  // Position my top left...

@@ -125,6 +125,8 @@ var uiBuilder = (function () {
             }
         } else {
             console.log(inputString, "$.isEmptyObject(sequences) is true");
+            inputErrors.addToLog("sequenceListIsEmpty");
+            inputErrors.showErrors();
         }
 
         return noSequenceErrors;
@@ -173,6 +175,8 @@ var uiBuilder = (function () {
         $('#motif-list-selected').on('click', '.close', function (event) {
             var $motifContainer = $(event.target).parent(),
                 $motifTitle = $(event.target).siblings(".motif-title"), motifName = $motifTitle.text();
+
+            $(event.target).qtip("hide");///hiding tooltip
 
             $motifContainer.removeClass('chosen-motif');
             colorPicker.removeFrom($motifContainer);

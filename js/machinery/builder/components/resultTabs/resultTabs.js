@@ -154,6 +154,7 @@ var resultTabs = (function () {
             var $target = $(event.target);
 
             if ($target.hasClass("close")) {
+                $target.qtip("hide");///hiding tooltip
                 closeTab(this);
                 motifHandler.handleMotifs();
             } else if (getCurrentMode() === "Multiply") {

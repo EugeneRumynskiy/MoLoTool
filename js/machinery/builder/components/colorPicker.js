@@ -15,15 +15,6 @@ var colorPicker = (function () {
             "#B2912F",//4
 
 
-
-            //"#F15854",
-            //'#DECF3F',
-            //'#60BD68',
-           // '#5DA5DA',
-            //'#B276B2',//5
-            //"#FAA43A",
-            //'#F17CB0',
-
             "#ff0000",
             "#FF9800",
             "#4CAF50",
@@ -48,50 +39,6 @@ var colorPicker = (function () {
             "#607D8B",
             "#c490d1"//5
         ],
-
-
-        _groupedColors_red = [
-            "#ef7674",
-            "#F15854",
-            "#ff0000",
-            "#b02e0c",
-            "#795548"],
-
-        _groupedColors_orange = [
-            "#f75c03",
-            "#FAA43A",
-            "#FF9800",
-            "#FFC107",
-            "#DECF3F"],
-
-        _groupedColors_green = [
-            "#4CAF50",
-            "#60BD68",
-            "#5c8001",
-            "#134611",
-            "#0d160b"],
-
-        _groupedColors_blue = [
-            "#009688",
-            "#607D8B",
-            "#5DA5DA",
-            "#00BCD4",
-            "#2196F3",
-            "#3F51B5",
-            "#0a2463"],
-
-        _groupedColors_purple = [
-            "#c490d1",
-            "#B276B2",
-            "#9C27B0",
-            "#4e0250"],
-
-        _groupedColors_pink = [
-            "#F17CB0",
-            "#E91E63",
-            "#9c3848"
-        ],
-
 
         _freeColorIndex = 0,
         _eventHandler = function () {
@@ -161,12 +108,6 @@ var colorPicker = (function () {
                 hide: function () {},
                 change: function (){_eventHandler("COLOR")},
                 palette: [
-                    // _groupedColors_red,
-                    // _groupedColors_orange,
-                    // _groupedColors_green,
-                    // _groupedColors_blue,
-                    // _groupedColors_purple,
-                    // _groupedColors_pink,
                     firstLine,
                     secondLine,
 
