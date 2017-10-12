@@ -33,8 +33,7 @@ var uiBuilder = (function () {
 
 
     var handleEvent = function (event) {
-        var sitesCount = _eventHandler(event);
-        return sitesCount;
+        _eventHandler(event);
     };
 
 
@@ -64,7 +63,8 @@ var uiBuilder = (function () {
         resultTabs.create(
             tabIdRange,
             sequenceLibrary.isRecorded,
-            sequenceLibrary.deleteTabContentById
+            sequenceLibrary.deleteTabContentById,
+            handleEvent
         );
 
         uiButtons.create(handleEvent, inputCallback, collectionSwitchCallback);

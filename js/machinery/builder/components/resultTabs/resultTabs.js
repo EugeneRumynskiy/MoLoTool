@@ -4,18 +4,22 @@
 var resultTabs = (function () {
     var _fileName = "resultTabs",
 
+        _eventHandler = function() {},
+
         _libraryIdCheck,
         _libraryIdDelete;
 
 
-    var create = function (tabIdRange, libraryIdCheck, libraryIdDelete) {
+    var create = function (tabIdRange, libraryIdCheck, libraryIdDelete, eventHandler) {
         resultTabsStates.create(tabIdRange);
+
+        setEventHandlerTo(eventHandler);
 
         _libraryIdCheck = libraryIdCheck;
         _libraryIdDelete= libraryIdDelete;
 
 
-        comparisonMode.create("Multiply");
+        comparisonMode.create("Multiply", eventHandler);
         digitGuidance.create(10000);
 
         clipboardCopy.create();
@@ -23,6 +27,16 @@ var resultTabs = (function () {
         if ($.isEmptyObject(resultTabsStates.getOpenedIds())) {
             $("#result-cmp").addClass("empty");
         }
+    };
+
+
+    var setEventHandlerTo = function (eventHandler) {
+        _eventHandler = eventHandler;
+    };
+
+
+    var handleEvent = function () {
+        _eventHandler();
     };
 
 
@@ -156,7 +170,8 @@ var resultTabs = (function () {
             if ($target.hasClass("close")) {
                 $target.qtip("hide");///hiding tooltip
                 closeTab(this);
-                motifHandler.handleMotifs();
+                //motifHandler.handleMotifs();
+                handleEvent();
             } else if (getCurrentMode() === "Multiply") {
                 if ($target.parent().hasClass("lock")) {
                     comparisonMode.switchLock($target);
@@ -169,7 +184,8 @@ var resultTabs = (function () {
                 var tabId = $(this).attr('data-tab');
                 if (getCurrentTabId()[0] !== tabId) {
                     setToCurrent(tabId);
-                    motifHandler.handleMotifs();
+                    //motifHandler.handleMotifs();
+                    handleEvent();
                 } else {
                     if ($target.hasClass("show-title")) {
                         showTitle($target);

@@ -1,13 +1,27 @@
 var comparisonMode = (function () {
     var _fileName = "comparisonMode",
 
+        _eventHandler = function() {},
+
         _defaultComparisonMode,
         _comparisonMode;
 
 
-    var create = function (defaultComparisonMode) {
+    var create = function (defaultComparisonMode, eventHandler) {
+        setEventHandlerTo(eventHandler);
+
         setDefaultComparisonModeTo(defaultComparisonMode);
         setCurrentModeTo(getDefaultComparisonMode());
+    };
+
+
+    var setEventHandlerTo = function (eventHandler) {
+        _eventHandler = eventHandler;
+    };
+
+
+    var handleEvent = function () {
+        _eventHandler();
     };
 
 
@@ -42,7 +56,7 @@ var comparisonMode = (function () {
             errorHandler.logError({"fileName": _fileName, "message": "comparisonMode is undefined"});
         }
 
-        motifHandler.handleMotifs(); //needed to update table for single sequence
+        handleEvent(); //needed to update table for single sequence
 
         return newMode;
     };
