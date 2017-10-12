@@ -1,8 +1,9 @@
 var inputErrors = (function () {
     var _fileName = "inputErrors",
 
-        _errorLog,
         _commonErrors,
+
+        _errors,
 
         _seqRegExp,
 
@@ -10,162 +11,127 @@ var inputErrors = (function () {
 
 
     var create = function (regExp) {
-        _errorLog = {
-            "sequenceCountExceeded": 0,
-            "motifListIsEmpty": false,
-            "checkSequenceIsFalse": false,
-            "sequenceListIsEmpty": false
-        };
-
-        _commonErrors = {
-            "motifListIsEmpty": "The TFBS model list is empty. Please pre-select a desired set" +
-                " of TFBS models by searching the interactive catalogue.<br><br>",
-
-            "sequenceCountExceeded": "Too many sequences (" +
-                getRedundantSequenceCount() + ") submitted, please input " +
-                resultTabsStates.getTabIdRange().max + " or less.<br><br>",
-
-            "checkSequenceIsFalse": "Invalid characters.<br><br>",
-
-            "sequenceListIsEmpty": "No sequences found.<br><br>"
-        };
+        initErrors();
 
         _seqRegExp = regExp;
-
         _maxUnexpectedCharToShow = 5;
     };
 
-/////////
-    var getErrorOutput = function () {
-        var errorOutput = "",
-            errorStack = getStack();
 
-        for(var i = 0; i < errorStack.length; i++) {
-            errorOutput += getErrorString(errorStack[i], i);
+    var initErrors = function () {
+        _errors = {
+            "motifListIsEmpty" : {
+                "status": false,
+                "value": false,
+                "message": "The TFBS model list is empty. Please pre-select a desired set" +
+                " of TFBS models by searching the interactive catalogue.<br><br>"
+            },
+            "sequenceListIsEmpty" : {
+                "status": false,
+                "value": false,
+                "message": "No sequences found.<br><br>"
+            },
+            "checkSequenceIsFalse" : {
+                "status": false,
+                "value": false,
+                "message": "Invalid characters.<br><br>"
+            },
+            "sequenceCountExceeded" : {
+                "status": false,
+                "value": false,
+                "message": ["Too many sequences submitted (", "), please input ", " or less.<br><br>"]
+            }
+        };
+
+        console.log(_errors);
+    };
+
+    
+    var clearErrorStatus = function () {
+        for (var error in _errors) {
+            if (_errors.hasOwnProperty(error)) {
+                _errors[error].status = false;
+            }
         }
-
-        return errorOutput;
-    };
-
-
-    var getErrorString = function (errorCase, errorIndex) {
-        return "<p>"
-            + errorIndex + ". "
-            + "Unexpected sequence characters: '" +  getUnexpectedCharactersToShow(errorCase[0]) + "'"
-            + ". At position: " + errorCase.index
-            + "</p>";
-    };
-
-
-    var getUnexpectedCharactersToShow = function (rawUnexpectedCharacters) {
-        if (rawUnexpectedCharacters.length > _maxUnexpectedCharToShow) {
-            return rawUnexpectedCharacters.slice(0, _maxUnexpectedCharToShow) + "...";
-        } else {
-            return rawUnexpectedCharacters;
-        }
-    };
-
-//////////
-    var getCommonErrors = function () {
-        return _commonErrors;
-    };
-
-
-    var clearLog = function () {
-        _errorLog["sequenceCountExceeded"] = 0;
-        _errorLog["motifListIsEmpty"] = false;
-        _errorLog["checkSequenceIsFalse"] = false;
-        _errorLog["sequenceListIsEmpty"] = false;
     };
 
 
     var addToLog = function (event) {
-        if (event === "sequenceCountExceeded") {
-            increaseRedundantSequenceCount();
+        if (event === "sequenceListIsEmpty") {
+            _errors["sequenceListIsEmpty"].status = true;
         } else if (event === "motifListIsEmpty") {
-            setMotifListError();
+            _errors["motifListIsEmpty"].status = true;
         } else if (event.title === "checkSequenceIsFalse") {
-            setCheckSequenceError(event);
-        } else if (event === "sequenceListIsEmpty") {
-            _errorLog["sequenceListIsEmpty"] = true;
+            if (_errors["checkSequenceIsFalse"].status === false) {
+                _errors["checkSequenceIsFalse"].status = true;
+                _errors["checkSequenceIsFalse"].value = event;
+            }
+        } else if (event === "sequenceCountExceeded") {
+            if (_errors["sequenceCountExceeded"].status === false) {
+                _errors["sequenceCountExceeded"].status = true;
+                _errors["sequenceCountExceeded"].value = 1;
+            } else {
+                _errors["sequenceCountExceeded"].value += 1;
+            }
         }
     };
 
 
-    var increaseRedundantSequenceCount = function () {
-        _errorLog["sequenceCountExceeded"] += 1;
-    };
+    var checkErrors = function () {
+        var errorSequence = ["sequenceListIsEmpty", "sequenceCountExceeded",
+            "motifListIsEmpty", "checkSequenceIsFalse"],
+            errorString = "";
 
-
-    var getRedundantSequenceCount = function () {
-        return _errorLog["sequenceCountExceeded"];
-    };
-
-
-    var setMotifListError = function () {
-        _errorLog["motifListIsEmpty"] = true;
-    };
-
-
-    var getMotifListError = function () {
-        return _errorLog["motifListIsEmpty"];
-    };
-
-
-    var setCheckSequenceError = function (event) {
-        if (_errorLog["checkSequenceIsFalse"] === false) {
-            _errorLog["checkSequenceIsFalse"] = event.sequence;
+        for(var i = 0, error; i < errorSequence.length; i++) {
+            error = _errors[errorSequence[i]];
+            if (error.status === true) {
+                errorString += getMessageToShow(errorSequence[i]);
+            }
         }
+        return errorString;
     };
 
 
-    var getCheckSequenceError = function () {
-        return _errorLog["checkSequenceIsFalse"];
-    };
+    var getMessageToShow = function (errorName) {
+        if (_errors.hasOwnProperty(errorName)) {
+            var error = _errors[errorName];
 
+            if (errorName === "sequenceCountExceeded") {
+                console.log((error.value + resultTabsStates.getTabIdRange().max));
+                return error.message[0] +
+                    (error.value + resultTabsStates.getTabIdRange().max) +
+                    error.message[1] + (resultTabsStates.getTabIdRange().max) +
+                    error.message[2];
+            } else if (errorName === "checkSequenceIsFalse"){
+                return getCheckSequenceIsFalseMessage(error.value);
+            } else {
+                return error.message;
+            }
 
-    var getErrorState = function (errorName) {
-        if (errorName === "sequenceCountExceeded") {
-            return (getRedundantSequenceCount() !== 0) ? getMessageToShow(errorName) : "";
-        } else if (errorName === "motifListIsEmpty") {
-            return (getMotifListError() !== false) ? getMessageToShow(errorName) : "";
-        } else if (errorName === "checkSequenceIsFalse") {
-            return (getCheckSequenceError() !== false) ? "getMessageToShow(errorName)" : "";
-        } else if (errorName === "sequenceListIsEmpty") {
-            return (_errorLog["sequenceListIsEmpty"]  !== false) ? getMessageToShow(errorName) : "";
-        }
-
-    };
-
-
-    var getMessageToShow = function (event) {
-        if (event === "sequenceCountExceeded") {
-            _commonErrors["sequenceCountExceeded"] = "Too many sequences (" +
-                (getRedundantSequenceCount() + resultTabsStates.getTabIdRange().max) + ") submitted, please input " +
-                resultTabsStates.getTabIdRange().max + " or less.<br><br>";
-        }
-
-        var commonErrors = getCommonErrors();
-
-        if (commonErrors.hasOwnProperty(event)) {
-            return commonErrors[event];
         }   else {
             return "Undefined error";
         }
     };
 
 
-    var checkErrors = function () {
-        return getErrorState("sequenceListIsEmpty") +
-            getErrorState("sequenceCountExceeded") +
-            getErrorState("motifListIsEmpty") +
-            getErrorState("checkSequenceIsFalse");
+    var getCheckSequenceIsFalseMessage = function (errorValue) {
+        return "Invalid characters " + getUnexpectedCharactersToShow(errorValue.sequence[0]) +
+            " in sequence #" + errorValue.sequenceNo + ".<br><br>";
+    };
+
+
+    var getUnexpectedCharactersToShow = function (rawUnexpectedCharacters) {
+        if (rawUnexpectedCharacters.length > _maxUnexpectedCharToShow) {
+            return '"' + rawUnexpectedCharacters.slice(0, _maxUnexpectedCharToShow) + "..." + '"';
+        } else {
+            return '"' + rawUnexpectedCharacters + '"';
+        }
     };
 
 
 
     var showErrors = function () {
-        console.log(_errorLog);
+        console.log(_errors);
 
         var content = checkErrors().trim();
 
@@ -206,14 +172,14 @@ var inputErrors = (function () {
             });
         }
 
-        return ((getErrorState("sequenceCountExceeded") + getErrorState("checkSequenceIsFalse")) === "");
+        return ((_errors["sequenceCountExceeded"].status || _errors["checkSequenceIsFalse"]) === false);
     };
 
 
     return {
         create: create,
 
-        clearLog: clearLog,
+        clearErrorStatus: clearErrorStatus,
         addToLog: addToLog,
         showErrors: showErrors
     }

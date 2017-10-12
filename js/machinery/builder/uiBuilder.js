@@ -33,7 +33,8 @@ var uiBuilder = (function () {
 
 
     var handleEvent = function (event) {
-        _eventHandler(event);
+        var sitesCount = _eventHandler(event);
+        console.log(sitesCount, "sitesCount");
     };
 
 
@@ -92,7 +93,7 @@ var uiBuilder = (function () {
 
 
     var inputCallback = function (inputString, replaceCurrent) {
-        inputErrors.clearLog();
+        inputErrors.clearErrorStatus();
 
         var sequences = inputParsing.parseInput(inputString),
             noSequenceErrors = false;

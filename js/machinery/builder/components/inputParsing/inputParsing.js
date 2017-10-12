@@ -103,7 +103,7 @@ var inputParsing = (function () {
     };
 
 
-    var parseSequenceWithTitle = function (sequenceWithTitle) {
+    var parseSequenceWithTitle = function (sequenceWithTitle, sequenceNo) {
         var parsedValues = {},
 
             //if fasta, there MUST be at least ONE \n else it's error;
@@ -125,7 +125,7 @@ var inputParsing = (function () {
 
         parsedValues["title"] = ($.isEmptyObject(title)) ? getDefaultParsedValues().title : title;
         parsedValues["sequence"] = ($.isEmptyObject(sequence)) ?
-            getDefaultParsedValues().sequence : returnSuitableSequence(sequence);
+            getDefaultParsedValues().sequence : returnSuitableSequence(sequence, sequenceNo);
 
         return parsedValues;
     };
@@ -142,32 +142,41 @@ var inputParsing = (function () {
             trimmedSequence = $.trim(sequence);
 
         if (trimmedSequence.length !== 0) {
-            parsedValues["sequence"] = returnSuitableSequence(trimmedSequence);
+            parsedValues["sequence"] = returnSuitableSequence(trimmedSequence, 1);
         }
 
         return parsedValues;
     };
 
 
-    var returnSuitableSequence = function (sequence) {
-        if (checkSequence(sequence)) {
+    var returnSuitableSequence = function (sequence, sequenceNo) {
+        var checkResult = checkSequence(sequence);
+
+        if (checkResult === true) {
             return sequence;
         } else {
-            handleError(sequence);
+            handleError(checkResult, sequenceNo);
             return getDefaultParsedValues()["sequence"];
         }
     };
 
 
     var checkSequence = function (sequence) {
-        return (sequence.match(getSeqCheck()) === null);
+        var checkResult = sequence.match(getSeqCheck());
+
+        if (checkResult === null) {
+            return true;
+        } else {
+            return checkResult;
+        }
     };
 
 
-    var handleError = function (sequence) {
+    var handleError = function (sequence, sequenceNo) {
         inputErrors.addToLog({
             title:"checkSequenceIsFalse",
-            sequence: sequence
+            sequence: sequence,
+            sequenceNo: sequenceNo
         });
     };
 
