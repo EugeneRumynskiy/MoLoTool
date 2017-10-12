@@ -1,14 +1,14 @@
-var helpButton = (function () {
+var tutorialButton = (function () {
     var getSettingsFor = {
-            "hidden":   {"title":"About ", "icon": "info_outline"},
-            "visible":   {"title":"About ", "icon": "info"}
+            "hidden":   {"title":"Guide ", "icon": "help_outline"},
+            "visible":   {"title":"Guide ", "icon": "help"}
         },
         defaultMode = "hidden",
 
         $button,
-        $help,
-        $interface,
         $tutorial,
+        $interface,
+        $help,
 
         _scrollPosStorageKey;
 
@@ -17,14 +17,14 @@ var helpButton = (function () {
         if (newMode === "hidden") {
             scrollPositionStorage.save(_scrollPosStorageKey);
 
-            $help.addClass("hidden");
+            $tutorial.addClass("hidden");
             $interface.removeClass("hidden");
         } else {
-            if (!$tutorial.hasClass("hidden")) {
-                tutorialButton.switchMode();
+            if (!$help.hasClass("hidden")) {
+                helpButton.switchMode();
             }
 
-            $help.removeClass("hidden");
+            $tutorial.removeClass("hidden");
             $interface.addClass("hidden");
 
             scrollPositionStorage.restore(_scrollPosStorageKey);
@@ -33,7 +33,7 @@ var helpButton = (function () {
 
 
     var switchMode = function () {
-        var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
+        var newMode = ($tutorial.hasClass("hidden")) ? "visible" : "hidden";
 
         switchVisibility(newMode);
 
@@ -46,12 +46,12 @@ var helpButton = (function () {
 
 
     var init = function () {
-        $button = $("#help-button");
-        $help = $("#help-cmp");
-        $interface = $(".interface-area");
+        $button = $("#tutorial-button");
         $tutorial = $("#tutorial-cmp");
+        $interface = $(".interface-area");
+        $help = $("#help-cmp");
 
-        _scrollPosStorageKey = 'helpScrollPos';
+        _scrollPosStorageKey = 'tutorialScrollPos';
         scrollPositionStorage.add(_scrollPosStorageKey, "0");
 
         switchVisibility(defaultMode);
@@ -67,7 +67,7 @@ var helpButton = (function () {
 
 
     var reset = function () {
-        var newMode = ($help.hasClass("hidden")) ? "visible" : "hidden";
+        var newMode = ($tutorial.hasClass("hidden")) ? "visible" : "hidden";
         if (newMode === defaultMode) {
             switchMode();
         }
@@ -77,6 +77,6 @@ var helpButton = (function () {
     return {
         init: init,
         reset: reset,
-        switchMode: switchMode,
+        switchMode: switchMode
     };
 } ());

@@ -43,6 +43,7 @@ var uiButtons = (function () {
 
         clearButton.init();
         demoButton.init(inputCallback);
+        tutorialButton.init();
         helpButton.init();
 
         showMoreButton.init();
@@ -72,6 +73,7 @@ var uiButtons = (function () {
         showInputButton.reset();
         zoomButton.reset();
 
+        tutorialButton.reset();
         helpButton.reset();
 
         showMoreButton.reset();

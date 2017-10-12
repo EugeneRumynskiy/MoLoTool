@@ -1,4 +1,4 @@
-#help-cmp {
+#help-cmp, #tutorial-cmp {
   font-family: sans-serif;
   margin-top: 120px;
   margin-left: 20%;
@@ -10,7 +10,13 @@
   background-color: white;
   letter-spacing: 0.75px;
   overflow-x: hidden; }
-  #help-cmp .help-header {
+  #help-cmp a:link, #tutorial-cmp a:link {
+    color: #0645AD;
+    text-decoration: none; }
+  #help-cmp a:visited, #tutorial-cmp a:visited {
+    color: #0645AD;
+    text-decoration: none; }
+  #help-cmp .help-header, #tutorial-cmp .help-header {
     font-weight: bold;
     padding-top: 20px;
     padding-bottom: 6px;
@@ -20,29 +26,29 @@
     text-align: center;
     font-size: 24px;
     line-height: 36px; }
-  #help-cmp .help-content {
+  #help-cmp .help-content, #tutorial-cmp .help-content {
     margin: 16px;
     text-align: justify;
     font-size: 16px;
     line-height: 40px; }
-    #help-cmp .help-content .emblem {
+    #help-cmp .help-content .emblem, #tutorial-cmp .help-content .emblem {
       height: 150px;
       width: 150px;
       float: left;
       margin: 0 8px 16px 16px; }
-  #help-cmp .img-example {
+  #help-cmp .img-example, #tutorial-cmp .img-example {
     vertical-align: middle; }
-  #help-cmp .img-wide {
+  #help-cmp .img-wide, #tutorial-cmp .img-wide {
     display: block;
     margin: 16px auto;
     width: 100%; }
-  #help-cmp .italic {
+  #help-cmp .italic, #tutorial-cmp .italic {
     font-style: italic; }
-  #help-cmp .bold {
+  #help-cmp .bold, #tutorial-cmp .bold {
     font-weight: bold; }
-  #help-cmp .underline {
+  #help-cmp .underline, #tutorial-cmp .underline {
     text-decoration: underline; }
-  #help-cmp .small-font {
+  #help-cmp .small-font, #tutorial-cmp .small-font {
     font-size: 16px; }
 
 .nav-area {
@@ -373,7 +379,7 @@
 
 /* Media for larger devices */
 @media screen and (min-width: 1340px) {
-  #help-cmp {
+  #help-cmp, #tutorial-cmp {
     margin-top: 80px; }
 
   .suggestions, .collection-dialog {

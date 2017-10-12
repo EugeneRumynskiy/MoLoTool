@@ -12,14 +12,12 @@ body {
   overflow-y: scroll; }
 
 td a:link,
-.motif-title a:link,
-#help-cmp a:link {
+.motif-title a:link {
   color: #0645AD;
   text-decoration: none; }
 
 td a:visited,
-.motif-title a:visited,
-#help-cmp a:visited {
+.motif-title a:visited {
   color: #0645AD;
   text-decoration: none; }
 

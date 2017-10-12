@@ -1,6 +1,6 @@
 @import "utilities/variables";
 
-#help-cmp{
+#help-cmp, #tutorial-cmp{
   font-family: $defaultFontFamily;
   margin-top: 3 * $topNav-navLineHeight;
   margin-left: 20%;
@@ -14,6 +14,16 @@
   letter-spacing: 0.75px;
 
   overflow-x: hidden;
+
+  a:link {
+    color: #0645AD;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #0645AD;
+    text-decoration: none;
+  }
 
   .help-header {
     font-weight: bold;
@@ -580,7 +590,7 @@
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
-  #help-cmp {
+  #help-cmp, #tutorial-cmp {
     margin-top: 2 * $topNav-navLineHeight;
   }
 
