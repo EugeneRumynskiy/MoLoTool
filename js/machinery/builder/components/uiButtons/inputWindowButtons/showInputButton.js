@@ -6,11 +6,27 @@ var showInputButton = (function () {
         defaultMode = "visible",
 
         $button,
-        $target;
+        $target,
+        $buttonsToEmphasize;
+
+
+    var setVisibility = function (newMode, $target) {
+        if (newMode === "hidden") {
+            $target.addClass("hidden");
+            $buttonsToEmphasize.addClass("emphasized");
+        } else {
+            $target.removeClass("hidden");
+            $buttonsToEmphasize.removeClass("emphasized");
+        }
+
+        console.log($buttonsToEmphasize);
+    };
 
     var switchMode = function () {
         var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
-        uiButtons.setVisibility(newMode, $target);
+        setVisibility(newMode, $target);
+
+
 
         $button
             .empty()
@@ -20,8 +36,9 @@ var showInputButton = (function () {
     var init = function () {
         $button = $("#manual-seq-input").find(".open-sequence");
         $target = $("#manual-seq-input").find("textarea");
+        $buttonsToEmphasize = $button.add($("#manual-seq-input").find(".add-sequence"));
 
-        uiButtons.setVisibility(defaultMode, $target);
+        setVisibility(defaultMode, $target);
 
         $button
             .empty()
