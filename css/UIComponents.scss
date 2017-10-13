@@ -8,7 +8,8 @@
 
 #help-cmp, #tutorial-cmp{
   font-family: $defaultFontFamily;
-  margin-top: 3 * $topNav-navLineHeight;
+  border-top: none;
+  margin-top: 2 * $topNav-navLineHeight;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 20px;
@@ -42,14 +43,14 @@
     text-transform: capitalize;
     text-align: center;
     font-size: $defaultFontSize * 1.5;
-    line-height: $defaultFontSize * 1.5 * 1.5;
+    line-height: $defaultFontSize * 1.5 * 1.0;
   }
 
   .help-content {
     margin: 16px;
     text-align: justify;
     font-size: $defaultFontSize;
-    line-height: $defaultFontSize * 2.5;
+    line-height: $defaultFontSize * 2.0;
 
     .emblem {
       height: 150px;
@@ -597,7 +598,7 @@
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
   #help-cmp, #tutorial-cmp {
-    margin-top: 2 * $topNav-navLineHeight;
+    margin-top: 1 * $topNav-navLineHeight;
   }
 
   .suggestions, .collection-dialog{

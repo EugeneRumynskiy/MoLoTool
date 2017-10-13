@@ -5,7 +5,8 @@
 
 #help-cmp, #tutorial-cmp {
   font-family: sans-serif;
-  margin-top: 120px;
+  border-top: none;
+  margin-top: 80px;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 20px;
@@ -30,12 +31,12 @@
     text-transform: capitalize;
     text-align: center;
     font-size: 24px;
-    line-height: 36px; }
+    line-height: 24px; }
   #help-cmp .help-content, #tutorial-cmp .help-content {
     margin: 16px;
     text-align: justify;
     font-size: 16px;
-    line-height: 40px; }
+    line-height: 32px; }
     #help-cmp .help-content .emblem, #tutorial-cmp .help-content .emblem {
       height: 150px;
       width: 150px;
@@ -385,7 +386,7 @@
 /* Media for larger devices */
 @media screen and (min-width: 1300px) {
   #help-cmp, #tutorial-cmp {
-    margin-top: 80px; }
+    margin-top: 40px; }
 
   .suggestions, .collection-dialog {
     margin-top: 5px; } }

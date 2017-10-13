@@ -45,6 +45,13 @@ var inputErrors = (function () {
                 "status": false,
                 "value": false,
                 "message": "Error: too big file uploaded (> 20 kb).<br><br>"
+            },
+
+
+            "errorsFound" : {
+                "status": false,
+                "value": false,
+                "message": "Everything OK: no errors found.<br><br>"
             }
         };
 
@@ -81,6 +88,8 @@ var inputErrors = (function () {
         } else if (event === "fileIsTooBig") {
             _errors["fileIsTooBig"].status = true;
         }
+
+        _errors["errorsFound"].status = true;
     };
 
 
@@ -140,44 +149,50 @@ var inputErrors = (function () {
     var showErrors = function () {
         console.log(_errors);
 
-        var content = checkErrors().trim();
 
-        if (content !== "") {
-            $(".nav #motif-search").qtip({
-                //overwrite: false, // Make sure the tooltip won't be overridden once created
-                content: {
-                    text: content,
-                    title: {
-                        text: 'Warning.'
-                    }
+        var content;
+        if (_errors["errorsFound"].status === true) {
+            content = checkErrors().trim();
+        } else {
+            content = _errors["errorsFound"].message;
+        }
+
+
+        $(".nav #motif-search").qtip({
+            //overwrite: false, // Make sure the tooltip won't be overridden once created
+            content: {
+                text: content,
+                title: {
+                    text: 'Warning.'
+                }
+            },
+            style: {
+                tip: {
+                    corner: true
                 },
-                style: {
-                    tip: {
-                        corner: true
-                    },
-                    classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
+                classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
 
                 //classes: 'qtip-tipsy qtip-shadow'
-                },
-                position: {
-                    my: 'top left',  // Position my top left...
-                    at: 'bottom left', // at the bottom right of...
-                    adjust: {
-                        y: 5,
-                        x: -25
-                    }
-                },
-                show: {
-                    event: false,
-                    delay: 100,
-                    //event: event.type, // Use the same show event as the one that triggered the event handler
-                    ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
-                },
-                hide: {
-                    event: "click unfocus"
+            },
+            position: {
+                my: 'top left',  // Position my top left...
+                at: 'bottom left', // at the bottom right of...
+                adjust: {
+                    y: 5,
+                    x: -25
                 }
-            });
-        }
+            },
+            show: {
+                event: false,
+                delay: 100,
+                //event: event.type, // Use the same show event as the one that triggered the event handler
+                ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
+            },
+            hide: {
+                event: "click unfocus"
+            }
+        });
+
 
         return ((_errors["sequenceCountExceeded"].status || _errors["checkSequenceIsFalse"]) === false);
     };

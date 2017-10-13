@@ -71,7 +71,8 @@ var tooltips = (function () {
                     ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
                 },
                 hide: {
-                    delay: 100
+                    delay: 100,
+                    event: "click"
                 }
             }, event); // Pass through our original event to qTip
         })
