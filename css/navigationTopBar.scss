@@ -199,7 +199,7 @@ ul {
 /*Positioning*/
 /* Default media < 800px - two line menu */
 .the-nav {
-  min-width: 615px;
+  min-width: 620px;
   .top-first{
     position: absolute;
     > .search-container {
@@ -213,6 +213,15 @@ ul {
 
   .title-container {
     text-align: center;
+    display: none;
+  }
+}
+
+
+/* Media for larger devices */
+@media screen and (min-width: $minWidth) {
+  .title-container{
+    display: unset !important;
   }
 }
 
