@@ -97,6 +97,8 @@ ul {
   position: absolute;
   right: 0;
   left: 400px; }
+  .title-container span {
+    cursor: pointer; }
 
 /* Active State */
 .nav > li:hover > a {

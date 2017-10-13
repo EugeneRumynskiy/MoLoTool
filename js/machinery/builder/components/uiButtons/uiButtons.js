@@ -45,6 +45,7 @@ var uiButtons = (function () {
         demoButton.init(inputCallback);
         tutorialButton.init();
         helpButton.init();
+        homeButton.init();
 
         showMoreButton.init();
         collectionSettingsButton.init(collectionSwitchCallback);
