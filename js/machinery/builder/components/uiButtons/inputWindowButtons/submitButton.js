@@ -1,6 +1,6 @@
 var submitButton = (function () {
     var getSettingsFor = {
-            "default":   {"title":"Submit sequences ", "icon": "add"}
+            "default":   {"title":"Submit ", "icon": "add"}
         },
         defaultMode = "default",
 
