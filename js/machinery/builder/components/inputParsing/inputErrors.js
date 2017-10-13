@@ -29,7 +29,7 @@ var inputErrors = (function () {
             "sequenceListIsEmpty" : {
                 "status": false,
                 "value": false,
-                "message": "The submitted list of sequences is empty..<br><br>"
+                "message": "The submitted list of sequences is empty.<br><br>"
             },
             "checkSequenceIsFalse" : {
                 "status": false,

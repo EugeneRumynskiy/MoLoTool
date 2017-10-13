@@ -145,7 +145,7 @@ ul {
 /*Positioning*/
 /* Default media < 800px - two line menu */
 .the-nav {
-  min-width: 600px; }
+  min-width: 615px; }
   .the-nav .top-first {
     position: absolute; }
     .the-nav .top-first > .search-container {
@@ -155,7 +155,7 @@ ul {
     position: relative; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1470px) {
+@media screen and (min-width: 1140px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {
