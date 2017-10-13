@@ -158,7 +158,7 @@ ul {
     text-align: center; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1300px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

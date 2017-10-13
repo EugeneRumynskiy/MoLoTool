@@ -383,7 +383,7 @@
     word-break: normal; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1300px) {
   #help-cmp, #tutorial-cmp {
     margin-top: 80px; }
 
