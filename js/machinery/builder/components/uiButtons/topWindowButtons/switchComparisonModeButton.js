@@ -4,7 +4,8 @@ var switchComparisonModeButton = (function () {
             "Multiply":   {"title":"Mode ", "icon": "view_headline"} //format_list_bulleted
         },
         defaultMode,
-        $button;
+        $button,
+        $interface;
 
 
     var switchMode = function () {
@@ -19,13 +20,18 @@ var switchComparisonModeButton = (function () {
     var init = function () {
         defaultMode = comparisonMode.getDefaultComparisonMode();
         $button = $("#change-mode-button");
+        $interface = $(".interface-area");
 
         $button
             .empty()
             .html(uiButtons.generateContent(getSettingsFor[defaultMode]))
             .on('click', function(event) {
                 event.preventDefault();
-                switchMode();
+                if ($interface.hasClass("hidden")) {
+                    homeButton.switchMode();
+                } else {
+                    switchMode();
+                }
             });
     };
 

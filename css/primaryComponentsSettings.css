@@ -49,6 +49,11 @@ td a:visited,
 .interface-button:not(.zoom-button):active .material-icons {
   color: #a3a3a3; }
 
+#open-table-button span {
+  width: 80px;
+  display: inline-block;
+  text-align: left; }
+
 input[type="file"] {
   display: none; }
 

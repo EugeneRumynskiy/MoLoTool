@@ -67,6 +67,13 @@ td a:visited,
     color: $icon-active-color;
   }
 }
+#open-table-button {
+  span {
+    width: 80px;
+    display: inline-block;
+    text-align: left;
+  }
+}
 
 input[type="file"] {
   display: none;

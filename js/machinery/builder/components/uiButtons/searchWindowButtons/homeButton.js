@@ -33,6 +33,7 @@ var homeButton = (function () {
 
 
     return {
-        init: init
+        init: init,
+        switchMode: switchMode
     }
 }());

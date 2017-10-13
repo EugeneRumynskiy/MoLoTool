@@ -1,12 +1,13 @@
 var showTableButton = (function () {
     var getSettingsFor = {
-            "disabled":   {"title":"Show table ", "icon": "visibility"},
+            "disabled": {"title":"Show table ", "icon": "visibility"},
             "active":   {"title":"Hide table ", "icon": "visibility_off"}
         },
         defaultMode = "active",
 
         $button,
-        $target;
+        $target,
+        $interface;
 
 
     var switchMode = function () {
@@ -30,6 +31,7 @@ var showTableButton = (function () {
     var init = function () {
         $button = $("#open-table-button");
         $target = $("#motif-table-cmp");
+        $interface = $(".interface-area");
 
         if (defaultMode === "disabled") {
             $target.addClass("disabled");
@@ -42,7 +44,11 @@ var showTableButton = (function () {
             .html(uiButtons.generateContent(getSettingsFor[defaultMode]))
             .on('click', function(event) {
                 event.preventDefault();
-                switchMode();
+                if ($interface.hasClass("hidden")) {
+                    homeButton.switchMode();
+                } else {
+                    switchMode();
+                }
             });
     };
 
