@@ -26,6 +26,7 @@ var inputErrors = (function () {
                 "message": "The TFBS model list is empty. Please pre-select a desired set" +
                 " of TFBS models by searching the interactive catalogue.<br><br>"
             },
+
             "sequenceListIsEmpty" : {
                 "status": false,
                 "value": false,
@@ -145,6 +146,13 @@ var inputErrors = (function () {
     };
 
 
+    var checkIfNoSequenceErrors = function () {
+        return ((_errors["sequenceListIsEmpty"].status ||
+            _errors["checkSequenceIsFalse"].status    ||
+            _errors["sequenceCountExceeded"].status   ||
+            _errors["fileIsTooBig"].status) === false);
+    };
+
 
     var showErrors = function () {
         console.log(_errors);
@@ -194,7 +202,7 @@ var inputErrors = (function () {
         });
 
 
-        return ((_errors["sequenceCountExceeded"].status || _errors["checkSequenceIsFalse"]) === false);
+        return checkIfNoSequenceErrors();
     };
 
 
