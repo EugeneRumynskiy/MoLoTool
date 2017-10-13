@@ -126,16 +126,17 @@ ul {
       }
     }
   }
+}
 
-  > .title-container{
-    text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
+.title-container{
+  text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
 
-    color: $textColor;
-    padding: 10px;
-    position: absolute;
-    min-width: 480px;
-    left: 400px;
-  }
+  color: $textColor;
+  padding: 10px;
+  position: absolute;
+  //min-width: 480px;
+  right: 0;
+  left: 400px;
 }
 
 /* Active State */

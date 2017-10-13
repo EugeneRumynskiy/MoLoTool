@@ -89,13 +89,14 @@ ul {
       position: absolute;
       left: 300px;
       top: -3px; }
-  .nav > .title-container {
-    text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;
-    color: black;
-    padding: 10px;
-    position: absolute;
-    min-width: 480px;
-    left: 400px; }
+
+.title-container {
+  text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;
+  color: black;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  left: 400px; }
 
 /* Active State */
 .nav > li:hover > a {
