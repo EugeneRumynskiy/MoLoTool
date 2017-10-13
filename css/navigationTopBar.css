@@ -153,6 +153,8 @@ ul {
   .the-nav .top-second {
     padding-top: 3px;
     position: relative; }
+  .the-nav .title-container {
+    text-align: center; }
 
 /* Media for larger devices */
 @media screen and (min-width: 1140px) {
@@ -166,6 +168,8 @@ ul {
         .nav-bar > .the-nav > .top-first > .search-container {
           margin-left: 10px; }
       .nav-bar > .the-nav > .top-second {
-        position: static; } }
+        position: static; }
+      .nav-bar > .the-nav .title-container {
+        text-align: left; } }
 
 /*# sourceMappingURL=navigationTopBar.css.map */

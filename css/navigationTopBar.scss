@@ -205,6 +205,10 @@ ul {
     padding-top: 3px;
     position: relative;
   }
+
+  .title-container {
+    text-align: center;
+  }
 }
 
 /* Media for larger devices */
@@ -227,6 +231,10 @@ ul {
 
       >.top-second {
         position: static;
+      }
+
+      .title-container {
+        text-align: left;
       }
     }
   }
