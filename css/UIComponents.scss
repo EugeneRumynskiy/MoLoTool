@@ -96,7 +96,6 @@
 
   font-family: $defaultFontFamily;
 
-  margin-top: 5px + $topNav-navLineHeight;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
@@ -135,7 +134,6 @@
 
   font-family: $defaultFontFamily;
 
-  margin-top: 5px + $topNav-navLineHeight;
   background-color: $topNav-primaryMenuBackground;
   border-radius: 10px;
   border: $thin solid $borderColor;
@@ -594,6 +592,9 @@
   }
 }
 
+.suggestions, .collection-dialog{
+  margin-top: 5px + $topNav-navLineHeight + 25px;
+}
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
@@ -602,6 +603,6 @@
   }
 
   .suggestions, .collection-dialog{
-    margin-top: 5px;
+    margin-top: 5px + 24px;
   }
 }

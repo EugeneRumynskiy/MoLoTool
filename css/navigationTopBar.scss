@@ -92,9 +92,12 @@ ul {
 
     > i {
       margin-top: -3px;
+      margin-left: 300px;
+      position: absolute;
     }
 
     > #motif-search {
+      margin-left: 32px;
       position: absolute;
       display: inline-block;
       width: 270px;
@@ -121,8 +124,9 @@ ul {
 
       #collection-settings-button {
         position: absolute;
-        left: 300px;
-        top: -3px;
+        //left: 300px;
+        left: 0;
+        top: -4px;
       }
     }
   }

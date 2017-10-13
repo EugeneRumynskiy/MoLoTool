@@ -63,7 +63,6 @@
 .collection-dialog {
   position: relative;
   font-family: sans-serif;
-  margin-top: 45px;
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid grey;
@@ -87,7 +86,6 @@
 .suggestions {
   position: relative;
   font-family: sans-serif;
-  margin-top: 45px;
   background-color: #dadada;
   border-radius: 10px;
   border: 1px solid grey;
@@ -383,12 +381,15 @@
   #motif-table-cmp thead {
     word-break: normal; }
 
+.suggestions, .collection-dialog {
+  margin-top: 70px; }
+
 /* Media for larger devices */
 @media screen and (min-width: 1300px) {
   #help-cmp, #tutorial-cmp {
     margin-top: 40px; }
 
   .suggestions, .collection-dialog {
-    margin-top: 5px; } }
+    margin-top: 29px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */
