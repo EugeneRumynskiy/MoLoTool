@@ -1,7 +1,7 @@
 var showInputButton = (function () {
     var getSettingsFor = {
-            "hidden":   {"title":"Show sequences ", "icon": "visibility"},
-            "visible":   {"title":"Hide sequences ", "icon": "visibility_off"}
+            "hidden":   {"title":"Show sequences ", "icon": "keyboard_arrow_up"},
+            "visible":   {"title":"Hide sequences ", "icon": "keyboard_arrow_down"}
         },
         defaultMode = "visible",
 
