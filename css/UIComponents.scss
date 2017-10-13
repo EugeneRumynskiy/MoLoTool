@@ -1,5 +1,11 @@
 @import "utilities/variables";
 
+.customTooltipStyle {
+  font-family: $defaultFontFamily;
+  font-size: $defaultFontSize * 0.9;
+  line-height: $defaultFontSize * 0.9 + 1.5px;
+}
+
 #help-cmp, #tutorial-cmp{
   font-family: $defaultFontFamily;
   margin-top: 3 * $topNav-navLineHeight;

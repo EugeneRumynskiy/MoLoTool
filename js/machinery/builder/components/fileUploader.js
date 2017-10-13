@@ -47,26 +47,43 @@ var fileUploader = (function () {
     };
 
 
+    var calculateSize = function (file) {
+        var nBytes = file.size,
+            sOutput = nBytes + " bytes";
+        // optional code for multiples approximation
+        for (var aMultiples = ["KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"],
+                 nMultiple = 0, nApprox = nBytes / 1024;
+             nApprox > 1; nApprox /= 1024, nMultiple++) {
+            sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
+        }
+
+        console.log(sOutput, "file size.\n");
+        return nBytes;
+    };
+
+
     var setup = function () {
         var fileInput = document.getElementById('fileInput');
 
         fileInput.addEventListener('change', function(e) {
-            var file = fileInput.files[0];
-            var textType = /(\.txt$)|(\.fastq$)/;
+            var file = fileInput.files[0],
+                //textType = /(\.txt$)|(\.fastq$)/,
+                fileSize = calculateSize(file);
 
             console.log(file.name, "name");
 
-            if (file.name.match(textType)) {
+            if (fileSize > 20480) {
+                console.log("Error: too big file uploaded (> 20 kb).");
+                _uploadCallback("", "fileIsTooBig");
+            } else {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    _uploadCallback(reader.result, false);
+                    var rewriteFlag = (uiButtons.getInputMethod() === "rewrite");
+                    _uploadCallback(reader.result, rewriteFlag);
                 };
 
                 reader.readAsText(file);
-            } else {
-                $('#sequence-input').val("File not supported!");
-                alert("File not supported!");
             }
         });
     };

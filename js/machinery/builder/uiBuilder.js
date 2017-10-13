@@ -93,10 +93,17 @@ var uiBuilder = (function () {
 
 
     var inputCallback = function (inputString, replaceCurrent) {
+        var noSequenceErrors = false;
+
         inputErrors.clearErrorStatus();
 
-        var sequences = inputParsing.parseInput(inputString),
-            noSequenceErrors = false;
+        if (replaceCurrent === "fileIsTooBig") {
+            inputErrors.addToLog("fileIsTooBig");
+            inputErrors.showErrors();
+            return noSequenceErrors;
+        }
+
+        var sequences = inputParsing.parseInput(inputString);
 
         if (!$.isEmptyObject(sequences)) {
             var inputParsedInto = inputParsing.assembleParsedValues(sequences);
@@ -118,7 +125,6 @@ var uiBuilder = (function () {
                 $("html").scrollTop(scrollPosition);
             }
 
-            //console.log(handleEvent());
             handleEvent();
 
             if (comparisonMode.getCurrentMode() === "Multiply") {

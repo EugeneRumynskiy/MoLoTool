@@ -155,7 +155,7 @@ ul {
     position: relative; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1340px) {
+@media screen and (min-width: 1470px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

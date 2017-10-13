@@ -29,7 +29,7 @@ var inputErrors = (function () {
             "sequenceListIsEmpty" : {
                 "status": false,
                 "value": false,
-                "message": "No sequences found.<br><br>"
+                "message": "The submitted list of sequences is empty..<br><br>"
             },
             "checkSequenceIsFalse" : {
                 "status": false,
@@ -40,6 +40,11 @@ var inputErrors = (function () {
                 "status": false,
                 "value": false,
                 "message": ["Too many sequences submitted (", "), please input ", " or less.<br><br>"]
+            },
+            "fileIsTooBig" : {
+                "status": false,
+                "value": false,
+                "message": "Error: too big file uploaded (> 20 kb).<br><br>"
             }
         };
 
@@ -73,12 +78,14 @@ var inputErrors = (function () {
             } else {
                 _errors["sequenceCountExceeded"].value += 1;
             }
+        } else if (event === "fileIsTooBig") {
+            _errors["fileIsTooBig"].status = true;
         }
     };
 
 
     var checkErrors = function () {
-        var errorSequence = ["sequenceListIsEmpty", "sequenceCountExceeded",
+        var errorSequence = ["fileIsTooBig", "sequenceListIsEmpty", "sequenceCountExceeded",
             "motifListIsEmpty", "checkSequenceIsFalse"],
             errorString = "";
 
@@ -148,7 +155,7 @@ var inputErrors = (function () {
                     tip: {
                         corner: true
                     },
-                    classes: 'qtip-dark qtip-rounded qtip-shadow'
+                    classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
 
                 //classes: 'qtip-tipsy qtip-shadow'
                 },

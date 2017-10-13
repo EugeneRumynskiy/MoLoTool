@@ -1,3 +1,8 @@
+.customTooltipStyle {
+  font-family: sans-serif;
+  font-size: 14.4px;
+  line-height: 15.9px; }
+
 #help-cmp, #tutorial-cmp {
   font-family: sans-serif;
   margin-top: 120px;
@@ -378,7 +383,7 @@
     word-break: normal; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1340px) {
+@media screen and (min-width: 1470px) {
   #help-cmp, #tutorial-cmp {
     margin-top: 80px; }
 
