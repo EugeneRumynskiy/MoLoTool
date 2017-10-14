@@ -99,7 +99,7 @@ ul {
   padding: 10px;
   position: absolute;
   right: 0;
-  left: 400px; }
+  left: 350px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -166,7 +166,7 @@ ul {
   .title-container {
     display: unset !important; } }
 /* Media for larger devices */
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 1425px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {
