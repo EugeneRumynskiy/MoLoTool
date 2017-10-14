@@ -2,11 +2,15 @@
 Close element
 Example: <a href="#" class="close">
 */
+#help-cmp .close, #tutorial-cmp .close {
+  float: right; }
+
 .close {
   position: relative;
   opacity: 0.3;
   width: 20px;
   height: 20px;
+  cursor: pointer;
   outline: none; }
 
 .chosen-motif > .close {

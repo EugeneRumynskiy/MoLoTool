@@ -63,6 +63,11 @@ var helpButton = (function () {
                 event.preventDefault();
                 switchMode();
             });
+
+        $("#help-cmp .close").on("click", function(event) {
+            event.preventDefault();
+            switchMode();
+        });
     };
 
 

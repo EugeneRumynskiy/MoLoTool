@@ -50,7 +50,10 @@ var tooltips = (function () {
 
 
     var setEventListener = function () {
-        $(document).on('mouseover', '.tab-result .tooltip, .close, .input-method', function (event) {
+        $(document).on('mouseover', '.tab-result .tooltip,' +
+            '.tab-result .close,' +
+            '.chosen-motif .close,' +
+            ' .input-method', function (event) {
             // Bind the qTip within the event handler
             var content = getContentFor($(event.target));
 

@@ -63,6 +63,12 @@ var tutorialButton = (function () {
                 event.preventDefault();
                 switchMode();
             });
+
+
+        $("#tutorial-cmp .close").on("click", function(event) {
+            event.preventDefault();
+            switchMode();
+        });
     };
 
 
