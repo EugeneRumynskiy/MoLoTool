@@ -13,7 +13,7 @@ var showInputButton = (function () {
     var setVisibility = function (newMode, $target) {
         if (newMode === "hidden") {
             //$target.addClass("hidden");
-            $target.slideUp(400, function () {
+            $target.slideUp(400, "linear", function () {
                 $(this).addClass("hidden");
             });
             $buttonsToEmphasize.addClass("emphasized");
@@ -59,8 +59,13 @@ var showInputButton = (function () {
         }
     };
 
+    var isHidden = function () {
+        return $target.hasClass("hidden");
+    };
+
     return {
         init: init,
-        reset: reset
+        reset: reset,
+        isHidden: isHidden
     };
 } ());

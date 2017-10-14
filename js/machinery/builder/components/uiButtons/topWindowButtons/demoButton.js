@@ -33,11 +33,26 @@ var demoButton = (function () {
 
                 //disabled while collection is under uploading after selecting
                 if (!$(this).prop("disabled")) {
-                    uiButtons.resetInterface();
+                    var keep = {
+                        scrollPosition: true,
+                        buttons : {
+                            "showInputButton": true
+                        }
+                    };
+
+                    uiButtons.resetInterface(keep);
                     showDemo(inputCallback);
-                    uiButtons.setScrollPosition("bottom");
+
+                    if (showInputButton.isHidden() === false) {
+                        triggerOpenSequenceButton();
+                    }
                 }
             });
+    };
+
+
+    var triggerOpenSequenceButton = function () {
+        $(".open-sequence").trigger("click");
     };
 
 

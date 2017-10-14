@@ -52,26 +52,30 @@ var uiButtons = (function () {
     };
 
 
-    var resetInterface = function () {
+    var resetInterface = function (keep) {
         clearTabsList();
         clearChosenMotifList();
         clearSearchInput();
         clearSequenceInput();
 
-        setScrollPosition("top");
+        if (keep.scrollPosition !== true) {
+            setScrollPosition("top");
+        }
 
         pSlider.setDefaultValues();
 
-        resetButtons();
+        resetButtons(keep);
     };
 
 
-    var resetButtons = function () {
+    var resetButtons = function (keep) {
         showTableButton.reset();
         switchComparisonModeButton.reset();
 
         inputMethodButton.reset();
-        showInputButton.reset();
+        if (keep.buttons["showInputButton"] !== true) {
+            showInputButton.reset();
+        }
         zoomButton.reset();
 
         tutorialButton.reset();

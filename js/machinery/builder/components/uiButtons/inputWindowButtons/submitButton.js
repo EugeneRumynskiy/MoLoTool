@@ -22,7 +22,8 @@ var submitButton = (function () {
                     triggerOpenSequenceButton();
                 } else {
                     var noSequenceErrors = addSequence(inputCallback);
-                    if (noSequenceErrors === true) {
+                    if (noSequenceErrors === true &&
+                        showInputButton.isHidden() === false) {
                         triggerOpenSequenceButton();
                     }
                 }

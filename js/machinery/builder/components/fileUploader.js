@@ -86,7 +86,8 @@ var fileUploader = (function () {
                 reader.onload = function(e) {
                     var rewriteFlag = (uiButtons.getInputMethod() === "rewrite"),
                         noSequenceErrors = uploadCallback(reader.result, rewriteFlag, "");
-                    if (noSequenceErrors === true) {
+                    if (noSequenceErrors === true &&
+                        showInputButton.isHidden() === false) {
                         triggerOpenSequenceButton();
                     }
                 };
@@ -94,6 +95,11 @@ var fileUploader = (function () {
                 reader.readAsText(file);
             }
         });
+    };
+
+
+    var triggerOpenSequenceButton = function () {
+        $(".open-sequence").trigger("click");
     };
 
 
