@@ -72,7 +72,7 @@ var tooltips = (function () {
                 },
                 hide: {
                     delay: 100,
-                    event: "click"
+                    event: "unfocus"
                 }
             }, event); // Pass through our original event to qTip
         })

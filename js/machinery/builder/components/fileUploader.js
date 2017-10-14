@@ -47,6 +47,11 @@ var fileUploader = (function () {
     };
 
 
+    var uploadCallback = function (result, rewriteFlag, error) {
+        _uploadCallback(result, rewriteFlag, error);
+    };
+
+
     var calculateSize = function (file) {
         var nBytes = file.size,
             sOutput = nBytes + " bytes";
@@ -74,13 +79,13 @@ var fileUploader = (function () {
 
             if (fileSize > 20480) {
                 console.log("Error: too big file uploaded (> 20 kb).");
-                _uploadCallback("", "fileIsTooBig");
+                uploadCallback("", false, "fileIsTooBig");
             } else {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
                     var rewriteFlag = (uiButtons.getInputMethod() === "rewrite");
-                    _uploadCallback(reader.result, rewriteFlag);
+                    uploadCallback(reader.result, rewriteFlag, "");
                 };
 
                 reader.readAsText(file);

@@ -75,8 +75,10 @@ var resultTabs = (function () {
     var addIdToResult = function (tabId) {
         if (!_libraryIdCheck(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, id not in sequenceLibrary"});
+            return 0;
         } else if (resultTabsStates.idIsOpened(tabId)) {
             errorHandler.logError({"fileName": _fileName, "message": "tab cannot be added to result, it's already in result"});
+            return 0;
         } else {
             var $targetTab = $("#result-tabs"),
                 $resultTab = createResultTab(tabId),

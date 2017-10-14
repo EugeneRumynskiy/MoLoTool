@@ -20,6 +20,8 @@ var inputErrors = (function () {
 
     var initErrors = function () {
         _errors = {
+
+            //Interface Errors
             "motifListIsEmpty" : {
                 "status": false,
                 "value": false,
@@ -27,12 +29,14 @@ var inputErrors = (function () {
                 " of TFBS models by searching the interactive catalogue.<br><br>"
             },
 
+
+            //Parsing Errors
             "sequenceListIsEmpty" : {
                 "status": false,
                 "value": false,
                 "message": "The submitted list of sequences is empty.<br><br>"
             },
-            "checkSequenceIsFalse" : {
+            "sequenceCharacterError" : {
                 "status": false,
                 "value": false,
                 "message": "Invalid characters.<br><br>"
@@ -49,14 +53,13 @@ var inputErrors = (function () {
             },
 
 
+            //All is ok
             "errorsFound" : {
                 "status": false,
                 "value": false,
                 "message": "Everything OK: no errors found.<br><br>"
             }
         };
-
-        console.log(_errors);
     };
 
     
@@ -74,10 +77,10 @@ var inputErrors = (function () {
             _errors["sequenceListIsEmpty"].status = true;
         } else if (event === "motifListIsEmpty") {
             _errors["motifListIsEmpty"].status = true;
-        } else if (event.title === "checkSequenceIsFalse") {
-            if (_errors["checkSequenceIsFalse"].status === false) {
-                _errors["checkSequenceIsFalse"].status = true;
-                _errors["checkSequenceIsFalse"].value = event;
+        } else if (event.title === "sequenceCharacterError") {
+            if (_errors["sequenceCharacterError"].status === false) {
+                _errors["sequenceCharacterError"].status = true;
+                _errors["sequenceCharacterError"].value = event;
             }
         } else if (event === "sequenceCountExceeded") {
             if (_errors["sequenceCountExceeded"].status === false) {
@@ -96,7 +99,7 @@ var inputErrors = (function () {
 
     var checkErrors = function () {
         var errorSequence = ["fileIsTooBig", "sequenceListIsEmpty", "sequenceCountExceeded",
-            "motifListIsEmpty", "checkSequenceIsFalse"],
+            "motifListIsEmpty", "sequenceCharacterError"],
             errorString = "";
 
         for(var i = 0, error; i < errorSequence.length; i++) {
@@ -119,8 +122,8 @@ var inputErrors = (function () {
                     (error.value + resultTabsStates.getTabIdRange().max) +
                     error.message[1] + (resultTabsStates.getTabIdRange().max) +
                     error.message[2];
-            } else if (errorName === "checkSequenceIsFalse"){
-                return getCheckSequenceIsFalseMessage(error.value);
+            } else if (errorName === "sequenceCharacterError"){
+                return getSequenceCharacterErrorMessage(error.value);
             } else {
                 return error.message;
             }
@@ -131,8 +134,8 @@ var inputErrors = (function () {
     };
 
 
-    var getCheckSequenceIsFalseMessage = function (errorValue) {
-        return "Invalid characters " + getUnexpectedCharactersToShow(errorValue.sequence[0]) +
+    var getSequenceCharacterErrorMessage = function (errorValue) {
+        return "Invalid characters " + getUnexpectedCharactersToShow(errorValue.characters[0]) +
             " in sequence #" + errorValue.sequenceNo + ".<br><br>";
     };
 
@@ -146,11 +149,20 @@ var inputErrors = (function () {
     };
 
 
-    var checkIfNoSequenceErrors = function () {
+    var checkIfNoImportantErrors = function () {
         return ((_errors["sequenceListIsEmpty"].status ||
-            _errors["checkSequenceIsFalse"].status    ||
+            _errors["sequenceCharacterError"].status    ||
             _errors["sequenceCountExceeded"].status   ||
             _errors["fileIsTooBig"].status) === false);
+    };
+
+
+    var checkSequenceCharacterError = function () {
+        if (_errors["sequenceCharacterError"].status === true) {
+            return _errors["sequenceCharacterError"].value;
+        } else {
+            return false;
+        }
     };
 
 
@@ -158,11 +170,16 @@ var inputErrors = (function () {
         console.log(_errors);
 
 
-        var content;
-        if (_errors["errorsFound"].status === true) {
-            content = checkErrors().trim();
-        } else {
+        var content, message;
+        if (_errors["errorsFound"].status === false) {
             content = _errors["errorsFound"].message;
+            message = "Message.";
+        } else if (checkIfNoImportantErrors()){
+            content = checkErrors().trim();
+            message = "Warning."
+        } else {
+            content = checkErrors().trim();
+            message = "Error."
         }
 
 
@@ -171,7 +188,7 @@ var inputErrors = (function () {
             content: {
                 text: content,
                 title: {
-                    text: 'Warning.'
+                    text: message
                 }
             },
             style: {
@@ -200,9 +217,6 @@ var inputErrors = (function () {
                 event: "click unfocus"
             }
         });
-
-
-        return checkIfNoSequenceErrors();
     };
 
 
@@ -211,6 +225,9 @@ var inputErrors = (function () {
 
         clearErrorStatus: clearErrorStatus,
         addToLog: addToLog,
-        showErrors: showErrors
+        showErrors: showErrors,
+
+        checkSequenceCharacterError: checkSequenceCharacterError,
+        checkIfNoImportantErrors: checkIfNoImportantErrors
     }
 }());

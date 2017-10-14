@@ -92,51 +92,61 @@ var uiBuilder = (function () {
     };
 
 
-    var inputCallback = function (inputString, replaceCurrent) {
-        var noSequenceErrors = false;
-
+    var inputCallback = function (inputString, replaceCurrent, error) {
         inputErrors.clearErrorStatus();
 
-        if (replaceCurrent === "fileIsTooBig") {
-            inputErrors.addToLog("fileIsTooBig");
-            inputErrors.showErrors();
-            return noSequenceErrors;
+
+        if ($.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
+            inputErrors.addToLog("motifListIsEmpty"); //1
         }
 
-        var sequences = inputParsing.parseInput(inputString);
 
-        if (!$.isEmptyObject(sequences)) {
-            var inputParsedInto = inputParsing.assembleParsedValues(sequences);
-            $("#manual-seq-input").find("textarea").val(inputParsedInto);
+        if (error === "fileIsTooBig") {
+            inputErrors.addToLog("fileIsTooBig"); //2
+            inputErrors.showErrors();
+            return false;
+        }
 
 
-            if (replaceCurrent === true) {
-                var scrollPosition = $("html").scrollTop();
-                sequenceLibrary.clear();
-            }
+        var sequences = inputParsing.parseInput(inputString);//4
 
-            var libraryIds = $.map(sequences, sequenceLibrary.addTab);
-            $.map(libraryIds, resultTabs.addIdToResult);
-
-            noSequenceErrors = inputErrors.showErrors();
-            console.log(noSequenceErrors, "noSequenceErrors");
-
-            if (replaceCurrent === true) {
-                $("html").scrollTop(scrollPosition);
-            }
-
-            handleEvent();
-
-            if (comparisonMode.getCurrentMode() === "Multiply") {
-                resultTabs.updateWidth("setToMaximum");
-            }
+        var inputParsedInto,
+            checkValue = inputErrors.checkSequenceCharacterError();
+        if (checkValue !== false) {
+            inputParsedInto = inputParsing.assembleParsedValues(sequences, checkValue.rawSequence);
         } else {
-            console.log(inputString, "$.isEmptyObject(sequences) is true");
-            inputErrors.addToLog("sequenceListIsEmpty");
+            inputParsedInto = inputParsing.assembleParsedValues(sequences, "");
+        }
+        $("#manual-seq-input").find("textarea").val(inputParsedInto);
+
+        if (sequences.length === 0) {
+            inputErrors.addToLog("sequenceListIsEmpty"); //3
             inputErrors.showErrors();
+            return false;
         }
 
-        return noSequenceErrors;
+
+
+        if (replaceCurrent === true) {
+            var scrollPosition = $("html").scrollTop();
+            sequenceLibrary.clear();
+        }
+        var libraryIds = $.map(sequences, sequenceLibrary.addTab);
+        $.map(libraryIds, resultTabs.addIdToResult); //5
+        if (replaceCurrent === true) {
+            $("html").scrollTop(scrollPosition);
+        }
+
+        inputErrors.showErrors();
+
+        handleEvent();
+
+
+        if (comparisonMode.getCurrentMode() === "Multiply") {
+            resultTabs.updateWidth("setToMaximum");
+        }
+
+        return inputErrors.checkIfNoImportantErrors();
     };
 
 

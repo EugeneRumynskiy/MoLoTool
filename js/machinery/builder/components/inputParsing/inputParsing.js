@@ -6,7 +6,9 @@ var inputParsing = (function () {
         
         _seqCheck,
         _defaultParsedValues,
-        _generalDescription;
+        _generalDescription,
+
+        _rest = "";
 
 
     var create = function () {
@@ -64,13 +66,7 @@ var inputParsing = (function () {
 
 
     var parseInput = function (rawInputString) {
-        var sequences;
-        //inputErrors.clearStack();
-
-        if ($.isEmptyObject( motifPicker.getRequestedMotifNames() )) {
-            sequences = [];
-            inputErrors.addToLog("motifListIsEmpty");
-        }
+        var sequences = [];
 
         var inputString = $.trim(rawInputString);
 
@@ -90,16 +86,24 @@ var inputParsing = (function () {
 
 
     var parseAsFasta = function (inputString) {
-        var startIndex = inputString.indexOf(">"),
+        var startIndex = inputString.indexOf(">");
 
-            generalDescription = inputString.slice(0, startIndex),
-
-            inputWithoutGeneralDescription = inputString.slice(startIndex + 1),
-            sequencesWithTitles = inputWithoutGeneralDescription.split(">");
-
+        var generalDescription = inputString.slice(0, startIndex);
         setGeneralDescription(generalDescription);
 
-        return $.map(sequencesWithTitles, parseSequenceWithTitle);
+        var inputWithoutGeneralDescription = inputString.slice(startIndex + 1),
+            sequencesWithTitles = inputWithoutGeneralDescription.split(">");
+
+        var sequences = [];
+        for(var i = 0, parsedSequence; i < sequencesWithTitles.length; i++) {
+            parsedSequence = parseSequenceWithTitle(sequencesWithTitles[i], i);
+            if (inputErrors.checkSequenceCharacterError() === false) {
+                sequences.push(parsedSequence);
+            } else {
+                return sequences;
+            }
+        }
+        return sequences;
     };
 
 
@@ -125,7 +129,7 @@ var inputParsing = (function () {
 
         parsedValues["title"] = ($.isEmptyObject(title)) ? getDefaultParsedValues().title : title;
         parsedValues["sequence"] = ($.isEmptyObject(sequence)) ?
-            getDefaultParsedValues().sequence : returnSuitableSequence(sequence, sequenceNo + 1);
+            getDefaultParsedValues().sequence : returnSuitableSequence(sequence, ">" + sequenceWithTitle, sequenceNo + 1);
 
         return parsedValues;
     };
@@ -142,20 +146,20 @@ var inputParsing = (function () {
             trimmedSequence = $.trim(sequence);
 
         if (trimmedSequence.length !== 0) {
-            parsedValues["sequence"] = returnSuitableSequence(trimmedSequence, 1);
+            parsedValues["sequence"] = returnSuitableSequence(trimmedSequence, sequence,  1);
         }
 
         return parsedValues;
     };
 
 
-    var returnSuitableSequence = function (sequence, sequenceNo) {
+    var returnSuitableSequence = function (sequence, rawSequence, sequenceNo) {
         var checkResult = checkSequence(sequence);
 
         if (checkResult === true) {
             return sequence;
         } else {
-            handleError(checkResult, sequenceNo);
+            handleError(checkResult, rawSequence, sequenceNo);
             return getDefaultParsedValues()["sequence"];
         }
     };
@@ -172,11 +176,12 @@ var inputParsing = (function () {
     };
 
 
-    var handleError = function (sequence, sequenceNo) {
+    var handleError = function (characters, rawSequence, sequenceNo) {
         inputErrors.addToLog({
-            title:"checkSequenceIsFalse",
-            sequence: sequence,
-            sequenceNo: sequenceNo
+            title:"sequenceCharacterError",
+            characters: characters,
+            sequenceNo: sequenceNo,
+            rawSequence: rawSequence
         });
     };
 
@@ -197,7 +202,7 @@ var inputParsing = (function () {
     };
 
 
-    var assembleParsedValues = function (sequences) {
+    var assembleParsedValues = function (sequences, rest) {
         var inputParsedInto = (getGeneralDescription() === "") ? "" : getGeneralDescription() + "\n",
             noneReplacer = "";
 
@@ -211,6 +216,9 @@ var inputParsing = (function () {
 
             inputParsedInto += ">" + title + "\n" + sequence + "\n";
         }
+
+        inputParsedInto += rest;
+
         return inputParsedInto;
     };
 

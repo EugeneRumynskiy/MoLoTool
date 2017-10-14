@@ -1,7 +1,7 @@
 var showInputButton = (function () {
     var getSettingsFor = {
-            "hidden":   {"title":"Open input ", "icon": "keyboard_arrow_up"},
-            "visible":   {"title":"Hide input ", "icon": "keyboard_arrow_down"}
+            "hidden":   {"title":"Open input ", "icon": "keyboard_arrow_down"},
+            "visible":   {"title":"Hide input ", "icon": "keyboard_arrow_up"}
         },
         defaultMode = "visible",
 
@@ -18,15 +18,11 @@ var showInputButton = (function () {
             $target.removeClass("hidden");
             $buttonsToEmphasize.removeClass("emphasized");
         }
-
-        console.log($buttonsToEmphasize);
     };
 
     var switchMode = function () {
         var newMode = ($target.hasClass("hidden")) ? "visible" : "hidden";
         setVisibility(newMode, $target);
-
-
 
         $button
             .empty()
