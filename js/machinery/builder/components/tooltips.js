@@ -60,6 +60,7 @@ var tooltips = (function () {
                 position: {
                     my: 'top left',  // Position my top left...
                     at: 'bottom center' // at the bottom right of...
+
                 },
                 style: {
                     classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
@@ -72,7 +73,7 @@ var tooltips = (function () {
                 },
                 hide: {
                     delay: 100,
-                    event: "unfocus"
+                    event: "unfocus click"
                 }
             }, event); // Pass through our original event to qTip
         })

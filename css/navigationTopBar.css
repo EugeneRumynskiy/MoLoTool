@@ -100,8 +100,6 @@ ul {
   position: absolute;
   right: 0;
   left: 400px; }
-  .title-container span {
-    cursor: pointer; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -164,11 +162,11 @@ ul {
     display: none; }
 
 /* Media for larger devices */
-@media screen and (min-width: 630px) {
+@media screen and (min-width: 670px) {
   .title-container {
     display: unset !important; } }
 /* Media for larger devices */
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1480px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

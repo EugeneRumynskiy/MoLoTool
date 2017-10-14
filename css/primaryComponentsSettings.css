@@ -83,7 +83,7 @@ input[type="file"] {
   border-radius: 5px; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1480px) {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */

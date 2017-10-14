@@ -24,11 +24,11 @@ var homeButton = (function () {
         $tutorial = $("#tutorial-cmp");
         $help = $("#help-cmp");
 
-        $button
+/*        $button
             .on('click', function(event) {
                 event.preventDefault();
                 switchMode();
-            });
+            });*/
     };
 
 
