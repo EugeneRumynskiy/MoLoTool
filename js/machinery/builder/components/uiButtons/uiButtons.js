@@ -58,7 +58,7 @@ var uiButtons = (function () {
         clearSearchInput();
         clearSequenceInput();
 
-        if (keep.scrollPosition !== true) {
+        if (keep === undefined || keep.scrollPosition !== true) {
             setScrollPosition("top");
         }
 
@@ -73,7 +73,7 @@ var uiButtons = (function () {
         switchComparisonModeButton.reset();
 
         inputMethodButton.reset();
-        if (keep.buttons["showInputButton"] !== true) {
+        if (keep === undefined || keep.buttons["showInputButton"] !== true) {
             showInputButton.reset();
         }
         zoomButton.reset();
