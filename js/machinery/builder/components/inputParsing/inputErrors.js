@@ -57,7 +57,7 @@ var inputErrors = (function () {
             "errorsFound" : {
                 "status": false,
                 "value": false,
-                "message": "Everything OK: no errors found.<br><br>"
+                "message": "Everything OK: no errors found."
             }
         };
     };
@@ -173,7 +173,7 @@ var inputErrors = (function () {
         var content, message;
         if (_errors["errorsFound"].status === false) {
             content = _errors["errorsFound"].message;
-            message = "Message.";
+            message = "";
         } else if (checkIfNoImportantErrors()){
             content = checkErrors().trim();
             message = "Warning."

@@ -84,8 +84,11 @@ var fileUploader = (function () {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    var rewriteFlag = (uiButtons.getInputMethod() === "rewrite");
-                    uploadCallback(reader.result, rewriteFlag, "");
+                    var rewriteFlag = (uiButtons.getInputMethod() === "rewrite"),
+                        noSequenceErrors = uploadCallback(reader.result, rewriteFlag, "");
+                    if (noSequenceErrors === true) {
+                        triggerOpenSequenceButton();
+                    }
                 };
 
                 reader.readAsText(file);
