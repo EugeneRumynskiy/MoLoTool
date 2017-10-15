@@ -54,6 +54,10 @@ td a:visited,
   display: inline-block;
   text-align: left; }
 
+.top-second .interface-button {
+  padding: 10px 5px;
+  margin-right: 2px; }
+
 .emphasized {
   background-color: #8DD18E !important; }
 
@@ -83,7 +87,7 @@ input[type="file"] {
   border-radius: 5px; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1425px) {
+@media screen and (min-width: 1350px) {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */

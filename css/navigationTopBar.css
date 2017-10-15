@@ -166,7 +166,7 @@ ul {
   .title-container {
     display: unset !important; } }
 /* Media for larger devices */
-@media screen and (min-width: 1425px) {
+@media screen and (min-width: 1350px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

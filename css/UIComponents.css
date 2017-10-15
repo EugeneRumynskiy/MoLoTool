@@ -385,7 +385,7 @@
   margin-top: 70px; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1425px) {
+@media screen and (min-width: 1350px) {
   #help-cmp, #tutorial-cmp {
     margin-top: 40px; }
 
