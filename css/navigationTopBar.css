@@ -99,7 +99,7 @@ ul {
   padding: 10px;
   position: absolute;
   right: 0;
-  left: 350px; }
+  left: 360px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -147,7 +147,7 @@ ul {
     clear: both; }
 
 /*Positioning*/
-/* Default media < 800px - two line menu */
+/* Default media < $minWidth - two line menu */
 .the-nav {
   min-width: 620px; }
   .the-nav .top-first {
@@ -166,7 +166,7 @@ ul {
   .title-container {
     display: unset !important; } }
 /* Media for larger devices */
-@media screen and (min-width: 1350px) {
+@media screen and (min-width: 1360px) {
   .nav-bar {
     height: 40px; }
     .nav-bar > .the-nav {

@@ -139,7 +139,7 @@ ul {
   padding: 10px;
   position: absolute;
   right: 0;
-  left: 350px;
+  left: 360px;
 
   span {
     //cursor: pointer;
@@ -200,7 +200,7 @@ ul {
 }
 
 /*Positioning*/
-/* Default media < 800px - two line menu */
+/* Default media < $minWidth - two line menu */
 .the-nav {
   min-width: 620px;
   .top-first{
