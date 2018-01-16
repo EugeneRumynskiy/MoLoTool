@@ -8,6 +8,12 @@ var inputMethodButton = (function () {
         $button;
 
 
+    var getTooltip = function () {
+        return (uiButtons.getInputMethod() === "rewrite") ?
+            "The input replaces sequences" : "The input is appended to sequences";
+    };
+
+
     var switchMode = function () {
         var newMode = (uiButtons.getInputMethod() === "rewrite") ? "stack" : "rewrite";
         uiButtons.setInputMethod(newMode);
@@ -43,6 +49,7 @@ var inputMethodButton = (function () {
 
     return {
         init: init,
-        reset: reset
+        reset: reset,
+        getTooltip: getTooltip
     };
 }());

@@ -566,11 +566,11 @@
         position: static;
         margin-top: -$resultTab-height * 0.25;
         line-height: $resultTab-height * 0.75;
-
       }
 
       .sequence, .title {
-        position: static;
+        //position: static;
+        position: relative;
         line-height: $resultTab-height * 0.75;
       }
     }

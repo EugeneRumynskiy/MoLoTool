@@ -92,6 +92,15 @@ input[type="file"] {
   display: none;
 }
 
+//this text cant be highlighted and copied
+//not used now
+.no-highlight span{
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
 //toggled classes
 .full-screen {
   //line-height: $resultTab-height * 0.45 !important;

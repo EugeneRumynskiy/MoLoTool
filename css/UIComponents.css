@@ -368,7 +368,7 @@
       margin-top: -22.5px;
       line-height: 67.5px; }
     #result-cmp #result-sequences .full-screen .sequence, #result-cmp #result-sequences .full-screen .title {
-      position: static;
+      position: relative;
       line-height: 67.5px; }
   #result-cmp #result-sequences:empty {
     display: none; }
