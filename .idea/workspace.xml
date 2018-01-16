@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10d082e7-46e3-4f3b-9d5e-79bd7eae94c8" name="Default" comment="-Help: changed content">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="RumHocomoco.iws" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="index.html" pinned="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="306" column="77" lean-forward="true" selection-start-line="306" selection-start-column="77" selection-end-line="306" selection-end-column="77" />
+            <state relative-caret-position="228">
+              <caret line="291" column="21" lean-forward="false" selection-start-line="291" selection-start-column="21" selection-end-line="291" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -634,7 +635,7 @@
       <workItem from="1508759946151" duration="2354000" />
       <workItem from="1509409182575" duration="1407000" />
       <workItem from="1513347061418" duration="985000" />
-      <workItem from="1516095073788" duration="3564000" />
+      <workItem from="1516095073788" duration="4175000" />
     </task>
     <task id="LOCAL-00215" summary="-Buttons: icons-states changed&#10;-ResultTabs: changed visible title length from 12 to 14 to make fit demo.">
       <created>1507638247293</created>
@@ -983,7 +984,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1923118000" />
+    <option name="totallyTimeSpent" value="1923729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1478,8 +1479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="306" column="77" lean-forward="true" selection-start-line="306" selection-start-column="77" selection-end-line="306" selection-end-column="77" />
+        <state relative-caret-position="228">
+          <caret line="291" column="21" lean-forward="false" selection-start-line="291" selection-start-column="21" selection-end-line="291" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
