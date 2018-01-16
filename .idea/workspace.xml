@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="10d082e7-46e3-4f3b-9d5e-79bd7eae94c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" afterPath="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" />
-      <change beforePath="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" afterPath="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" />
+      <change beforePath="$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js" afterPath="$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js" />
     </list>
     <ignored path="RumHocomoco.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inputMethodButton.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="inputMethodButton.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
@@ -82,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="features.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="features.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+            <state relative-caret-position="380">
+              <caret line="20" column="84" lean-forward="false" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -265,13 +264,13 @@
         <option value="$PROJECT_DIR$/css/navigationTopBar.scss" />
         <option value="$PROJECT_DIR$/css/utilities/variables.scss" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/uiBuilder.js" />
         <option value="$PROJECT_DIR$/css/UIComponents.scss" />
         <option value="$PROJECT_DIR$/css/primaryComponentsSettings.scss" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" />
+        <option value="$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js" />
       </list>
     </option>
   </component>
@@ -692,13 +691,6 @@
       <workItem from="1513347061418" duration="985000" />
       <workItem from="1516095073788" duration="4623000" />
     </task>
-    <task id="LOCAL-00218" summary="-tooltips: added Remove toltip to .close class">
-      <created>1507640196334</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1507640196334</updated>
-    </task>
     <task id="LOCAL-00219" summary="-collection settings: added support info (Collection, Species)">
       <created>1507640925732</created>
       <option name="number" value="00219" />
@@ -1035,11 +1027,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516103430423</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="-RewriteButton: Changed tooltip. There are two of them now">
+      <created>1516104677268</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1516104677268</updated>
+    </task>
+    <option name="localTasksCounter" value="268" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1927952000" />
+    <option name="totallyTimeSpent" value="1929761000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1123,7 +1122,6 @@
       <path value="$PROJECT_DIR$/externalLibs/DataTables" />
       <path value="$PROJECT_DIR$/externalLibs/spectrum" />
     </ignored-roots>
-    <MESSAGE value="-motifHandler: handleEvent refactoring" />
     <MESSAGE value="-inputErrors: refactoring" />
     <MESSAGE value="-css: changed nav laypout&#10;-tooltips: changed css font, fontsize&#10;-inputErrors: added filesize-check" />
     <MESSAGE value="-index: MoLoTool tagline reduced" />
@@ -1148,7 +1146,8 @@
     <MESSAGE value="-Testing new branch" />
     <MESSAGE value="-Testing new branch one more time" />
     <MESSAGE value="-Result-tabs: sequence position is relative now. So it could be highlighted and copied." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Result-tabs: sequence position is relative now. So it could be highlighted and copied." />
+    <MESSAGE value="-RewriteButton: Changed tooltip. There are two of them now" />
+    <option name="LAST_COMMIT_MESSAGE" value="-RewriteButton: Changed tooltip. There are two of them now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1432,14 +1431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/topWindowButtons/tutorialButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
@@ -1563,6 +1554,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/motifTable/features.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="84" lean-forward="false" selection-start-line="20" selection-start-column="84" selection-end-line="20" selection-end-column="84" />
           <folding />
         </state>
       </provider>

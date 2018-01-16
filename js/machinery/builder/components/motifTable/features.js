@@ -16,10 +16,14 @@ var features = (function () {
 
 
     var setFeatures = function (motifFeatureTitles) {
-        _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifFeatureTitles, []);
-        _rowFeatures.toShow = ["Motif ID", "Seq name", "-log10(P-value)",
-            "P-value", "Start", "End", "Sequence", "Strand"];
+        var allFeatures = [].concat(motifFeatureTitles, ["Motif ID", "-log10(P-value)", "Seq name", "Sequence",
+            "P-value", "Start", "End", "Strand"]),
+            toShow = ["Motif ID", "-log10(P-value)", "Seq name", "Sequence", "Logo",
+                "P-value", "Start", "End", "Strand"],
+            //difference between two arrays
+            toHide = $(allFeatures).not(toShow).get();
+
+        _rowFeatures = {"toHide": toHide, "toShow": toShow};
     };
 
 
