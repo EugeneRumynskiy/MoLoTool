@@ -4,14 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/js/machinery/calculations/errorHandler.js" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="10d082e7-46e3-4f3b-9d5e-79bd7eae94c8" name="Default" comment="-Testing new branch one more time">
+    <list default="true" id="10d082e7-46e3-4f3b-9d5e-79bd7eae94c8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/css/UIComponents.css" afterPath="$PROJECT_DIR$/css/UIComponents.css" />
-      <change beforePath="$PROJECT_DIR$/css/UIComponents.css.map" afterPath="$PROJECT_DIR$/css/UIComponents.css.map" />
-      <change beforePath="$PROJECT_DIR$/css/UIComponents.scss" afterPath="$PROJECT_DIR$/css/UIComponents.scss" />
-      <change beforePath="$PROJECT_DIR$/css/primaryComponentsSettings.css" afterPath="$PROJECT_DIR$/css/primaryComponentsSettings.css" />
-      <change beforePath="$PROJECT_DIR$/css/primaryComponentsSettings.css.map" afterPath="$PROJECT_DIR$/css/primaryComponentsSettings.css.map" />
-      <change beforePath="$PROJECT_DIR$/css/primaryComponentsSettings.scss" afterPath="$PROJECT_DIR$/css/primaryComponentsSettings.scss" />
+      <change beforePath="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" afterPath="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" />
+      <change beforePath="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" afterPath="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" />
     </list>
     <ignored path="RumHocomoco.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +32,8 @@
       <file leaf-file-name="index.html" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="874">
-              <caret line="325" column="56" lean-forward="true" selection-start-line="325" selection-start-column="56" selection-end-line="325" selection-end-column="56" />
+            <state relative-caret-position="114">
+              <caret line="285" column="64" lean-forward="true" selection-start-line="285" selection-start-column="64" selection-end-line="285" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -56,24 +52,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="inputMethodButton.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tooltips.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/tooltips.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UIComponents.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/UIComponents.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="452">
               <caret line="567" column="46" lean-forward="false" selection-start-line="567" selection-start-column="46" selection-end-line="567" selection-end-column="46" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="motifTable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/motifTable/motifTable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding>
-                <marker date="1507647603389" expanded="true" signature="4748:4766" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -88,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="primaryComponentsSettings.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="primaryComponentsSettings.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/primaryComponentsSettings.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
@@ -102,7 +106,17 @@
         <entry file="file://$PROJECT_DIR$/js/machinery/builder/uiBuilder.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="310">
-              <caret line="41" column="45" lean-forward="false" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
+              <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uiButtons.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,26 +127,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="386">
               <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultTabs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/resultTabs/resultTabs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
-              <caret line="225" column="8" lean-forward="false" selection-start-line="225" selection-start-column="8" selection-end-line="225" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tooltips.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/tooltips.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
-              <caret line="92" column="8" lean-forward="false" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -151,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fileUplo</find>
       <find>#help-cmp</find>
       <find>.title-c</find>
       <find>res</find>
@@ -181,6 +174,7 @@
       <find>title-container</find>
       <find>digit</find>
       <find>fulls</find>
+      <find>tooltip</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\HOME\Programming\Projects\WebstormProjects\RumHocomoco_2.0\css</dir>
@@ -227,7 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/helpButton.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/showMoreButton.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/motifPicker.js" />
@@ -266,11 +259,9 @@
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/submitButton.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/fileUploader.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/topWindowButtons/demoButton.js" />
-        <option value="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" />
         <option value="$PROJECT_DIR$/css/controlElements.scss" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/topWindowButtons/tutorialButton.js" />
         <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/topWindowButtons/helpButton.js" />
-        <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js" />
         <option value="$PROJECT_DIR$/css/navigationTopBar.scss" />
         <option value="$PROJECT_DIR$/css/utilities/variables.scss" />
         <option value="$PROJECT_DIR$/index.html" />
@@ -278,6 +269,9 @@
         <option value="$PROJECT_DIR$/js/machinery/builder/uiBuilder.js" />
         <option value="$PROJECT_DIR$/css/UIComponents.scss" />
         <option value="$PROJECT_DIR$/css/primaryComponentsSettings.scss" />
+        <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js" />
+        <option value="$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js" />
+        <option value="$PROJECT_DIR$/js/machinery/builder/components/tooltips.js" />
       </list>
     </option>
   </component>
@@ -408,6 +402,15 @@
               <item name="builder" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="motifTable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RumHocomoco_2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RumHocomoco_2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="machinery" type="462c0819:PsiDirectoryNode" />
+              <item name="builder" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="uiButtons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RumHocomoco_2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -688,13 +691,6 @@
       <workItem from="1509409182575" duration="1407000" />
       <workItem from="1513347061418" duration="985000" />
       <workItem from="1516095073788" duration="4623000" />
-    </task>
-    <task id="LOCAL-00217" summary="-fixed collection settings button visibility">
-      <created>1507639146210</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1507639146210</updated>
     </task>
     <task id="LOCAL-00218" summary="-tooltips: added Remove toltip to .close class">
       <created>1507640196334</created>
@@ -1032,11 +1028,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516099399764</updated>
     </task>
-    <option name="localTasksCounter" value="266" />
+    <task id="LOCAL-00266" summary="-Result-tabs: sequence position is relative now. So it could be highlighted and copied.">
+      <created>1516103430423</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1516103430423</updated>
+    </task>
+    <option name="localTasksCounter" value="267" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1926574000" />
+    <option name="totallyTimeSpent" value="1927952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1120,7 +1123,6 @@
       <path value="$PROJECT_DIR$/externalLibs/DataTables" />
       <path value="$PROJECT_DIR$/externalLibs/spectrum" />
     </ignored-roots>
-    <MESSAGE value="-added tutorial section" />
     <MESSAGE value="-motifHandler: handleEvent refactoring" />
     <MESSAGE value="-inputErrors: refactoring" />
     <MESSAGE value="-css: changed nav laypout&#10;-tooltips: changed css font, fontsize&#10;-inputErrors: added filesize-check" />
@@ -1145,7 +1147,8 @@
     <MESSAGE value="-Help: changed content" />
     <MESSAGE value="-Testing new branch" />
     <MESSAGE value="-Testing new branch one more time" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Testing new branch one more time" />
+    <MESSAGE value="-Result-tabs: sequence position is relative now. So it could be highlighted and copied." />
+    <option name="LAST_COMMIT_MESSAGE" value="-Result-tabs: sequence position is relative now. So it could be highlighted and copied." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1154,13 +1157,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/externalLibs/nouislider/nouislider.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="215" column="3" lean-forward="true" selection-start-line="215" selection-start-column="3" selection-end-line="215" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externalLibs/nouislider/nouislider.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1195,6 +1191,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1121">
           <caret line="6" column="6492" lean-forward="false" selection-start-line="6" selection-start-column="6492" selection-end-line="6" selection-end-column="6492" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1457,14 +1456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="75" column="34" lean-forward="false" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/navigationTopBar.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2679">
@@ -1477,22 +1468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1235">
           <caret line="65" column="21" lean-forward="false" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/tooltips.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="92" column="8" lean-forward="false" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/machinery/builder/uiBuilder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="41" column="45" lean-forward="false" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1512,27 +1487,6 @@
         <state relative-caret-position="386">
           <caret line="66" column="25" lean-forward="true" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="325" column="56" lean-forward="true" selection-start-line="325" selection-start-column="56" selection-end-line="325" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#2;n#p#0;n#div#1;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#p#0;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#p#2;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#2;n#p#2;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#2;n#p#3;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#p#5;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#p#0;n#div#1;n#div#4;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#p#0;n#div#1;n#div#5;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1556,6 +1510,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="95" column="14" lean-forward="false" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="285" column="64" lean-forward="true" selection-start-line="285" selection-start-column="64" selection-end-line="285" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#noscript#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#img#2;n#p#0;n#div#1;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#p#0;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#2;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#2;n#p#2;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#2;n#p#3;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#p#5;n#div#1;n#div#3;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#p#0;n#div#1;n#div#4;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#p#0;n#div#1;n#div#5;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/machinery/builder/uiBuilder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/uiButtons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/tooltips.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/machinery/builder/components/uiButtons/inputWindowButtons/inputMethodButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>

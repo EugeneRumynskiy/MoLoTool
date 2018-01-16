@@ -13,21 +13,22 @@ var tooltips = (function () {
             "lock": "Lock scrolling of this tab",
             "copy-tab": "Copy markup",
             "close": "Remove",
-            "input-method": "Shows if current sequences will be replaced with input"
+            "input-method": inputMethodButton.getTooltip
         }
     };
+
 
     var getContent = function () {
         return _content;
     };
 
+
     var getContentFor = function ($target) {
         var content = getContent(),
             targetClass = getClassFrom($target);
 
-
         if (content.hasOwnProperty(targetClass) && content[targetClass] !== undefined) {
-            return content[targetClass];
+                return content[targetClass];
         } else {
             return undefined;
         }
