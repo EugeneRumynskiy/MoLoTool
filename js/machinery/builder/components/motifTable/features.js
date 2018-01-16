@@ -17,8 +17,9 @@ var features = (function () {
 
     var setFeatures = function (motifFeatureTitles) {
         _rowFeatures = {"toHide": [], "toShow": []};
-        _rowFeatures.toHide = [].concat(motifFeatureTitles, ["Strand"]);
-        _rowFeatures.toShow = ["Motif ID", "Seq name", "-log10(P-value)", "P-value", "Start", "End", "Sequence"];
+        _rowFeatures.toHide = [].concat(motifFeatureTitles, []);
+        _rowFeatures.toShow = ["Motif ID", "Seq name", "-log10(P-value)",
+            "P-value", "Start", "End", "Sequence", "Strand"];
     };
 
 
