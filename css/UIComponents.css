@@ -344,7 +344,7 @@
         opacity: 0.3; }
         #result-cmp #result-sequences .tab-result-sequence .digits span {
           border-radius: 2px;
-          vertical-align: -4px;
+          vertical-align: 4px;
           text-align: center;
           overflow: hidden; }
     #result-cmp #result-sequences .flattened .digits {

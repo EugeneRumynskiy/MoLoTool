@@ -3,7 +3,9 @@
 .segment {
   border-radius: 2px;
 
-  vertical-align: -4px;
+  vertical-align: 4px;
+  //works bad with ms office if <0
+
   text-align: center;
   overflow: hidden;
 }
