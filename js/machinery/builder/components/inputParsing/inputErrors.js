@@ -58,6 +58,11 @@ var inputErrors = (function () {
                 "status": false,
                 "value": false,
                 "message": "Everything OK: no errors found."
+            },
+            "demo" : {
+                "status": false,
+                "value": false,
+                "message": "Demo example is loaded."
             }
         };
     };
@@ -166,14 +171,19 @@ var inputErrors = (function () {
     };
 
 
-    var showErrors = function () {
+    var showErrors = function (status) {
         console.log(_errors);
 
 
         var content, message;
         if (_errors["errorsFound"].status === false) {
-            content = _errors["errorsFound"].message;
-            message = "";
+            if(status === "demo"){
+                content = _errors["demo"].message;
+                message = "";
+            } else {
+                content = _errors["errorsFound"].message;
+                message = "";
+            }
         } else if (checkIfNoImportantErrors()){
             content = checkErrors().trim();
             message = "Warning."
@@ -204,16 +214,19 @@ var inputErrors = (function () {
                 at: 'bottom left', // at the bottom right of...
                 adjust: {
                     y: 5,
-                    x: -25
+                    x: -25,
+                    scroll: true
                 }
             },
             show: {
                 event: false,
                 delay: 100,
+                //event: event.type,
                 //event: event.type, // Use the same show event as the one that triggered the event handler
                 ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
             },
             hide: {
+                delay: 100,
                 event: "click unfocus"
             }
         });

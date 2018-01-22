@@ -5,6 +5,8 @@ var tooltips = (function () {
     var create = function () {
         setContent();
         setEventListener();
+
+        destroyOnScroll.create();
     };
 
 
@@ -64,7 +66,6 @@ var tooltips = (function () {
                 position: {
                     my: 'top left',  // Position my top left...
                     at: 'bottom center' // at the bottom right of...
-
                 },
                 style: {
                     classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
@@ -83,7 +84,7 @@ var tooltips = (function () {
         })
 
         // Store our title attribute in 'oldtitle' attribute instead
-            .each(function (i) {
+            .each(function () {
                 $(this).attr('oldtitle', $.attr(this, 'title'));
                 //this.removeAttribute('title');
             });
@@ -94,3 +95,45 @@ var tooltips = (function () {
         create: create
     }
 }());
+
+
+var destroyOnScroll = (function() {
+    // var supportOffset = window.pageYOffset !== undefined,
+    //     lastKnownPos = 0,
+    //     ticking = false,
+    //     scrollDir, currYPos;
+
+
+    var destroyTips = function() {
+        $('.qtip').qtip('destroy', true)
+    };
+
+
+    var create = function () {
+        // window.addEventListener('wheel', function(e) {
+        //     currYPos = supportOffset ? window.pageYOffset : document.body.scrollTop;
+        //     scrollDir = lastKnownPos > currYPos ? 'up' : 'down';
+        //     lastKnownPos = currYPos;
+        //
+        //     if (!ticking) {
+        //         window.requestAnimationFrame(function () {
+        //             destroyTips(lastKnownPos, scrollDir);
+        //             ticking = false;
+        //         });
+        //     }
+        //     ticking = true;
+        // });
+
+
+        //another version
+        $(window).bind('mousewheel DOMMouseScroll', function(){
+            destroyTips();
+        });
+    };
+
+
+
+    return {
+        create: create
+    }
+})();

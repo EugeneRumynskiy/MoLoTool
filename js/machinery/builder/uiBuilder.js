@@ -92,7 +92,7 @@ var uiBuilder = (function () {
     };
 
 
-    var inputCallback = function (inputString, replaceCurrent, error) {
+    var inputCallback = function (inputString, replaceCurrent, status) {
         inputErrors.clearErrorStatus();
 
 
@@ -101,7 +101,7 @@ var uiBuilder = (function () {
         }
 
 
-        if (error === "fileIsTooBig") {
+        if (status === "fileIsTooBig") {
             inputErrors.addToLog("fileIsTooBig"); //2
             inputErrors.showErrors();
             return false;
@@ -137,7 +137,7 @@ var uiBuilder = (function () {
             $("html").scrollTop(scrollPosition);
         }
 
-        inputErrors.showErrors();
+        inputErrors.showErrors(status);
 
         handleEvent();
 

@@ -16,7 +16,7 @@ var demoButton = (function () {
         uiButtons.clearSearchInput();
         motifSearch.applySearch();
 
-        inputCallback(inputDemo.getDemoInput(), true);
+        inputCallback(inputDemo.getDemoInput(), true, "demo");
     };
 
 
