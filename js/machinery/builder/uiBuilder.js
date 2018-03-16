@@ -126,7 +126,6 @@ var uiBuilder = (function () {
         }
 
 
-
         if (replaceCurrent === true) {
             var scrollPosition = $("html").scrollTop();
             sequenceLibrary.clear();

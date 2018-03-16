@@ -57,7 +57,7 @@ var inputErrors = (function () {
             "errorsFound" : {
                 "status": false,
                 "value": false,
-                "message": "Everything OK: no errors found."
+                "message": "OK."
             },
             "demo" : {
                 "status": false,
@@ -221,9 +221,9 @@ var inputErrors = (function () {
             show: {
                 event: false,
                 delay: 100,
-                //event: event.type,
                 //event: event.type, // Use the same show event as the one that triggered the event handler
-                ready: true // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
+                ready: true, // Show the tooltip as soon as it's bound, vital so it shows up the first time you hover!
+                solo: true
             },
             hide: {
                 delay: 100,
