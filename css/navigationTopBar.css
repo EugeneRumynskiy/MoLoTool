@@ -11,7 +11,7 @@ ul {
 .nav-bar {
   z-index: 3;
   width: 100%;
-  height: 80px;
+  height: 160px;
   top: 0;
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -19,10 +19,10 @@ ul {
   background: #dadada;
   box-shadow: 0 1px 1px 0 black; }
   .nav-bar > .the-nav {
-    height: 80px; }
+    height: 160px; }
 
 .nav {
-  height: 40px;
+  height: 80px;
   /* Dropdown */
   /* Search input */ }
   .nav a {
@@ -126,7 +126,7 @@ ul {
   border-radius: 5px; }
 
 .top-second {
-  top: 40px; }
+  top: 80px; }
 
 .top-first {
   top: 0; }
@@ -168,10 +168,10 @@ ul {
 /* Media for larger devices */
 @media screen and (min-width: 1360px) {
   .nav-bar {
-    height: 40px; }
+    height: 80px; }
     .nav-bar > .the-nav {
       min-width: unset;
-      height: 40px; }
+      height: 80px; }
       .nav-bar > .the-nav > .top-first {
         position: static; }
         .nav-bar > .the-nav > .top-first > .search-container {

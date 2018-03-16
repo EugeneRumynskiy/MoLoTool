@@ -22,7 +22,7 @@ td a:visited,
   text-decoration: none; }
 
 .interface-area {
-  margin-top: 80px;
+  margin-top: 160px;
   overflow-x: hidden; }
   .interface-area .disabled {
     display: none; }
@@ -101,6 +101,6 @@ input[type="file"] {
   .interface-area {
     /*Positioning*/
     /* Default media > 800px - one line menu */
-    margin-top: 40px; } }
+    margin-top: 80px; } }
 
 /*# sourceMappingURL=primaryComponentsSettings.css.map */
