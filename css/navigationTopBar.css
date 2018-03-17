@@ -11,7 +11,7 @@ ul {
 .nav-bar {
   z-index: 3;
   width: 100%;
-  height: 80px;
+  height: 70px;
   top: 0;
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -19,7 +19,7 @@ ul {
   background: #dadada;
   box-shadow: 0 1px 1px 0 black; }
   .nav-bar > .the-nav {
-    height: 80px; }
+    height: inherit; }
 
 .nav {
   height: 40px;
@@ -40,7 +40,7 @@ ul {
       position: absolute;
       display: inline-block;
       width: 270px;
-      padding: 0px 0px 4px 5px;
+      padding: 0 0 4px 5px;
       border: 0 solid;
       border-bottom: 1px solid black;
       -webkit-border-radius: 5px;
@@ -63,7 +63,7 @@ ul {
   position: absolute;
   width: 380px;
   left: 0;
-  top: 40px; }
+  top: 30px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -110,8 +110,9 @@ ul {
       min-width: 380px; }
   .the-nav .pull-right {
     top: 0;
+    margin-right: 8px;
     margin-left: 380px;
-    min-width: 310px;
+    min-width: 315px;
     padding-top: 3px;
     height: inherit;
     position: relative; }
@@ -125,7 +126,7 @@ ul {
     display: unset; }
 
 /* Media for larger devices */
-@media screen and (min-width: 964px) {
+@media screen and (min-width: 974px) {
   .right-container .interface-button {
     top: 25%; } }
 

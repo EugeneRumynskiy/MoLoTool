@@ -213,8 +213,8 @@ var inputErrors = (function () {
                 my: 'top left',  // Position my top left...
                 at: 'bottom left', // at the bottom right of...
                 adjust: {
-                    y: 5,
-                    x: -25,
+                    y: -3,
+                    x: -20,
                     scroll: true
                 }
             },
@@ -228,6 +228,14 @@ var inputErrors = (function () {
             hide: {
                 delay: 100,
                 event: "click unfocus"
+            },
+            events: {
+                show: function(event, api) {
+                    $('.title-container').hide();
+                },
+                hide: function(event, api) {
+                    $('.title-container').show();
+                }
             }
         });
     };

@@ -16,7 +16,7 @@ ul {
 .nav-bar {
   z-index: 3;
   width: 100%;
-  height: $topNav-navLineHeight * 2;
+  height: $topNav-navLineHeight * 1.75;
   top: 0;
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -24,7 +24,7 @@ ul {
   background: $topNav-primaryMenuBackground;
   box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
   > .the-nav {
-    height: $topNav-navLineHeight * 2;
+    height: inherit;
   }
 }
 
@@ -101,7 +101,7 @@ ul {
       position: absolute;
       display: inline-block;
       width: 270px;
-      padding: 0px 0px 4px 5px;
+      padding: 0 0 4px 5px;
 
 
       border: 0 solid;
@@ -140,7 +140,7 @@ ul {
   position: absolute;
   width: $topNav-navSearchBoxWidth;
   left: 0;
-  top: $topNav-navLineHeight;
+  top: $topNav-navLineHeight * 1.5 / 2;
 
   span {
     //cursor: pointer;
@@ -212,9 +212,9 @@ ul {
   }
   .pull-right {
     top: 0;
-    //float: right;
+    margin-right: 8px;
     margin-left: $topNav-navSearchBoxWidth;
-    min-width: 310px;
+    min-width: 315px;
 
 
     padding-top: 3px;
