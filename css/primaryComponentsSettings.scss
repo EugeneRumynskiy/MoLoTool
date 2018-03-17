@@ -74,7 +74,7 @@ td a:visited,
     text-align: left;
   }
 }
-.top-second .interface-button {
+.pull-right .interface-button {
   padding: 10px 5px;
   margin-right: 2px;
 }
@@ -132,11 +132,11 @@ input[type="file"] {
 }
 
 
-/* Media for larger devices */
-@media screen and (min-width: $widthThreshHold) {
-  .interface-area {
-    /*Positioning*/
-    /* Default media > 800px - one line menu */
-    margin-top: $topNav-navLineHeight;
-  }
-}
+///* Media for larger devices */
+//@media screen and (min-width: $widthThreshHold) {
+//  .interface-area {
+//    /*Positioning*/
+//    /* Default media > 800px - one line menu */
+//    margin-top: 2 * $topNav-navLineHeight;
+//  }
+//}

@@ -11,7 +11,7 @@ ul {
 .nav-bar {
   z-index: 3;
   width: 100%;
-  height: 160px;
+  height: 80px;
   top: 0;
   margin: 0 0 10px 0;
   padding: 0 10px;
@@ -19,53 +19,16 @@ ul {
   background: #dadada;
   box-shadow: 0 1px 1px 0 black; }
   .nav-bar > .the-nav {
-    height: 160px; }
+    height: 80px; }
 
 .nav {
-  height: 80px;
-  /* Dropdown */
+  height: 40px;
   /* Search input */ }
   .nav a {
     color: black;
     font-weight: 500;
     text-align: center;
     top: 5px; }
-  .nav > li {
-    float: left;
-    display: inline-block;
-    position: relative;
-    /* Sub-nav */ }
-    .nav > li > a {
-      padding: 10px 10px;
-      display: inline-block;
-      color: black;
-      font-weight: 500;
-      text-align: center;
-      text-decoration: none; }
-      .nav > li > a > .caret {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        margin: 8px 0 2px 0;
-        border-top: 4px solid #A7A7A7;
-        border-bottom: 4px transparent;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        vertical-align: top;
-        content: ""; }
-    .nav > li > .sub-nav {
-      position: absolute;
-      display: none;
-      width: 180px;
-      box-shadow: 0 1px 1px 0 black;
-      background-color: #dadada;
-      z-index: 1;
-      border-radius: 5px; }
-      .nav > li > .sub-nav > li a {
-        display: block;
-        padding: 10px 10px;
-        color: black;
-        text-decoration: none; }
   .nav > .search-container {
     padding: 10px 24px 10px 10px; }
     .nav > .search-container > i {
@@ -98,8 +61,9 @@ ul {
   color: black;
   padding: 10px;
   position: absolute;
-  right: 0;
-  left: 360px; }
+  width: 380px;
+  left: 0;
+  top: 40px; }
 
 /* Active State */
 .nav > li:hover > a {
@@ -114,22 +78,10 @@ ul {
   color: #dadada;
   border-radius: 5px; }
 
-.pull-left {
-  float: left; }
-
-.pull-right {
-  float: right; }
-
 .rounded {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
-
-.top-second {
-  top: 80px; }
-
-.top-first {
-  top: 0; }
 
 .clearfix:after {
   content: "";
@@ -150,35 +102,31 @@ ul {
 /* Default media < $minWidth - two line menu */
 .the-nav {
   min-width: 620px; }
-  .the-nav .top-first {
+  .the-nav .pull-left {
+    top: 0;
+    float: left;
     position: absolute; }
-    .the-nav .top-first > .search-container {
+    .the-nav .pull-left > .search-container {
       min-width: 380px; }
-  .the-nav .top-second {
+  .the-nav .pull-right {
+    top: 0;
+    margin-left: 380px;
+    min-width: 310px;
     padding-top: 3px;
+    height: inherit;
     position: relative; }
+    .the-nav .pull-right .right-container {
+      text-align: center;
+      height: inherit; }
+      .the-nav .pull-right .right-container .interface-button .material-icons {
+        font-size: 200%; }
   .the-nav .title-container {
     text-align: center;
-    display: none; }
+    display: unset; }
 
 /* Media for larger devices */
-@media screen and (min-width: 670px) {
-  .title-container {
-    display: unset !important; } }
-/* Media for larger devices */
-@media screen and (min-width: 1360px) {
-  .nav-bar {
-    height: 80px; }
-    .nav-bar > .the-nav {
-      min-width: unset;
-      height: 80px; }
-      .nav-bar > .the-nav > .top-first {
-        position: static; }
-        .nav-bar > .the-nav > .top-first > .search-container {
-          margin-left: 10px; }
-      .nav-bar > .the-nav > .top-second {
-        position: static; }
-      .nav-bar > .the-nav .title-container {
-        text-align: left; } }
+@media screen and (min-width: 964px) {
+  .right-container .interface-button {
+    top: 25%; } }
 
 /*# sourceMappingURL=navigationTopBar.css.map */

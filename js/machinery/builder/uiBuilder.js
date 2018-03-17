@@ -239,6 +239,7 @@ var uiBuilder = (function () {
         //highlight sequence
         $motifTableTBody
             .on( 'mouse' + 'enter', 'td', function () {
+                console.log("HEEEY!");
                 var rowData = table.row( this ).data(),
                     $resultTab = $result.children(".current-tab-result").find(".tab-result-sequence");
 

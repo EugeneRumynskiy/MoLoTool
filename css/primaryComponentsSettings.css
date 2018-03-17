@@ -22,7 +22,7 @@ td a:visited,
   text-decoration: none; }
 
 .interface-area {
-  margin-top: 160px;
+  margin-top: 80px;
   overflow-x: hidden; }
   .interface-area .disabled {
     display: none; }
@@ -54,7 +54,7 @@ td a:visited,
   display: inline-block;
   text-align: left; }
 
-.top-second .interface-button {
+.pull-right .interface-button {
   padding: 10px 5px;
   margin-right: 2px; }
 
@@ -95,12 +95,5 @@ input[type="file"] {
 .sp-container {
   border: solid 1.5px grey;
   border-radius: 5px; }
-
-/* Media for larger devices */
-@media screen and (min-width: 1360px) {
-  .interface-area {
-    /*Positioning*/
-    /* Default media > 800px - one line menu */
-    margin-top: 80px; } }
 
 /*# sourceMappingURL=primaryComponentsSettings.css.map */

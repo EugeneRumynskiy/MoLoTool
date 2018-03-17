@@ -8,7 +8,8 @@ $defaultFontSize: 16px;
 $defaultFontFamily: sans-serif; //check this in jquery-ui.css
 
 //nav-bar
-$topNav-navLineHeight: 80px;
+$topNav-navLineHeight: 40px;
+$topNav-navSearchBoxWidth: 380px;
 $topNav-primaryMenuBackground: $primaryColor;
 $topNav-primaryMenuText: $textColor;
 $topNav-secondaryMenuText: $textColor;
@@ -64,4 +65,4 @@ $thin: 1px;
 
 //screen width
 $widthThreshHold: 1360px;
-$minWidth: 670px;
+$topButtonsWidthThreshold: 964px;

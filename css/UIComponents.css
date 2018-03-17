@@ -6,7 +6,7 @@
 #help-cmp, #tutorial-cmp {
   font-family: sans-serif;
   border-top: none;
-  margin-top: 160px;
+  margin-top: 80px;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 20px;
@@ -382,12 +382,12 @@
     word-break: normal; }
 
 .suggestions, .collection-dialog {
-  margin-top: 110px; }
+  margin-top: 70px; }
 
 /* Media for larger devices */
 @media screen and (min-width: 1360px) {
   #help-cmp, #tutorial-cmp {
-    margin-top: 80px; }
+    margin-top: 40px; }
 
   .suggestions, .collection-dialog {
     margin-top: 29px; } }
