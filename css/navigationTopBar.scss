@@ -214,23 +214,25 @@ ul {
     top: 0;
     margin-right: 8px;
     margin-left: $topNav-navSearchBoxWidth;
-    min-width: 315px;
-
-
     padding-top: 3px;
+    min-width: 405px;
+
+    text-align: center;
     height: inherit;
     position: relative;
 
-    .right-container {
-      text-align: center;
-      height: inherit;
+    .interface-button {
+      margin-right: 8vh;
 
-      .interface-button {
-
-        .material-icons {
-          font-size: 200%;
-        }
+      .material-icons {
+        font-size: 200%;
       }
+    }
+
+
+    .first-line, .second-line {
+      //two lines
+      display: block;
     }
   }
 
@@ -243,38 +245,21 @@ ul {
 
 /* Media for larger devices */
 @media screen and (min-width: $topButtonsWidthThreshold) {
-  .right-container {
-    .interface-button {
-      top: 25%;
-    }
+  .first-line, .second-line {
+    margin-top: $topNav-navLineHeight / 3;
+    display: inline-block !important;
   }
 }
 
-///* Media for larger devices */
-//@media screen and (min-width: $widthThreshHold) {
-//  .nav-bar {
-//    height: $topNav-navLineHeight;
-//
-//    > .the-nav {
-//      min-width: unset;
-//      height: $topNav-navLineHeight;
-//
-//      >.pull-left {
-//        position: static;
-//
-//        > .search-container {
-//          margin-left: 10px;
-//
-//        }
-//      }
-//
-//      >.pull-right {
-//        position: static;
-//      }
-//
-//      .title-container {
-//        text-align: left;
-//      }
-//    }
-//  }
-//}
+/* Media for devices smaller than threshold*/
+@media screen and (max-width: $buttonsToIconsThreshold) {
+  .interface-button span{
+    display: none !important;
+  }
+  .first-line {
+    margin-left: 8vh * 2 !important;
+  }
+  .pull-right {
+    margin-left: $topNav-navSearchBoxWidth / 1.5 !important;
+  }
+}

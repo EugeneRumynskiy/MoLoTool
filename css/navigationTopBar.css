@@ -112,22 +112,35 @@ ul {
     top: 0;
     margin-right: 8px;
     margin-left: 380px;
-    min-width: 315px;
     padding-top: 3px;
+    min-width: 405px;
+    text-align: center;
     height: inherit;
     position: relative; }
-    .the-nav .pull-right .right-container {
-      text-align: center;
-      height: inherit; }
-      .the-nav .pull-right .right-container .interface-button .material-icons {
+    .the-nav .pull-right .interface-button {
+      margin-right: 8vh; }
+      .the-nav .pull-right .interface-button .material-icons {
         font-size: 200%; }
+    .the-nav .pull-right .first-line, .the-nav .pull-right .second-line {
+      display: block; }
   .the-nav .title-container {
     text-align: center;
     display: unset; }
 
 /* Media for larger devices */
-@media screen and (min-width: 974px) {
-  .right-container .interface-button {
-    top: 25%; } }
+@media screen and (min-width: 1200px) {
+  .first-line, .second-line {
+    margin-top: 13.33333px;
+    display: inline-block !important; } }
+/* Media for devices smaller than threshold*/
+@media screen and (max-width: 780px) {
+  .interface-button span {
+    display: none !important; }
+
+  .first-line {
+    margin-left: 16vh !important; }
+
+  .pull-right {
+    margin-left: 253.33333px !important; } }
 
 /*# sourceMappingURL=navigationTopBar.css.map */
