@@ -118,7 +118,7 @@ ul {
     height: inherit;
     position: relative; }
     .the-nav .pull-right .interface-button {
-      margin-right: 8vh; }
+      margin-right: 2vw; }
       .the-nav .pull-right .interface-button .material-icons {
         font-size: 200%; }
     .the-nav .pull-right .first-line, .the-nav .pull-right .second-line {
@@ -128,7 +128,7 @@ ul {
     display: unset; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1100px) {
   .first-line, .second-line {
     margin-top: 13.33333px;
     display: inline-block !important; } }
@@ -138,7 +138,7 @@ ul {
     display: none !important; }
 
   .first-line {
-    margin-left: 16vh !important; }
+    margin-left: 4vw !important; }
 
   .pull-right {
     margin-left: 253.33333px !important; } }
