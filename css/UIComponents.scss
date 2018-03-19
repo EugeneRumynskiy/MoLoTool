@@ -6,6 +6,10 @@
   line-height: $defaultFontSize * 0.9 + 1.5px;
 }
 
+body {
+  min-width: $bodyMinWidth;
+}
+
 #help-cmp, #tutorial-cmp{
   font-family: $defaultFontFamily;
   border-top: none;
@@ -248,8 +252,8 @@
 #motif-list-selected-cmp {
   font-family: $defaultFontFamily;
   min-height: 75px;
-  margin-bottom: 0px; //shrinking
-  padding-bottom: 0px; //shrinking
+  margin-bottom: 0; //shrinking
+  padding-bottom: 0; //shrinking
 
   #motif-list-selected {
     display: inline-block;

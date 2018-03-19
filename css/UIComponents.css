@@ -3,6 +3,9 @@
   font-size: 14.4px;
   line-height: 15.9px; }
 
+body {
+  min-width: 570px; }
+
 #help-cmp, #tutorial-cmp {
   font-family: sans-serif;
   border-top: none;
@@ -158,8 +161,8 @@
 #motif-list-selected-cmp {
   font-family: sans-serif;
   min-height: 75px;
-  margin-bottom: 0px;
-  padding-bottom: 0px; }
+  margin-bottom: 0;
+  padding-bottom: 0; }
   #motif-list-selected-cmp #motif-list-selected {
     display: inline-block;
     margin-top: 10px;

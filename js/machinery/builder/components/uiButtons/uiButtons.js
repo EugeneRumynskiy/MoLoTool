@@ -88,12 +88,15 @@ var uiButtons = (function () {
     ///Support Functions
 
     var generateContent = function (mode) {
-        var content = "<span class=\"icon icon-medium\">"+ mode.title + "</span>" +
-            "<i class=\"material-icons md-dark\">" + mode.icon + "</i>\n";
+        var content = "";
 
-      /*  if (mode.hasOwnProperty("tooltip") && mode["tooltip"] !== undefined) {
-            content = '<span class="tooltiptext">' + mode["tooltip"] + '</span>' + content;
-        }*/
+        if (mode.title !== undefined) {
+            content += "<span class=\"icon icon-medium\">"+ mode.title + "</span>";
+        }
+
+        if (mode.icon !== undefined) {
+            content += "<i class=\"material-icons md-dark\">" + mode.icon + "</i>\n";
+        }
 
         return content;
     };

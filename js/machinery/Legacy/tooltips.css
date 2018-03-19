@@ -1,50 +1,68 @@
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block; }
+/*
+Error: Invalid CSS after "$current-tab-bg": expected selector or at-rule, was ": white;"
+        on line 59 of ../../../css/utilities/variables.scss
+        from line 1 of tooltips.scss
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  width: 90px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 3px 2px;
-  border-radius: 6px;
-  font-size: 12px;
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  margin-left: -45px;
-  /* Transition */
-  opacity: 0;
-  bottom: 135%;
-  visibility: hidden;
-  -webkit-transition: opacity 1s;
-  -moz-transition: opacity 1s;
-  -o-transition: opacity 1s;
-  -ms-transition: opacity 1s;
-  transition: opacity 1s;
-  -webkit-transition-delay: 0.5s;
-  /* Safari */
-  -moz-transition-delay: 0.5s;
-  -o-transition-delay: 0.5s;
-  -ms-transition-delay: 0.5s;
-  transition-delay: 0.5s; }
+54: //global features
+55: $border-radius: 5px;
+56: $bodyMinWidth: 570px
+57: 
+58: //tabs
+59: $current-tab-bg: white;
+60: $tab-bg: $primaryColor;
+61: 
+62: //borders
+63: $borderColor: grey; //check this in jquery-ui.css
+64: $thick: 1.5px;
 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  top: 100%;
-  border-color: black transparent transparent transparent; }
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1; }
-
-/*# sourceMappingURL=tooltips.css.map */
+Backtrace:
+../../../css/utilities/variables.scss:59
+tooltips.scss:1
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1207:in `expected'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:1137:in `expected'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/scss/parser.rb:42:in `parse'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/engine.rb:406:in `_to_tree'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/engine.rb:312:in `to_tree'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:326:in `block in visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:88:in `block in with_import'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:88:in `with_import'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/plugin.rb:82:in `update_stylesheets'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/exec/base.rb:52:in `parse'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/lib/sass/exec/base.rb:19:in `parse!'
+/var/lib/gems/2.3.0/gems/sass-3.4.24/bin/scss:13:in `<top (required)>'
+/usr/local/bin/scss:23:in `load'
+/usr/local/bin/scss:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"$current-tab-bg\": expected selector or at-rule, was \": white;\"\A         on line 59 of ../../../css/utilities/variables.scss\A         from line 1 of tooltips.scss\A \A 54: //global features\A 55: $border-radius: 5px;\A 56: $bodyMinWidth: 570px\A 57: \A 58: //tabs\A 59: $current-tab-bg: white;\A 60: $tab-bg: $primaryColor;\A 61: \A 62: //borders\A 63: $borderColor: grey; //check this in jquery-ui.css\A 64: $thick: 1.5px;"; }

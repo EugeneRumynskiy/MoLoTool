@@ -1,7 +1,7 @@
 var showInputButton = (function () {
     var getSettingsFor = {
-            "hidden":   {"title":"Open input ", "icon": "keyboard_arrow_down"},
-            "visible":   {"title":"Hide input ", "icon": "keyboard_arrow_up"}
+            "hidden":   {"title": undefined, "icon": "keyboard_arrow_down"},
+            "visible":   {"title":undefined, "icon": "keyboard_arrow_up"}
         },
         defaultMode = "visible",
 
