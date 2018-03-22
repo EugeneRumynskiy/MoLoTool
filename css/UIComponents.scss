@@ -206,7 +206,6 @@ body {
       }
       .motif-title:hover {
         cursor: pointer;
-        cursor: hand;
       }
     }
 
@@ -597,16 +596,16 @@ body {
 }
 
 .suggestions, .collection-dialog{
-  margin-top: 5px + $topNav-navLineHeight + 25px;
+  margin-top: 5px + 1.5 * $topNav-navLineHeight;
 }
 
 /* Media for larger devices */
 @media screen and (min-width: $widthThreshHold) {
-  #help-cmp, #tutorial-cmp {
-    margin-top: 1 * $topNav-navLineHeight;
-  }
-
-  .suggestions, .collection-dialog{
-    margin-top: 5px + 24px;
-  }
+  //#help-cmp, #tutorial-cmp {
+  //  margin-top: 5px + 1.5 * $topNav-navLineHeight;
+  //}
+  //
+  //.suggestions, .collection-dialog{
+  //  margin-top: 5px + 1.5 * $topNav-navLineHeight;
+  //}
 }

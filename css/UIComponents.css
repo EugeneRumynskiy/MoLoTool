@@ -134,8 +134,7 @@ body {
       font-size: 16px;
       color: black; }
     .suggestions #motif-list .motif-container .motif-title:hover {
-      cursor: pointer;
-      cursor: hand; }
+      cursor: pointer; }
     .suggestions #motif-list div:first-child {
       border-top: none; }
   .suggestions #motif-list.spread {
@@ -385,14 +384,8 @@ body {
     word-break: normal; }
 
 .suggestions, .collection-dialog {
-  margin-top: 70px; }
+  margin-top: 65px; }
 
 /* Media for larger devices */
-@media screen and (min-width: 1360px) {
-  #help-cmp, #tutorial-cmp {
-    margin-top: 40px; }
-
-  .suggestions, .collection-dialog {
-    margin-top: 29px; } }
 
 /*# sourceMappingURL=UIComponents.css.map */
