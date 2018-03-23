@@ -203,7 +203,8 @@ var inputErrors = (function () {
             },
             style: {
                 tip: {
-                    corner: true
+                    //Set true for arrow
+                    corner: false
                 },
                 classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
 
@@ -212,9 +213,9 @@ var inputErrors = (function () {
             position: {
                 my: 'top left',  // Position my top left...
                 at: 'bottom left', // at the bottom right of...
-                adjust: {
-                    y: -3,
-                    x: -20,
+                adjust: { //x, y = (0, -3, arrow=true), (0, 5, arrow=false)
+                    x: 0,
+                    y: 5,
                     scroll: true
                 }
             },
@@ -230,12 +231,6 @@ var inputErrors = (function () {
                 event: "click unfocus"
             },
             events: {
-                show: function(event, api) {
-                    $('.title-container').hide();
-                },
-                hide: function(event, api) {
-                    $('.title-container').show();
-                }
             }
         });
     };

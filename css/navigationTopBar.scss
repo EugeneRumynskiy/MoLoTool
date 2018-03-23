@@ -140,7 +140,7 @@ ul {
   position: absolute;
   width: $topNav-navSearchBoxWidth;
   left: 0;
-  top: $topNav-navLineHeight * 1.5 / 2;
+  top: $topNav-navLineHeight * 1.5 / 2 + 2px; //3px added in order to be with one level with error-tooltips
 
   span {
     //cursor: pointer;

@@ -63,7 +63,7 @@ ul {
   position: absolute;
   width: 380px;
   left: 0;
-  top: 30px; }
+  top: 32px; }
 
 /* Active State */
 .nav > li:hover > a {
