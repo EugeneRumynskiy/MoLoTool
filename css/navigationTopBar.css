@@ -62,12 +62,13 @@ ul {
       .nav .collection-settings #collection-settings-button .material-icons {
         font-size: 200%; }
   .nav .title-container {
-    text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;
-    color: black;
-    padding: 10px;
+    width: 190px;
     position: absolute;
-    left: 60px;
-    top: 30px; }
+    padding: 10px;
+    left: 22px;
+    top: 30px;
+    text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;
+    color: black; }
 
 /* Active State */
 .nav > li:hover > a {

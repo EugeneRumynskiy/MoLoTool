@@ -91,17 +91,16 @@ ul {
   }
 
   .title-container{
-    text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
-
-    color: $textColor;
-    padding: 10px;
+    width: 190px;
     position: absolute;
-    //width: $topNav-navSearchBoxWidth;
-    left: 60px;
+    padding: 10px;
+    left: 22px;
     top: $topNav-navLineHeight * 1.5 / 2; //3px added in order to be with one level with error-tooltips
 
+    text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
+    color: $textColor;
+
     span {
-      //cursor: pointer;
     }
   }
 }
