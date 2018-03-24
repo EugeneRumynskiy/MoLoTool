@@ -12,7 +12,6 @@ body {
 
 #help-cmp, #tutorial-cmp{
   font-family: $defaultFontFamily;
-  border-top: none;
   margin-top: 2 * $topNav-navLineHeight;
   margin-left: 20%;
   margin-right: 20%;
@@ -596,7 +595,7 @@ body {
 }
 
 .suggestions, .collection-dialog{
-  margin-top: 5px + 1.5 * $topNav-navLineHeight;
+  margin-top: 1.5 * $topNav-navLineHeight;
 }
 
 /* Media for larger devices */

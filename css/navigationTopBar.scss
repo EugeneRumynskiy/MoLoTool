@@ -12,6 +12,7 @@ ul {
   }
 }
 
+
 /* Nav-bar Styles */
 .nav-bar {
   z-index: 3;
@@ -28,6 +29,8 @@ ul {
   }
 }
 
+
+
 .nav {
   height: $topNav-navLineHeight;
   a {
@@ -37,54 +40,6 @@ ul {
     top: 5px
   }
 
-  ///* Dropdown */
-  //> li {
-  //  float: left;
-  //  display: inline-block;
-  //  position: relative;
-  //
-  //  > a {
-  //    padding: 10px 10px;
-  //    display: inline-block;
-  //    color: $topNav-primaryMenuText;
-  //    font-weight: 500;
-  //    text-align: center;
-  //    text-decoration: none;
-  //
-  //    > .caret {
-  //      display: inline-block;
-  //      width: 0;
-  //      height: 0;
-  //      margin: 8px 0 2px 0;
-  //
-  //      border-top: 4px solid #A7A7A7;
-  //      border-bottom: 4px transparent;
-  //      border-left: 4px solid transparent;
-  //      border-right: 4px solid transparent;
-  //
-  //      vertical-align: top;
-  //      content: "";
-  //    }
-  //  }
-  //
-  //  /* Sub-nav */
-  //  > .sub-nav {
-  //    position: absolute;
-  //    display: none;
-  //    width: 180px;
-  //    box-shadow: 0 1px 1px 0 $topNav-primaryBoxShadow;
-  //    background-color: $topNav-primaryMenuBackground;
-  //    z-index: 1;
-  //    border-radius: 5px;
-  //
-  //    >li a {
-  //      display: block;
-  //      padding: 10px 10px;
-  //      color: $topNav-primaryMenuText;
-  //      text-decoration: none;
-  //    }
-  //  }
-  //}
 
   /* Search input */
   > .search-container {
@@ -92,12 +47,12 @@ ul {
 
     > i {
       margin-top: -3px;
-      margin-left: 300px;
+      margin-left: 285px;
       position: absolute;
     }
 
     > #motif-search {
-      margin-left: 32px;
+      margin-left: 12px;
       position: absolute;
       display: inline-block;
       width: 270px;
@@ -116,36 +71,41 @@ ul {
       font-size: 15px;
       font-family: $defaultFontFamily;
     }
+  }
 
-    .collection-settings {
-      .collection-dialog {
+  .collection-settings {
+    position: absolute;
+    top: 20px;
+    left: 204px;
 
+    #collection-settings-button {
+      position: absolute;
+
+      span {
+        vertical-align: text-top;
       }
-
-      #collection-settings-button {
-        position: absolute;
-        //left: 300px;
-        left: 0;
-        top: -4px;
+      .material-icons {
+        font-size: 200%;
       }
+    }
+  }
+
+  .title-container{
+    text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
+
+    color: $textColor;
+    padding: 10px;
+    position: absolute;
+    //width: $topNav-navSearchBoxWidth;
+    left: 60px;
+    top: $topNav-navLineHeight * 1.5 / 2; //3px added in order to be with one level with error-tooltips
+
+    span {
+      //cursor: pointer;
     }
   }
 }
 
-.title-container{
-  text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
-
-  color: $textColor;
-  padding: 10px;
-  position: absolute;
-  width: $topNav-navSearchBoxWidth;
-  left: 0;
-  top: $topNav-navLineHeight * 1.5 / 2 + 2px; //3px added in order to be with one level with error-tooltips
-
-  span {
-    //cursor: pointer;
-  }
-}
 
 /* Active State */
 .nav > li:hover {
@@ -242,6 +202,10 @@ ul {
   }
 }
 
+.error-tips{
+  width: 270px;
+  min-height: 26px;
+}
 
 /* Media for larger devices */
 @media screen and (min-width: $topButtonsWidthThreshold) {
@@ -253,7 +217,7 @@ ul {
 
 /* Media for devices smaller than threshold*/
 @media screen and (max-width: $buttonsToIconsThreshold) {
-  .interface-button span{
+  .interface-button:not(#collection-settings-button) span{
     display: none !important;
   }
   .first-line {

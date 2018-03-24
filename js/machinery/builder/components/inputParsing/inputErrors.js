@@ -206,7 +206,7 @@ var inputErrors = (function () {
                     //Set true for arrow
                     corner: false
                 },
-                classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle'
+                classes: 'qtip-dark qtip-rounded qtip-shadow customTooltipStyle error-tips'
 
                 //classes: 'qtip-tipsy qtip-shadow'
             },
@@ -215,7 +215,7 @@ var inputErrors = (function () {
                 at: 'bottom left', // at the bottom right of...
                 adjust: { //x, y = (0, -3, arrow=true), (0, 5, arrow=false)
                     x: 0,
-                    y: 5,
+                    y: -28,
                     scroll: true
                 }
             },

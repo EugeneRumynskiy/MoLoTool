@@ -8,7 +8,6 @@ body {
 
 #help-cmp, #tutorial-cmp {
   font-family: sans-serif;
-  border-top: none;
   margin-top: 80px;
   margin-left: 20%;
   margin-right: 20%;
@@ -384,7 +383,7 @@ body {
     word-break: normal; }
 
 .suggestions, .collection-dialog {
-  margin-top: 65px; }
+  margin-top: 60px; }
 
 /* Media for larger devices */
 

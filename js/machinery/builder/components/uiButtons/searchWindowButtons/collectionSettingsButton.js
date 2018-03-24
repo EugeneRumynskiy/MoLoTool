@@ -1,6 +1,8 @@
 var collectionSettingsButton = (function () {
     var getSettingsFor = {
-            "default":   {"title":" ", "icon": "chrome_reader_mode"}
+            "default":{"title":"Collections ", "icon": "chrome_reader_mode"}
+            //"hidden":   {"title": "Collections ", "icon": "keyboard_arrow_down"},
+            //"visible":  {"title":"Collections ", "icon": "keyboard_arrow_up"}
         },
         defaultMode = "default",
 
@@ -117,7 +119,7 @@ var collectionSettingsSwitcher = (function () {
 
     var getNewCollectionSource = function () {
         var species = getOptionValue(".model-species"),
-            collectionIfFull = (getOptionValue(".model-collection") === "Full") ? true : false;
+            collectionIfFull = (getOptionValue(".model-collection") === "Full");
 
         return "http://hocomoco11.autosome.ru/" + species +
             "/mono.json?summary=true&full=" + collectionIfFull;
