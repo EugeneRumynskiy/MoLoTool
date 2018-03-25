@@ -116,6 +116,7 @@ body {
     .name {
       width: 150px;
       padding: 0 5px 0 5px;
+      font-weight: bold;
     }
 
     .cases {
@@ -149,6 +150,7 @@ body {
     border-bottom: $thin solid $borderColor;
     min-height: 26px;
 
+    font-weight: bold;
     .absolute {
       position: absolute;
     }
@@ -231,6 +233,11 @@ body {
           display: block;
           top: 2px;
           padding: 5px;
+
+          i{
+            font-size: 200%;
+            font-weight: bold;
+          }
         }
       }
     }
@@ -238,6 +245,7 @@ body {
     .option-values {
       display: inline-block;
       vertical-align: -1.8px;
+      font-weight: bold;
 
       div {
         display: inline-block;

@@ -76,13 +76,17 @@ ul {
   .collection-settings {
     position: absolute;
     top: 20px;
-    left: 202px;
+    left: 50px;
 
     #collection-settings-button {
       position: absolute;
 
       span {
         vertical-align: text-top;
+        font-size: 16px;
+
+        text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
+        color: $textColor;
       }
       .material-icons {
         font-size: 200%;
@@ -91,7 +95,6 @@ ul {
   }
 
   .title-container{
-    width: 190px;
     position: absolute;
     padding: 10px;
     left: 22px;
@@ -99,9 +102,6 @@ ul {
 
     text-shadow: 1px 4px 6px $primaryColor, 1px 1px 1px grey, 1px 4px 6px $primaryColor;
     color: $textColor;
-
-    span {
-    }
   }
 }
 

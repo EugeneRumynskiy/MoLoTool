@@ -77,7 +77,8 @@ body {
       display: inline-block; }
     .collection-dialog .option .name {
       width: 150px;
-      padding: 0 5px 0 5px; }
+      padding: 0 5px 0 5px;
+      font-weight: bold; }
     .collection-dialog .option .cases {
       padding: 0 5px 0 5px; }
       .collection-dialog .option .cases div {
@@ -96,7 +97,8 @@ body {
   .suggestions #legend-container {
     border-top: none;
     border-bottom: 1px solid grey;
-    min-height: 26px; }
+    min-height: 26px;
+    font-weight: bold; }
     .suggestions #legend-container .absolute {
       position: absolute; }
     .suggestions #legend-container .feature {
@@ -150,9 +152,13 @@ body {
           display: block;
           top: 2px;
           padding: 5px; }
+          .suggestions .support-info #ifMore-container .ifMore-value .interface-button i {
+            font-size: 200%;
+            font-weight: bold; }
     .suggestions .support-info .option-values {
       display: inline-block;
-      vertical-align: -1.8px; }
+      vertical-align: -1.8px;
+      font-weight: bold; }
       .suggestions .support-info .option-values div {
         display: inline-block; }
 

@@ -54,15 +54,17 @@ ul {
   .nav .collection-settings {
     position: absolute;
     top: 20px;
-    left: 202px; }
+    left: 50px; }
     .nav .collection-settings #collection-settings-button {
       position: absolute; }
       .nav .collection-settings #collection-settings-button span {
-        vertical-align: text-top; }
+        vertical-align: text-top;
+        font-size: 16px;
+        text-shadow: 1px 4px 6px #dadada, 1px 1px 1px grey, 1px 4px 6px #dadada;
+        color: black; }
       .nav .collection-settings #collection-settings-button .material-icons {
         font-size: 200%; }
   .nav .title-container {
-    width: 190px;
     position: absolute;
     padding: 10px;
     left: 22px;

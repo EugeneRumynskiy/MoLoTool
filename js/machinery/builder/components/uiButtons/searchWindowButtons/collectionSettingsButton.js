@@ -1,6 +1,6 @@
 var collectionSettingsButton = (function () {
     var getSettingsFor = {
-            "default":{"title":"Collections ", "icon": "chrome_reader_mode"}
+            "default":{"title":"MoLoTool: Collections ", "icon": "chrome_reader_mode"}
             //"hidden":   {"title": "Collections ", "icon": "keyboard_arrow_down"},
             //"visible":  {"title":"Collections ", "icon": "keyboard_arrow_up"}
         },
