@@ -45,7 +45,8 @@ body {
       float: left;
       margin: 0 8px 16px 16px; }
   #help-cmp .img-example, #tutorial-cmp .img-example {
-    vertical-align: middle; }
+    vertical-align: middle;
+    border-radius: 5px; }
   #help-cmp .img-wide, #tutorial-cmp .img-wide {
     display: block;
     margin: 16px auto;

@@ -349,42 +349,53 @@
         <div>
             <div class="help-header">Step-by-step user guide to MoLoTool</div>
             <div class="help-content">
-                A basic example can be visualized using
-                <span class="italic bold">Demo</span>
-                button
-                (<img class="img-example" src="helpImages/TopPannel/Demo.png" alt="Demo.png">)
-                at the top right corner of the window. The example is taken from
-                <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S1874939916301365">
-                    Schwartz et al. 2017</a>
-                and shows EBF1 (COE1) TF binding site present in SLAMF1 human promoter but absent in the respective orthologous mouse promoter.
-                The demo visualization can be reproduced by with the step-by-step guide. To clear any changes and
-                return the page to the default state please use
-                <span class="italic bold">Reset</span>
-                (<img class="img-example" src="helpImages/TopPannel/Reset.png" alt="Reset.png">).
+                <p>
+                    A basic example shown with
+                    <!--<span class="italic bold">Demo</span>-->
+                    <img class="img-example" src="helpImages/TopPannel/Demo.png" alt="Demo.png">
+                    button .
+                </p>
+
+                <p>
+                    To clear changes and return to the default state use
+                    <!--<span class="italic bold">Reset</span>-->
+                    <img class="img-example" src="helpImages/TopPannel/Reset.png" alt="Reset.png">.
+                <p>
+
+                <p>The example is taken from
+                    <a target="_blank" href="http://www.sciencedirect.com/science/article/pii/S1874939916301365">
+                        Schwartz et al. 2017</a>
+                    and shows EBF1 (COE1) TF binding site present in SLAMF1 human promoter but absent in the respective orthologous mouse promoter.
+                    The demo visualization can be reproduced by with the step-by-step guide.
+                </p>
             </div>
         </div>
         <div>
             <div class="help-header">1. Add models</div>
             <div class="help-content">
                 <p>
-                    At the first step you need to add desired binding models from HOCOMOCO to the models list.
+                    First, add binding models from HOCOMOCO to the models list.
                     To perform this step, start browsing models by typing TF
                     <a target="_blank" href="http://hocomoco.autosome.ru/human/mono">name or family</a>
                     in the search field
                     (<img class="img-example" src="helpImages/Search/SearchField.png" alt="SearchField.png">).
-                    Next, click on a
+                    Click on a
                     <span class="italic bold">Motif ID</span>
                     (<img class="img-example" src="helpImages/Search/MotifID.png" alt="MotifID.png">)
-                    in the drop-down list. A new motif will appear below.
-
+                    in the drop-down list and a new motif will appear below.
+                </p>
+                <p>
                     <img style="max-width:400px" class="img-wide" src="helpImages/Search/Motif.png" alt="Motif.png">
                 </p>
                 <p>
                     <span class="italic bold">Note</span>
-                    that chosen Motif ID contains a
+                    that chosen Motif ID
+                    <!--(<img class="img-example" src="helpImages/Search/MotifIDSelected.png" alt="MotifIDSelected.png"
+                          href="http://hocomoco11.autosome.ru/motif/COE1_HUMAN.H11MO.0.A">)-->
+                    <a href="http://hocomoco11.autosome.ru/motif/COE1_HUMAN.H11MO.0.A" class="hocomoco-info" target="_blank">COE1_HUMAN.H11MO.0.A</a>
+                    contains a
                     <span class="italic bold">Hyperlink</span>
-                    to the HOCOMOCO database
-                    (<img class="img-example" src="helpImages/Search/MotifIDSelected.png" alt="MotifIDSelected.png">).
+                    to the HOCOMOCO database.
                 </p>
             </div>
         </div>
@@ -393,10 +404,12 @@
             <div class="help-content">
                 <p>
                     Click the
-                    <span class="italic bold">Upload file</span>
-                    (<img class="img-example" src="helpImages/Input/Upload.png" alt="Upload.png">)
-                    button or type/paste sequences to the respective form field, FASTA format is supported. The allowed alphabet is  -
+                    <!--<span class="italic bold">Upload file</span>-->
+                    <img class="img-example" src="helpImages/Input/Upload.png" alt="Upload.png">
+                    button or type/paste sequences manually. FASTA format is supported. The allowed alphabet is  -
                     <span class="italic bold">{A, a, T,  t, G, g, C, c, N, n}</span>.
+                </p>
+                <p>
                     <span class="italic bold">Note</span> that PWM
                     <span class="italic bold">score = 0</span> is assigned to {N, n} letters.
 
@@ -404,27 +417,35 @@
                 </p>
                 <p>
                     Click
-                    <span class="italic bold">Submit sequences</span>
-                    (<img class="img-example" src="helpImages/Input/Submit.png" alt="Submit.png">)
-                    to parse the sequences and create a separate
-                    <span class="italic bold">Tab</span>
-                    for each sequence in the list. Switch
-                    <span class="italic bold">Rewrite</span>
-                    button to
-                    <span class="italic bold">“Yes”</span>
-                    (<img class="img-example" src="helpImages/Input/Rewrite_Yes.png" alt="Rewrite_Yes.png">)
-                    if you want to clear all previously parsed sequences on submit,
-                    default mode adds more
+                    <!--<span class="italic bold">Submit sequences</span>-->
+                    <img class="img-example" src="helpImages/Input/Submit.png" alt="Submit.png">
+                    to parse the sequences. Separated
                     <span class="italic bold">Tabs</span>
-                    to already existing (if any).
+                    will be created
+                    for each sequence in the list.
+                </p>
+                <p>
+                    Switch the
+                    <!--<span class="italic bold">Rewrite</span>-->
+                    <img class="img-example" src="helpImages/Input/Rewrite_Yes.png" alt="Rewrite_Yes.png">
+                    button to
+                    <span class="italic bold">“Yes”</span>,
+                    if you want to clear all previously parsed sequences on submit.
+                    <!--Default mode adds more-->
+                    <!--<span class="italic bold">Tabs</span>-->
+                    <!--to already existing (if any).-->
                 </p>
                 <p>
                     If there are no parsing errors, multiple (one-per-sequence) new
                     <span class="italic bold">Tabs</span>
                     (<img style="max-height: 40px" class="img-example" src="helpImages/Result/Tab.png" alt="Tab.png">)
-                    will be created in the visualization field below. To check a name of a particular sequence you may click
-                    <span class="italic bold">Show name</span>
-                    (<img class="img-example" src="helpImages/Result/ShowName.png" alt="ShowName.png">).
+                    will be created in the field below. To see the
+                    <span class="italic bold">name</span>
+                    of a particular sequence click
+                    <img class="img-example" src="helpImages/Result/ShowName.png" alt="ShowName.png">.
+
+                </p>
+                <p>
                     As long as the list of chosen binding modes is not empty, the predicted binding sites will be visually
                     marked in the sequences.
                     <img style="max-width: 700px" class="img-wide" src="helpImages/Result/ResultSeq.png" alt="ResultSeq.png">
@@ -433,7 +454,7 @@
                     To copy the markup click the
                     <span class="italic bold">Copy icon</span>
                     (<img class="img-example" src="helpImages/Result/ResultCopy.png" alt="ResultCopy.png">).
-                    <span class="italic bold">Note</span> that
+                    <!--<span class="italic bold">Note</span> that-->
                     <span class="italic bold">Font size</span>
                     (<img class="img-example" src="helpImages/Input/FontSize.png" alt="FontSize.png">) and
                     <span class="italic bold">Color</span>
@@ -441,11 +462,11 @@
                     <img style="max-width: 700px" class="img-wide" src="helpImages/Input/Color.png" alt="Color.png">
                 </p>
                 <p>
-                    To compare several sequences at once you can switch mode to
+                    To compare several sequences at once, switch mode to
                     <span class="italic bold">Multiple</span>
                     with the
-                    <span class="italic bold">Mode</span>
-                    (<img class="img-example" src="helpImages/TopPannel/ModeMultiple.png" alt="ModeMultiple.png">)
+                    <!--<span class="italic bold">Mode</span>-->
+                    <img class="img-example" src="helpImages/TopPannel/ModeMultiple.png" alt="ModeMultiple.png">
                     button. Use
                     <span class="italic bold">Lock</span>
                     (<img class="img-example" src="helpImages/Result/LockOpen.png" alt="LockOpen.png">,
@@ -453,16 +474,17 @@
                     to prevent a particular tab from horizontal scrolling.
 
 
-                    <span class="italic bold">An important note: the table with the TFBS predictions at the bottom of the page includes
+                    <span class="italic bold">An important note. In this mode the table with the TFBS predictions
+                        at the bottom of the page includes
                     predictions for ALL sequences.</span>
                 </p>
                 <p>
-                    To visualize binding sites in a single sequence you can switch mode to
+                    To visualize binding sites for a single sequence switch mode to
                     <span class="italic bold">Single</span>
                     (<img class="img-example" src="helpImages/TopPannel/Single.png" alt="Single.png">).
 
-                    <span class="italic bold">An important note: the generated table will contain sites only
-                    for the ACTIVE currently visible sequence.</span>
+                    <span class="italic bold">An important note. In this mode the table will contain sites only
+                    for the ACTIVE, currently visible sequence.</span>
 
                     <img style="max-width: 500px" class="img-wide" src="helpImages/modeTable.png" alt="modeTable.png">
                 </p>
@@ -472,25 +494,26 @@
             <div class="help-header">3. Adjust P-value</div>
             <div class="help-content">
                 <p>
-                    Set desired motif P-value exactly or by dragging the slider. The value is shown in both
+                    Set desired motif P-value precisely or by dragging the slider. The value is shown in both
                     <span class="italic bold">linear</span>
                     and
                     <span class="italic bold">logarithmic scale</span>
-                    and restricted to
+                    and restricted to the
                     <span class="italic bold">[ 1.00e-6, 5.00e-2 ]</span>
                     interval.
-                    <span class="italic bold">Recommended permissive P-value = 0.0005</span>
+                    You may experience a minor slowdown when visualizing TFBS for long sequences (100bp+).
+                </p>
+                <p>
+                    <img style="max-width: 700px" class="img-wide" src="helpImages/PValue.png" alt="PValue.png">
+                </p>
+                <p>
+                    <span class="italic bold">The recommended permissive P-value = 0.0005</span>
                     (approximately 1 expected prediction in a
                     stretch of random 1000 nucleotides of double-stranded DNA).
                     Check
                     <a target="_blank" href="https://academic.oup.com/nar/article/41/D1/D195/1056610/HOCOMOCO-a-comprehensive-collection-of-human">
                         [HOCOMOCO v9]</a>
                     for details.
-
-                    <img style="max-width: 700px" class="img-wide" src="helpImages/PValue.png" alt="PValue.png">
-                </p>
-                <p>
-                    You may experience a minor slowdown when visualizing TFBS in longer sequences (100bp+).
                 </p>
             </div>
         </div>
@@ -502,17 +525,17 @@
                     The population of the complete table is the most
                     <span class="italic bold">time-consuming</span>
                     operation. To maintain overall page responsiveness while tweaking settings the table can be switched off
-                    using
-                    <span class="italic bold">Hide table</span>
-                    button
-                    (<img class="img-example" src="helpImages/TopPannel/HideTable.png" alt="HideTable.png">).
+                    using the
+                    <!--<span class="italic bold">Hide table</span>-->
+                    <img class="img-example" src="helpImages/TopPannel/HideTable.png" alt="HideTable.png">
+                    button.
 
                     <img style="max-width: 700px" class="img-wide" src="helpImages/Table/Table.png" alt="Table.png">
                 </p>
                 <p>
                     The table has additional controls.
-                    <span class="italic bold">Select columns</span>
-                    (<img class="img-example" src="helpImages/Table/SelectColumns.png" alt="SelectColumns.png">)
+                    <!--<span class="italic bold">Select columns</span>-->
+                    <img class="img-example" src="helpImages/Table/SelectColumns.png" alt="SelectColumns.png">
                     can be used to show additional data on predicted TFBS.
                     <span class="italic bold">Info</span> button
                     (<img class="img-example" src="helpImages/Table/ShowMore.png" alt="ShowMore.png">)
@@ -526,16 +549,17 @@
                     The results can be filtered with the
                     <span class="italic bold">Search</span> field
                     (<img class="img-example" src="helpImages/Table/Search.png" alt="Search.png">).
-
-                    <span class="italic bold">An important note:</span>
+                </p>
+                <p>
+                    <span class="italic bold">An important note.</span>
                     According to the chosen
                     <span class="italic bold">Mode</span>
                     (<img class="img-example" src="helpImages/TopPannel/Single.png" alt="Single.png"> - Single,
                     <img  class="img-example" src="helpImages/TopPannel/ModeMultiple.png" alt="ModeMultiple.png"> - Multiple)
-                    the table will contain different sites (either from all sequences or from the single active sequence
-                    visualized, details are given above in the
+                    the table will contain different sites. They are either from all sequences or from the single active sequence
+                    visualized. Details are given above in the
                     <span class="italic bold">Add sequences</span>
-                    part of the guide).
+                    part of the guide.
                 </p>
             </div>
         </div>

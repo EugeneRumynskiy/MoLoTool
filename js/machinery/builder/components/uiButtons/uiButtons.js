@@ -45,7 +45,7 @@ var uiButtons = (function () {
         demoButton.init(inputCallback);
         tutorialButton.init();
         helpButton.init();
-        //homeButton.init(); not needed
+        homeButton.init(); //it's not a button but a tool to reset interface into ground state
 
         showMoreButton.init();
         collectionSettingsButton.init(collectionSwitchCallback);
