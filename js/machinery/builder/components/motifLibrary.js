@@ -9,7 +9,7 @@ var motifLibrary = (function () {
         _library = {},
         _featuresForTableLibrary = {}, //created to speed up requests when building table
 
-        _logoBaseUrl = "http://hocomoco11.autosome.ru";
+        _logoBaseUrl = "https://hocomoco11.autosome.ru";
 
 
     var create = function (eventHandler) {
@@ -67,7 +67,7 @@ var motifLibrary = (function () {
     var promiseMotif = function (motifName) {
         return $.ajax({
             dataType: "json",
-            url: "http://hocomoco11.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"
+            url: "https://hocomoco11.autosome.ru/motif/" + motifName + ".json?with_matrices=true&with_thresholds=true"
         });
     };
 
@@ -89,7 +89,7 @@ var motifLibrary = (function () {
                 }
 
                 else if (displayedFeature === "Uniprot ID") {
-                    uniprotFullUrl = "http://www.uniprot.org/uniprot/" + motif[jsonFeature];
+                    uniprotFullUrl = "https://www.uniprot.org/uniprot/" + motif[jsonFeature];
                     valuesToDisplay[displayedFeature] = "<a href=\"" + uniprotFullUrl + "\"" +
                         " class=\"hocomoco-info\" target=\"_blank\">" +
                         motif[jsonFeature] + "</a>";
@@ -97,7 +97,7 @@ var motifLibrary = (function () {
 
                 else if (displayedFeature === "Gene name") {
                     if (motif["full_name"].match(/HUMAN/) !== null) {
-                        geneFullUrl = "http://www.genenames.org/cgi-bin/gene_symbol_report?match=" + motif[jsonFeature];
+                        geneFullUrl = "https://www.genenames.org/cgi-bin/gene_symbol_report?match=" + motif[jsonFeature];
                         valuesToDisplay[displayedFeature] = "<a href=\"" + geneFullUrl + "\"" +
                             " class=\"hocomoco-info\" target=\"_blank\">" +
                             motif[jsonFeature] + "</a>";

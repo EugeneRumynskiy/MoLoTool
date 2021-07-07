@@ -121,7 +121,7 @@ var collectionSettingsSwitcher = (function () {
         var species = getOptionValue(".model-species"),
             collectionIfFull = (getOptionValue(".model-collection") === "Full");
 
-        return "http://hocomoco11.autosome.ru/" + species +
+        return "https://hocomoco11.autosome.ru/" + species +
             "/mono.json?summary=true&full=" + collectionIfFull;
     };
 
