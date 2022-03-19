@@ -1,11 +1,11 @@
 var uiBuilder = (function () {
-    /*https://hocomoco11.autosome.ru/human/mono.json?summary=true&full=true
-     https://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false*/
+    /*https://hocomoco11.autosome.org/human/mono.json?summary=true&full=true
+     https://hocomoco11.autosome.org/human/mono.json?summary=true&full=false*/
 
     var _fileName = "uiBuilder",
         _eventHandler = undefined,
 
-        _motifSummariesSource = "https://hocomoco11.autosome.ru/human/mono.json?summary=true&full=false";
+        _motifSummariesSource = "https://hocomoco11.autosome.org/human/mono.json?summary=true&full=false";
 
 
     var getObjectsToDisable = function () {
@@ -167,7 +167,7 @@ var uiBuilder = (function () {
             var $closeButton = $('<a href="#" class="close"></a>');
             $closeButton.insertAfter($motifContainer.children(".motif-title"));
 
-            var hocomocoRef = "https://hocomoco11.autosome.ru/motif/" + motifName,
+            var hocomocoRef = "https://hocomoco11.autosome.org/motif/" + motifName,
                 titleWithRef = '<a href=' + hocomocoRef + ' class=hocomoco-info target=_blank>' +
                     motifName + '</a>';
             $motifTitle.html(titleWithRef);

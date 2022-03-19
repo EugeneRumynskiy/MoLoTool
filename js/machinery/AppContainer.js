@@ -29,7 +29,7 @@
  */
 
 //Global data to save ajax request
-//https://epifactors.autosome.ru/protein_complexes - как сделать поиск
+//https://epifactors.autosome.org/protein_complexes - как сделать поиск
 // http://paletton.com/#uid=52Q0p1ki6rV87JXdgxQmgnFqvj3ki6rV87JXdgxQmgnFqvj3kdLmDeBKZcjw8bCe2ce5+
 $(function() {
     uiBuilder.buildUI();
